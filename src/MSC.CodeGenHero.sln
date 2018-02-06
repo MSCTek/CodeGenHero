@@ -1,0 +1,77 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.CodeGenHero.DTO", "MSC.CodeGenHero.DTO\MSC.CodeGenHero.DTO.csproj", "{AD4E6183-A13B-4B51-A0E8-8756A0F94FD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bundles", "Bundles", "{507F34FA-968A-4E3E-925B-472938358C94}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EAMVCXamPOCO", "EAMVCXamPOCO", "{DFAC8B90-F037-4A23-AA4D-4A5AEC06E302}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyFiles", "DependencyFiles", "{7405745B-41DB-4280-92A8-C7C4B98FD12F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API.Helpers", "API.Helpers", "{F0EC4AA6-D272-45EB-BF6F-A32DC1BE258E}"
+	ProjectSection(SolutionItems) = preProject
+		Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\FilterCriteriaExtensions.cs = Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\FilterCriteriaExtensions.cs
+		Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\HttpRequestMessageExtensions.cs = Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\HttpRequestMessageExtensions.cs
+		Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\InheritableDirectRouteProvider.cs = Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\InheritableDirectRouteProvider.cs
+		Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\IQueryableExtensions.cs = Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\IQueryableExtensions.cs
+		Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\LogActionAttribute.cs = Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\LogActionAttribute.cs
+		Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\QueryableFilter.cs = Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\QueryableFilter.cs
+		Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\VersionConstraint.cs = Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\VersionConstraint.cs
+		Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\VersionedRouteAttribute.cs = Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\VersionedRouteAttribute.cs
+		Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\VersionedRouteWithDefaultAttribute.cs = Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\VersionedRouteWithDefaultAttribute.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository.Factory", "Repository.Factory", "{D1D70411-A0F2-4B5D-81A7-8995759C2D09}"
+	ProjectSection(SolutionItems) = preProject
+		Bundles\EAMVCXamPOCO\DependencyFiles\Repository.Factory\GenericFactory.cs = Bundles\EAMVCXamPOCO\DependencyFiles\Repository.Factory\GenericFactory.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service.LoggingService", "Service.LoggingService", "{382E1E44-AE82-41A3-8B26-9A3442ECF03D}"
+	ProjectSection(SolutionItems) = preProject
+		Bundles\EAMVCXamPOCO\DependencyFiles\Service.LoggingService\Log4NetLoggingService.cs = Bundles\EAMVCXamPOCO\DependencyFiles\Service.LoggingService\Log4NetLoggingService.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web.Helpers", "Web.Helpers", "{A889A497-4812-47FA-9463-C8942BF513AC}"
+	ProjectSection(SolutionItems) = preProject
+		Bundles\EAMVCXamPOCO\DependencyFiles\Web.Helpers\HttpRequestBaseExtensions.cs = Bundles\EAMVCXamPOCO\DependencyFiles\Web.Helpers\HttpRequestBaseExtensions.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSC.CodeGenHero.EAMVCXamPOCO.PCL", "MSC.CodeGenHero.EAMVCXamPOCO.PCL", "{C11DD12E-2542-4424-8DD5-D169A4B5EDD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.CodeGenHero.EAMVCXamPOCO.PCL", "Bundles\EAMVCXamPOCO\MSC.CodeGenHero.EAMVCXamPOCO.PCL\MSC.CodeGenHero.EAMVCXamPOCO.PCL.csproj", "{F0DFF2E3-B6E6-4BF1-8878-AB50E53662D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD4E6183-A13B-4B51-A0E8-8756A0F94FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4E6183-A13B-4B51-A0E8-8756A0F94FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4E6183-A13B-4B51-A0E8-8756A0F94FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4E6183-A13B-4B51-A0E8-8756A0F94FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0DFF2E3-B6E6-4BF1-8878-AB50E53662D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0DFF2E3-B6E6-4BF1-8878-AB50E53662D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0DFF2E3-B6E6-4BF1-8878-AB50E53662D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0DFF2E3-B6E6-4BF1-8878-AB50E53662D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DFAC8B90-F037-4A23-AA4D-4A5AEC06E302} = {507F34FA-968A-4E3E-925B-472938358C94}
+		{7405745B-41DB-4280-92A8-C7C4B98FD12F} = {DFAC8B90-F037-4A23-AA4D-4A5AEC06E302}
+		{F0EC4AA6-D272-45EB-BF6F-A32DC1BE258E} = {7405745B-41DB-4280-92A8-C7C4B98FD12F}
+		{D1D70411-A0F2-4B5D-81A7-8995759C2D09} = {7405745B-41DB-4280-92A8-C7C4B98FD12F}
+		{382E1E44-AE82-41A3-8B26-9A3442ECF03D} = {7405745B-41DB-4280-92A8-C7C4B98FD12F}
+		{A889A497-4812-47FA-9463-C8942BF513AC} = {7405745B-41DB-4280-92A8-C7C4B98FD12F}
+		{C11DD12E-2542-4424-8DD5-D169A4B5EDD5} = {DFAC8B90-F037-4A23-AA4D-4A5AEC06E302}
+		{F0DFF2E3-B6E6-4BF1-8878-AB50E53662D2} = {C11DD12E-2542-4424-8DD5-D169A4B5EDD5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {604E3C32-467D-42DB-B31B-51D9EF17FA70}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/src/MSC.CodeGenHero.DTO/bin
+/src/MSC.CodeGenHero.DTO/obj
+/src/.vs/MSC.CodeGenHero/v15
+/src/Bundles/EAMVCXamPOCO/MSC.CodeGenHero.EAMVCXamPOCO.PCL/bin
+/src/Bundles/EAMVCXamPOCO/MSC.CodeGenHero.EAMVCXamPOCO.PCL/obj
+/src/MSC.CodeGenHero.DTO/project.lock.json
+/src/MSC.CodeGenHero.DTO/MSC.CodeGenHero.DTO.csproj.user
