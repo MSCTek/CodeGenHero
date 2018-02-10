@@ -24,9 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API.Helpers", "API.Helpers"
 		Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\VersionedRouteWithDefaultAttribute.cs = Bundles\EAMVCXamPOCO\DependencyFiles\API.Helpers\VersionedRouteWithDefaultAttribute.cs
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository.Factory", "Repository.Factory", "{D1D70411-A0F2-4B5D-81A7-8995759C2D09}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository.Factories", "Repository.Factories", "{D1D70411-A0F2-4B5D-81A7-8995759C2D09}"
 	ProjectSection(SolutionItems) = preProject
-		Bundles\EAMVCXamPOCO\DependencyFiles\Repository.Factory\GenericFactory.cs = Bundles\EAMVCXamPOCO\DependencyFiles\Repository.Factory\GenericFactory.cs
+		Bundles\EAMVCXamPOCO\DependencyFiles\Repository.Factories\GenericFactory.cs = Bundles\EAMVCXamPOCO\DependencyFiles\Repository.Factories\GenericFactory.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service.LoggingService", "Service.LoggingService", "{382E1E44-AE82-41A3-8B26-9A3442ECF03D}"
@@ -42,6 +42,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSC.CodeGenHero.EAMVCXamPOCO.PCL", "MSC.CodeGenHero.EAMVCXamPOCO.PCL", "{C11DD12E-2542-4424-8DD5-D169A4B5EDD5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.CodeGenHero.EAMVCXamPOCO.PCL", "Bundles\EAMVCXamPOCO\MSC.CodeGenHero.EAMVCXamPOCO.PCL\MSC.CodeGenHero.EAMVCXamPOCO.PCL.csproj", "{F0DFF2E3-B6E6-4BF1-8878-AB50E53662D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service.DataService", "Service.DataService", "{67E7BBAC-6F4A-4C14-87A8-3539ED87F01E}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Survey\src\SpencerStuart.CSS.DataService\Interface\IWebApiExecutionContext.cs = ..\..\Survey\src\SpencerStuart.CSS.DataService\Interface\IWebApiExecutionContext.cs
+		..\..\Survey\src\SpencerStuart.CSS.DataService\DataService\WebApiDataServiceBase.cs = ..\..\Survey\src\SpencerStuart.CSS.DataService\DataService\WebApiDataServiceBase.cs
+		..\..\Survey\src\SpencerStuart.CSS.DataService\DataService\WebApiExecutionContext.cs = ..\..\Survey\src\SpencerStuart.CSS.DataService\DataService\WebApiExecutionContext.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +77,7 @@ Global
 		{A889A497-4812-47FA-9463-C8942BF513AC} = {7405745B-41DB-4280-92A8-C7C4B98FD12F}
 		{C11DD12E-2542-4424-8DD5-D169A4B5EDD5} = {DFAC8B90-F037-4A23-AA4D-4A5AEC06E302}
 		{F0DFF2E3-B6E6-4BF1-8878-AB50E53662D2} = {C11DD12E-2542-4424-8DD5-D169A4B5EDD5}
+		{67E7BBAC-6F4A-4C14-87A8-3539ED87F01E} = {7405745B-41DB-4280-92A8-C7C4B98FD12F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {604E3C32-467D-42DB-B31B-51D9EF17FA70}

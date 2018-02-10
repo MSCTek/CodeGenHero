@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>81c408a1-e76a-448b-b0ff-971d25528fee</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>CodeGenHero.Data</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)BingoBuzz.Web.cghc" />
+    <None Include="$(MSBuildThisFileDirectory)BingoBuzz_POCO.cghs" />
+    <None Include="$(MSBuildThisFileDirectory)CodeGenHero.cght" />
+  </ItemGroup>
+</Project>

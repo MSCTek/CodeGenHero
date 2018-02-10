@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C8097FFC-C1B2-4694-85F7-2AE10BD851F5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MSC.BingoBuzz.Service.DataService</RootNamespace>
+    <AssemblyName>MSC.BingoBuzz.Service.DataService</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile44</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <None Include="DataService\WebApiDataService_BB.cgh" />
+    <None Include="Interfaces\WebApiDataServiceBaseInterface_BB.cgh" />
+    <None Include="Interfaces\WebApiDataServiceInterface_BB.cgh" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataService\WebApiDataServiceBase.cs" />
+    <Compile Include="DataService\WebAPIDataServiceBB.cs">
+      <DependentUpon>WebApiDataService_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IWebApiDataServiceBase.cs">
+      <DependentUpon>WebApiDataServiceBaseInterface_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IWebApiDataServiceBB.cs">
+      <DependentUpon>WebApiDataServiceInterface_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IWebApiExecutionContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MSC.CodeGenHero.EAMVCXamPOCO.PCL">
+      <HintPath>..\Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.PCL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MSC.BingoBuzz.Constants\MSC.BingoBuzz.Constants.csproj">
+      <Project>{CE71D050-6A42-436C-B212-1DC2B2958777}</Project>
+      <Name>MSC.BingoBuzz.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSC.BingoBuzz.DTO\MSC.BingoBuzz.DTO.csproj">
+      <Project>{d801b844-b10f-46d1-80b1-73a4ebf6f57a}</Project>
+      <Name>MSC.BingoBuzz.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>

@@ -1,0 +1,299 @@
+{
+  "Author": null,
+  "BlueprintTemplates": [
+    {
+      "Description": "The base controller from which non-authorized controllers inherit.",
+      "Id": "4cb75f55-706b-4b42-835b-dd823d4afc91",
+      "IsActive": false,
+      "Name": "APIBaseController",
+      "Settings": [
+        {
+          "Name": "ApiBaseControllerOutputFilePath",
+          "Value": "Controllers\\Base\\{namespacePostfix}BaseApiController.cs"
+        },
+        {
+          "Name": "AutoInvalidateCacheOutput",
+          "Value": "false"
+        },
+        {
+          "Name": "BaseApiControllerClassName",
+          "Value": "{namespacePostfix}BaseApiController"
+        },
+        {
+          "Name": "BaseApiControllerNameSpace",
+          "Value": "{baseNamespace}.API.Controllers.{namespacePostfix}"
+        },
+        {
+          "Name": "IsAuthorizedControllerBaseClass",
+          "Value": "false"
+        },
+        {
+          "Name": "LoggingServiceFullyQualifiedClassName",
+          "Value": "CodeGenHero.EAMVCXamPOCO.Service.Log4NetLoggingService"
+        },
+        {
+          "Name": "UseIdentityBasicAuthenticationAttribute",
+          "Value": "false"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Provides an endpoint that can be called using via Get verb to determine if the service is available.  Does not require security authentication.",
+      "Id": "a5d78309-5a18-4a09-9225-03e602b52187",
+      "IsActive": false,
+      "Name": "APIStatusController",
+      "Settings": [
+        {
+          "Name": "ApiStatusControllerOutputFilePath",
+          "Value": "Controllers\\Base\\{namespacePostfix}APIStatusController.cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Maps Entity Framework objects to DTOs and vice versa.",
+      "Id": "f3f865a7-e545-4bc4-b0ba-c9e7ee587e73",
+      "IsActive": false,
+      "Name": "AutoMapperProfile",
+      "Settings": [
+        {
+          "Name": "AutomapperProfileOutputFilePath",
+          "Value": "Repository\\Infrastructure\\{namespacePostfix}AutoMapperProfile.cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Simple Data Transfer Objects for use in communicating across process boundaries.  Ideal for sending results from a server-side Web API to a consuming client application (i.e. Xamarin mobile or ASP.Net website).",
+      "Id": "58fa7ee2-89f7-41e6-85ed-8d4482653990",
+      "IsActive": false,
+      "Name": "DTO",
+      "Settings": [
+        {
+          "Name": "DTOIncludeRelatedObjects",
+          "Value": "true"
+        },
+        {
+          "Name": "DTONamespace",
+          "Value": "{baseNamespace}.DTO.{namespacePostfix}"
+        },
+        {
+          "Name": "DTOOutputFilePath",
+          "Value": "DTO\\{namespacePostfix}\\[tablename].cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Creates the repository class where options can be set on the Entity Framework data context (i.e. disable lazy loading or log EF queries when a debugger is attached).",
+      "Id": "c765a56c-163b-4d2a-863d-3a0a30bbcb15",
+      "IsActive": false,
+      "Name": "Repository",
+      "Settings": [
+        {
+          "Name": "RepositoryOutputFilePath",
+          "Value": "Repository\\Repository\\{namespacePostfix}Repository.cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Creates the base repository class where most of the actual implementation of CRUD operations resides..",
+      "Id": "70230bd4-f88f-41d8-a9c6-6e40aded5c07",
+      "IsActive": false,
+      "Name": "RepositoryBase",
+      "Settings": [
+        {
+          "Name": "RepositoryBaseOutputFilePath",
+          "Value": "Repository\\Repository\\{namespacePostfix}RepositoryBase.cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Creates the interface that the repository class must implement",
+      "Id": "f766650e-5c46-4239-b6fd-0cfca2673207",
+      "IsActive": false,
+      "Name": "RepositoryInterface",
+      "Settings": [
+        {
+          "Name": "RepositoryInterfaceOutputFilePath",
+          "Value": "Repository\\Interface\\I{namespacePostfix}Repository.cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Creates the interface that supports create, read, update, and delete functions in the repository class.",
+      "Id": "387dfdc5-b9f2-4ab4-accb-00a22cdd916c",
+      "IsActive": false,
+      "Name": "RepositoryInterfaceCrud",
+      "Settings": [
+        {
+          "Name": "RepositoryInterfaceCrudOutputFilePath",
+          "Value": "Repository\\Interface\\I{namespacePostfix}RepositoryCrud.cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Web API 2.0 controllers that support web and mobile clients and can, optionally, require basic or OAuth 2.0 security authentication.",
+      "Id": "4b60314b-c212-46e3-8945-3d5daecee905",
+      "IsActive": false,
+      "Name": "WebApiController",
+      "Settings": [
+        {
+          "Name": "FactoryNamespace",
+          "Value": "{baseNamespace}.Repository.Factory"
+        },
+        {
+          "Name": "MaxRequestPerPageOverrideByTableName",
+          "Value": null
+        },
+        {
+          "Name": "RepositoryEntitiesNamespace",
+          "Value": "{repositoryNamespace}.Entities.{namespacePostfix}"
+        },
+        {
+          "Name": "UseAuthorizedBaseController",
+          "Value": "false"
+        },
+        {
+          "Name": "WebApiController",
+          "Value": "Controllers\\{namespacePostfix}\\[tablepluralname]Controller.cs"
+        },
+        {
+          "Name": "WebApiControllerNamespace",
+          "Value": "{baseNamespace}.API.Controllers.{namespacePostfix}"
+        },
+        {
+          "Name": "WebApiControllerOutputFilePath",
+          "Value": "Controllers\\{namespacePostfix}\\[tablepluralname]Controller.cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Provides functionality to abstract calls to Web API services.",
+      "Id": "424e7ec7-bd9d-4cd3-9257-6ffbc772b82e",
+      "IsActive": false,
+      "Name": "WebApiDataService",
+      "Settings": [
+        {
+          "Name": "SerializationHelperNamespace",
+          "Value": "{baseNamespace}.Common.Helpers"
+        },
+        {
+          "Name": "UpdatedDateFieldName",
+          "Value": "UpdatedDate"
+        },
+        {
+          "Name": "WebApiDataServiceBaseNamespace",
+          "Value": "CodeGenHero.EAMVCXamPOCO.DataService"
+        },
+        {
+          "Name": "WebApiDataServiceNamespace",
+          "Value": "{baseNamespace}.API.Client"
+        },
+        {
+          "Name": "WebApiDataServiceOutputFilePath",
+          "Value": "Client\\WebAPIDataService\\WebAPIDataService{namespacePostfix}.cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Provides an interface for the base class underlying functionality to abstract calls to Web API services.",
+      "Id": "b2b99011-802c-4f2d-9da0-30eb01331f89",
+      "IsActive": false,
+      "Name": "WebApiDataServiceBaseInterface",
+      "Settings": [
+        {
+          "Name": "WebApiDataServiceBaseInterfaceOutputFilePath",
+          "Value": "Client\\IWebApiDataservice\\IWebApiDataServiceBase.cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Provides an interface for the implementation class that provides functionality to abstract calls to Web API services.",
+      "Id": "1ea810ed-61a7-443b-97f2-da5b30311e75",
+      "IsActive": false,
+      "Name": "WebApiDataServiceInterface",
+      "Settings": [
+        {
+          "Name": "WebApiDataServiceInterfaceClassName",
+          "Value": "IWebApiDataService{namespacePostfix}"
+        },
+        {
+          "Name": "WebApiDataServiceInterfaceOutputFilePath",
+          "Value": "Client\\IWebApiDataservice\\IWebApiDataService{namespacePostfix}.cs"
+        }
+      ],
+      "Version": "1.0"
+    }
+  ],
+  "Description": null,
+  "Id": "00000000-0000-0000-0000-000000000000",
+  "Name": null,
+  "Settings": [
+    {
+      "Name": "baseNamespace",
+      "Value": "MSC.BingoBuzz"
+    },
+    {
+      "Name": "ApiHelpersNamespace",
+      "Value": "{baseNamespace}.API.Helpers"
+    },
+    {
+      "Name": "EnumNamespace",
+      "Value": "{baseNamespace}.Constants.Enums"
+    },
+    {
+      "Name": "EnumNamespacePrefix",
+      "Value": "appEnums"
+    },
+    {
+      "Name": "ILoggingServiceNamespace",
+      "Value": "CodeGenHero.EAMVCXamPOCO.Interface"
+    },
+    {
+      "Name": "RepositoryInterfaceNamespace",
+      "Value": "{baseNamespace}.Repository.Interface"
+    },
+    {
+      "Name": "NamespacePostfix",
+      "Value": "BB"
+    },
+    {
+      "Name": "PrependSchemaNameIndicator",
+      "Value": "true"
+    },
+    {
+      "Name": "DbContextName",
+      "Value": "{namespacePostFix}DataContext"
+    },
+    {
+      "Name": "RepositoryNamespace",
+      "Value": "{baseNamespace}.Repository"
+    },
+    {
+      "Name": "DtoNamespace",
+      "Value": "{baseNamespace}.DTO.{namespacePostfix}"
+    },
+    {
+      "Name": "IWebApiExecutionContextNamespace",
+      "Value": "CodeGenHero.EAMVCXamPOCO.DataService.Interface"
+    },
+    {
+      "Name": "WebApiDataServiceInterfaceNamespace",
+      "Value": "{baseNamespace}.API.Client.Interface"
+    },
+    {
+      "Name": "DefaultCriteria",
+      "Value": "DateTime? minUpdatedDate"
+    }
+  ],
+  "Version": null
+}

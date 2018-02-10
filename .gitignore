@@ -10,3 +10,24 @@
 /src/Bundles/EAMVCXamPOCO/MSC.CodeGenHero.EAMVCXamPOCO.PCL/obj
 /src/MSC.CodeGenHero.DTO/project.lock.json
 /src/MSC.CodeGenHero.DTO/MSC.CodeGenHero.DTO.csproj.user
+/src/Samples/BingoBuzz/.vs
+/src/Samples/BingoBuzz/CodeGenHero.Data/.vs/CodeGenHero.Data/v15
+/src/Samples/BingoBuzz/MSC.BingoBuzz.API/bin
+/src/Samples/BingoBuzz/MSC.BingoBuzz.API/obj
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Constants/bin
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Constants/obj
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Database/bin
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Database/obj
+/src/Samples/BingoBuzz/MSC.BingoBuzz.DTO/bin
+/src/Samples/BingoBuzz/MSC.BingoBuzz.DTO/obj
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Repository/bin
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Repository/obj
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Service.DataService/bin
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Service.DataService/obj
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Service.Logging/bin
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Service.Logging/obj
+/src/Samples/BingoBuzz/packages
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Database/Import Schema Logs
+*.jfm
+*.user
+*.dbmdl
