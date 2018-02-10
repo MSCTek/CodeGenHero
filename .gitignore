@@ -31,3 +31,11 @@
 *.jfm
 *.user
 *.dbmdl
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Xam/MSC.BingoBuzz.Xam/obj
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Xam/MSC.BingoBuzz.Xam/bin
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Xam/MSC.BingoBuzz.Xam.Android/obj
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Xam/MSC.BingoBuzz.Xam.Android/bin
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Xam/MSC.BingoBuzz.Xam.iOS/obj
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Xam/MSC.BingoBuzz.Xam.iOS/bin
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Xam/MSC.BingoBuzz.Xam.UWP/obj
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Xam/MSC.BingoBuzz.Xam.UWP/bin

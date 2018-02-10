@@ -106,5 +106,41 @@
     "TemplateId": "1ea810ed-61a7-443b-97f2-da5b30311e75",
     "TemplateName": "WebApiDataServiceInterface",
     "TemplateVersion": "1.0"
+  },
+  {
+    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "MSC.BingoBuzz.Xam",
+    "RelativePath": "\\Mappers",
+    "TemplateId": "5078579f-7ab4-430d-9dcc-a3190f678efc",
+    "TemplateName": "MapperDtoToSqliteModelDataAndMvvmLightModelObject",
+    "TemplateVersion": "1.0"
+  },
+  {
+    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "MSC.BingoBuzz.Xam",
+    "RelativePath": "\\Mappers",
+    "TemplateId": "ec39b410-017a-407f-be75-0cf4fd66efd2",
+    "TemplateName": "MapperSqliteModelDataToMvvmLightModelObject",
+    "TemplateVersion": "1.0"
+  },
+  {
+    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "MSC.BingoBuzz.Xam",
+    "RelativePath": "\\ModelObj",
+    "TemplateId": "4d03f2c7-de26-4aee-a267-cad747c9606a",
+    "TemplateName": "MvvmLightModelObject",
+    "TemplateVersion": "1.0"
+  },
+  {
+    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "MSC.BingoBuzz.Xam",
+    "RelativePath": "\\ModelData",
+    "TemplateId": "c5caad15-b3be-4443-87d8-7cabde59f7b0",
+    "TemplateName": "SqliteModelData",
+    "TemplateVersion": "1.0"
   }
 ]
