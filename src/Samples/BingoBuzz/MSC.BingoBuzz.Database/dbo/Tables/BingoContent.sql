@@ -9,7 +9,10 @@
     [UpdatedDate]         DATETIME2 (7)    NOT NULL,
     [UpdatedUserId]       UNIQUEIDENTIFIER NOT NULL,
     [IsDeleted]           BIT              CONSTRAINT [DF_BingoContent_IsDeleted] DEFAULT ((0)) NOT NULL,
+    CONSTRAINT [PK_BingoContent] PRIMARY KEY CLUSTERED ([BingoContentId] ASC),
     CONSTRAINT [FK_BingoContent_User_CreatedUserId] FOREIGN KEY ([CreatedUserId]) REFERENCES [dbo].[User] ([UserId]),
     CONSTRAINT [FK_BingoContent_User_UpdatedUserId] FOREIGN KEY ([UpdatedUserId]) REFERENCES [dbo].[User] ([UserId])
 );
+
+
 

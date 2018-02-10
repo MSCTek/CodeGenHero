@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[BingoInstanceEvent] (
     [BingoInstanceEventId]     UNIQUEIDENTIFIER CONSTRAINT [DF_BingoInstanceEvent_BingoInstanceEventId] DEFAULT (newid()) NOT NULL,
     [BingoInstanceEventTypeId] INT              NOT NULL,
-    [BingoInstanceId]          UNIQUEIDENTIFIER NULL,
+    [BingoInstanceId]          UNIQUEIDENTIFIER NOT NULL,
     [BingoInstanceContentId]   UNIQUEIDENTIFIER NULL,
     [CreatedDate]              DATETIME2 (7)    NOT NULL,
     [CreatedUserId]            UNIQUEIDENTIFIER NOT NULL,
@@ -15,4 +15,6 @@
     CONSTRAINT [FK_BingoInstanceEvent_User_Created] FOREIGN KEY ([CreatedUserId]) REFERENCES [dbo].[User] ([UserId]),
     CONSTRAINT [FK_BingoInstanceEvent_User_Updated] FOREIGN KEY ([UpdatedUserId]) REFERENCES [dbo].[User] ([UserId])
 );
+
+
 
