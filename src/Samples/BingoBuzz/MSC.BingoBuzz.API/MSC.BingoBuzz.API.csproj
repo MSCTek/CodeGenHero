@@ -67,9 +67,8 @@
     <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="MSC.CodeGenHero.EAMVCXamPOCO.PCL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.PCL.dll</HintPath>
+    <Reference Include="MSC.CodeGenHero.EAMVCXamPOCO.Standard">
+      <HintPath>..\Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -217,12 +216,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MSC.BingoBuzz.Constants\MSC.BingoBuzz.Constants.csproj">
-      <Project>{ce71d050-6a42-436c-b212-1dc2b2958777}</Project>
-      <Name>MSC.BingoBuzz.Constants</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MSC.BingoBuzz.DTO\MSC.BingoBuzz.DTO.csproj">
-      <Project>{d801b844-b10f-46d1-80b1-73a4ebf6f57a}</Project>
+      <Project>{3713bf32-af63-429a-a7f1-79d6139cf799}</Project>
       <Name>MSC.BingoBuzz.DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\MSC.BingoBuzz.Repository\MSC.BingoBuzz.Repository.csproj">

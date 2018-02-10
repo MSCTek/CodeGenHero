@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MSC.BingoBuzz.DTO.BB;
+using CodeGenHero.EAMVCXamPOCO.DataService.Interface;
 
 namespace MSC.BingoBuzz.API.Client.Interface
 {

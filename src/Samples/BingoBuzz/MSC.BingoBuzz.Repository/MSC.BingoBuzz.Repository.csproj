@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MSC.CodeGenHero.EAMVCXamPOCO.PCL">
-      <HintPath>..\Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.PCL.dll</HintPath>
+    <Reference Include="MSC.CodeGenHero.EAMVCXamPOCO.Standard">
+      <HintPath>..\Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -175,12 +175,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MSC.BingoBuzz.DTO\MSC.BingoBuzz.DTO.csproj">
-      <Project>{d801b844-b10f-46d1-80b1-73a4ebf6f57a}</Project>
-      <Name>MSC.BingoBuzz.DTO</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Entities\BB\BingoBuzzContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BingoBuzzContext.cs</LastGenOutput>
@@ -198,6 +192,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MSC.BingoBuzz.DTO\MSC.BingoBuzz.DTO.csproj">
+      <Project>{3713bf32-af63-429a-a7f1-79d6139cf799}</Project>
+      <Name>MSC.BingoBuzz.DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

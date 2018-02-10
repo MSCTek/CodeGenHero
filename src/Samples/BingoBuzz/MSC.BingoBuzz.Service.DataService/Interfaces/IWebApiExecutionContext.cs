@@ -1,4 +1,4 @@
-﻿using static MSC.BingoBuzz.Constants.Enums;
+﻿using static CodeGenHero.EAMVCXamPOCO.DataService.Constants.Enums;
 
 namespace CodeGenHero.EAMVCXamPOCO.DataService.Interface
 {

@@ -3,15 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.BingoBuzz.Constants", "MSC.BingoBuzz.Constants\MSC.BingoBuzz.Constants.csproj", "{CE71D050-6A42-436C-B212-1DC2B2958777}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MSC.BingoBuzz.Database", "MSC.BingoBuzz.Database\MSC.BingoBuzz.Database.sqlproj", "{D19760CF-5E16-4E08-91FF-B5DA1D95D89E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.BingoBuzz.DTO", "MSC.BingoBuzz.DTO\MSC.BingoBuzz.DTO.csproj", "{D801B844-B10F-46D1-80B1-73A4EBF6F57A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.BingoBuzz.Service.Logging", "MSC.BingoBuzz.Service.Logging\MSC.BingoBuzz.Service.Logging.csproj", "{93BDE56D-56D9-4482-8DAB-80AAA658352E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.BingoBuzz.Service.DataService", "MSC.BingoBuzz.Service.DataService\MSC.BingoBuzz.Service.DataService.csproj", "{C8097FFC-C1B2-4694-85F7-2AE10BD851F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.BingoBuzz.Repository", "MSC.BingoBuzz.Repository\MSC.BingoBuzz.Repository.csproj", "{A35CDF7F-CF6A-4242-8919-01BEEB81E72D}"
 EndProject
@@ -19,13 +13,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.BingoBuzz.API", "MSC.Bi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{F0A07555-C7F5-45E9-BABE-601CF0E41748}"
 	ProjectSection(SolutionItems) = preProject
-		Assemblies\MSC.CodeGenHero.DTO.dll = Assemblies\MSC.CodeGenHero.DTO.dll
-		Assemblies\MSC.CodeGenHero.DTO.pdb = Assemblies\MSC.CodeGenHero.DTO.pdb
-		Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.PCL.dll = Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.PCL.dll
-		Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.PCL.pdb = Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.PCL.pdb
+		Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.deps.json = Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.deps.json
+		Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.dll = Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.dll
+		Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.pdb = Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.pdb
+		Assemblies\MSC.CodeGenHero.Standard.deps.json = Assemblies\MSC.CodeGenHero.Standard.deps.json
+		Assemblies\MSC.CodeGenHero.Standard.dll = Assemblies\MSC.CodeGenHero.Standard.dll
+		Assemblies\MSC.CodeGenHero.Standard.pdb = Assemblies\MSC.CodeGenHero.Standard.pdb
 	EndProjectSection
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CodeGenHero.Data", "CodeGenHero.Data\CodeGenHero.Data.shproj", "{81C408A1-E76A-448B-B0FF-971D25528FEE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSC.BingoBuzz.Constants", "MSC.BingoBuzz.Constants\MSC.BingoBuzz.Constants.csproj", "{7D8CF6AF-BF06-46B7-8378-300D90FB6E4C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSC.BingoBuzz.DTO", "MSC.BingoBuzz.DTO\MSC.BingoBuzz.DTO.csproj", "{3713BF32-AF63-429A-A7F1-79D6139CF799}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSC.BingoBuzz.Service.DataService", "MSC.BingoBuzz.Service.DataService\MSC.BingoBuzz.Service.DataService.csproj", "{D9BA3D98-0EB9-4FA1-9DA0-3A8EF47927E3}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -36,28 +38,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CE71D050-6A42-436C-B212-1DC2B2958777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE71D050-6A42-436C-B212-1DC2B2958777}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE71D050-6A42-436C-B212-1DC2B2958777}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE71D050-6A42-436C-B212-1DC2B2958777}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D19760CF-5E16-4E08-91FF-B5DA1D95D89E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D19760CF-5E16-4E08-91FF-B5DA1D95D89E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D19760CF-5E16-4E08-91FF-B5DA1D95D89E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{D19760CF-5E16-4E08-91FF-B5DA1D95D89E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D19760CF-5E16-4E08-91FF-B5DA1D95D89E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D19760CF-5E16-4E08-91FF-B5DA1D95D89E}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{D801B844-B10F-46D1-80B1-73A4EBF6F57A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D801B844-B10F-46D1-80B1-73A4EBF6F57A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D801B844-B10F-46D1-80B1-73A4EBF6F57A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D801B844-B10F-46D1-80B1-73A4EBF6F57A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{93BDE56D-56D9-4482-8DAB-80AAA658352E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{93BDE56D-56D9-4482-8DAB-80AAA658352E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93BDE56D-56D9-4482-8DAB-80AAA658352E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93BDE56D-56D9-4482-8DAB-80AAA658352E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8097FFC-C1B2-4694-85F7-2AE10BD851F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8097FFC-C1B2-4694-85F7-2AE10BD851F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8097FFC-C1B2-4694-85F7-2AE10BD851F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8097FFC-C1B2-4694-85F7-2AE10BD851F5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A35CDF7F-CF6A-4242-8919-01BEEB81E72D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A35CDF7F-CF6A-4242-8919-01BEEB81E72D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A35CDF7F-CF6A-4242-8919-01BEEB81E72D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,6 +56,18 @@ Global
 		{66944B27-D31A-4818-9176-F8BA94B1AFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66944B27-D31A-4818-9176-F8BA94B1AFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66944B27-D31A-4818-9176-F8BA94B1AFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D8CF6AF-BF06-46B7-8378-300D90FB6E4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D8CF6AF-BF06-46B7-8378-300D90FB6E4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D8CF6AF-BF06-46B7-8378-300D90FB6E4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D8CF6AF-BF06-46B7-8378-300D90FB6E4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3713BF32-AF63-429A-A7F1-79D6139CF799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3713BF32-AF63-429A-A7F1-79D6139CF799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3713BF32-AF63-429A-A7F1-79D6139CF799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3713BF32-AF63-429A-A7F1-79D6139CF799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9BA3D98-0EB9-4FA1-9DA0-3A8EF47927E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9BA3D98-0EB9-4FA1-9DA0-3A8EF47927E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9BA3D98-0EB9-4FA1-9DA0-3A8EF47927E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9BA3D98-0EB9-4FA1-9DA0-3A8EF47927E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

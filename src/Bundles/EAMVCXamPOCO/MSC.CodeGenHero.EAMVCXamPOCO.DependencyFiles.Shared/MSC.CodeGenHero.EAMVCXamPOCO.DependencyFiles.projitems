@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>7594ad23-fb51-4254-8f9f-4d26e9d36ddf</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>MSC.CodeGenHero.EAMVCXamPOCO.DependencyFiles</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)API.Helpers\FilterCriteriaExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API.Helpers\HttpRequestMessageExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API.Helpers\InheritableDirectRouteProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API.Helpers\IQueryableExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API.Helpers\LogActionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API.Helpers\QueryableFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API.Helpers\VersionConstraint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API.Helpers\VersionedRouteAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)API.Helpers\VersionedRouteWithDefaultAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repository.Factories\GenericFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repository.Mappers\AutoMapperInitializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service.DataService\Enums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service.DataService\IWebApiDataServiceBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service.DataService\IWebApiExecutionContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service.DataService\WebApiDataServiceBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service.LoggingService\Log4NetLoggingService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Web.Helpers\HttpRequestBaseExtensions.cs" />
+  </ItemGroup>
+</Project>

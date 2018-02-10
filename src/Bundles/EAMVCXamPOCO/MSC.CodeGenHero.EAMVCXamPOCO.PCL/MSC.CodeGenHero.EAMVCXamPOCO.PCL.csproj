@@ -39,17 +39,8 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants\Constants.cs" />
-    <Compile Include="Constants\Enums.cs" />
-    <Compile Include="Extensions\HttpExtensions.cs" />
-    <Compile Include="Converters\GuidBoolJsonConverter.cs" />
-    <Compile Include="Models\HttpCallResult.cs" />
-    <Compile Include="Interfaces\ICRUDOperation.cs" />
-    <Compile Include="Interfaces\ILoggingService.cs" />
-    <Compile Include="Models\PageData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\RepositoryActionResult.cs" />
-    <Compile Include="Utility\SerializationHelper.cs" />
   </ItemGroup>
+  <Import Project="..\MSC.CodeGenHero.EAMVCXamPOCO.Shared\MSC.CodeGenHero.EAMVCXamPOCO.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>
