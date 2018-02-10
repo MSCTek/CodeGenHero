@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.BingoBuzz.DTO", "MSC.BingoBuzz.DTO\MSC.BingoBuzz.DTO.csproj", "{D801B844-B10F-46D1-80B1-73A4EBF6F57A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSC.BingoBuzz.DTO", "MSC.BingoBuzz.DTO\MSC.BingoBuzz.DTO.csproj", "{D801B844-B10F-46D1-80B1-73A4EBF6F57A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.BingoBuzz.Constants", "MSC.BingoBuzz.Constants\MSC.BingoBuzz.Constants.csproj", "{CE71D050-6A42-436C-B212-1DC2B2958777}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSC.BingoBuzz.Constants", "MSC.BingoBuzz.Constants\MSC.BingoBuzz.Constants.csproj", "{CE71D050-6A42-436C-B212-1DC2B2958777}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.BingoBuzz.Service.DataService", "MSC.BingoBuzz.Service.DataService\MSC.BingoBuzz.Service.DataService.csproj", "{C8097FFC-C1B2-4694-85F7-2AE10BD851F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSC.BingoBuzz.Service.DataService", "MSC.BingoBuzz.Service.DataService\MSC.BingoBuzz.Service.DataService.csproj", "{C8097FFC-C1B2-4694-85F7-2AE10BD851F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSC.BingoBuzz.Xam.Android", "MSC.BingoBuzz.Xam\MSC.BingoBuzz.Xam.Android\MSC.BingoBuzz.Xam.Android.csproj", "{30F2C260-732E-4205-BA10-B83F8D7C95F8}"
 EndProject
@@ -18,6 +18,16 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSC.BingoBuzz.Xam", "MSC.BingoBuzz.Xam\MSC.BingoBuzz.Xam\MSC.BingoBuzz.Xam.csproj", "{B3C97649-06A9-4D3D-8995-15E275D4BA57}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CodeGenHero.Data", "CodeGenHero.Data\CodeGenHero.Data.shproj", "{81C408A1-E76A-448B-B0FF-971D25528FEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{6587C268-4D00-4292-B802-A0A4F3E6259E}"
+	ProjectSection(SolutionItems) = preProject
+		Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.deps.json = Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.deps.json
+		Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.dll = Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.dll
+		Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.pdb = Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.pdb
+		Assemblies\MSC.CodeGenHero.Standard.deps.json = Assemblies\MSC.CodeGenHero.Standard.deps.json
+		Assemblies\MSC.CodeGenHero.Standard.dll = Assemblies\MSC.CodeGenHero.Standard.dll
+		Assemblies\MSC.CodeGenHero.Standard.pdb = Assemblies\MSC.CodeGenHero.Standard.pdb
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -231,8 +241,6 @@ Global
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.AppStore|x86.Build.0 = Release|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.AppStore|x86.Deploy.0 = Release|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|ARM.Build.0 = Debug|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|ARM.Deploy.0 = Debug|Any CPU

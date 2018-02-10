@@ -26,5 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Service.DataService\WebApiDataServiceBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service.LoggingService\Log4NetLoggingService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Web.Helpers\HttpRequestBaseExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Xam.Model.Base\ModelData\BaseAuditEdit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Xam.Model.Base\ModelObj\BaseAuditEdit.cs" />
   </ItemGroup>
 </Project>

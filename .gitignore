@@ -49,3 +49,4 @@
 /src/MSC.CodeGenHero.PCL/obj
 /src/Bundles/EAMVCXamPOCO/MSC.CodeGenHero.EAMVCXamPOCO.DependencyFiles.Framework/bin
 /src/Bundles/EAMVCXamPOCO/MSC.CodeGenHero.EAMVCXamPOCO.DependencyFiles.Framework/obj
+*.bak

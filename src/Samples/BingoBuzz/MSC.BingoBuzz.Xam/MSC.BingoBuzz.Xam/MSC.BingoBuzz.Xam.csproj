@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MvvmLightLibs" Version="5.4.0-alpha" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.166-beta" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
   </ItemGroup>
 
@@ -12,6 +14,12 @@
     <ProjectReference Include="..\..\MSC.BingoBuzz.Constants\MSC.BingoBuzz.Constants.csproj" />
     <ProjectReference Include="..\..\MSC.BingoBuzz.DTO\MSC.BingoBuzz.DTO.csproj" />
     <ProjectReference Include="..\..\MSC.BingoBuzz.Service.DataService\MSC.BingoBuzz.Service.DataService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MSC.CodeGenHero.EAMVCXamPOCO.Standard">
+      <HintPath>..\..\Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
