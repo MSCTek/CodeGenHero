@@ -31,7 +31,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
 
             Property(x => x.BingoInstanceEventId).HasColumnName(@"BingoInstanceEventId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
             Property(x => x.BingoInstanceEventTypeId).HasColumnName(@"BingoInstanceEventTypeId").HasColumnType("int").IsRequired();
-            Property(x => x.BingoInstanceId).HasColumnName(@"BingoInstanceId").HasColumnType("uniqueidentifier").IsOptional();
+            Property(x => x.BingoInstanceId).HasColumnName(@"BingoInstanceId").HasColumnType("uniqueidentifier").IsRequired();
             Property(x => x.BingoInstanceContentId).HasColumnName(@"BingoInstanceContentId").HasColumnType("uniqueidentifier").IsOptional();
             Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").HasColumnType("datetime2").IsRequired();
             Property(x => x.CreatedUserId).HasColumnName(@"CreatedUserId").HasColumnType("uniqueidentifier").IsRequired();
@@ -40,8 +40,8 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
             Property(x => x.IsDeleted).HasColumnName(@"IsDeleted").HasColumnType("bit").IsRequired();
 
             // Foreign keys
-            HasOptional(a => a.BingoInstance).WithMany(b => b.BingoInstanceEvents).HasForeignKey(c => c.BingoInstanceId).WillCascadeOnDelete(false); // FK_BingoInstanceEvent_BingoInstance
             HasOptional(a => a.BingoInstanceContent).WithMany(b => b.BingoInstanceEvents).HasForeignKey(c => c.BingoInstanceContentId).WillCascadeOnDelete(false); // FK_BingoInstanceEvent_BingoInstanceContent
+            HasRequired(a => a.BingoInstance).WithMany(b => b.BingoInstanceEvents).HasForeignKey(c => c.BingoInstanceId).WillCascadeOnDelete(false); // FK_BingoInstanceEvent_BingoInstance
             HasRequired(a => a.BingoInstanceEventType).WithMany(b => b.BingoInstanceEvents).HasForeignKey(c => c.BingoInstanceEventTypeId).WillCascadeOnDelete(false); // FK_BingoInstanceEvent_BingoInstanceEventType
             HasRequired(a => a.CreatedUser).WithMany(b => b.BingoInstanceEvents_CreatedUserId).HasForeignKey(c => c.CreatedUserId).WillCascadeOnDelete(false); // FK_BingoInstanceEvent_User_Created
             HasRequired(a => a.UpdatedUser).WithMany(b => b.BingoInstanceEvents_UpdatedUserId).HasForeignKey(c => c.UpdatedUserId).WillCascadeOnDelete(false); // FK_BingoInstanceEvent_User_Updated

@@ -37,7 +37,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
 
         public FakeBBDataContext()
         {
-            BingoContents = new FakeDbSet<BingoContent>("BingoContentId", "Content", "FreeSquareIndicator", "NumberOfUpvotes", "NumberOfDownvotes", "CreatedDate", "CreatedUserId", "UpdatedDate", "UpdatedUserId", "IsDeleted");
+            BingoContents = new FakeDbSet<BingoContent>("BingoContentId");
             BingoInstances = new FakeDbSet<BingoInstance>("BingoInstanceId");
             BingoInstanceContents = new FakeDbSet<BingoInstanceContent>("BingoInstanceContentId");
             BingoInstanceEvents = new FakeDbSet<BingoInstanceEvent>("BingoInstanceEventId");

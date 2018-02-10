@@ -30,6 +30,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
             HasKey(x => x.BingoInstanceContentId);
 
             Property(x => x.BingoInstanceContentId).HasColumnName(@"BingoInstanceContentId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.BingoContentId).HasColumnName(@"BingoContentId").HasColumnType("uniqueidentifier").IsRequired();
             Property(x => x.BingoInstanceId).HasColumnName(@"BingoInstanceId").HasColumnType("uniqueidentifier").IsRequired();
             Property(x => x.Col).HasColumnName(@"Col").HasColumnType("int").IsRequired();
             Property(x => x.Row).HasColumnName(@"Row").HasColumnType("int").IsRequired();
@@ -41,6 +42,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
             Property(x => x.IsDeleted).HasColumnName(@"IsDeleted").HasColumnType("bit").IsRequired();
 
             // Foreign keys
+            HasRequired(a => a.BingoContent).WithMany(b => b.BingoInstanceContents).HasForeignKey(c => c.BingoContentId).WillCascadeOnDelete(false); // FK_BingoInstanceContent_BingoContent
             HasRequired(a => a.BingoInstance).WithMany(b => b.BingoInstanceContents).HasForeignKey(c => c.BingoInstanceId).WillCascadeOnDelete(false); // FK_BingoInstanceContent_BingoInstance
             HasRequired(a => a.CreatedUser).WithMany(b => b.BingoInstanceContents_CreatedUserId).HasForeignKey(c => c.CreatedUserId).WillCascadeOnDelete(false); // FK_BingoInstanceContent_User_Created
             HasRequired(a => a.UpdatedUser).WithMany(b => b.BingoInstanceContents_UpdatedUserId).HasForeignKey(c => c.UpdatedUserId).WillCascadeOnDelete(false); // FK_BingoInstanceContent_User_Updated

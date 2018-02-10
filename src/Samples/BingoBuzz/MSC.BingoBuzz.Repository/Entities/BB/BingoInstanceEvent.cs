@@ -21,7 +21,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
     {
         public System.Guid BingoInstanceEventId { get; set; } // BingoInstanceEventId (Primary key)
         public int BingoInstanceEventTypeId { get; set; } // BingoInstanceEventTypeId
-        public System.Guid? BingoInstanceId { get; set; } // BingoInstanceId
+        public System.Guid BingoInstanceId { get; set; } // BingoInstanceId
         public System.Guid? BingoInstanceContentId { get; set; } // BingoInstanceContentId
         public System.DateTime CreatedDate { get; set; } // CreatedDate
         public System.Guid CreatedUserId { get; set; } // CreatedUserId

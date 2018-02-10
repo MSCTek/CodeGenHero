@@ -5,19 +5,22 @@ namespace MSC.BingoBuzz.DTO.BB
 	{
 		public BingoContent()
 		{
+			BingoInstanceContents = new System.Collections.Generic.List<BingoInstanceContent>();
+
 			InitializePartial();
 		}
 
 		public System.Guid BingoContentId { get; set; } // Primary key
-		public string Content { get; set; } // Primary key
-		public bool FreeSquareIndicator { get; set; } // Primary key
-		public int NumberOfUpvotes { get; set; } // Primary key
-		public int NumberOfDownvotes { get; set; } // Primary key
-		public System.DateTime CreatedDate { get; set; } // Primary key
-		public System.Guid CreatedUserId { get; set; } // Primary key
-		public System.DateTime UpdatedDate { get; set; } // Primary key
-		public System.Guid UpdatedUserId { get; set; } // Primary key
-		public bool IsDeleted { get; set; } // Primary key
+		public string Content { get; set; }
+		public bool FreeSquareIndicator { get; set; }
+		public int NumberOfUpvotes { get; set; }
+		public int NumberOfDownvotes { get; set; }
+		public System.DateTime CreatedDate { get; set; }
+		public System.Guid CreatedUserId { get; set; }
+		public System.DateTime UpdatedDate { get; set; }
+		public System.Guid UpdatedUserId { get; set; }
+		public bool IsDeleted { get; set; }
+		public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents { get; set; } // Many to many mapping
 		public virtual User CreatedUser { get; set; } 
 		public virtual User UpdatedUser { get; set; } 
 

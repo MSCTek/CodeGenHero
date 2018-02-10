@@ -238,33 +238,13 @@ namespace MSC.BingoBuzz.Repository
 
 		#region Get FirstOrDefault
 
-			public BingoContent GetBingoContent(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted)
+			public BingoContent GetBingoContent(System.Guid bingoContentId)
 			{
-				return _ctx.BingoContents.Where(
-						x => x.BingoContentId == bingoContentId
-						&& x.Content == content
-						&& x.FreeSquareIndicator == freeSquareIndicator
-						&& x.NumberOfUpvotes == numberOfUpvotes
-						&& x.NumberOfDownvotes == numberOfDownvotes
-						&& x.CreatedDate == createdDate
-						&& x.CreatedUserId == createdUserId
-						&& x.UpdatedDate == updatedDate
-						&& x.UpdatedUserId == updatedUserId
-						&& x.IsDeleted == isDeleted).FirstOrDefault();
+				return _ctx.BingoContents.Where(x => x.BingoContentId == bingoContentId).FirstOrDefault();
 			}
 			public BingoContent GetFirstOrDefault(BingoContent item)
 			{
-				return _ctx.BingoContents.Where(
-						x => x.BingoContentId == item.BingoContentId
-						&& x.Content == item.Content
-						&& x.FreeSquareIndicator == item.FreeSquareIndicator
-						&& x.NumberOfUpvotes == item.NumberOfUpvotes
-						&& x.NumberOfDownvotes == item.NumberOfDownvotes
-						&& x.CreatedDate == item.CreatedDate
-						&& x.CreatedUserId == item.CreatedUserId
-						&& x.UpdatedDate == item.UpdatedDate
-						&& x.UpdatedUserId == item.UpdatedUserId
-						&& x.IsDeleted == item.IsDeleted).FirstOrDefault();
+				return _ctx.BingoContents.Where(x => x.BingoContentId == item.BingoContentId).FirstOrDefault();
 			}
 			public BingoInstance GetBingoInstance(System.Guid bingoInstanceId)
 			{
@@ -376,17 +356,7 @@ namespace MSC.BingoBuzz.Repository
 
 		public RepositoryActionResult<BingoContent> Update(BingoContent item)
 		{
-			return Update<BingoContent>(item, _ctx.BingoContents.FirstOrDefault(
-					x => x.BingoContentId == item.BingoContentId
-					&& x.Content == item.Content
-					&& x.FreeSquareIndicator == item.FreeSquareIndicator
-					&& x.NumberOfUpvotes == item.NumberOfUpvotes
-					&& x.NumberOfDownvotes == item.NumberOfDownvotes
-					&& x.CreatedDate == item.CreatedDate
-					&& x.CreatedUserId == item.CreatedUserId
-					&& x.UpdatedDate == item.UpdatedDate
-					&& x.UpdatedUserId == item.UpdatedUserId
-					&& x.IsDeleted == item.IsDeleted));
+			return Update<BingoContent>(item, _ctx.BingoContents.FirstOrDefault(x => x.BingoContentId == item.BingoContentId));
 		}
 		public RepositoryActionResult<BingoInstance> Update(BingoInstance item)
 		{
@@ -445,33 +415,13 @@ namespace MSC.BingoBuzz.Repository
 
 		#region Delete
 
-			public RepositoryActionResult<BingoContent> DeleteBingoContent(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted)
+			public RepositoryActionResult<BingoContent> DeleteBingoContent(System.Guid bingoContentId)
 			{
-				return Delete<BingoContent>(_ctx.BingoContents.Where(
-						x => x.BingoContentId == bingoContentId
-						&& x.Content == content
-						&& x.FreeSquareIndicator == freeSquareIndicator
-						&& x.NumberOfUpvotes == numberOfUpvotes
-						&& x.NumberOfDownvotes == numberOfDownvotes
-						&& x.CreatedDate == createdDate
-						&& x.CreatedUserId == createdUserId
-						&& x.UpdatedDate == updatedDate
-						&& x.UpdatedUserId == updatedUserId
-						&& x.IsDeleted == isDeleted).FirstOrDefault());
+				return Delete<BingoContent>(_ctx.BingoContents.Where(x => x.BingoContentId == bingoContentId).FirstOrDefault());
 			}
 			public RepositoryActionResult<BingoContent> Delete(BingoContent item)
 			{
-				return Delete<BingoContent>(_ctx.BingoContents.Where(
-						x => x.BingoContentId == item.BingoContentId
-						&& x.Content == item.Content
-						&& x.FreeSquareIndicator == item.FreeSquareIndicator
-						&& x.NumberOfUpvotes == item.NumberOfUpvotes
-						&& x.NumberOfDownvotes == item.NumberOfDownvotes
-						&& x.CreatedDate == item.CreatedDate
-						&& x.CreatedUserId == item.CreatedUserId
-						&& x.UpdatedDate == item.UpdatedDate
-						&& x.UpdatedUserId == item.UpdatedUserId
-						&& x.IsDeleted == item.IsDeleted).FirstOrDefault());
+				return Delete<BingoContent>(_ctx.BingoContents.Where(x => x.BingoContentId == item.BingoContentId).FirstOrDefault());
 			}
 			public RepositoryActionResult<BingoInstance> DeleteBingoInstance(System.Guid bingoInstanceId)
 			{

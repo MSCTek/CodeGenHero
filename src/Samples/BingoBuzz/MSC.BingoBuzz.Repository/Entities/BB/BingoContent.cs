@@ -20,15 +20,22 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
     public partial class BingoContent
     {
         public System.Guid BingoContentId { get; set; } // BingoContentId (Primary key)
-        public string Content { get; set; } // Content (Primary key) (length: 250)
-        public bool FreeSquareIndicator { get; set; } // FreeSquareIndicator (Primary key)
-        public int NumberOfUpvotes { get; set; } // NumberOfUpvotes (Primary key)
-        public int NumberOfDownvotes { get; set; } // NumberOfDownvotes (Primary key)
-        public System.DateTime CreatedDate { get; set; } // CreatedDate (Primary key)
-        public System.Guid CreatedUserId { get; set; } // CreatedUserId (Primary key)
-        public System.DateTime UpdatedDate { get; set; } // UpdatedDate (Primary key)
-        public System.Guid UpdatedUserId { get; set; } // UpdatedUserId (Primary key)
-        public bool IsDeleted { get; set; } // IsDeleted (Primary key)
+        public string Content { get; set; } // Content (length: 250)
+        public bool FreeSquareIndicator { get; set; } // FreeSquareIndicator
+        public int NumberOfUpvotes { get; set; } // NumberOfUpvotes
+        public int NumberOfDownvotes { get; set; } // NumberOfDownvotes
+        public System.DateTime CreatedDate { get; set; } // CreatedDate
+        public System.Guid CreatedUserId { get; set; } // CreatedUserId
+        public System.DateTime UpdatedDate { get; set; } // UpdatedDate
+        public System.Guid UpdatedUserId { get; set; } // UpdatedUserId
+        public bool IsDeleted { get; set; } // IsDeleted
+
+        // Reverse navigation
+
+        /// <summary>
+        /// Child BingoInstanceContents where [BingoInstanceContent].[BingoContentId] point to this entity (FK_BingoInstanceContent_BingoContent)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_BingoContent
 
         // Foreign keys
 
@@ -49,6 +56,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
             NumberOfUpvotes = 0;
             NumberOfDownvotes = 0;
             IsDeleted = false;
+            BingoInstanceContents = new System.Collections.Generic.List<BingoInstanceContent>();
             InitializePartial();
         }
 

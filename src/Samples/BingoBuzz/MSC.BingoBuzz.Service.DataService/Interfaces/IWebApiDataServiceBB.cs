@@ -77,7 +77,7 @@ namespace MSC.BingoBuzz.API.Client.Interface
 
 		#region Get By PK
 
-		Task<HttpCallResult<BingoContent>> GetBingoContentAsync(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted);
+		Task<HttpCallResult<BingoContent>> GetBingoContentAsync(System.Guid bingoContentId);
 
 		Task<HttpCallResult<BingoInstance>> GetBingoInstanceAsync(System.Guid bingoInstanceId);
 
@@ -174,7 +174,7 @@ namespace MSC.BingoBuzz.API.Client.Interface
 
 		#region Delete
 
-		Task<HttpCallResult<BingoContent>> DeleteBingoContentAsync(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted);
+		Task<HttpCallResult<BingoContent>> DeleteBingoContentAsync(System.Guid bingoContentId);
 
 		Task<HttpCallResult<BingoInstance>> DeleteBingoInstanceAsync(System.Guid bingoInstanceId);
 

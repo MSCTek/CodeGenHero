@@ -11,6 +11,7 @@ namespace MSC.BingoBuzz.DTO.BB
 		}
 
 		public System.Guid BingoInstanceContentId { get; set; } // Primary key
+		public System.Guid BingoContentId { get; set; }
 		public System.Guid BingoInstanceId { get; set; }
 		public int Col { get; set; }
 		public int Row { get; set; }
@@ -21,6 +22,7 @@ namespace MSC.BingoBuzz.DTO.BB
 		public System.Guid UpdatedUserId { get; set; }
 		public bool IsDeleted { get; set; }
 		public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents { get; set; } // Many to many mapping
+		public virtual BingoContent BingoContent { get; set; } 
 		public virtual BingoInstance BingoInstance { get; set; } 
 		public virtual User CreatedUser { get; set; } 
 		public virtual User UpdatedUser { get; set; } 

@@ -10,7 +10,7 @@ namespace MSC.BingoBuzz.DTO.BB
 
 		public System.Guid BingoInstanceEventId { get; set; } // Primary key
 		public int BingoInstanceEventTypeId { get; set; }
-		public System.Guid? BingoInstanceId { get; set; }
+		public System.Guid BingoInstanceId { get; set; }
 		public System.Guid? BingoInstanceContentId { get; set; }
 		public System.DateTime CreatedDate { get; set; }
 		public System.Guid CreatedUserId { get; set; }

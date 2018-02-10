@@ -27,18 +27,18 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
         public BingoContentConfiguration(string schema)
         {
             ToTable("BingoContent", schema);
-            HasKey(x => new { x.BingoContentId, x.Content, x.FreeSquareIndicator, x.NumberOfUpvotes, x.NumberOfDownvotes, x.CreatedDate, x.CreatedUserId, x.UpdatedDate, x.UpdatedUserId, x.IsDeleted });
+            HasKey(x => x.BingoContentId);
 
             Property(x => x.BingoContentId).HasColumnName(@"BingoContentId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.Content).HasColumnName(@"Content").HasColumnType("nvarchar").IsRequired().HasMaxLength(250).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.FreeSquareIndicator).HasColumnName(@"FreeSquareIndicator").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.NumberOfUpvotes).HasColumnName(@"NumberOfUpvotes").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.NumberOfDownvotes).HasColumnName(@"NumberOfDownvotes").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").HasColumnType("datetime2").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.CreatedUserId).HasColumnName(@"CreatedUserId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.UpdatedDate).HasColumnName(@"UpdatedDate").HasColumnType("datetime2").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.UpdatedUserId).HasColumnName(@"UpdatedUserId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.IsDeleted).HasColumnName(@"IsDeleted").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Content).HasColumnName(@"Content").HasColumnType("nvarchar").IsRequired().HasMaxLength(250);
+            Property(x => x.FreeSquareIndicator).HasColumnName(@"FreeSquareIndicator").HasColumnType("bit").IsRequired();
+            Property(x => x.NumberOfUpvotes).HasColumnName(@"NumberOfUpvotes").HasColumnType("int").IsRequired();
+            Property(x => x.NumberOfDownvotes).HasColumnName(@"NumberOfDownvotes").HasColumnType("int").IsRequired();
+            Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").HasColumnType("datetime2").IsRequired();
+            Property(x => x.CreatedUserId).HasColumnName(@"CreatedUserId").HasColumnType("uniqueidentifier").IsRequired();
+            Property(x => x.UpdatedDate).HasColumnName(@"UpdatedDate").HasColumnType("datetime2").IsRequired();
+            Property(x => x.UpdatedUserId).HasColumnName(@"UpdatedUserId").HasColumnType("uniqueidentifier").IsRequired();
+            Property(x => x.IsDeleted).HasColumnName(@"IsDeleted").HasColumnType("bit").IsRequired();
 
             // Foreign keys
             HasRequired(a => a.CreatedUser).WithMany(b => b.CreatedUser).HasForeignKey(c => c.CreatedUserId).WillCascadeOnDelete(false); // FK_BingoContent_User_CreatedUserId

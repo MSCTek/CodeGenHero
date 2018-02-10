@@ -84,7 +84,7 @@
     "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "MSC.BingoBuzz.Service.DataService",
-    "RelativePath": "\\BB",
+    "RelativePath": "\\DataService",
     "TemplateId": "424e7ec7-bd9d-4cd3-9257-6ffbc772b82e",
     "TemplateName": "WebApiDataService",
     "TemplateVersion": "1.0"

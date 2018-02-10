@@ -183,9 +183,9 @@ namespace MSC.BingoBuzz.API.Client
 
 			#region Get By PK
 
-			public async Task<HttpCallResult<BingoContent>> GetBingoContentAsync(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted)
+			public async Task<HttpCallResult<BingoContent>> GetBingoContentAsync(System.Guid bingoContentId)
 			{
-				var retVal = await SerializationHelper.SerializeCallResultsGet<BingoContent>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoContents/{bingoContentId}/{content}/{freeSquareIndicator}/{numberOfUpvotes}/{numberOfDownvotes}/{createdDate}/{createdUserId}/{updatedDate}/{updatedUserId}/{isDeleted}");
+				var retVal = await SerializationHelper.SerializeCallResultsGet<BingoContent>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoContents/{bingoContentId}");
 				return retVal;
 			}
 
@@ -391,7 +391,7 @@ namespace MSC.BingoBuzz.API.Client
 			{
 				var retVal = await SerializationHelper.SerializeCallResultsPut<BingoContent>(
 					Log, GetClient(),
-					$"{ExecutionContext.BaseWebApiUrl}BingoContents/{item.BingoContentId}/{item.Content}/{item.FreeSquareIndicator}/{item.NumberOfUpvotes}/{item.NumberOfDownvotes}/{item.CreatedDate}/{item.CreatedUserId}/{item.UpdatedDate}/{item.UpdatedUserId}/{item.IsDeleted}", item);
+					$"{ExecutionContext.BaseWebApiUrl}BingoContents/{item.BingoContentId}", item);
 				return retVal;
 			}
 
@@ -503,9 +503,9 @@ namespace MSC.BingoBuzz.API.Client
 
 			#region Delete
 
-			public async Task<HttpCallResult<BingoContent>> DeleteBingoContentAsync(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted)
+			public async Task<HttpCallResult<BingoContent>> DeleteBingoContentAsync(System.Guid bingoContentId)
 			{
-				var retVal = await SerializationHelper.SerializeCallResultsDelete<BingoContent>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoContents/{bingoContentId}/{content}/{freeSquareIndicator}/{numberOfUpvotes}/{numberOfDownvotes}/{createdDate}/{createdUserId}/{updatedDate}/{updatedUserId}/{isDeleted}");
+				var retVal = await SerializationHelper.SerializeCallResultsDelete<BingoContent>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoContents/{bingoContentId}");
 				return retVal;
 			}
 

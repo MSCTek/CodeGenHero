@@ -20,6 +20,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
     public partial class BingoInstanceContent
     {
         public System.Guid BingoInstanceContentId { get; set; } // BingoInstanceContentId (Primary key)
+        public System.Guid BingoContentId { get; set; } // BingoContentId
         public System.Guid BingoInstanceId { get; set; } // BingoInstanceId
         public int Col { get; set; } // Col
         public int Row { get; set; } // Row
@@ -38,6 +39,11 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
         public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents { get; set; } // BingoInstanceEvent.FK_BingoInstanceEvent_BingoInstanceContent
 
         // Foreign keys
+
+        /// <summary>
+        /// Parent BingoContent pointed by [BingoInstanceContent].([BingoContentId]) (FK_BingoInstanceContent_BingoContent)
+        /// </summary>
+        public virtual BingoContent BingoContent { get; set; } // FK_BingoInstanceContent_BingoContent
 
         /// <summary>
         /// Parent BingoInstance pointed by [BingoInstanceContent].([BingoInstanceId]) (FK_BingoInstanceContent_BingoInstance)

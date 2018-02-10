@@ -38,14 +38,14 @@ public partial class BingoContentsBBController : BBBaseApiController
 		}
 
 		[HttpDelete]
-		[VersionedRoute(template: "BingoContents/{bingoContentId}/{content}/{freeSquareIndicator}/{numberOfUpvotes}/{numberOfDownvotes}/{createdDate}/{createdUserId}/{updatedDate}/{updatedUserId}/{isDeleted}", allowedVersion: 1)]
-		public async Task<IHttpActionResult> Delete(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted)
+		[VersionedRoute(template: "BingoContents/{bingoContentId}", allowedVersion: 1)]
+		public async Task<IHttpActionResult> Delete(System.Guid bingoContentId)
 		{
 			try
 			{
 				base.OnActionExecuting();
 
-				var result = Repo.DeleteBingoContent(bingoContentId, content, freeSquareIndicator, numberOfUpvotes, numberOfDownvotes, createdDate, createdUserId, updatedDate, updatedUserId, isDeleted);
+				var result = Repo.DeleteBingoContent(bingoContentId);
 
 				if (result.Status == appEnums.RepositoryActionStatus.Deleted)
 				{
@@ -116,27 +116,17 @@ public partial class BingoContentsBBController : BBBaseApiController
 		}
 
 		[HttpGet]
-		[VersionedRoute(template: "BingoContents/{bingoContentId}/{content}/{freeSquareIndicator}/{numberOfUpvotes}/{numberOfDownvotes}/{createdDate}/{createdUserId}/{updatedDate}/{updatedUserId}/{isDeleted}", allowedVersion: 1)]
-		public async Task<IHttpActionResult> Get(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted)
+		[VersionedRoute(template: "BingoContents/{bingoContentId}", allowedVersion: 1)]
+		public async Task<IHttpActionResult> Get(System.Guid bingoContentId)
 		{
 			try
 			{
 				base.OnActionExecuting();
 
 				var qryItem = Repo.GetQueryableBingoContent();
-				RunCustomLogicAfterGetQueryableByPK(ref qryItem, bingoContentId, content, freeSquareIndicator, numberOfUpvotes, numberOfDownvotes, createdDate, createdUserId, updatedDate, updatedUserId, isDeleted);
+				RunCustomLogicAfterGetQueryableByPK(ref qryItem, bingoContentId);
 
-				var dbItem = qryItem.Where(
-				x => x.BingoContentId == bingoContentId
-				&& x.Content == content
-				&& x.FreeSquareIndicator == freeSquareIndicator
-				&& x.NumberOfUpvotes == numberOfUpvotes
-				&& x.NumberOfDownvotes == numberOfDownvotes
-				&& x.CreatedDate == createdDate
-				&& x.CreatedUserId == createdUserId
-				&& x.UpdatedDate == updatedDate
-				&& x.UpdatedUserId == updatedUserId
-				&& x.IsDeleted == isDeleted).FirstOrDefault();
+				var dbItem = qryItem.Where(x => x.BingoContentId == bingoContentId).FirstOrDefault();
 
 				if (dbItem == null)
 				{
@@ -158,8 +148,8 @@ public partial class BingoContentsBBController : BBBaseApiController
 		}
 
 		[HttpPatch]
-		[VersionedRoute(template: "BingoContents/{bingoContentId}/{content}/{freeSquareIndicator}/{numberOfUpvotes}/{numberOfDownvotes}/{createdDate}/{createdUserId}/{updatedDate}/{updatedUserId}/{isDeleted}", allowedVersion: 1)]
-		public async Task<IHttpActionResult> Patch(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted, [FromBody] JsonPatchDocument<dtoBB.BingoContent> patchDocument)
+		[VersionedRoute(template: "BingoContents/{bingoContentId}", allowedVersion: 1)]
+		public async Task<IHttpActionResult> Patch(System.Guid bingoContentId, [FromBody] JsonPatchDocument<dtoBB.BingoContent> patchDocument)
 		{
 			try
 			{
@@ -170,7 +160,7 @@ public partial class BingoContentsBBController : BBBaseApiController
 					return BadRequest();
 				}
 
-				var dbItem = Repo.GetBingoContent(bingoContentId, content, freeSquareIndicator, numberOfUpvotes, numberOfDownvotes, createdDate, createdUserId, updatedDate, updatedUserId, isDeleted);
+				var dbItem = Repo.GetBingoContent(bingoContentId);
 				if (dbItem == null)
 				{
 					return NotFound();
@@ -181,15 +171,6 @@ public partial class BingoContentsBBController : BBBaseApiController
 				// apply changes to the DTO
 				patchDocument.ApplyTo(dtoItem);
 				dtoItem.BingoContentId = bingoContentId;
-				dtoItem.Content = content;
-				dtoItem.FreeSquareIndicator = freeSquareIndicator;
-				dtoItem.NumberOfUpvotes = numberOfUpvotes;
-				dtoItem.NumberOfDownvotes = numberOfDownvotes;
-				dtoItem.CreatedDate = createdDate;
-				dtoItem.CreatedUserId = createdUserId;
-				dtoItem.UpdatedDate = updatedDate;
-				dtoItem.UpdatedUserId = updatedUserId;
-				dtoItem.IsDeleted = isDeleted;
 
 				// map the DTO with applied changes to the entity, & update
 				var updatedDBItem = _factory.Create(dtoItem); // map
@@ -239,7 +220,7 @@ public partial class BingoContentsBBController : BBBaseApiController
 
 					var newDTOItem = _factory.Create(result.Entity);
 					var uriFormatted = Request.RequestUri.ToString().EndsWith("/") == true ? Request.RequestUri.ToString().Substring(0, Request.RequestUri.ToString().Length - 1) : Request.RequestUri.ToString();
-					return Created($"{uriFormatted}/{newDTOItem.BingoContentId}/{newDTOItem.Content}/{newDTOItem.FreeSquareIndicator}/{newDTOItem.NumberOfUpvotes}/{newDTOItem.NumberOfDownvotes}/{newDTOItem.CreatedDate}/{newDTOItem.CreatedUserId}/{newDTOItem.UpdatedDate}/{newDTOItem.UpdatedUserId}/{newDTOItem.IsDeleted}", newDTOItem);
+					return Created($"{uriFormatted}/{newDTOItem.BingoContentId}", newDTOItem);
 				}
 
 				Warn("Unable to create object via Web API", appEnums.LogMessageType.Warn_WebApi, result.Exception, httpResponseStatusCode: 400, url: Request.RequestUri.ToString());
@@ -257,8 +238,8 @@ public partial class BingoContentsBBController : BBBaseApiController
 		}
 
 		[HttpPut]
-		[VersionedRoute(template: "BingoContents/{bingoContentId}/{content}/{freeSquareIndicator}/{numberOfUpvotes}/{numberOfDownvotes}/{createdDate}/{createdUserId}/{updatedDate}/{updatedUserId}/{isDeleted}", allowedVersion: 1)]
-		public async Task<IHttpActionResult> Put(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted, [FromBody] dtoBB.BingoContent dtoItem)
+		[VersionedRoute(template: "BingoContents/{bingoContentId}", allowedVersion: 1)]
+		public async Task<IHttpActionResult> Put(System.Guid bingoContentId, [FromBody] dtoBB.BingoContent dtoItem)
 		{
 			try
 			{
@@ -270,15 +251,6 @@ public partial class BingoContentsBBController : BBBaseApiController
 				}
 
 				dtoItem.BingoContentId = bingoContentId;
-				dtoItem.Content = content;
-				dtoItem.FreeSquareIndicator = freeSquareIndicator;
-				dtoItem.NumberOfUpvotes = numberOfUpvotes;
-				dtoItem.NumberOfDownvotes = numberOfDownvotes;
-				dtoItem.CreatedDate = createdDate;
-				dtoItem.CreatedUserId = createdUserId;
-				dtoItem.UpdatedDate = updatedDate;
-				dtoItem.UpdatedUserId = updatedUserId;
-				dtoItem.IsDeleted = isDeleted;
 
 				var updatedDBItem = _factory.Create(dtoItem); // map
 				var result = Repo.Update(updatedDBItem);
@@ -310,7 +282,7 @@ public partial class BingoContentsBBController : BBBaseApiController
 
 		partial void RunCustomLogicAfterInsert(entBB.BingoContent newDBItem);
 
-	partial void RunCustomLogicAfterGetQueryableByPK(ref IQueryable<entBB.BingoContent> dbItems, System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted);
+	partial void RunCustomLogicAfterGetQueryableByPK(ref IQueryable<entBB.BingoContent> dbItems, System.Guid bingoContentId);
 
 	/// <summary>
 	/// A sample implementation of custom logic used to include related entities to return with a DTO.

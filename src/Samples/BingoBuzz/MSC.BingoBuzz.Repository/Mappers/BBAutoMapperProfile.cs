@@ -18,6 +18,7 @@ namespace MSC.BingoBuzz.Repository.Infrastructure
 		private void InitializeProfile()
 		{
 			CreateMap<xDTO.BingoContent, xENT.BingoContent>()
+				.ForMember(d => d.BingoInstanceContents, opt => opt.Ignore()) // Reverse nav
 				.ForMember(d => d.CreatedUser, opt => opt.Ignore())
 				.ForMember(d => d.UpdatedUser, opt => opt.Ignore())
 			.ReverseMap();
@@ -32,6 +33,7 @@ namespace MSC.BingoBuzz.Repository.Infrastructure
 
 			CreateMap<xDTO.BingoInstanceContent, xENT.BingoInstanceContent>()
 				.ForMember(d => d.BingoInstanceEvents, opt => opt.Ignore()) // Reverse nav
+				.ForMember(d => d.BingoContent, opt => opt.Ignore())
 				.ForMember(d => d.BingoInstance, opt => opt.Ignore())
 				.ForMember(d => d.CreatedUser, opt => opt.Ignore())
 				.ForMember(d => d.UpdatedUser, opt => opt.Ignore())

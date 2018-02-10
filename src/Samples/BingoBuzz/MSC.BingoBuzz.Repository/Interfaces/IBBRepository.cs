@@ -10,7 +10,7 @@ namespace MSC.BingoBuzz.Repository.Interface
 
 		#region DeleteEntity
 
-		RepositoryActionResult<BingoContent> DeleteBingoContent(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted);
+		RepositoryActionResult<BingoContent> DeleteBingoContent(System.Guid bingoContentId);
 
 		RepositoryActionResult<BingoInstance> DeleteBingoInstance(System.Guid bingoInstanceId);
 
@@ -43,7 +43,7 @@ namespace MSC.BingoBuzz.Repository.Interface
 
 		#region FirstOrDefault
 
-		BingoContent GetBingoContent(System.Guid bingoContentId, string content, bool freeSquareIndicator, int numberOfUpvotes, int numberOfDownvotes, System.DateTime createdDate, System.Guid createdUserId, System.DateTime updatedDate, System.Guid updatedUserId, bool isDeleted);
+		BingoContent GetBingoContent(System.Guid bingoContentId);
 
 		BingoInstance GetBingoInstance(System.Guid bingoInstanceId);
 
