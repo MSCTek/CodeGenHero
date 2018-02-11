@@ -129,7 +129,7 @@
     "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "MSC.BingoBuzz.Xam",
-    "RelativePath": "\\ModelObj",
+    "RelativePath": "\\ModelObj\\BB",
     "TemplateId": "4d03f2c7-de26-4aee-a267-cad747c9606a",
     "TemplateName": "MvvmLightModelObject",
     "TemplateVersion": "1.0"
@@ -138,7 +138,7 @@
     "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "MSC.BingoBuzz.Xam",
-    "RelativePath": "\\ModelData",
+    "RelativePath": "\\ModelData\\BB",
     "TemplateId": "c5caad15-b3be-4443-87d8-7cabde59f7b0",
     "TemplateName": "SqliteModelData",
     "TemplateVersion": "1.0"
