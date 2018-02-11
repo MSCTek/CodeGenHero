@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MSC.BingoBuzz.Xam.UWP.Modules;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace MSC.BingoBuzz.Xam.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new MSC.BingoBuzz.Xam.App());
+            LoadApplication(new MSC.BingoBuzz.Xam.App(new UWPPlatformModule()));
         }
     }
 }

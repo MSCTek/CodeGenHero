@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MSC.BingoBuzz.Xam.ViewModels"
              x:Class="MSC.BingoBuzz.Xam.App">
     <Application.Resources>
+
         <ResourceDictionary>
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="PrimaryDark">#1976D2</Color>
@@ -12,10 +14,41 @@
             <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
             <Color x:Key="LightTextColor">#999999</Color>
 
-            <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="BarTextColor" Value="White" />
-            </Style>
+            <Color x:Key="PI.Transparent">Transparent</Color>
+            <Color x:Key="PI.White">#ffffff</Color>
+            <Color x:Key="PI.NotQuiteWhite">#E8E7E5</Color>
+            <Color x:Key="PI.LightestGray">#D2D0CB</Color>
+            <Color x:Key="PI.LighterGray">#bdbbb6</Color>
+            <Color x:Key="PI.LightGray">#A1A09B</Color>
+            <Color x:Key="PI.Gray">#74736f</Color>
+            <Color x:Key="PI.DarkGray">#42413E</Color>
+            <Color x:Key="PI.Charcoal">#191814</Color>
+
+            <x:String x:Key="FAIcon.FAMapMarker">&#xF041;</x:String>
+            <x:String x:Key="FAIcon.FACheck">&#xf00c;</x:String>
+            <x:String x:Key="FAIcon.FAExclamationTriangle">&#xF071;</x:String>
+            <x:String x:Key="FAIcon.FAExclamationCircle">&#xF06a;</x:String>
+            <x:String x:Key="FAIcon.FATruck">&#xf0d1;</x:String>
+            <x:String x:Key="FAIcon.FACubes">&#xF1b3;</x:String>
+            <x:String x:Key="FAIcon.FABullseye">&#xF140;</x:String>
+            <x:String x:Key="FAIcon.FAIdBadge">&#xF2c1;</x:String>
+            <x:String x:Key="FAIcon.FAThumbsUp">&#xf164;</x:String>
+            <x:String x:Key="FAIcon.FACar">&#xF1b9;</x:String>
+            <x:String x:Key="FAIcon.FAPhone">&#xF095;</x:String>
+            <x:String x:Key="FAIcon.FACamera">&#xF030;</x:String>
+            <x:String x:Key="FAIcon.FADocument">&#xf15c;</x:String>
+
+            <!--public static string BACKARROW = "\uf060"; //&#xf060; if you are using in XAML -->
+            <!--public static string HAMBURGER= "\uf0c9"; //&#xf0c9; if you are using in XAML-->
+            <x:String x:Key="Icon.BackArrow">&#xf060;</x:String>
+            <x:String x:Key="Icon.Hamburger">&#xf0c9;</x:String>
+            <x:String x:Key="Icon.AngleDown">&#xf107;</x:String>
+            <x:String x:Key="Icon.AngleUp">&#xf106;</x:String>
+            <x:String x:Key="Icon.AngleRight">&#xf105;</x:String>
+            <x:String x:Key="Icon.AngleLeft">&#xf104;</x:String>
+            <x:String x:Key="Icon.DoubleAngleRight">&#xf101;</x:String>
+            <x:String x:Key="Icon.DoubleAngleLeft">&#xf100;</x:String>
+            <x:String x:Key="Icon.X">&#xf00d;</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
