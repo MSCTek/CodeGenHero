@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MSC.BingoBuzz.Xam.Views.WelcomePage"
-             BindingContext="{Binding WelcomeViewModel, Source={StaticResource ViewModelLocator}}">
+             x:Name="WelcomePage">
     <ContentPage.Content>
         <Grid Margin="20">
             <Grid.RowDefinitions>
@@ -20,7 +20,7 @@
             <Label Grid.Row="1" Text="BingoBuzz" FontSize="Large" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
             <Label Grid.Row="2" Text="Virtual Meeting Bingo" FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
 
-            <Grid Grid.Row="3"  BackgroundColor="LightSkyBlue" HeightRequest="50" Margin="0,15,0,0">
+            <Grid Grid.Row="3"  BackgroundColor="LightSkyBlue" HeightRequest="50" Margin="0,25,0,0">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NewMeetingCommand}" />
                 </Grid.GestureRecognizers>
@@ -31,6 +31,31 @@
                 <Label Grid.Column="0" Text="Make a New Meeting" VerticalOptions="Center" Margin="10,0" />
                 <Label Grid.Column="1" Text=">>" VerticalOptions="Center" Margin="10,0" />
             </Grid>
+
+            <ListView  Grid.Row="4" HasUnevenRows="True" ItemsSource="{Binding Meetings}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid  BackgroundColor="LightSkyBlue" HeightRequest="60">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.OpenMeetingCommand, Source={x:Reference WelcomePage}}"
+                                                          CommandParameter="{Binding MeetingId}" />
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label  Text="{Binding Name}" VerticalOptions="Center" Margin="10,0" />
+                                    <Label  Text="{Binding MeetingSchedules.StartDate}" VerticalOptions="Center" Margin="10,0" />
+                                </StackLayout>
+
+                                <Label Grid.Column="1" Text=">>" VerticalOptions="Center" Margin="10,0" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
             <Label Grid.Row="5" Text="Gamifying your boring virtual meetings since 2018" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
             <Label Grid.Row="6" Text="Brought to you by CodeGenHero"  HorizontalOptions="Center" HorizontalTextAlignment="Center" />
