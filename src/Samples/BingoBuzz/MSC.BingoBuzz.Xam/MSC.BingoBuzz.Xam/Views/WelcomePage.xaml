@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MSC.BingoBuzz.Xam.Views.WelcomePage"
+             BindingContext="{Binding WelcomeViewModel, Source={StaticResource ViewModelLocator}}">
+    <ContentPage.Content>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+
+                <RowDefinition Height="*" />
+
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="Welcome to" Margin="0,20,0,0" HorizontalOptions="Center" VerticalOptions="End" HorizontalTextAlignment="Center" />
+            <Label Grid.Row="1" Text="BingoBuzz" FontSize="Large" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            <Label Grid.Row="2" Text="Virtual Meeting Bingo" FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
+            <Grid Grid.Row="3"  BackgroundColor="LightSkyBlue" HeightRequest="50" Margin="0,15,0,0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NewMeetingCommand}" />
+                </Grid.GestureRecognizers>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Make a New Meeting" VerticalOptions="Center" Margin="10,0" />
+                <Label Grid.Column="1" Text=">>" VerticalOptions="Center" Margin="10,0" />
+            </Grid>
+
+            <Label Grid.Row="5" Text="Gamifying your boring virtual meetings since 2018" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            <Label Grid.Row="6" Text="Brought to you by CodeGenHero"  HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
