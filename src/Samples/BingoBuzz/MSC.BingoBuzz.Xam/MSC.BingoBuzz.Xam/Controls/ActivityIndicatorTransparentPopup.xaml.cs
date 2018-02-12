@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace PIMobile.Controls
+namespace MSC.BingoBuzz.Xam.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ActivityIndicatorTransparentPopup : PopupPage
