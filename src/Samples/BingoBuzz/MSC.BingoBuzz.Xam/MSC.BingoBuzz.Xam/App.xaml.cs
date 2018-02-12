@@ -14,7 +14,7 @@ namespace MSC.BingoBuzz.Xam
         {
             InitializeComponent();
 
-            var mainPage = new WelcomePage() as ContentPage;
+            var mainPage = new SplashPage() as ContentPage;
 
             var navPage = new NavigationPage();
 
@@ -41,7 +41,7 @@ namespace MSC.BingoBuzz.Xam
                 throw new InvalidOperationException("ERROR: SQLite Database could not be created.");
             }*/
 
-            mainPage.BindingContext = Kernel.Get<WelcomeViewModel>();
+            mainPage.BindingContext = Kernel.Get<SplashViewModel>();
             MainPage = mainPage;
         }
 

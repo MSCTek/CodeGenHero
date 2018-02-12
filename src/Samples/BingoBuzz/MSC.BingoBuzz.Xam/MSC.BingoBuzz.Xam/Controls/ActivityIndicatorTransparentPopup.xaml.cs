@@ -25,9 +25,9 @@ namespace PIMobile.Controls
 
         // Method for animation child in PopupPage
         // Invoced after custom animation end
-        protected override async Task OnAppearingAnimationEnd()
+        protected override void OnAppearingAnimationEnd()
         {
-            await base.OnAppearingAnimationEnd();
+            base.OnAppearingAnimationEnd();
         }
 
         protected override bool OnBackButtonPressed()
@@ -52,9 +52,9 @@ namespace PIMobile.Controls
 
         // Method for animation child in PopupPage
         // Invoked before custom animation begin
-        protected override async Task OnDisappearingAnimationBegin()
+        protected override void OnDisappearingAnimationBegin()
         {
-            await base.OnDisappearingAnimationBegin();
+            base.OnDisappearingAnimationBegin();
         }
     }
 }

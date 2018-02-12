@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -39,7 +40,12 @@ namespace MSC.BingoBuzz.Xam.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
+#if DEBUG
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                //this.DebugSettings.EnableFrameRateCounter = true;
+            }
+#endif
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -52,7 +58,30 @@ namespace MSC.BingoBuzz.Xam.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                Xamarin.Forms.Forms.Init(e);
+                List<Assembly> assembliesToInclude = new List<Assembly>();
+
+                //Now, add in all the assemblies your app uses
+                assembliesToInclude.Add(typeof(MSC.BingoBuzz.Xam.App).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(GalaSoft.MvvmLight.ViewModelBase).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(Xamarin.Forms.Platform.UWP.PageControl).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(Xamarin.Forms.Xaml.ArrayExtension).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(Ninject.ActivationException).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SQLitePCL.Batteries).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(System.Net.Http.HttpClient).GetTypeInfo().Assembly);
+                //assembliesToInclude.Add(typeof(Microsoft.HockeyApp.HockeyClient).GetTypeInfo().Assembly);
+                //assembliesToInclude.Add(typeof(Microsoft.AppCenter.AppCenter).GetTypeInfo().Assembly);
+
+                try
+                {
+                    Rg.Plugins.Popup.Popup.Init();
+
+                    Xamarin.Forms.Forms.Init(e, assembliesToInclude);
+                    // Xamarin.Forms.Forms.Init(e);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Exception Message: {ex.Message.ToString()}");
+                }
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -79,7 +108,7 @@ namespace MSC.BingoBuzz.Xam.UWP
         /// </summary>
         /// <param name="sender">The Frame which failed navigation</param>
         /// <param name="e">Details about the navigation failure</param>
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }

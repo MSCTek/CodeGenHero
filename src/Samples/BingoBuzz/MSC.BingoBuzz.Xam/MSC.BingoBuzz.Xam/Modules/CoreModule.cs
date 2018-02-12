@@ -14,6 +14,7 @@ namespace MSC.BingoBuzz.Xam.Modules
             Bind<IDataService>().To<Services.DataService>().InSingletonScope();
             //Bind<IDatabase>().To<SQLiteDB.Database>().InSingletonScope();
 
+            Bind<SplashViewModel>().ToSelf().InSingletonScope();
             Bind<WelcomeViewModel>().ToSelf().InSingletonScope();
             Bind<ProfileViewModel>().ToSelf().InSingletonScope();
             Bind<StatsViewModel>().ToSelf().InSingletonScope();
