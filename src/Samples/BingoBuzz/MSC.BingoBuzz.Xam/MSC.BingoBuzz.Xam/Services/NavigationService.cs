@@ -258,9 +258,6 @@ namespace MSC.BingoBuzz.Xam.Services
         {
             NavigationPage = new NavigationPage(root);
             this.XamarinFormsNav = NavigationPage.Navigation;
-            //NavigationPage.BarBackgroundColor = (Color)App.Current.Resources["DarkGray"];
-            //NavigationPage.BarTextColor = (Color)App.Current.Resources["White"];
-            //NavigationPage.Title = "AppTitle";
             NavigationPage.SetHasNavigationBar(NavigationPage, false);
             Application.Current.MainPage = NavigationPage;
         }

@@ -12,8 +12,9 @@ namespace MSC.BingoBuzz.Xam.Modules
         public override void Load()
         {
             Bind<IDataService>().To<Services.DataService>().InSingletonScope();
-            //Bind<IDatabase>().To<SQLiteDB.Database>().InSingletonScope();
+            Bind<IDatabase>().To<Database.Database>().InSingletonScope();
 
+            Bind<SplashViewModel>().ToSelf().InSingletonScope();
             Bind<WelcomeViewModel>().ToSelf().InSingletonScope();
             Bind<ProfileViewModel>().ToSelf().InSingletonScope();
             Bind<StatsViewModel>().ToSelf().InSingletonScope();

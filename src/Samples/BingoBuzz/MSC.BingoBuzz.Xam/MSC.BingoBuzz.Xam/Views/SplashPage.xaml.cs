@@ -1,4 +1,5 @@
-﻿using MSC.BingoBuzz.Xam.ViewModels;
+﻿using MSC.BingoBuzz.Xam.Interfaces;
+using MSC.BingoBuzz.Xam.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,16 @@ using Xamarin.Forms.Xaml;
 namespace MSC.BingoBuzz.Xam.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GamePage : ContentPage
+    public partial class SplashPage : ContentPage, IContentPage
     {
-        public GamePage()
+        public SplashPage()
         {
             InitializeComponent();
         }
 
-        private GameViewModel vm
+        private SplashViewModel vm
         {
-            get { return BindingContext as GameViewModel; }
+            get { return BindingContext as SplashViewModel; }
         }
 
         public void PrepareForDispose()
@@ -38,15 +39,8 @@ namespace MSC.BingoBuzz.Xam.Views
             base.OnAppearing();
             if (vm != null)
             {
+                await vm.Init();
             }
-        }
-
-        protected override bool OnBackButtonPressed()
-        {
-            //by calling the base, we allow the android back button to go back through the nav stack
-            return base.OnBackButtonPressed();
-            //by returning TRUE,we cancel the hardware backbutton on Android only.
-            //return true;
         }
 
         protected override void OnDisappearing()

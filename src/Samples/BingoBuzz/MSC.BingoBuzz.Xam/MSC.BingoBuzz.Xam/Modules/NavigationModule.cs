@@ -39,6 +39,7 @@ namespace MSC.BingoBuzz.Xam.Modules
             }
 
             //Mappings for Views and ViewModels that do not change for tablets or phones
+            navService.RegisterViewMapping(typeof(SplashViewModel), typeof(SplashPage));
             navService.RegisterViewMapping(typeof(WelcomeViewModel), typeof(WelcomePage));
             navService.RegisterViewMapping(typeof(ProfileViewModel), typeof(ProfilePage));
             navService.RegisterViewMapping(typeof(GameViewModel), typeof(GamePage));
