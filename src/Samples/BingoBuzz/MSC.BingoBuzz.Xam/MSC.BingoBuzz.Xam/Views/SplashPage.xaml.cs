@@ -43,13 +43,6 @@ namespace MSC.BingoBuzz.Xam.Views
             }
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            //by returning TRUE and not calling base, we cancel the hardware backbutton on Android only.
-            //return base.OnBackButtonPressed();
-            return true;
-        }
-
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
