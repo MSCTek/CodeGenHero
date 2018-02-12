@@ -98,7 +98,7 @@ namespace CodeGenHero.EAMVCXamPOCO.DataService
 
 		public HttpClient GetClient(int requestedVersion = 1, string connectionIdentifier = null)
 		{
-			return GetClient(DefaultAuthenticationHeaderValue, DefaultRequestedVersion, DefaultConnectionIdentifier);
+			return GetClient(DefaultAuthenticationHeaderValue, requestedVersion, DefaultConnectionIdentifier);
 		}
 
 		public HttpClient GetClient(AuthenticationHeaderValue authorization, int requestedVersion, string connectionIdentifier)
