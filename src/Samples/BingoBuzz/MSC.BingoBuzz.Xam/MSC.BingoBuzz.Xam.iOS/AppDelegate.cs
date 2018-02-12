@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using MSC.BingoBuzz.Xam.iOS.Modules;
 using UIKit;
 
 namespace MSC.BingoBuzz.Xam.iOS
 {
-    // The UIApplicationDelegate for the application. This class is responsible for launching the 
-    // User Interface of the application, as well as listening (and optionally responding) to 
+    // The UIApplicationDelegate for the application. This class is responsible for launching the
+    // User Interface of the application, as well as listening (and optionally responding) to
     // application events from iOS.
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
         //
-        // This method is invoked when the application has loaded and is ready to run. In this 
+        // This method is invoked when the application has loaded and is ready to run. In this
         // method you should instantiate the window, load the UI into it and then make the window
         // visible.
         //
@@ -22,9 +23,10 @@ namespace MSC.BingoBuzz.Xam.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
-
+            //LoadApplication(new App());
+            LoadApplication(new App(new IOSPlatformModule()));
             return base.FinishedLaunching(app, options);
         }
     }

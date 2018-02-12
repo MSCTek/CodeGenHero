@@ -21,6 +21,8 @@ namespace MSC.BingoBuzz.Xam.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
+            Rg.Plugins.Popup.Popup.Init(this, bundle);
+
             LoadApplication(new App(new Modules.DroidPlatformModule()));
             //LoadApplication(new App());
         }
