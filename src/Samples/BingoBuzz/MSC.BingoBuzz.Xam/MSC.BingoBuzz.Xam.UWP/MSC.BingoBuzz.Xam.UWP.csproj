@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Modules\UWPPlatformModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UWPSQLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -172,6 +173,10 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MSC.BingoBuzz.Constants\MSC.BingoBuzz.Constants.csproj">
+      <Project>{ce71d050-6a42-436c-b212-1dc2b2958777}</Project>
+      <Name>MSC.BingoBuzz.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MSC.BingoBuzz.Xam\MSC.BingoBuzz.Xam.csproj">
       <Project>{FE8D7C20-AEB6-450E-B2AC-E0D768C1D660}</Project>
       <Name>MSC.BingoBuzz.Xam</Name>

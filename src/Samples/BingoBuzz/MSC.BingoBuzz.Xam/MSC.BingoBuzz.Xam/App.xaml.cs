@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using MSC.BingoBuzz.Xam.Interfaces;
 using MSC.BingoBuzz.Xam.Modules;
 using MSC.BingoBuzz.Xam.ViewModels;
 using MSC.BingoBuzz.Xam.Views;
@@ -27,7 +29,7 @@ namespace MSC.BingoBuzz.Xam
             Kernel.Load(platformModules);
 
             //initialize the singleton
-            /*var asyncconn = Kernel.Get<ISQLite>().GetAsyncConnection();
+            var asyncconn = Kernel.Get<ISQLite>().GetAsyncConnection();
             var conn = Kernel.Get<ISQLite>().GetConnection();
             if (conn != null && asyncconn != null)
             {
@@ -39,7 +41,7 @@ namespace MSC.BingoBuzz.Xam
             {
                 Debug.WriteLine("ERROR: SQLite Database could not be created.");
                 throw new InvalidOperationException("ERROR: SQLite Database could not be created.");
-            }*/
+            }
 
             mainPage.BindingContext = Kernel.Get<SplashViewModel>();
             MainPage = mainPage;
