@@ -19,6 +19,7 @@ namespace MSC.BingoBuzz.Xam.Modules
             Bind<ProfileViewModel>().ToSelf().InSingletonScope();
             Bind<StatsViewModel>().ToSelf().InSingletonScope();
             Bind<GameViewModel>().ToSelf().InSingletonScope();
+            Bind<NewMeetingViewModel>().ToSelf().InSingletonScope();
         }
     }
 }

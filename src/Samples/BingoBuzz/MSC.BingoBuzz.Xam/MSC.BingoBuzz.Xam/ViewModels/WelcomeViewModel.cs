@@ -32,7 +32,7 @@ namespace MSC.BingoBuzz.Xam.ViewModels
             var meeting2 = new Meeting()
             {
                 Name = "BingoBuzz UI Review",
-                MeetingId = new Guid(),
+                MeetingId = new Guid()
             };
             meeting2.MeetingSchedules.Add(new MeetingSchedule()
             {
@@ -54,8 +54,40 @@ namespace MSC.BingoBuzz.Xam.ViewModels
             {
                 return new RelayCommand(async () =>
                   {
-                      await NavService.NavigateTo<ProfileViewModel>();
+                      await NavService.NavigateTo<GameViewModel>();
                   });
+            }
+        }
+
+        public RelayCommand MyProfileCommand
+        {
+            get
+            {
+                return new RelayCommand(async () =>
+                {
+                    await NavService.NavigateTo<ProfileViewModel>();
+                });
+            }
+        }
+
+        public RelayCommand MyStatsCommand
+        {
+            get
+            {
+                return new RelayCommand(async () =>
+                {
+                    await NavService.NavigateTo<StatsViewModel>();
+                });
+            }
+        }
+        public RelayCommand NewMeetingCommand
+        {
+            get
+            {
+                return new RelayCommand(async () =>
+                {
+                    await NavService.NavigateTo<NewMeetingViewModel>();
+                });
             }
         }
 
