@@ -1,4 +1,5 @@
-﻿using MSC.BingoBuzz.Xam.Interfaces;
+﻿using CodeGenHero.EAMVCXamPOCO.Interface;
+using MSC.BingoBuzz.Xam.Interfaces;
 using MSC.BingoBuzz.Xam.ViewModels;
 using Ninject.Modules;
 using System;
@@ -13,6 +14,7 @@ namespace MSC.BingoBuzz.Xam.Modules
         {
             Bind<IDataService>().To<Services.DataService>().InSingletonScope();
             Bind<IDatabase>().To<Database.Database>().InSingletonScope();
+            Bind<ILoggingService>().To<Services.LoggingService>().InSingletonScope();
 
             Bind<SplashViewModel>().ToSelf().InSingletonScope();
             Bind<WelcomeViewModel>().ToSelf().InSingletonScope();
