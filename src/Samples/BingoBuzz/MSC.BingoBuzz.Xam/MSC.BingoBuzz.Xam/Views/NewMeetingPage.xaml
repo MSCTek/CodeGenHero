@@ -8,10 +8,34 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <ctr:CustomHeader Grid.Row="0" ShowBackButton="True" Title="New Meeting" ShowHamburger="False" />
+
+            <ScrollView Grid.Row="1">
+                <StackLayout Margin="20,10">
+                    <Label Text="Name your new meeting" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
+                    <Entry  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+                    <BoxView HeightRequest="2" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand" />
+
+                    <Label Text="When" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
+                    <Picker>
+                        <Picker.Items>
+                            <x:String>Now</x:String>
+                            <x:String>Later</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <DatePicker></DatePicker>
+                    <BoxView HeightRequest="2" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand" />
+
+                    <Label Text="Who" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
+                    <StackLayout BackgroundColor="AliceBlue" Margin="5" HeightRequest="150">
+                    </StackLayout>
+                    <Button Text="Invite More" HorizontalOptions="End" />
+                    <BoxView HeightRequest="2" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand" />
+
+                    <Button Text="Done" HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </ScrollView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
