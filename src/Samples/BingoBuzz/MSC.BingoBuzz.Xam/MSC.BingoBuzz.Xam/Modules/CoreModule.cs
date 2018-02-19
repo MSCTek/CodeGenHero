@@ -2,9 +2,6 @@
 using MSC.BingoBuzz.Xam.Interfaces;
 using MSC.BingoBuzz.Xam.ViewModels;
 using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MSC.BingoBuzz.Xam.Modules
 {

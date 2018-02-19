@@ -11,23 +11,24 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using MSC.BingoBuzz.Constants;
+using System.Threading.Tasks;
 
 namespace MSC.BingoBuzz.Xam
 {
     public partial class App : Application
     {
+        private bool _isDemoMode;
+        private bool isAppCenterStarted;
+
         public App(params INinjectModule[] platformModules)
         {
             InitializeComponent();
 
             var mainPage = new SplashPage() as ContentPage;
-
             var navPage = new NavigationPage();
 
             // Register core services
-            Kernel = new StandardKernel(
-                new CoreModule(),
-                new NavigationModule(navPage));
+            Kernel = new StandardKernel(new CoreModule(), new NavigationModule(navPage));
 
             // Register platform specific services
             Kernel.Load(platformModules);
@@ -53,6 +54,62 @@ namespace MSC.BingoBuzz.Xam
 
         public IKernel Kernel { get; set; }
 
+        public async Task SetDemoMode(bool isOn)
+        {
+            //if the new value is different from the existing value
+            if (_isDemoMode != isOn)
+            {
+                _isDemoMode = isOn;
+                var db = Kernel.Get<IDatabase>();
+                await db.DropTablesAsync();
+                db.CreateTables();
+
+                if (_isDemoMode)
+                {
+                    Kernel.Rebind<IDataService>().To<Services.Design.DesignDataService>().InSingletonScope();
+                }
+                else
+                {
+                    Kernel.Rebind<IDataService>().To<Services.DataService>().InSingletonScope();
+                }
+
+                var newDataService = Kernel.Get<IDataService>();
+                await newDataService.InsertAllDataCleanLocalDB();
+            }
+        }
+
+        public void StartAppCenter()
+        {
+            if (Xamarin.Forms.Device.RuntimePlatform != Xamarin.Forms.Device.UWP)
+            {
+                if (!isAppCenterStarted)
+                {
+                    //UI Tests have inconsistent popups for in-app distributions being disabled from side loading - just getting rid of them here to get a build to Xam Test Cloud
+
+                    Type[] p = new Type[2] { typeof(Analytics), typeof(Crashes) };
+
+                    string secrets = $"ios={Consts.AppCenterSecretiOS};android={Consts.AppCenterSecretAndroid};uwp={Consts.AppCenterSecretUWP}";
+
+                    //AppCenter.LogLevel = LogLevel.Verbose;
+                    AppCenter.Start(secrets, p);
+
+                    Analytics.TrackEvent("App Center is Started");
+                    isAppCenterStarted = true;
+                }
+            }
+            else
+            {
+                //for now, just start analytics & crashes for UWP in App Center
+                Type[] p = new Type[2] { typeof(Analytics), typeof(Crashes) };
+                string secrets = $"ios={Consts.AppCenterSecretiOS};android={Consts.AppCenterSecretAndroid};uwp={Consts.AppCenterSecretUWP}";
+
+                //AppCenter.LogLevel = LogLevel.Verbose;
+                AppCenter.Start(secrets, p);
+
+                Analytics.TrackEvent("App Center is Started");
+            }
+        }
+
         protected override void OnResume()
         {
             // Handle when your app resumes
@@ -70,38 +127,6 @@ namespace MSC.BingoBuzz.Xam
             // Handle when your app starts
             Debug.WriteLine("BingoBuzz is starting up...");
             StartAppCenter();
-        }
-        private bool isAppCenterStarted;
-        public void StartAppCenter()
-        {
-            if (Xamarin.Forms.Device.RuntimePlatform != Xamarin.Forms.Device.UWP)
-            {
-                if (!isAppCenterStarted)
-                {
-                    //UI Tests have inconsistent popups for in-app distributions being disabled from side loading - just getting rid of them here to get a build to Xam Test Cloud
-
-                    Type[] p = new Type[2] { typeof(Analytics), typeof(Crashes) };
-
-                    string secrets = $"ios={Consts.AppCenterSecretiOS};android={Consts.AppCenterSecretAndroid};uwp={Consts.AppCenterSecretUWP}";
-
-                    //AppCenter.LogLevel = LogLevel.Verbose;
-                    AppCenter.Start(secrets, p);
-                    
-                    Analytics.TrackEvent("App Center is Started");
-                    isAppCenterStarted = true;
-                }
-            }
-            else
-            {
-                //for now, just start analytics & crashes for UWP in App Center
-                Type[] p = new Type[2] { typeof(Analytics), typeof(Crashes) };
-                string secrets = $"ios={Consts.AppCenterSecretiOS};android={Consts.AppCenterSecretAndroid};uwp={Consts.AppCenterSecretUWP}";
-
-                //AppCenter.LogLevel = LogLevel.Verbose;
-                AppCenter.Start(secrets, p);
-
-                Analytics.TrackEvent("App Center is Started");
-            }
         }
     }
 }

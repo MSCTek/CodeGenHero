@@ -2,11 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MSC.BingoBuzz.Xam.Views.WelcomePage"
-             
+
              x:Name="WelcomePage">
-    
-    
-    
+
     <ContentPage.Content>
         <Grid Margin="20">
             <Grid.RowDefinitions>
@@ -42,7 +40,7 @@
                         <ViewCell>
                             <Grid  BackgroundColor="LightSkyBlue" HeightRequest="60">
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer 
+                                    <TapGestureRecognizer
                                         Command="{Binding BindingContext.OpenMeetingCommand, Source={x:Reference WelcomePage}}"
                                         CommandParameter="{Binding MeetingId}" />
                                 </Grid.GestureRecognizers>
@@ -52,7 +50,7 @@
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0">
                                     <Label  Text="{Binding Name}" VerticalOptions="Center" Margin="10,5,0,0" />
-                                    <Label  Text="{Binding MeetingSchedules.StartDate}" VerticalOptions="Center" Margin="10,0,0,5" />
+                                    <Label  Text="{Binding MeetingSchedules[0].StartDateDisplay}" VerticalOptions="Center" Margin="10,0,0,5" />
                                 </StackLayout>
 
                                 <Label Grid.Column="1" Text=">>" VerticalOptions="Center" Margin="10,0" />
