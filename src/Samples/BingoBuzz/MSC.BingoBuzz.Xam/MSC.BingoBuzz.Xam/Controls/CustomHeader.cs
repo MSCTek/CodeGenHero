@@ -38,7 +38,9 @@ namespace MSC.BingoBuzz.Xam.Controls
                 propertyChanged: OnPropertyChanged,
                 defaultValue: default(string));
 
-        private IconLabel _backButtonIcon;
+        //private IconLabel _backButtonIcon;
+
+        private Label _backButtonIcon;
 
         private StackLayout _backButtonStackLayout;
 
@@ -158,8 +160,15 @@ namespace MSC.BingoBuzz.Xam.Controls
                 _backButtonStackLayout.Orientation = StackOrientation.Horizontal;
                 _backButtonStackLayout.HorizontalOptions = LayoutOptions.StartAndExpand;
 
-                _backButtonIcon = new IconLabel();
-                _backButtonIcon.Text = (string)App.Current.Resources["Icon.BackArrow"]; //= "\ue800";
+                /*_backButtonIcon = new IconLabel();
+                _backButtonIcon.Text = (string)App.Current.Resources["Icon.BackArrow"]; //= "\ue800";*/
+
+                //TODO: get font awesome in here
+                _backButtonIcon = new Label();
+                _backButtonIcon.Text = "<";
+                _backButtonIcon.FontAttributes = FontAttributes.Bold;
+
+
                 _backButtonIcon.FontSize = 21;
                 // _backButtonIcon.TextColor = (Color)App.Current.Resources["PI.Charcoal"];
                 _backButtonIcon.Margin = new Thickness(12);
@@ -174,7 +183,8 @@ namespace MSC.BingoBuzz.Xam.Controls
                 _tapGestureRecognizerBack.AutomationId = "BackButton";
                 _backButtonStackLayout.GestureRecognizers.Add(_tapGestureRecognizerBack);
 
-                _headerGrid.Children.Add(_backButtonStackLayout);
+                _headerGrid.Children.Add(_backButtonStackLayout); 
+
             }
 
             if (ShowHamburger)

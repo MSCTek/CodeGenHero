@@ -43,6 +43,7 @@ namespace MSC.BingoBuzz.Xam.Modules
             navService.RegisterViewMapping(typeof(WelcomeViewModel), typeof(WelcomePage));
             navService.RegisterViewMapping(typeof(ProfileViewModel), typeof(ProfilePage));
             navService.RegisterViewMapping(typeof(GameViewModel), typeof(GamePage));
+            navService.RegisterViewMapping(typeof(NewMeetingViewModel), typeof(NewMeetingPage));
             navService.RegisterViewMapping(typeof(StatsViewModel), typeof(StatsPage));
 
             Bind<INavigationService>().ToMethod(x => navService).InSingletonScope();
