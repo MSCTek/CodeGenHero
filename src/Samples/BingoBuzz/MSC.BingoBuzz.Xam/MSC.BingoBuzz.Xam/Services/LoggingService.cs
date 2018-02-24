@@ -15,6 +15,7 @@ namespace MSC.BingoBuzz.Xam.Services
     {
         public LoggingService()
         {
+            CurrentLogLevel = Enums.LogLevel.All;
         }
 
         //TODO: rework the logging service to accept a dict of additional data and remove the returned guid.

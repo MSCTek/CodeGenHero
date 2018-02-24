@@ -13,7 +13,8 @@ namespace MSC.BingoBuzz.Xam.ModelData.DemoBB
             get
             {
                 var now = DateTime.Now;
-                var date = new DateTime(now.Year, now.Month, now.Day + 3, 9, 0, 0);
+                var date = new DateTime(now.Year, now.Month, now.Day, 9, 0, 0);
+                date.AddDays(3);
                 date.ToUniversalTime();
                 return new MeetingSchedule()
                 {
@@ -35,7 +36,8 @@ namespace MSC.BingoBuzz.Xam.ModelData.DemoBB
             get
             {
                 var now = DateTime.Now;
-                var date = new DateTime(now.Year, now.Month, now.Day + 5, 11, 0, 0);
+                var date = new DateTime(now.Year, now.Month, now.Day, 11, 0, 0);
+                date.AddDays(5);
                 date.ToUniversalTime();
                 return new MeetingSchedule()
                 {
@@ -57,7 +59,8 @@ namespace MSC.BingoBuzz.Xam.ModelData.DemoBB
             get
             {
                 var now = DateTime.Now;
-                var date = new DateTime(now.Year, now.Month, now.Day + 5, 13, 0, 0);
+                var date = new DateTime(now.Year, now.Month, now.Day, 13, 0, 0);
+                date.AddDays(5);
                 date.ToUniversalTime();
                 return new MeetingSchedule()
                 {
