@@ -8,7 +8,7 @@ namespace MSC.BingoBuzz.Xam.ViewModels
 {
     public class NewMeetingViewModel : CustomViewModelBase
     {
-        public NewMeetingViewModel(INavigationService navService, IDataService dataService) : base(navService, dataService)
+        public NewMeetingViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService) : base(navService, dataRetrievalService, stateService)
         {
         }
 

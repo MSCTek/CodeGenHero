@@ -18,7 +18,9 @@
             <Grid Grid.Row="1" x:Name="PlayerGrid" HeightRequest="75" BackgroundColor="LightGray">
             </Grid>
 
-            <Grid Grid.Row="2" x:Name="GameGrid">
+            <ctr:GameBoard Grid.Row="2" GameBoardContent="{Binding BingoInstanceContent}" />
+
+            <!-- <Grid Grid.Row="2" x:Name="GameGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
@@ -64,7 +66,7 @@
                 <BoxView Grid.Column="4" Grid.Row="2" BackgroundColor="AliceBlue" />
                 <BoxView Grid.Column="4" Grid.Row="3" BackgroundColor="AliceBlue" />
                 <BoxView Grid.Column="4" Grid.Row="4" BackgroundColor="AliceBlue" />
-            </Grid>
+            </Grid>-->
 
             <Grid Grid.Row="3" x:Name="AdvertisingGrid" HeightRequest="75" BackgroundColor="Gray">
             </Grid>

@@ -7,10 +7,8 @@ using MSC.BingoBuzz.Xam.ModelObj.BB;
 
 namespace MSC.BingoBuzz.Xam.Interfaces
 {
-    public interface IDataService
+    public interface IDataLoadService
     {
-        Task<List<Meeting>> GetCurrentFutureMeetingsAsync();
-
         Task InsertAllDataCleanLocalDB();
     }
 }

@@ -66,15 +66,16 @@ namespace MSC.BingoBuzz.Xam
 
                 if (_isDemoMode)
                 {
-                    Kernel.Rebind<IDataService>().To<Services.Design.DesignDataService>().InSingletonScope();
+                    //rebind the data load service so we can load the demo data instead of using the web api
+                    Kernel.Rebind<IDataLoadService>().To<Services.Design.DesignDataLoadService>().InSingletonScope();
                 }
                 else
                 {
-                    Kernel.Rebind<IDataService>().To<Services.DataService>().InSingletonScope();
+                    Kernel.Rebind<IDataLoadService>().To<Services.DataLoadService>().InSingletonScope();
                 }
 
-                var newDataService = Kernel.Get<IDataService>();
-                await newDataService.InsertAllDataCleanLocalDB();
+                var newDataLoadService = Kernel.Get<IDataLoadService>();
+                await newDataLoadService.InsertAllDataCleanLocalDB();
             }
         }
 

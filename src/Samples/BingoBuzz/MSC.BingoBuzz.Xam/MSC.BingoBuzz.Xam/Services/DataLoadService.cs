@@ -16,7 +16,7 @@ using static CodeGenHero.EAMVCXamPOCO.DataService.Constants.Enums;
 
 namespace MSC.BingoBuzz.Xam.Services
 {
-    public class DataService : IDataService
+    public class DataLoadService : IDataLoadService
     {
         private SQLiteAsyncConnection _asyncConnection;
         private SQLiteConnection _connection;
@@ -24,7 +24,7 @@ namespace MSC.BingoBuzz.Xam.Services
         private ILoggingService _log;
         private IWebApiDataServiceBB _webAPIDataService;
 
-        public DataService(ILoggingService log, IDatabase database)
+        public DataLoadService(ILoggingService log, IDatabase database)
         {
             _log = log;
             _database = database;
@@ -38,25 +38,6 @@ namespace MSC.BingoBuzz.Xam.Services
             _webAPIDataService = new WebApiDataServiceBB(new LoggingService(), context);
             _asyncConnection = _database.GetAsyncConnection();
             _connection = _database.GetConnection();
-        }
-
-        public async Task<List<ModelObj.BB.Meeting>> GetCurrentFutureMeetingsAsync()
-        {
-            //returns meetings with schedules, but no attendees
-            List<ModelObj.BB.Meeting> returnMe = new List<ModelObj.BB.Meeting>();
-            DateTime today = DateTime.Now.Date;
-            var dataMeetingSchedules = (await _asyncConnection.Table<ModelData.BB.MeetingSchedule>().Where(x => x.StartDate > today && x.IsDeleted == false).OrderBy(x => x.StartDate).ToListAsync());
-            foreach (var r in dataMeetingSchedules)
-            {
-                var dataMeeting = await _asyncConnection.Table<ModelData.BB.Meeting>().Where(x => x.MeetingId == r.MeetingId).FirstOrDefaultAsync();
-                if (dataMeeting != null)
-                {
-                    var objMeeting = dataMeeting.ToModelObj();
-                    objMeeting.MeetingSchedules.Add(r.ToModelObj());
-                    returnMe.Add(objMeeting);
-                }
-            }
-            return returnMe;
         }
 
         public async Task InsertAllDataCleanLocalDB()

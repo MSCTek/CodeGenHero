@@ -18,16 +18,20 @@ namespace MSC.BingoBuzz.Xam.ViewModels
         //https://developer.xamarin.com/api/type/System.IDisposable/
         //http://stackoverflow.com/questions/538060/proper-use-of-the-idisposable-interface
 
-        public CustomViewModelBase(INavigationService navService, IDataService dataService)
+        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService)
         {
             if (navService == null)
                 throw new ArgumentException("Invalid navService");
 
-            if (dataService == null)
-                throw new ArgumentException("Invalid dataService");
+            if (dataRetrievalService == null)
+                throw new ArgumentException("Invalid dataRetrievalService");
+
+            if (stateService == null)
+                throw new ArgumentException("Invalid stateService");
 
             NavService = navService;
-            DataService = dataService;
+            DataRetrievalService = dataRetrievalService;
+            StateService = stateService;
         }
 
         public override void Cleanup()
@@ -56,16 +60,20 @@ namespace MSC.BingoBuzz.Xam.ViewModels
         private bool _isBusy;
         private bool _isDev;
 
-        public CustomViewModelBase(INavigationService navService, IDataService dataService)
+        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService)
         {
             if (navService == null)
                 throw new ArgumentException("Invalid navService");
 
-            if (dataService == null)
-                throw new ArgumentException("Invalid dataService");
+            if (dataRetrievalService == null)
+                throw new ArgumentException("Invalid dataRetrievalService");
+
+            if (stateService == null)
+                throw new ArgumentException("Invalid stateService");
 
             NavService = navService;
-            DataService = dataService;
+            DataRetrievalService = dataRetrievalService;
+            StateService = stateService;
 
             IsDev = false;
 #if DEBUG
@@ -142,8 +150,8 @@ namespace MSC.BingoBuzz.Xam.ViewModels
         }
 
         protected static INavigationService NavService { get; set; }
-
-        protected IDataService DataService { get; set; }
+        protected IStateService StateService { get; set; }
+        protected IDataRetrievalService DataRetrievalService { get; set; }
 
         public override void Cleanup()
         {

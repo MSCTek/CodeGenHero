@@ -15,5 +15,7 @@ namespace MSC.BingoBuzz.Xam.ModelData.BB
 		public System.Guid? MeetingId { get; set; }
 		public int NumberOfColumns { get; set; }
 		public int NumberOfRows { get; set; }
+
+        public int BingoInstanceStatusTypeId { get; set; }
 	}
 }

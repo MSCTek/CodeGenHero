@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using MSC.BingoBuzz.Xam.Interfaces;
 using MSC.BingoBuzz.Xam.Mappers;
+using MSC.BingoBuzz.Xam.ModelData.DemoBB;
 using MSC.BingoBuzz.Xam.ModelObj.BB;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace MSC.BingoBuzz.Xam.ViewModels
     {
         private ObservableCollection<Meeting> _meetings;
 
-        public WelcomeViewModel(INavigationService navService, IDataService dataService) : base(navService, dataService)
+        public WelcomeViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService) : base(navService, dataRetrievalService, stateService)
         {
             Meetings = new ObservableCollection<Meeting>();
         }
@@ -60,14 +61,14 @@ namespace MSC.BingoBuzz.Xam.ViewModels
             }
         }
 
-        public RelayCommand OpenMeetingCommand
+        public RelayCommand<Guid> OpenMeetingCommand
         {
             get
             {
-                return new RelayCommand(async () =>
-                  {
-                      await NavService.NavigateTo<GameViewModel>();
-                  });
+                return new RelayCommand<Guid>(async (Guid meetingId) =>
+                {
+                    await NavService.NavigateTo<GameViewModel, Guid>(meetingId);
+                });
             }
         }
 
@@ -75,8 +76,9 @@ namespace MSC.BingoBuzz.Xam.ViewModels
         {
             //TODO: remove - for development only
             await ((App)Application.Current).SetDemoMode(true);
+            StateService.SetCurrentUser(DemoUser.UserGeorge.ToModelObj());
 
-            Meetings = (await DataService.GetCurrentFutureMeetingsAsync()).ToObservableCollection();
+            Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();
         }
     }
 }

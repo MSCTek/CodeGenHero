@@ -44,6 +44,7 @@ namespace MSC.BingoBuzz.Xam
 				NumberOfRows = source.NumberOfRows,
 				UpdatedDate = source.UpdatedDate,
 				UpdatedUserId = source.UpdatedUserId,
+                BingoInstanceStatusTypeId = source.BingoInstanceStatusTypeId
 			};
 		}
 
@@ -256,7 +257,8 @@ namespace MSC.BingoBuzz.Xam
 				NumberOfRows = source.NumberOfRows,
 				UpdatedDate = source.UpdatedDate,
 				UpdatedUserId = source.UpdatedUserId,
-			};
+                BingoInstanceStatusTypeId = source.BingoInstanceStatusTypeId
+            };
 		}
 
 		public static objBB.BingoInstanceContent ToModelObj(this dataBB.BingoInstanceContent source)

@@ -9,7 +9,7 @@ namespace MSC.BingoBuzz.Xam.ViewModels
 {
     public class StatsViewModel : CustomViewModelBase
     {
-        public StatsViewModel(INavigationService navService, IDataService dataService) : base(navService, dataService)
+        public StatsViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService) : base(navService, dataRetrievalService, stateService)
         {
         }
 
