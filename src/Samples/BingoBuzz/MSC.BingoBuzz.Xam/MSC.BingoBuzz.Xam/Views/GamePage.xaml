@@ -5,7 +5,7 @@
              x:Class="MSC.BingoBuzz.Xam.Views.GamePage">
 
     <ContentPage.Content>
-        <Grid Margin="20">
+        <Grid Margin="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -15,10 +15,10 @@
 
             <ctr:CustomHeader Grid.Row="0" ShowBackButton="True" Title="BingoBuzz Game" ShowHamburger="False" />
 
-            <Grid Grid.Row="1" x:Name="PlayerGrid" HeightRequest="75" BackgroundColor="LightGray">
+            <Grid Grid.Row="1" x:Name="PlayerGrid" HeightRequest="55" BackgroundColor="LightGray" Margin="10,5">
             </Grid>
 
-            <ctr:GameBoard Grid.Row="2" GameBoardContent="{Binding BingoInstanceContent}" />
+            <ctr:GameBoard Grid.Row="2" GameBoardContent="{Binding BingoInstanceContent}" Margin="10,0"/>
 
             <!-- <Grid Grid.Row="2" x:Name="GameGrid">
                 <Grid.RowDefinitions>
@@ -68,7 +68,7 @@
                 <BoxView Grid.Column="4" Grid.Row="4" BackgroundColor="AliceBlue" />
             </Grid>-->
 
-            <Grid Grid.Row="3" x:Name="AdvertisingGrid" HeightRequest="75" BackgroundColor="Gray">
+            <Grid Grid.Row="3" x:Name="AdvertisingGrid" HeightRequest="55" BackgroundColor="Gray" Margin="10,5">
             </Grid>
         </Grid>
     </ContentPage.Content>

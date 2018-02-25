@@ -105,7 +105,8 @@ namespace MSC.BingoBuzz.Xam.Controls
                     _label.VerticalOptions = LayoutOptions.CenterAndExpand;
                     _label.LineBreakMode = LineBreakMode.WordWrap;
                     _label.HorizontalTextAlignment = TextAlignment.Center;
-                    _label.Margin = 5;
+                    _label.Margin = 3;
+                    _label.FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
 
                     sqGrid.Children.Add(_label);
                     _gameGrid.Children.Add(sqGrid, sq.Col, sq.Row);
