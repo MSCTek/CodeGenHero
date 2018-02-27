@@ -1,5 +1,13 @@
 ﻿## Changelog
 
+### 1.0.10
+New Features:
+* Signed assembly via strong name key file.
+
+### 1.0.9
+Bug Fixes & Enhancements:
+* Updated dependency reference for CodeGenHero.DataService.Core project.
+
 ### 1.0.8
 Bug Fixes & Enhancements:
 * Migrated files that are needed outside the dataservice from this project to the CodeGenHero.DataService.Core project.

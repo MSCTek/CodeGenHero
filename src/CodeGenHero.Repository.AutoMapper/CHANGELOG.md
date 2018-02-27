@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.1
+New Features:
+* Signed assembly via strong name key file.
+
 ### 1.0.0
 Breaking Changes:
 * Now .NET Standard Library

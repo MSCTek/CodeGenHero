@@ -7,7 +7,7 @@ namespace CodeGenHero.DataService
 		private static readonly Lazy<WebApiExecutionContextType> _lazyInstance = new Lazy<WebApiExecutionContextType>(() => new WebApiExecutionContextType());
 		private int _current;
 
-		private WebApiExecutionContextType()
+		public WebApiExecutionContextType()
 		{
 			_current = Base;
 		}
