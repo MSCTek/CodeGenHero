@@ -8,6 +8,6 @@
 
 		string ConnectionIdentifier { get; }
 
-		WebApiExecutionContextType ExecutionContextType { get; set; }
+		IWebApiExecutionContextType ExecutionContextType { get; set; }
 	}
 }

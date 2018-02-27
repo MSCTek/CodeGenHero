@@ -10,6 +10,7 @@ using static CodeGenHero.Logging.Enums;
 namespace CodeGenHero.Logging.Log4net
 {
 	public class Log4NetLoggingService : ILoggingService //, log4net.ILog
+, ILog4NetLoggingService
 	{
 		//private readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 		private ILog _log = null; // Let's lazy-load this to save processing in case it gets dependency injected and not used.

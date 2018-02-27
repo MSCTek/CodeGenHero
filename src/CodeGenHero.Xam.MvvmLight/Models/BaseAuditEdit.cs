@@ -3,7 +3,7 @@ using System;
 
 namespace CodeGenHero.Xam.MvvmLight
 {
-	public abstract class BaseAuditEdit : ObservableObject
+	public abstract class BaseAuditEdit : ObservableObject, IBaseAuditEdit
 	{
 		private DateTime _createdDate;
 		private Guid _createdUserId;

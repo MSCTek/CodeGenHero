@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodeGenHero.Logging
 {
-	public partial class WebApiAuthenticationHeaderValueType
+	public partial class WebApiAuthenticationHeaderValueType : IWebApiAuthenticationHeaderValueType
 	{
 		private static readonly Lazy<WebApiAuthenticationHeaderValueType> _lazyInstance = new Lazy<WebApiAuthenticationHeaderValueType>(() => new WebApiAuthenticationHeaderValueType());
 

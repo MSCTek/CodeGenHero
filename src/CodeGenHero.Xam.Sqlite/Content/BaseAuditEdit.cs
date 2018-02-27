@@ -2,7 +2,7 @@
 
 namespace CodeGenHero.Xam.Sqlite
 {
-	public abstract class BaseAuditEdit
+	public abstract class BaseAuditEdit : IBaseAuditEdit
 	{
 		public DateTime CreatedDate { get; set; }
 

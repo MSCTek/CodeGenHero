@@ -9,7 +9,7 @@
     <Product>CodeGenHero</Product>
     <Description>CodeGenHero is an amazing Visual Studio extension that enhances developer productivity via code generation.
 
-This package should be added to projects that are the target of CodeGenHero templates that are clients of Web APIs.</Description>
+This package should be added to projects that are the target of CodeGenHero templates that either generate Web API Controllers or generate clients of Web APIs.</Description>
     <Copyright>Copyright © 2016-2018 Micro Support Center, Inc.</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/MSCTek/CodeGenHero/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/MSCTek/CodeGenHero</PackageProjectUrl>
@@ -17,9 +17,9 @@ This package should be added to projects that are the target of CodeGenHero temp
     <RepositoryUrl>https://github.com/MSCTek/CodeGenHero</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>CodeGenerator CodeGen MSCTek webapi dataservice</PackageTags>
-    <PackageReleaseNotes>Classes to support invoking Web API services via HttpClient.</PackageReleaseNotes>
+    <PackageReleaseNotes>Classes to support Web API services and invoking Web API services via HttpClient.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.0.8</Version>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
@@ -35,26 +35,9 @@ This package should be added to projects that are the target of CodeGenHero temp
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeGenHero.DataService.Core" Version="1.0.3" />
     <PackageReference Include="CodeGenHero.Logging" Version="1.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
-    <PackageReference Include="System.Net.Http">
-      <Version>4.3.3</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
-    <PackageReference Include="System.Net.Http">
-      <Version>4.3.3</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Net.Http">
-      <Version>4.3.3</Version>
-    </PackageReference>
-  </ItemGroup>
 </Project>

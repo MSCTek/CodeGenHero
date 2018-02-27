@@ -7,21 +7,17 @@
     <Authors>Paul Schroeder</Authors>
     <Company>Micro Support Center, Inc.</Company>
     <Product>CodeGenHero</Product>
-    <Description>CodeGenHero is an amazing Visual Studio extension that enhances developer productivity via code generation.
+    <Description>CodeGenHero is an amazing Visual Studio extension that enhances developer productivity via code generation. 
 
-
-
-
-
-This package should be added to projects that are the target of CodeGenHero templates implementing the mapper pattern between data classes and DTO's.</Description>
+This package should be added to projects that are the target of CodeGenHero templates that leverage Reverse POCO entities along with Entity Framework.</Description>
     <Copyright>Copyright © 2016-2018 Micro Support Center, Inc.</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/MSCTek/CodeGenHero/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/MSCTek/CodeGenHero</PackageProjectUrl>
     <PackageIconUrl>https://github.com/MSCTek/CodeGenHero/raw/master/NuGet_Icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/MSCTek/CodeGenHero</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageTags>CodeGenerator CodeGen MSCTek AutoMapper DTO repository</PackageTags>
-    <PackageReleaseNotes>Classes to support mapping from repository data classes (Entity Framework) objects to DTO's and back.</PackageReleaseNotes>
+    <PackageTags>CodeGenerator CodeGen MSCTek EntityFramework ReversePOCO repository</PackageTags>
+    <PackageReleaseNotes>T4 templates to support generating reverse POCO entities.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
@@ -38,11 +34,34 @@ This package should be added to projects that are the target of CodeGenHero temp
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="CodeGenHero.Repository" Version="1.0.0" />
-    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="4.6.0-rtm-4825">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <None Remove="ReversePOCO\DSN\DSNContext.tt" />
+    <None Remove="ReversePOCO\EF.Reverse.POCO.Core.ttinclude" />
+    <None Remove="ReversePOCO\EF.Reverse.POCO.ttinclude" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="ReversePOCO\DSN\DSNContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DSNContext.cs</LastGenOutput>
+    </Content>
+    <Content Include="ReversePOCO\EF.Reverse.POCO.Core.ttinclude" />
+    <Content Include="ReversePOCO\EF.Reverse.POCO.ttinclude" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CodeGenHero.Repository" Version="1.0.0" />
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ReversePOCO\DSN\DSNContext.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DSNContext.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

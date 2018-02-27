@@ -1,9 +1,10 @@
-﻿using CodeGenHero.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using cghConstants = CodeGenHero.DataService.Constants;
+using CodeGenHero.Logging;
 
 namespace CodeGenHero.DataService
 {
@@ -24,9 +25,9 @@ namespace CodeGenHero.DataService
 		{
 		}
 
-		public AuthenticationHeaderValue DefaultAuthenticationHeaderValue { get; set; }
+		public virtual AuthenticationHeaderValue DefaultAuthenticationHeaderValue { get; set; }
 
-		public string DefaultConnectionIdentifier
+		public virtual string DefaultConnectionIdentifier
 		{
 			get
 			{
@@ -35,10 +36,11 @@ namespace CodeGenHero.DataService
 			}
 		}
 
-		public int DefaultRequestedVersion { get; set; }
-		public IWebApiExecutionContext ExecutionContext { get; set; }
+		public virtual int DefaultRequestedVersion { get; set; }
 
-		public ILoggingService Log { get; set; }
+		public virtual IWebApiExecutionContext ExecutionContext { get; set; }
+
+		public virtual ILoggingService Log { get; set; }
 		//public PublicClientApplication PublicClientApplication
 		//{
 		//    get
@@ -70,7 +72,7 @@ namespace CodeGenHero.DataService
 		//public HttpClient GetClient(string requestedVersion = "1")
 		//{
 		//    AuthenticationHeaderValue authHeaderValue = null;
-		//    //if (ExecutionContext.AuthenticationHeaderValueType == CGHEnums.WebApiAuthenticationHeaderValueType.BearerToken
+		//    //if (ExecutionContext.AuthenticationHeaderValueType == MMSEnums.WebApiAuthenticationHeaderValueType.BearerToken
 		//    //    && !string.IsNullOrEmpty(ExecutionContext?.ClientSecret))
 		//    //{
 		//    //    ClientCredential credential = new ClientCredential(ExecutionContext.ClientSecret);
@@ -78,12 +80,12 @@ namespace CodeGenHero.DataService
 		//    //    authHeaderValue = ExecutionContext.GetAuthorizationOAuth(app);
 		//    //}
 		//    //else if
-		//    if (ExecutionContext.AuthenticationHeaderValueType == CGHEnums.WebApiAuthenticationHeaderValueType.BearerToken
+		//    if (ExecutionContext.AuthenticationHeaderValueType == MMSEnums.WebApiAuthenticationHeaderValueType.BearerToken
 		//                   && this.PublicClientApplication != null)
 		//    {
 		//        authHeaderValue = ExecutionContext.GetAuthorizationOAuth(this.PublicClientApplication);
 		//    }
-		//    else if (ExecutionContext.AuthenticationHeaderValueType == CGHEnums.WebApiAuthenticationHeaderValueType.BearerToken
+		//    else if (ExecutionContext.AuthenticationHeaderValueType == MMSEnums.WebApiAuthenticationHeaderValueType.BearerToken
 		//    && this.TokenCache != null)
 		//    {
 		//        authHeaderValue = ExecutionContext.GetAuthorizationOAuth(this.TokenCache);
@@ -93,12 +95,12 @@ namespace CodeGenHero.DataService
 		//    return retVal;
 		//}
 
-		public HttpClient GetClient(int requestedVersion = 1, string connectionIdentifier = null)
+		public virtual HttpClient GetClient(int requestedVersion = 1, string connectionIdentifier = null)
 		{
 			return GetClient(DefaultAuthenticationHeaderValue, requestedVersion, DefaultConnectionIdentifier);
 		}
 
-		public HttpClient GetClient(AuthenticationHeaderValue authorization, int requestedVersion, string connectionIdentifier)
+		public virtual HttpClient GetClient(AuthenticationHeaderValue authorization, int requestedVersion, string connectionIdentifier)
 		{
 			HttpClient client = new HttpClient();
 			client.BaseAddress = new Uri(ExecutionContext.BaseWebApiUrl);
@@ -112,13 +114,13 @@ namespace CodeGenHero.DataService
 
 				// Using content negotiation
 				//client.DefaultRequestHeaders.Accept.Add(
-				//    new MediaTypeWithQualityHeaderValue("application/vnd.api.v"
+				//    new MediaTypeWithQualityHeaderValue("application/vnd.mmsapi.v"
 				//        + requestedVersion + "+json"));
 			}
 
 			if (!string.IsNullOrEmpty(connectionIdentifier))
 			{
-				client.DefaultRequestHeaders.Add(Constants.CONNECTIONIDENTIFIER, connectionIdentifier);
+				client.DefaultRequestHeaders.Add(cghConstants.CONNECTIONIDENTIFIER, connectionIdentifier);
 			}
 
 			if (authorization != null)
@@ -133,7 +135,7 @@ namespace CodeGenHero.DataService
 
 		#region Convenience Methods
 
-		protected List<string> BuildFilter(Dictionary<string, string> filters, DateTime? minUpdatedDate, string updatedDateFieldName)
+		protected virtual List<string> BuildFilter(Dictionary<string, string> filters, DateTime? minUpdatedDate, string updatedDateFieldName)
 		{
 			var retVal = new List<string>();
 
@@ -141,161 +143,110 @@ namespace CodeGenHero.DataService
 			{
 				foreach (KeyValuePair<string, string> pair in filters)
 				{
-					retVal.Add($"{pair.Key}{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISEQUALTO}{Constants.API_FILTER_DELIMITER}{pair.Value}");
+					retVal.Add($"{pair.Key}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISEQUALTO}{cghConstants.API_FILTER_DELIMITER}{pair.Value}");
 				}
 			}
 
 			if (minUpdatedDate.HasValue && !string.IsNullOrEmpty(updatedDateFieldName))
 			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
 				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISGREATERTHANOREQUAL}{Constants.API_FILTER_DELIMITER}{encodedDateString}");
+				retVal.Add($"{updatedDateFieldName}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISGREATERTHANOREQUAL}{cghConstants.API_FILTER_DELIMITER}{encodedDateString}");
 			}
 
 			return retVal;
 		}
 
-		protected List<string> BuildFilter(Guid? companyId, DateTime? minUpdatedDate, string updatedDateFieldName)
+		protected virtual List<string> BuildFilter(Guid? companyId, DateTime? minUpdatedDate, string updatedDateFieldName)
 		{
 			return BuildFilter(companyId, null, minUpdatedDate, updatedDateFieldName);
 		}
 
-		protected List<string> BuildFilter(Guid? companyId, bool? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
+		protected virtual List<string> BuildFilter(Guid? companyId, bool? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
 
 		{
 			var retVal = new List<string>();
 
 			if (isDeleted.HasValue)
 			{
-				retVal.Add($"isDeleted{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISEQUALTO}{Constants.API_FILTER_DELIMITER}{isDeleted}");
-			}
-
-			if (companyId.HasValue && companyId != Guid.Empty)
-			{
-				retVal.Add($"companyId{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISEQUALTO}{Constants.API_FILTER_DELIMITER}{companyId}");
+				retVal.Add($"isDeleted{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISEQUALTO}{cghConstants.API_FILTER_DELIMITER}{isDeleted}");
 			}
 
 			if (minUpdatedDate.HasValue
 				&& !string.IsNullOrEmpty(updatedDateFieldName))
 			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
 				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISGREATERTHANOREQUAL}{Constants.API_FILTER_DELIMITER}{encodedDateString}");
+				retVal.Add($"{updatedDateFieldName}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISGREATERTHANOREQUAL}{cghConstants.API_FILTER_DELIMITER}{encodedDateString}");
 			}
 
 			return retVal;
 		}
 
-		protected List<string> BuildFilter(bool? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
+		protected virtual List<string> BuildFilter(bool? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
 
 		{
 			var retVal = new List<string>();
 
 			if (isDeleted.HasValue)
 			{
-				retVal.Add($"isDeleted{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISEQUALTO}{Constants.API_FILTER_DELIMITER}{isDeleted}");
+				retVal.Add($"isDeleted{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISEQUALTO}{cghConstants.API_FILTER_DELIMITER}{isDeleted}");
 			}
 
 			if (minUpdatedDate.HasValue
 				&& !string.IsNullOrEmpty(updatedDateFieldName))
 			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
 				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISGREATERTHANOREQUAL}{Constants.API_FILTER_DELIMITER}{encodedDateString}");
+				retVal.Add($"{updatedDateFieldName}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISGREATERTHANOREQUAL}{cghConstants.API_FILTER_DELIMITER}{encodedDateString}");
 			}
 
 			return retVal;
 		}
 
-		protected List<string> BuildFilter(short? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
+		protected virtual List<string> BuildFilter(short? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
 
 		{
 			var retVal = new List<string>();
 
 			if (isDeleted.HasValue)
 			{
-				retVal.Add($"isDeleted{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISEQUALTO}{Constants.API_FILTER_DELIMITER}{isDeleted}");
+				retVal.Add($"isDeleted{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISEQUALTO}{cghConstants.API_FILTER_DELIMITER}{isDeleted}");
 			}
 
 			if (minUpdatedDate.HasValue
 				&& !string.IsNullOrEmpty(updatedDateFieldName))
 			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
 				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISGREATERTHANOREQUAL}{Constants.API_FILTER_DELIMITER}{encodedDateString}");
+				retVal.Add($"{updatedDateFieldName}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISGREATERTHANOREQUAL}{cghConstants.API_FILTER_DELIMITER}{encodedDateString}");
 			}
 
 			return retVal;
 		}
 
-		protected List<string> BuildFilter(DateTime? minUpdatedDate, string updatedDateFieldName)
+		protected virtual List<string> BuildFilter(DateTime? minUpdatedDate, string updatedDateFieldName)
 		{
 			return BuildFilter(Guid.Empty, minUpdatedDate, updatedDateFieldName);
 		}
 
-		protected List<string> BuildFilterForCompanyCatalog(Guid companyCatalogId, bool? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
+		protected virtual List<string> BuildFilterForCompanyCatalog(Guid companyCatalogId, bool? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
 
 		{
 			var retVal = new List<string>();
 
 			if (isDeleted.HasValue)
 			{
-				retVal.Add($"isDeleted{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISEQUALTO}{Constants.API_FILTER_DELIMITER}{isDeleted}");
-			}
-
-			retVal.Add($"companyCatalogId{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISEQUALTO}{Constants.API_FILTER_DELIMITER}{companyCatalogId}");
-
-			if (minUpdatedDate.HasValue
-				&& !string.IsNullOrEmpty(updatedDateFieldName))
-			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
-				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISGREATERTHANOREQUAL}{Constants.API_FILTER_DELIMITER}{encodedDateString}");
-			}
-
-			return retVal;
-		}
-
-		protected List<string> BuildFilterForProductId(Guid productId, bool? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
-
-		{
-			var retVal = new List<string>();
-
-			retVal.Add($"productId{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISEQUALTO}{Constants.API_FILTER_DELIMITER}{productId}");
-
-			if (isDeleted.HasValue)
-			{
-				retVal.Add($"isDeleted{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISEQUALTO}{Constants.API_FILTER_DELIMITER}{isDeleted}");
+				retVal.Add($"isDeleted{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISEQUALTO}{cghConstants.API_FILTER_DELIMITER}{isDeleted}");
 			}
 
 			if (minUpdatedDate.HasValue
 				&& !string.IsNullOrEmpty(updatedDateFieldName))
 			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
 				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISGREATERTHANOREQUAL}{Constants.API_FILTER_DELIMITER}{encodedDateString}");
+				retVal.Add($"{updatedDateFieldName}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISGREATERTHANOREQUAL}{cghConstants.API_FILTER_DELIMITER}{encodedDateString}");
 			}
 
 			return retVal;
 		}
 
-		protected List<string> BuildFilterForPurchaseOrderLine(Guid puchaseOrderRevisionId, bool? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
-
-		{
-			var retVal = new List<string>();
-
-			if (isDeleted.HasValue)
-			{
-				retVal.Add($"isDeleted{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISEQUALTO}{Constants.API_FILTER_DELIMITER}{isDeleted}");
-			}
-
-			retVal.Add($"PurchaseOrderRevisionId{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISEQUALTO}{Constants.API_FILTER_DELIMITER}{puchaseOrderRevisionId}");
-
-			if (minUpdatedDate.HasValue
-				&& !string.IsNullOrEmpty(updatedDateFieldName))
-			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
-				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{Constants.API_FILTER_DELIMITER}{Constants.OPERATOR_ISGREATERTHANOREQUAL}{Constants.API_FILTER_DELIMITER}{encodedDateString}");
-			}
-
-			return retVal;
-		}
-
-		protected async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<int, int,
+		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<int, int,
 			Task<PageData<List<T>>>> getMethodToRun)
 		{
 			List<T> retVal = new List<T>();
@@ -324,7 +275,7 @@ namespace CodeGenHero.DataService
 			return retVal;
 		}
 
-		protected async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<DateTime?, int, int,
+		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<DateTime?, int, int,
 			Task<PageData<List<T>>>> getMethodToRun, DateTime? minUpdatedDate)
 		{
 			List<T> retVal = new List<T>();
@@ -353,7 +304,7 @@ namespace CodeGenHero.DataService
 			return retVal;
 		}
 
-		protected async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<bool?, DateTime?, int, int,
+		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<bool?, DateTime?, int, int,
 			Task<PageData<List<T>>>> getMethodToRun, bool? isDeleted, DateTime? minUpdatedDate)
 		{
 			List<T> retVal = new List<T>();
@@ -382,7 +333,7 @@ namespace CodeGenHero.DataService
 			return retVal;
 		}
 
-		protected async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<short?, DateTime?, int, int,
+		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<short?, DateTime?, int, int,
 			Task<PageData<List<T>>>> getMethodToRun, short? isDeleted, DateTime? minUpdatedDate)
 		{
 			List<T> retVal = new List<T>();
@@ -411,36 +362,7 @@ namespace CodeGenHero.DataService
 			return retVal;
 		}
 
-		//protected async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<Guid?, DateTime?, int, int,
-		//    Task<PageData<List<T>>>> getMethodToRun, Guid? companyId, DateTime? minUpdatedDate)
-		//{
-		//    List<T> retVal = new List<T>();
-		//    PageData<List<T>> results = null;
-		//    int currentPage = 1;
-		//    int pageSize = 100;
-
-		//    while (results == null
-		//        || (results.IsSuccessStatusCode == true && currentPage <= results.TotalPages))
-		//    {
-		//        results = await getMethodToRun(companyId, minUpdatedDate, currentPage, pageSize);
-		//        if (results.IsSuccessStatusCode)
-		//        {
-		//            retVal.AddRange(results.Data);
-		//        }
-		//        else
-		//        {
-		//            string dateString = minUpdatedDate.HasValue ? minUpdatedDate.Value.ToString() : string.Empty;
-		//            Context.Log.Error($"Failure detected during data retrieval with currentPage = {currentPage} and pageSize = {pageSize} using companyId {companyId} and minUpdatedDate = {dateString}",
-		//                LogMessageType.Instance.Exception_WebApi);
-		//        }
-
-		//        currentPage++;
-		//    }
-
-		//    return retVal;
-		//}
-
-		protected async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<Guid, bool?, DateTime?, int, int,
+		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<Guid, bool?, DateTime?, int, int,
 			Task<PageData<List<T>>>> getMethodToRun, Guid idCriterion, bool? isDeleted, DateTime? minUpdatedDate)
 		{
 			List<T> retVal = new List<T>();
@@ -469,7 +391,7 @@ namespace CodeGenHero.DataService
 			return retVal;
 		}
 
-		protected async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<Guid?, bool?, DateTime?, int, int,
+		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<Guid?, bool?, DateTime?, int, int,
 		Task<PageData<List<T>>>> getMethodToRun, Guid? idCriterion, bool? isDeleted, DateTime? minUpdatedDate)
 		{
 			List<T> retVal = new List<T>();
@@ -498,7 +420,7 @@ namespace CodeGenHero.DataService
 			return retVal;
 		}
 
-		protected async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<int, Guid?, bool?, DateTime?, int, int,
+		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<int, Guid?, bool?, DateTime?, int, int,
 			Task<PageData<List<T>>>> getMethodToRun, int id, Guid? companyId, bool? isDeleted, DateTime? minUpdatedDate)
 		{
 			List<T> retVal = new List<T>();
@@ -529,7 +451,7 @@ namespace CodeGenHero.DataService
 
 		#endregion Convenience Methods
 
-		public async Task<bool> IsServiceOnlineAsync()
+		public virtual async Task<bool> IsServiceOnlineAsync()
 		{
 			bool retVal = false;
 			try

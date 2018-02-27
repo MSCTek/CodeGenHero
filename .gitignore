@@ -54,3 +54,7 @@
 /src/CodeGenHero.Xam.MvvmLight/obj
 /src/CodeGenHero.Xam.Sqlite/bin
 /src/CodeGenHero.Xam.Sqlite/obj
+/src/CodeGenHero.DataService.Core/bin
+/src/CodeGenHero.DataService.Core/obj
+/src/CodeGenHero.Repository.EntityFramework/bin
+/src/CodeGenHero.Repository.EntityFramework/obj

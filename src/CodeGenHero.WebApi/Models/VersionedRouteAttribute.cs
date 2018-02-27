@@ -8,13 +8,12 @@ namespace CodeGenHero.WebApi
 	/// Provides an attribute route that's restricted to a specific version of the api.
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
-	internal class VersionedRouteWithDefaultAttribute : RouteFactoryAttribute
+	public class VersionedRouteAttribute : RouteFactoryAttribute
 	{
-		public VersionedRouteWithDefaultAttribute(string template, int allowedVersion, int defaultVersion)
+		public VersionedRouteAttribute(string template, int allowedVersion)
 			: base(template)
 		{
 			AllowedVersion = allowedVersion;
-			DefaultVersion = defaultVersion;
 		}
 
 		public int AllowedVersion
@@ -28,15 +27,9 @@ namespace CodeGenHero.WebApi
 			get
 			{
 				var constraints = new HttpRouteValueDictionary();
-				constraints.Add("version", new VersionConstraint(AllowedVersion, DefaultVersion));
+				constraints.Add("version", new VersionConstraint(AllowedVersion));
 				return constraints;
 			}
-		}
-
-		public int? DefaultVersion
-		{
-			get;
-			private set;
 		}
 	}
 }
