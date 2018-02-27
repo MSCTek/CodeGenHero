@@ -38,6 +38,7 @@ namespace MSC.BingoBuzz.Xam.Database
                     _conn.CreateTable<BingoInstanceContent>();
                     _conn.CreateTable<BingoInstanceEvent>();
                     _conn.CreateTable<BingoInstanceEventType>();
+                    _conn.CreateTable<BingoInstanceStatusType>();
                     _conn.CreateTable<Company>();
                     _conn.CreateTable<FrequencyType>();
                     _conn.CreateTable<Meeting>();
@@ -66,6 +67,7 @@ namespace MSC.BingoBuzz.Xam.Database
                     await _asyncConn.DropTableAsync<BingoInstanceContent>();
                     await _asyncConn.DropTableAsync<BingoInstanceEvent>();
                     await _asyncConn.DropTableAsync<BingoInstanceEventType>();
+                    await _asyncConn.DropTableAsync<BingoInstanceStatusType>();
                     await _asyncConn.DropTableAsync<Company>();
                     await _asyncConn.DropTableAsync<FrequencyType>();
                     await _asyncConn.DropTableAsync<Meeting>();

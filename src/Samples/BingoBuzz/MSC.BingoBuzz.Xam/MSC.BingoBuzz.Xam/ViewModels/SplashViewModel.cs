@@ -9,7 +9,7 @@ namespace MSC.BingoBuzz.Xam.ViewModels
 {
     public class SplashViewModel : CustomViewModelBase
     {
-        public SplashViewModel(INavigationService navService, IDataService dataService) : base(navService, dataService)
+        public SplashViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService) : base(navService, dataRetrievalService, stateService)
         {
         }
 

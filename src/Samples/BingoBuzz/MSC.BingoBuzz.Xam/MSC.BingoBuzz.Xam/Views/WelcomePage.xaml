@@ -50,7 +50,7 @@
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0">
                                     <Label  Text="{Binding Name}" VerticalOptions="Center" Margin="10,5,0,0" />
-                                    <Label  Text="{Binding MeetingSchedules[0].StartDateDisplay}" VerticalOptions="Center" Margin="10,0,0,5" />
+                                    <Label  Text="Get this game started..." VerticalOptions="Center" Margin="10,0,0,5" FontSize="Small" />
                                 </StackLayout>
 
                                 <Label Grid.Column="1" Text=">>" VerticalOptions="Center" Margin="10,0" />

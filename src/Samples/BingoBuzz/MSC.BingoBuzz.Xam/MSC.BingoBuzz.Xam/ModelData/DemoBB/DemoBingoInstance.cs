@@ -26,7 +26,8 @@ namespace MSC.BingoBuzz.Xam.ModelData.DemoBB
                     CreatedUserId = DemoUser.UserIdAlexander,
                     UpdatedDate = DateTime.Now,
                     UpdatedUserId = DemoUser.UserIdAlexander,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    BingoInstanceStatusTypeId = DemoBingoInstanceStatusType.SampleInactiveStatus.BingoInstanceStatusTypeId
                 };
             }
         }
@@ -46,7 +47,8 @@ namespace MSC.BingoBuzz.Xam.ModelData.DemoBB
                     CreatedUserId = DemoUser.UserIdAlexander,
                     UpdatedDate = DateTime.Now,
                     UpdatedUserId = DemoUser.UserIdAlexander,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    BingoInstanceStatusTypeId = DemoBingoInstanceStatusType.SampleInactiveStatus.BingoInstanceStatusTypeId
                 };
             }
         }
@@ -66,7 +68,8 @@ namespace MSC.BingoBuzz.Xam.ModelData.DemoBB
                     CreatedUserId = DemoUser.UserIdAlexander,
                     UpdatedDate = DateTime.Now,
                     UpdatedUserId = DemoUser.UserIdAlexander,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    BingoInstanceStatusTypeId = DemoBingoInstanceStatusType.SampleInactiveStatus.BingoInstanceStatusTypeId
                 };
             }
         }

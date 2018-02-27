@@ -9,7 +9,9 @@ namespace MSC.BingoBuzz.Xam.Modules
     {
         public override void Load()
         {
-            Bind<IDataService>().To<Services.DataService>().InSingletonScope();
+            Bind<IDataLoadService>().To<Services.DataLoadService>().InSingletonScope();
+            Bind<IDataRetrievalService>().To<Services.DataRetrievalService>().InSingletonScope();
+            Bind<IStateService>().To<Services.StateService>().InSingletonScope();
             Bind<IDatabase>().To<Database.Database>().InSingletonScope();
             Bind<ILoggingService>().To<Services.LoggingService>().InSingletonScope();
 

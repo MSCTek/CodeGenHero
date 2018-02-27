@@ -11,38 +11,19 @@ using System.Threading.Tasks;
 
 namespace MSC.BingoBuzz.Xam.Services.Design
 {
-    public class DesignDataService : IDataService
+    public class DesignDataLoadService : IDataLoadService
     {
         private SQLiteAsyncConnection _asyncConnection;
         private SQLiteConnection _connection;
         private IDatabase _database;
         private ILoggingService _log;
 
-        public DesignDataService(ILoggingService log, IDatabase database)
+        public DesignDataLoadService(ILoggingService log, IDatabase database)
         {
             _log = log;
             _database = database;
             _asyncConnection = _database.GetAsyncConnection();
             _connection = _database.GetConnection();
-        }
-
-        public async Task<List<ModelObj.BB.Meeting>> GetCurrentFutureMeetingsAsync()
-        {
-            //returns meetings with schedules, but no attendees
-            List<ModelObj.BB.Meeting> returnMe = new List<ModelObj.BB.Meeting>();
-            DateTime today = DateTime.Now.Date;
-            var dataMeetingSchedules = (await _asyncConnection.Table<ModelData.BB.MeetingSchedule>().Where(x => x.StartDate > today && x.IsDeleted == false).OrderBy(x => x.StartDate).ToListAsync());
-            foreach (var r in dataMeetingSchedules)
-            {
-                var dataMeeting = await _asyncConnection.Table<ModelData.BB.Meeting>().Where(x => x.MeetingId == r.MeetingId).FirstOrDefaultAsync();
-                if (dataMeeting != null)
-                {
-                    var objMeeting = dataMeeting.ToModelObj();
-                    objMeeting.MeetingSchedules.Add(r.ToModelObj());
-                    returnMe.Add(objMeeting);
-                }
-            }
-            return returnMe;
         }
 
         public async Task InsertAllDataCleanLocalDB()
@@ -53,7 +34,7 @@ namespace MSC.BingoBuzz.Xam.Services.Design
             int numBingoContentsInserted = await _asyncConnection.InsertAllAsync(bingoContents);
             _log.Debug($"Inserted {numBingoContentsInserted} bingo contents records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
 
-            var bingoInstanceContents = new List<ModelData.BB.BingoInstanceContent>() { DemoBingoInstanceContents.SampleBingoInstanceContent01_01, DemoBingoInstanceContents.SampleBingoInstanceContent02_01, DemoBingoInstanceContents.SampleBingoInstanceContent03_01, DemoBingoInstanceContents.SampleBingoInstanceContent04_01, DemoBingoInstanceContents.SampleBingoInstanceContent05_01, DemoBingoInstanceContents.SampleBingoInstanceContent06_01, DemoBingoInstanceContents.SampleBingoInstanceContent07_01, DemoBingoInstanceContents.SampleBingoInstanceContent08_01, DemoBingoInstanceContents.SampleBingoInstanceContent09_01, DemoBingoInstanceContents.SampleBingoInstanceContent10_01,
+            /*var bingoInstanceContents = new List<ModelData.BB.BingoInstanceContent>() { DemoBingoInstanceContents.SampleBingoInstanceContent01_01, DemoBingoInstanceContents.SampleBingoInstanceContent02_01, DemoBingoInstanceContents.SampleBingoInstanceContent03_01, DemoBingoInstanceContents.SampleBingoInstanceContent04_01, DemoBingoInstanceContents.SampleBingoInstanceContent05_01, DemoBingoInstanceContents.SampleBingoInstanceContent06_01, DemoBingoInstanceContents.SampleBingoInstanceContent07_01, DemoBingoInstanceContents.SampleBingoInstanceContent08_01, DemoBingoInstanceContents.SampleBingoInstanceContent09_01, DemoBingoInstanceContents.SampleBingoInstanceContent10_01,
                                                                                                                                       DemoBingoInstanceContents.SampleBingoInstanceContent11_01, DemoBingoInstanceContents.SampleBingoInstanceContent12_01, DemoBingoInstanceContents.SampleBingoInstanceContent13_01, DemoBingoInstanceContents.SampleBingoInstanceContent14_01, DemoBingoInstanceContents.SampleBingoInstanceContent15_01, DemoBingoInstanceContents.SampleBingoInstanceContent16_01, DemoBingoInstanceContents.SampleBingoInstanceContent17_01, DemoBingoInstanceContents.SampleBingoInstanceContent18_01, DemoBingoInstanceContents.SampleBingoInstanceContent19_01, DemoBingoInstanceContents.SampleBingoInstanceContent20_01,
                                                                                                                                       DemoBingoInstanceContents.SampleBingoInstanceContent21_01, DemoBingoInstanceContents.SampleBingoInstanceContent22_01, DemoBingoInstanceContents.SampleBingoInstanceContent23_01, DemoBingoInstanceContents.SampleBingoInstanceContent24_01, DemoBingoInstanceContents.SampleBingoInstanceContent25_01 };
             int numBingoInstanceContentsInserted = await _asyncConnection.InsertAllAsync(bingoInstanceContents);
@@ -70,22 +51,27 @@ namespace MSC.BingoBuzz.Xam.Services.Design
                                                                                                                                       DemoBingoInstanceContents.SampleBingoInstanceContent21_03, DemoBingoInstanceContents.SampleBingoInstanceContent22_03, DemoBingoInstanceContents.SampleBingoInstanceContent23_03, DemoBingoInstanceContents.SampleBingoInstanceContent24_03, DemoBingoInstanceContents.SampleBingoInstanceContent25_03 };
             int numBingoInstanceContentsInserted3 = await _asyncConnection.InsertAllAsync(bingoInstanceContents3);
             _log.Debug($"Inserted {numBingoInstanceContentsInserted3} bingo instance contents records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
-
+            */
             //var bingoInstanceEvents = _webAPIDataService.GetAllPagesBingoInstanceEventsAsync(null);
             //int numBingoInstanceEventsInserted = await _asyncConnection.InsertAllAsync(bingoContents.Select(x => x.ToModelData()).ToList());
             //_log.Debug($"Inserted {numBingoInstanceEventsInserted} bingo instance events records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
 
-            //var bingoInstanceEventTypes = _webAPIDataService.GetAllPagesBingoInstanceEventTypesAsync();
-            //int numBingoInstanceEventTypesInserted = await _asyncConnection.InsertAllAsync(bingoContents.Select(x => x.ToModelData()).ToList());
-            //_log.Debug($"Inserted {numBingoInstanceEventTypesInserted} bingo instance event type records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
+            var bingoInstanceEventTypes = new List<ModelData.BB.BingoInstanceEventType>() { DemoBingoInstanceEventType.SampleAttendeeJoinedEvent, DemoBingoInstanceEventType.SampleBingoEvent, DemoBingoInstanceEventType.SampleContentDisputedEvent,
+                                                                                                                                             DemoBingoInstanceEventType.SampleContentTappedEvent, DemoBingoInstanceEventType.SampleGameEndedEvent, DemoBingoInstanceEventType.SampleGameStartedEvent };
+            int numBingoInstanceEventTypesInserted = await _asyncConnection.InsertAllAsync(bingoInstanceEventTypes);
+            _log.Debug($"Inserted {numBingoInstanceEventTypesInserted} bingo instance event type records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
 
-            var bingoInstances = new List<ModelData.BB.BingoInstance>() { DemoBingoInstance.SampleBingoInstanceMockupReview, DemoBingoInstance.SampleBingoInstanceSprintPlanning, DemoBingoInstance.SampleBingoInstanceSprintReview };
+            var bingoInstanceStatusTypes = new List<ModelData.BB.BingoInstanceStatusType>() { DemoBingoInstanceStatusType.SampleAbandonedStatus, DemoBingoInstanceStatusType.SampleActiveStatus, DemoBingoInstanceStatusType.SampleInactiveStatus };
+            int numBingoInstanceStatusTypesInserted = await _asyncConnection.InsertAllAsync(bingoInstanceStatusTypes);
+            _log.Debug($"Inserted {numBingoInstanceStatusTypesInserted} bingo instance status type records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
+
+            /*var bingoInstances = new List<ModelData.BB.BingoInstance>() { DemoBingoInstance.SampleBingoInstanceMockupReview, DemoBingoInstance.SampleBingoInstanceSprintPlanning, DemoBingoInstance.SampleBingoInstanceSprintReview };
             int numBingoInstancesInserted = await _asyncConnection.InsertAllAsync(bingoInstances);
             _log.Debug($"Inserted {numBingoInstancesInserted} bingo instance records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
-
+            */
             var companies = new List<ModelData.BB.Company>() { DemoCompany.SampleCompanyUSA };
             int numCompaniesInserted = await _asyncConnection.InsertAllAsync(companies);
-            _log.Debug($"Inserted {numCompaniesInserted}  company records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
+            _log.Debug($"Inserted {numCompaniesInserted} company records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
 
             //var bingoFrequencyTypes = _webAPIDataService.GetAllPagesFrequencyTypesAsync();
             //int numBingoFrequencyTypesInserted = await _asyncConnection.InsertAllAsync(bingoContents.Select(x => x.ToModelData()).ToList());
@@ -101,9 +87,9 @@ namespace MSC.BingoBuzz.Xam.Services.Design
             int numMeetingsInserted = await _asyncConnection.InsertAllAsync(meetings);
             _log.Debug($"Inserted {numMeetingsInserted} meeting records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
 
-            var meetingSchedules = new List<ModelData.BB.MeetingSchedule>() { DemoMeetingSchedule.SampleMeetingSchedule3DaysAway9am, DemoMeetingSchedule.SampleMeetingSchedule5DaysAway11am, DemoMeetingSchedule.SampleMeetingSchedule5DaysAway1pm };
-            int numMeetingSchedulesInserted = await _asyncConnection.InsertAllAsync(meetingSchedules);
-            _log.Debug($"Inserted {numMeetingSchedulesInserted} meeting schedule records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
+            //var meetingSchedules = new List<ModelData.BB.MeetingSchedule>() { DemoMeetingSchedule.SampleMeetingSchedule3DaysAway9am, DemoMeetingSchedule.SampleMeetingSchedule5DaysAway11am, DemoMeetingSchedule.SampleMeetingSchedule5DaysAway1pm };
+            //int numMeetingSchedulesInserted = await _asyncConnection.InsertAllAsync(meetingSchedules);
+            //_log.Debug($"Inserted {numMeetingSchedulesInserted} meeting schedule records", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Info_Synchronization);
 
             //var notificationMethodTypes = _webAPIDataService.GetAllPagesNotificationMethodTypesAsync();
             //int numNotificationMethodTypesInserted = await _asyncConnection.InsertAllAsync(bingoContents.Select(x => x.ToModelData()).ToList());

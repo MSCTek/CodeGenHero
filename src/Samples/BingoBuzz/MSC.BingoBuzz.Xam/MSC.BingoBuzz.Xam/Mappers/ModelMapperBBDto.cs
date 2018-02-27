@@ -41,7 +41,8 @@ namespace MSC.BingoBuzz.Xam
 				NumberOfRows = source.NumberOfRows,
 				UpdatedDate = source.UpdatedDate,
 				UpdatedUserId = source.UpdatedUserId,
-			};
+                BingoInstanceStatusTypeId = source.BingoInstanceStatusTypeId
+            };
 		}
 
 		public static dtoBB.BingoInstanceContent ToDto(this objBB.BingoInstanceContent source)
@@ -253,7 +254,8 @@ namespace MSC.BingoBuzz.Xam
 				NumberOfRows = source.NumberOfRows,
 				UpdatedDate = source.UpdatedDate,
 				UpdatedUserId = source.UpdatedUserId,
-			};
+                BingoInstanceStatusTypeId = source.BingoInstanceStatusTypeId
+            };
 		}
 
 		public static dtoBB.BingoInstanceContent ToDto(this dataBB.BingoInstanceContent source)
@@ -465,7 +467,8 @@ namespace MSC.BingoBuzz.Xam
 				NumberOfRows = source.NumberOfRows,
 				UpdatedDate = source.UpdatedDate,
 				UpdatedUserId = source.UpdatedUserId,
-			};
+                BingoInstanceStatusTypeId = source.BingoInstanceStatusTypeId
+            };
 		}
 
 		public static objBB.BingoInstanceContent ToModelObj(this dtoBB.BingoInstanceContent source)
@@ -677,7 +680,8 @@ namespace MSC.BingoBuzz.Xam
 				NumberOfRows = source.NumberOfRows,
 				UpdatedDate = source.UpdatedDate,
 				UpdatedUserId = source.UpdatedUserId,
-			};
+                BingoInstanceStatusTypeId = source.BingoInstanceStatusTypeId
+            };
 		}
 
 		public static dataBB.BingoInstanceContent ToModelData(this dtoBB.BingoInstanceContent source)
