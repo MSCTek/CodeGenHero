@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.11
+Bug Fixes & Enhancements:
+* Undo signed assembly via strong name key file.
+
 ### 1.0.10
 New Features:
 * Signed assembly via strong name key file.
