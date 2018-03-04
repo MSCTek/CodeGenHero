@@ -19,7 +19,7 @@ This package should be added to projects that are the source CodeGenHero templat
     <PackageTags>CodeGenerator CodeGen MSCTek Template</PackageTags>
     <PackageReleaseNotes>Classes to support implementation of CodeGenHero templates</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>

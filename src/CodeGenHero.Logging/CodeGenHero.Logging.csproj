@@ -20,8 +20,8 @@ This package should be added to projects that are the target of CodeGenHero temp
     <PackageReleaseNotes>Base classes for logging.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Product>CodeGenHero</Product>
-    <Version>1.0.2</Version>
-    <SignAssembly>false</SignAssembly>
+    <Version>1.0.4</Version>
+    <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">

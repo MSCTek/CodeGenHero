@@ -58,3 +58,5 @@
 /src/CodeGenHero.DataService.Core/obj
 /src/CodeGenHero.Repository.EntityFramework/bin
 /src/CodeGenHero.Repository.EntityFramework/obj
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Model/bin
+/src/Samples/BingoBuzz/MSC.BingoBuzz.Model/obj

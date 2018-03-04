@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.6
+Bug Fixes & Enhancements:
+* Updated NuGet depencency package version reference for Repository.
+
 ### 1.0.2
 Bug Fixes & Enhancements:
 * Undo signed assembly via strong name key file.

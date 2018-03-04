@@ -19,7 +19,7 @@ This package should be added to projects that are the target of CodeGenHero temp
     <PackageTags>CodeGenerator CodeGen MSCTek WebApi</PackageTags>
     <PackageReleaseNotes>Classes to support WebApi controllers</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -37,8 +37,8 @@ This package should be added to projects that are the target of CodeGenHero temp
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeGenHero.Logging" Version="1.0.0" />
-    <PackageReference Include="CodeGenHero.Repository.AutoMapper" Version="1.0.0" />
+    <PackageReference Include="CodeGenHero.Logging" Version="1.0.4" />
+    <PackageReference Include="CodeGenHero.Repository.AutoMapper" Version="1.0.5" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.4" />
     <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
     <PackageReference Include="System.Linq.Dynamic" Version="1.0.7" />

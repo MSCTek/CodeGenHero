@@ -23,7 +23,7 @@ This package should be added to projects that are the target of CodeGenHero temp
     <PackageTags>CodeGenerator CodeGen MSCTek AutoMapper DTO repository</PackageTags>
     <PackageReleaseNotes>Classes to support mapping from repository data classes (Entity Framework) objects to DTO's and back.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.0.2</Version>
+    <Version>1.0.6</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -42,7 +42,7 @@ This package should be added to projects that are the target of CodeGenHero temp
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="CodeGenHero.Repository" Version="1.0.0" />
+    <PackageReference Include="CodeGenHero.Repository" Version="1.0.4" />
     <PackageReference Include="NuGet.Build.Tasks.Pack" Version="4.6.0-rtm-4825">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

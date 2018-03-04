@@ -2,7 +2,7 @@
 
 ### 1.0.2
 Bug Fixes & Enhancements:
-* Undo signed assembly via strong name key file.
+* Added HiddenIndicator support.
 
 ### 1.0.1
 New Features:

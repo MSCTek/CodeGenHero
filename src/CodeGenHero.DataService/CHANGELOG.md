@@ -1,5 +1,10 @@
 ﻿## Changelog
 
+### 1.0.13
+Bug Fixes & Enhancements:
+* Consolidated CodeGenHero.DataService and CodeGenHero.DataService.Core projects.
+* Incorporated support for BaseModel to support a generic IDataService.
+
 ### 1.0.11
 Bug Fixes & Enhancements:
 * Undo signed assembly via strong name key file.
