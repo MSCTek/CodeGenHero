@@ -12,7 +12,7 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 
-namespace MSC.BingoBuzz.Repository.Entities.BB
+namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
 {
 
     public partial interface IBBDataContext : System.IDisposable
@@ -22,6 +22,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
         System.Data.Entity.DbSet<BingoInstanceContent> BingoInstanceContents { get; set; } // BingoInstanceContent
         System.Data.Entity.DbSet<BingoInstanceEvent> BingoInstanceEvents { get; set; } // BingoInstanceEvent
         System.Data.Entity.DbSet<BingoInstanceEventType> BingoInstanceEventTypes { get; set; } // BingoInstanceEventType
+        System.Data.Entity.DbSet<BingoInstanceStatusType> BingoInstanceStatusTypes { get; set; } // BingoInstanceStatusType
         System.Data.Entity.DbSet<Company> Companies { get; set; } // Company
         System.Data.Entity.DbSet<FrequencyType> FrequencyTypes { get; set; } // FrequencyType
         System.Data.Entity.DbSet<Meeting> Meetings { get; set; } // Meeting

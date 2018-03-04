@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace MSC.BingoBuzz.Xam.Mappers
+namespace CodeGenHero.BingoBuzz.Xam.Mappers
 {
     public static class MapperExtension
     {

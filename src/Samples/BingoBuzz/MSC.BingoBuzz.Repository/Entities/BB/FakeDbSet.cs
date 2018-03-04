@@ -12,7 +12,7 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 
-namespace MSC.BingoBuzz.Repository.Entities.BB
+namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
 {
 
     using System.Linq;

@@ -8,20 +8,14 @@
       "Name": "DTO",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "DTOIncludeRelatedObjects",
           "Value": "true"
         },
         {
-          "Name": "DTONamespace",
-          "Value": "{baseNamespace}.DTO.{namespacePostfix}"
-        },
-        {
+          "HiddenIndicator": false,
           "Name": "DTOOutputFilePath",
           "Value": "DTO\\{namespacePostfix}\\[tablename].cs"
-        },
-        {
-          "Name": "PrependSchemaNameIndicator",
-          "Value": "true"
         }
       ],
       "Version": "1.0"
@@ -33,20 +27,9 @@
       "Name": "MapperDtoToSqliteModelDataAndMvvmLightModelObject",
       "Settings": [
         {
-          "Name": "DtoNamespace",
-          "Value": "{baseNamespace}.DTO.{namespacePostfix}"
-        },
-        {
+          "HiddenIndicator": false,
           "Name": "MapperDtoToSqliteModelDataAndMvvmLightModelObjectOutputFilePath",
           "Value": "Xamarin\\ModelMapper\\ModelMapper{namespacePostfix}Dto.cs"
-        },
-        {
-          "Name": "SqliteModelDataNamespace",
-          "Value": "{baseNamespace}.Xam.ModelData.{namespacePostfix}"
-        },
-        {
-          "Name": "SqliteModelObjectNamespace",
-          "Value": "{baseNamespace}.Xam.ModelObj.{namespacePostfix}"
         }
       ],
       "Version": "1.0"
@@ -58,6 +41,7 @@
       "Name": "MapperSqliteModelDataToMvvmLightModelObject",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "MapperSqliteModelDataToMvvmLightModelObjectOutputFilePath",
           "Value": "Xamarin\\ModelMapper\\ModelMapper{namespacePostfix}.cs"
         }
@@ -71,12 +55,14 @@
       "Name": "MvvmLightModelObject",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "MvvmLightModelObjectOutputFilePath",
           "Value": "Xamarin\\ModelObj\\{namespacePostfix}\\[tablename].cs"
         },
         {
+          "HiddenIndicator": false,
           "Name": "SqliteModelObjectBaseAuditEditNamespace",
-          "Value": "CodeGenHero.EAMVCXamPOCO.Xam.ModelObj"
+          "Value": "CodeGenHero.Xam.MvvmLight"
         }
       ],
       "Version": "1.0"
@@ -88,66 +74,14 @@
       "Name": "SqliteModelData",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "SqliteModelDataBaseAuditEditNamespace",
-          "Value": "CodeGenHero.EAMVCXamPOCO.Xam.ModelData"
+          "Value": "CodeGenHero.Xam.Sqlite"
         },
         {
+          "HiddenIndicator": false,
           "Name": "sqliteModelDataOutputFilePath",
           "Value": "Xamarin\\ModelData\\{namespacePostfix}\\[tablename].cs"
-        }
-      ],
-      "Version": "1.0"
-    },
-    {
-      "Description": "Provides functionality to abstract calls to Web API services.",
-      "Id": "424e7ec7-bd9d-4cd3-9257-6ffbc772b82e",
-      "IsActive": false,
-      "Name": "WebApiDataService",
-      "Settings": [
-        {
-          "Name": "ILoggingServiceNamespace",
-          "Value": "CodeGenHero.EAMVCXamPOCO.Interface"
-        },
-        {
-          "Name": "IWebApiExecutionContextNamespace",
-          "Value": "CodeGenHero.EAMVCXamPOCO.DataService.Interface"
-        },
-        {
-          "Name": "SerializationHelperNamespace",
-          "Value": "{baseNamespace}.Common.Helpers"
-        },
-        {
-          "Name": "UpdatedDateFieldName",
-          "Value": "UpdatedDate"
-        },
-        {
-          "Name": "WebApiDataServiceBaseNamespace",
-          "Value": "CodeGenHero.EAMVCXamPOCO.DataService"
-        },
-        {
-          "Name": "WebApiDataServiceNamespace",
-          "Value": "{baseNamespace}.API.Client"
-        },
-        {
-          "Name": "WebApiDataServiceOutputFilePath",
-          "Value": "Client\\WebAPIDataService\\WebAPIDataService{namespacePostfix}.cs"
-        }
-      ],
-      "Version": "1.0"
-    },
-    {
-      "Description": "Provides an interface for the implementation class that provides functionality to abstract calls to Web API services.",
-      "Id": "1ea810ed-61a7-443b-97f2-da5b30311e75",
-      "IsActive": false,
-      "Name": "WebApiDataServiceInterface",
-      "Settings": [
-        {
-          "Name": "WebApiDataServiceInterfaceClassName",
-          "Value": "IWebApiDataService{namespacePostfix}"
-        },
-        {
-          "Name": "WebApiDataServiceInterfaceOutputFilePath",
-          "Value": "Client\\IWebApiDataservice\\IWebApiDataService{namespacePostfix}.cs"
         }
       ],
       "Version": "1.0"
@@ -158,44 +92,49 @@
   "Name": null,
   "Settings": [
     {
-      "Name": "baseNamespace",
-      "Value": "MSC.BingoBuzz"
-    },
-    {
-      "Name": "DefaultCriteria",
-      "Value": "DateTime? minUpdatedDate"
-    },
-    {
+      "HiddenIndicator": false,
       "Name": "DtoNamespace",
       "Value": "{baseNamespace}.DTO.{namespacePostfix}"
     },
     {
-      "Name": "WebApiDataServiceInterfaceNamespace",
-      "Value": "{baseNamespace}.API.Client.Interface"
+      "HiddenIndicator": false,
+      "Name": "BaseNamespace",
+      "Value": "CodeGenHero.BingoBuzz"
     },
     {
+      "HiddenIndicator": false,
       "Name": "NamespacePostfix",
       "Value": "BB"
     },
     {
+      "HiddenIndicator": false,
       "Name": "PrependSchemaNameIndicator",
       "Value": "true"
     },
     {
+      "HiddenIndicator": false,
+      "Name": "RepositoryDbContextName",
+      "Value": "{namespacePostFix}DataContext"
+    },
+    {
+      "HiddenIndicator": false,
       "Name": "SqliteModelDataNamespace",
       "Value": "{baseNamespace}.Xam.ModelData.{namespacePostfix}"
     },
     {
-      "Name": "SqliteModelObjectNamespace",
-      "Value": "{baseNamespace}.Xam.ModelObj.{namespacePostfix}"
-    },
-    {
+      "HiddenIndicator": false,
       "Name": "SqliteModelMapperClassName",
       "Value": "ModelMapper"
     },
     {
+      "HiddenIndicator": false,
       "Name": "SqliteModelMapperClassNamespace",
       "Value": "{baseNamespace}.Xam"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "SqliteModelObjectNamespace",
+      "Value": "{baseNamespace}.Xam.ModelObj.{namespacePostfix}"
     }
   ],
   "Version": null

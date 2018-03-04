@@ -8,30 +8,32 @@
       "Name": "APIBaseController",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "ApiBaseControllerOutputFilePath",
           "Value": "Controllers\\Base\\{namespacePostfix}BaseApiController.cs"
         },
         {
+          "HiddenIndicator": false,
           "Name": "AutoInvalidateCacheOutput",
           "Value": "false"
         },
         {
+          "HiddenIndicator": false,
           "Name": "BaseApiControllerClassName",
           "Value": "{namespacePostfix}BaseApiController"
         },
         {
+          "HiddenIndicator": false,
           "Name": "BaseApiControllerNameSpace",
           "Value": "{baseNamespace}.API.Controllers.{namespacePostfix}"
         },
         {
+          "HiddenIndicator": false,
           "Name": "IsAuthorizedControllerBaseClass",
           "Value": "false"
         },
         {
-          "Name": "LoggingServiceFullyQualifiedClassName",
-          "Value": "CodeGenHero.EAMVCXamPOCO.Service.Log4NetLoggingService"
-        },
-        {
+          "HiddenIndicator": false,
           "Name": "UseIdentityBasicAuthenticationAttribute",
           "Value": "false"
         }
@@ -45,6 +47,7 @@
       "Name": "APIStatusController",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "ApiStatusControllerOutputFilePath",
           "Value": "Controllers\\Base\\{namespacePostfix}APIStatusController.cs"
         }
@@ -58,6 +61,7 @@
       "Name": "AutoMapperProfile",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "AutomapperProfileOutputFilePath",
           "Value": "Repository\\Infrastructure\\{namespacePostfix}AutoMapperProfile.cs"
         }
@@ -71,16 +75,57 @@
       "Name": "DTO",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "DTOIncludeRelatedObjects",
           "Value": "true"
         },
         {
-          "Name": "DTONamespace",
-          "Value": "{baseNamespace}.DTO.{namespacePostfix}"
-        },
-        {
+          "HiddenIndicator": false,
           "Name": "DTOOutputFilePath",
           "Value": "DTO\\{namespacePostfix}\\[tablename].cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Models Backed By Dto Objects).",
+      "Id": "4d03f2c7-de26-4abe-a267-cad747c9606a",
+      "IsActive": false,
+      "Name": "ModelsBackedByDto",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "ClassNameSpace",
+          "Value": "{baseNamespace}.Model"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "ModelsBackedByDtoInterfaceNamespace",
+          "Value": "{baseNamespace}.Model.{namespacePostfix}.Interface"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "ModelsBackedByDtoOutputFilePath",
+          "Value": "[tablename].cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Models Backed By Dto Interace Object).",
+      "Id": "4d03f2c7-de27-4aae-a267-cad747c9606a",
+      "IsActive": false,
+      "Name": "ModelsBackedByDtoInterface",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "ClassNameSpace",
+          "Value": "{baseNamespace}.Model.{namespacePostfix}.Interface"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "ModelsBackedByDtoInterfaceOutputFilePath",
+          "Value": "I[tablename].cs"
         }
       ],
       "Version": "1.0"
@@ -92,6 +137,7 @@
       "Name": "Repository",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "RepositoryOutputFilePath",
           "Value": "Repository\\Repository\\{namespacePostfix}Repository.cs"
         }
@@ -105,6 +151,7 @@
       "Name": "RepositoryBase",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "RepositoryBaseOutputFilePath",
           "Value": "Repository\\Repository\\{namespacePostfix}RepositoryBase.cs"
         }
@@ -118,6 +165,7 @@
       "Name": "RepositoryInterface",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "RepositoryInterfaceOutputFilePath",
           "Value": "Repository\\Interface\\I{namespacePostfix}Repository.cs"
         }
@@ -131,6 +179,7 @@
       "Name": "RepositoryInterfaceCrud",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "RepositoryInterfaceCrudOutputFilePath",
           "Value": "Repository\\Interface\\I{namespacePostfix}RepositoryCrud.cs"
         }
@@ -144,30 +193,32 @@
       "Name": "WebApiController",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "FactoryNamespace",
           "Value": "{baseNamespace}.Repository.Factory"
         },
         {
+          "HiddenIndicator": false,
           "Name": "MaxRequestPerPageOverrideByTableName",
           "Value": null
         },
         {
-          "Name": "RepositoryEntitiesNamespace",
-          "Value": "{repositoryNamespace}.Entities.{namespacePostfix}"
-        },
-        {
+          "HiddenIndicator": false,
           "Name": "UseAuthorizedBaseController",
           "Value": "false"
         },
         {
+          "HiddenIndicator": false,
           "Name": "WebApiController",
           "Value": "Controllers\\{namespacePostfix}\\[tablepluralname]Controller.cs"
         },
         {
+          "HiddenIndicator": false,
           "Name": "WebApiControllerNamespace",
           "Value": "{baseNamespace}.API.Controllers.{namespacePostfix}"
         },
         {
+          "HiddenIndicator": false,
           "Name": "WebApiControllerOutputFilePath",
           "Value": "Controllers\\{namespacePostfix}\\[tablepluralname]Controller.cs"
         }
@@ -181,37 +232,24 @@
       "Name": "WebApiDataService",
       "Settings": [
         {
+          "HiddenIndicator": false,
           "Name": "SerializationHelperNamespace",
           "Value": "{baseNamespace}.Common.Helpers"
         },
         {
+          "HiddenIndicator": false,
           "Name": "UpdatedDateFieldName",
           "Value": "UpdatedDate"
         },
         {
-          "Name": "WebApiDataServiceBaseNamespace",
-          "Value": "CodeGenHero.EAMVCXamPOCO.DataService"
-        },
-        {
+          "HiddenIndicator": false,
           "Name": "WebApiDataServiceNamespace",
           "Value": "{baseNamespace}.API.Client"
         },
         {
+          "HiddenIndicator": false,
           "Name": "WebApiDataServiceOutputFilePath",
           "Value": "Client\\WebAPIDataService\\WebAPIDataService{namespacePostfix}.cs"
-        }
-      ],
-      "Version": "1.0"
-    },
-    {
-      "Description": "Provides an interface for the base class underlying functionality to abstract calls to Web API services.",
-      "Id": "b2b99011-802c-4f2d-9da0-30eb01331f89",
-      "IsActive": false,
-      "Name": "WebApiDataServiceBaseInterface",
-      "Settings": [
-        {
-          "Name": "WebApiDataServiceBaseInterfaceOutputFilePath",
-          "Value": "Client\\IWebApiDataservice\\IWebApiDataServiceBase.cs"
         }
       ],
       "Version": "1.0"
@@ -223,10 +261,7 @@
       "Name": "WebApiDataServiceInterface",
       "Settings": [
         {
-          "Name": "WebApiDataServiceInterfaceClassName",
-          "Value": "IWebApiDataService{namespacePostfix}"
-        },
-        {
+          "HiddenIndicator": false,
           "Name": "WebApiDataServiceInterfaceOutputFilePath",
           "Value": "Client\\IWebApiDataservice\\IWebApiDataService{namespacePostfix}.cs"
         }
@@ -239,58 +274,77 @@
   "Name": null,
   "Settings": [
     {
-      "Name": "baseNamespace",
-      "Value": "MSC.BingoBuzz"
-    },
-    {
-      "Name": "ApiHelpersNamespace",
-      "Value": "{baseNamespace}.API.Helpers"
-    },
-    {
-      "Name": "EnumNamespace",
-      "Value": "{baseNamespace}.Constants.Enums"
-    },
-    {
-      "Name": "EnumNamespacePrefix",
-      "Value": "appEnums"
-    },
-    {
-      "Name": "ILoggingServiceNamespace",
-      "Value": "CodeGenHero.EAMVCXamPOCO.Interface"
-    },
-    {
+      "HiddenIndicator": false,
       "Name": "RepositoryInterfaceNamespace",
       "Value": "{baseNamespace}.Repository.Interface"
     },
     {
+      "HiddenIndicator": false,
+      "Name": "BaseNamespace",
+      "Value": "CodeGenHero.BingoBuzz"
+    },
+    {
+      "HiddenIndicator": false,
       "Name": "NamespacePostfix",
       "Value": "BB"
     },
     {
+      "HiddenIndicator": false,
       "Name": "PrependSchemaNameIndicator",
       "Value": "true"
     },
     {
+      "HiddenIndicator": false,
+      "Name": "RepositoryDbContextName",
+      "Value": "{namespacePostFix}DataContext"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "DTONamespace",
+      "Value": "{baseNamespace}.DTO.{namespacePostfix}"
+    },
+    {
+      "HiddenIndicator": false,
       "Name": "DbContextName",
       "Value": "{namespacePostFix}DataContext"
     },
     {
+      "HiddenIndicator": false,
+      "Name": "RepositoryEntitiesNamespace",
+      "Value": "{repositoryNamespace}.Entities.{namespacePostfix}"
+    },
+    {
+      "HiddenIndicator": false,
       "Name": "RepositoryNamespace",
       "Value": "{baseNamespace}.Repository"
     },
     {
-      "Name": "DtoNamespace",
-      "Value": "{baseNamespace}.DTO.{namespacePostfix}"
+      "HiddenIndicator": false,
+      "Name": "ApiHelpersNamespace",
+      "Value": "{baseNamespace}.API.Helpers"
     },
     {
-      "Name": "IWebApiExecutionContextNamespace",
-      "Value": "CodeGenHero.EAMVCXamPOCO.DataService.Interface"
+      "HiddenIndicator": false,
+      "Name": "EnumNamespace",
+      "Value": "{baseNamespace}.Constants.Enums"
     },
     {
+      "HiddenIndicator": false,
+      "Name": "ILoggingServiceNamespace",
+      "Value": "CodeGenHero.Logging"
+    },
+    {
+      "HiddenIndicator": false,
       "Name": "WebApiDataServiceInterfaceNamespace",
       "Value": "{baseNamespace}.API.Client.Interface"
     },
     {
+      "HiddenIndicator": false,
+      "Name": "WebApiDataServiceInterfaceClassName",
+      "Value": "IWebApiDataService{namespacePostfix}"
+    },
+    {
+      "HiddenIndicator": false,
       "Name": "DefaultCriteria",
       "Value": "DateTime? minUpdatedDate"
     }

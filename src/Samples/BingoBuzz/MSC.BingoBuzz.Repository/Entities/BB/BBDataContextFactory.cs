@@ -12,7 +12,7 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 
-namespace MSC.BingoBuzz.Repository.Entities.BB
+namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
 {
 
     public class BBDataContextFactory : System.Data.Entity.Infrastructure.IDbContextFactory<BBDataContext>

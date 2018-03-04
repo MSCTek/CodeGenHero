@@ -1,10 +1,10 @@
-﻿using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Xam.ModelObj.BB;
+﻿using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.ModelObj.BB;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MSC.BingoBuzz.Xam.Services
+namespace CodeGenHero.BingoBuzz.Xam.Services
 {
     public class StateService : IStateService
     {

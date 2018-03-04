@@ -1,6 +1,6 @@
-﻿using MSC.BingoBuzz.Interfaces;
-using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Xam.ViewModels;
+﻿using CodeGenHero.BingoBuzz.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace MSC.BingoBuzz.Xam.Services.Mocks
+namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
 {
     public class MockNavigationService : INavigationService
     {

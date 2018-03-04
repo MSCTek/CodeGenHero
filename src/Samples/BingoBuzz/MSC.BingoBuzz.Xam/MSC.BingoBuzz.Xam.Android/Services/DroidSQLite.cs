@@ -10,10 +10,10 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using MSC.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
 using SQLite;
 
-namespace MSC.BingoBuzz.Xam.Droid.Services
+namespace CodeGenHero.BingoBuzz.Xam.Droid.Services
 {
     public class DroidSQLite : ISQLite
     {

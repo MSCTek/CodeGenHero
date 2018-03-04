@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MSC.BingoBuzz.Constants
+namespace CodeGenHero.BingoBuzz.Constants
 {
 	public static class Enums
 	{

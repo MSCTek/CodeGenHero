@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace MSC.BingoBuzz.Xam.iOS
+namespace CodeGenHero.BingoBuzz.Xam.iOS
 {
     public class Application
     {

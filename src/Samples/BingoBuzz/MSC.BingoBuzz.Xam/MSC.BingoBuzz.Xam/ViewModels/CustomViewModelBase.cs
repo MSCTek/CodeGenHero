@@ -5,13 +5,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MSC.BingoBuzz.Constants;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Interfaces;
 
-namespace MSC.BingoBuzz.Xam.ViewModels
+namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
     public abstract class CustomViewModelBase<TParameter> : CustomViewModelBase, IViewModelBaseWithParam<TParameter>
     {

@@ -12,7 +12,7 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 
-namespace MSC.BingoBuzz.Repository.Entities.BB
+namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
 {
 
     // BingoInstance
@@ -34,6 +34,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
             Property(x => x.NumberOfColumns).HasColumnName(@"NumberOfColumns").HasColumnType("int").IsRequired();
             Property(x => x.NumberOfRows).HasColumnName(@"NumberOfRows").HasColumnType("int").IsRequired();
             Property(x => x.IncludeFreeSquareIndicator).HasColumnName(@"IncludeFreeSquareIndicator").HasColumnType("bit").IsRequired();
+            Property(x => x.BingoInstanceStatusTypeId).HasColumnName(@"BingoInstanceStatusTypeId").HasColumnType("int").IsRequired();
             Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").HasColumnType("datetime2").IsRequired();
             Property(x => x.CreatedUserId).HasColumnName(@"CreatedUserId").HasColumnType("uniqueidentifier").IsRequired();
             Property(x => x.UpdatedDate).HasColumnName(@"UpdatedDate").HasColumnType("datetime2").IsRequired();

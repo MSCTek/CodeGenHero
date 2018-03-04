@@ -1,14 +1,14 @@
-﻿using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Xam.Services;
-using MSC.BingoBuzz.Xam.ViewModels;
-using MSC.BingoBuzz.Xam.Views;
+﻿using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Services;
+using CodeGenHero.BingoBuzz.Xam.ViewModels;
+using CodeGenHero.BingoBuzz.Xam.Views;
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace MSC.BingoBuzz.Xam.Modules
+namespace CodeGenHero.BingoBuzz.Xam.Modules
 {
     internal class NavigationModule : NinjectModule
     {

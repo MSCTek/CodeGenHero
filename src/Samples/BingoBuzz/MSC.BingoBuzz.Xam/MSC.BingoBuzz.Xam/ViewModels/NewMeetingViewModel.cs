@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using MSC.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
 
-namespace MSC.BingoBuzz.Xam.ViewModels
+namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
     public class NewMeetingViewModel : CustomViewModelBase
     {

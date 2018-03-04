@@ -1,9 +1,9 @@
-﻿using CodeGenHero.EAMVCXamPOCO.Interface;
-using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Xam.ViewModels;
+﻿using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.ViewModels;
+using CodeGenHero.Logging;
 using Ninject.Modules;
 
-namespace MSC.BingoBuzz.Xam.Modules
+namespace CodeGenHero.BingoBuzz.Xam.Modules
 {
     public class CoreModule : NinjectModule
     {

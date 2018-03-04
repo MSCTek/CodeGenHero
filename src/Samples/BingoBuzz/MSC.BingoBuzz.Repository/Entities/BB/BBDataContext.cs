@@ -12,7 +12,7 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 
-namespace MSC.BingoBuzz.Repository.Entities.BB
+namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
 {
 
     using System.Linq;
@@ -25,6 +25,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
         public System.Data.Entity.DbSet<BingoInstanceContent> BingoInstanceContents { get; set; } // BingoInstanceContent
         public System.Data.Entity.DbSet<BingoInstanceEvent> BingoInstanceEvents { get; set; } // BingoInstanceEvent
         public System.Data.Entity.DbSet<BingoInstanceEventType> BingoInstanceEventTypes { get; set; } // BingoInstanceEventType
+        public System.Data.Entity.DbSet<BingoInstanceStatusType> BingoInstanceStatusTypes { get; set; } // BingoInstanceStatusType
         public System.Data.Entity.DbSet<Company> Companies { get; set; } // Company
         public System.Data.Entity.DbSet<FrequencyType> FrequencyTypes { get; set; } // FrequencyType
         public System.Data.Entity.DbSet<Meeting> Meetings { get; set; } // Meeting
@@ -93,6 +94,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
             modelBuilder.Configurations.Add(new BingoInstanceContentConfiguration());
             modelBuilder.Configurations.Add(new BingoInstanceEventConfiguration());
             modelBuilder.Configurations.Add(new BingoInstanceEventTypeConfiguration());
+            modelBuilder.Configurations.Add(new BingoInstanceStatusTypeConfiguration());
             modelBuilder.Configurations.Add(new CompanyConfiguration());
             modelBuilder.Configurations.Add(new FrequencyTypeConfiguration());
             modelBuilder.Configurations.Add(new MeetingConfiguration());
@@ -113,6 +115,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
             modelBuilder.Configurations.Add(new BingoInstanceContentConfiguration(schema));
             modelBuilder.Configurations.Add(new BingoInstanceEventConfiguration(schema));
             modelBuilder.Configurations.Add(new BingoInstanceEventTypeConfiguration(schema));
+            modelBuilder.Configurations.Add(new BingoInstanceStatusTypeConfiguration(schema));
             modelBuilder.Configurations.Add(new CompanyConfiguration(schema));
             modelBuilder.Configurations.Add(new FrequencyTypeConfiguration(schema));
             modelBuilder.Configurations.Add(new MeetingConfiguration(schema));

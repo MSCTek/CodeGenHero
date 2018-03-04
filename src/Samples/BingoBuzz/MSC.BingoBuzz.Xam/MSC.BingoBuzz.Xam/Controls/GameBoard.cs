@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
-namespace MSC.BingoBuzz.Xam.Controls
+namespace CodeGenHero.BingoBuzz.Xam.Controls
 {
     public class GameBoard : ContentView, IDisposable
     {

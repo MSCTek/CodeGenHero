@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
-using MSC.BingoBuzz.Xam.iOS.Modules;
+using CodeGenHero.BingoBuzz.Xam.iOS.Modules;
 using UIKit;
 
-namespace MSC.BingoBuzz.Xam.iOS
+namespace CodeGenHero.BingoBuzz.Xam.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the
     // User Interface of the application, as well as listening (and optionally responding) to

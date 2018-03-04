@@ -1,11 +1,11 @@
-﻿using MSC.BingoBuzz.Xam.Interfaces;
+﻿using CodeGenHero.BingoBuzz.Xam.Interfaces;
 using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace MSC.BingoBuzz.Xam.iOS.Services
+namespace CodeGenHero.BingoBuzz.Xam.iOS.Services
 {
     public class IOSSQLite : ISQLite
     {

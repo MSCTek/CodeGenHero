@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CodeGenHero.DataService" Version="1.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MSC.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MSC.CodeGenHero.EAMVCXamPOCO.Standard">
+      <HintPath>..\Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

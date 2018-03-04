@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace MSC.BingoBuzz.Xam.UWP
+namespace CodeGenHero.BingoBuzz.Xam.UWP
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -61,7 +61,7 @@ namespace MSC.BingoBuzz.Xam.UWP
                 List<Assembly> assembliesToInclude = new List<Assembly>();
 
                 //Now, add in all the assemblies your app uses
-                assembliesToInclude.Add(typeof(MSC.BingoBuzz.Xam.App).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(CodeGenHero.BingoBuzz.Xam.App).GetTypeInfo().Assembly);
                 assembliesToInclude.Add(typeof(GalaSoft.MvvmLight.ViewModelBase).GetTypeInfo().Assembly);
                 assembliesToInclude.Add(typeof(Xamarin.Forms.Platform.UWP.PageControl).GetTypeInfo().Assembly);
                 assembliesToInclude.Add(typeof(Xamarin.Forms.Xaml.ArrayExtension).GetTypeInfo().Assembly);

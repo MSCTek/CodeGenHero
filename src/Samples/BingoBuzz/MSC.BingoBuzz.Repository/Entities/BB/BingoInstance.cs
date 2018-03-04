@@ -12,7 +12,7 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 
-namespace MSC.BingoBuzz.Repository.Entities.BB
+namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
 {
 
     // BingoInstance
@@ -24,6 +24,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
         public int NumberOfColumns { get; set; } // NumberOfColumns
         public int NumberOfRows { get; set; } // NumberOfRows
         public bool IncludeFreeSquareIndicator { get; set; } // IncludeFreeSquareIndicator
+        public int BingoInstanceStatusTypeId { get; set; } // BingoInstanceStatusTypeId
         public System.DateTime CreatedDate { get; set; } // CreatedDate
         public System.Guid CreatedUserId { get; set; } // CreatedUserId
         public System.DateTime UpdatedDate { get; set; } // UpdatedDate

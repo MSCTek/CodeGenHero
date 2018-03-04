@@ -1,10 +1,10 @@
-﻿using MSC.BingoBuzz.Xam.Interfaces;
+﻿using CodeGenHero.BingoBuzz.Xam.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSC.BingoBuzz.Xam.Services.Mocks
+namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
 {
     public class MockDataLoadService : IDataLoadService
     {

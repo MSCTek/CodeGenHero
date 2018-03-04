@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MSC.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
 using SQLite;
 using Windows.Storage;
 
-namespace MSC.BingoBuzz.Xam.UWP.Services
+namespace CodeGenHero.BingoBuzz.Xam.UWP.Services
 {
     public class UWPSQLite : ISQLite
     {

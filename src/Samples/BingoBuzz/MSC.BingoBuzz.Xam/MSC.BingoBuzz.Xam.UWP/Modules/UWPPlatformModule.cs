@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Xam.UWP.Services;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.UWP.Services;
 
-namespace MSC.BingoBuzz.Xam.UWP.Modules
+namespace CodeGenHero.BingoBuzz.Xam.UWP.Modules
 {
     public class UWPPlatformModule : NinjectModule
     {

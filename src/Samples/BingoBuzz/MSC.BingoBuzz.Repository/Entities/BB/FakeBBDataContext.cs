@@ -12,7 +12,7 @@
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
 
-namespace MSC.BingoBuzz.Repository.Entities.BB
+namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
 {
 
     using System.Linq;
@@ -25,6 +25,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
         public System.Data.Entity.DbSet<BingoInstanceContent> BingoInstanceContents { get; set; }
         public System.Data.Entity.DbSet<BingoInstanceEvent> BingoInstanceEvents { get; set; }
         public System.Data.Entity.DbSet<BingoInstanceEventType> BingoInstanceEventTypes { get; set; }
+        public System.Data.Entity.DbSet<BingoInstanceStatusType> BingoInstanceStatusTypes { get; set; }
         public System.Data.Entity.DbSet<Company> Companies { get; set; }
         public System.Data.Entity.DbSet<FrequencyType> FrequencyTypes { get; set; }
         public System.Data.Entity.DbSet<Meeting> Meetings { get; set; }
@@ -42,6 +43,7 @@ namespace MSC.BingoBuzz.Repository.Entities.BB
             BingoInstanceContents = new FakeDbSet<BingoInstanceContent>("BingoInstanceContentId");
             BingoInstanceEvents = new FakeDbSet<BingoInstanceEvent>("BingoInstanceEventId");
             BingoInstanceEventTypes = new FakeDbSet<BingoInstanceEventType>("BingoInstanceEventTypeId");
+            BingoInstanceStatusTypes = new FakeDbSet<BingoInstanceStatusType>("BingoInstanceStatusTypeId");
             Companies = new FakeDbSet<Company>("CompanyId");
             FrequencyTypes = new FakeDbSet<FrequencyType>("FrequencyTypeId");
             Meetings = new FakeDbSet<Meeting>("MeetingId");

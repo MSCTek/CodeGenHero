@@ -1,6 +1,4 @@
-﻿using CodeGenHero.EAMVCXamPOCO;
-using CodeGenHero.EAMVCXamPOCO.Interface;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AppCenter;
@@ -8,8 +6,9 @@ using Microsoft.AppCenter.Analytics;
 using System.Linq;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using CodeGenHero.Logging;
 
-namespace MSC.BingoBuzz.Xam.Services
+namespace CodeGenHero.BingoBuzz.Xam.Services
 {
     public class LoggingService : ILoggingService
     {
@@ -21,7 +20,7 @@ namespace MSC.BingoBuzz.Xam.Services
         //TODO: rework the logging service to accept a dict of additional data and remove the returned guid.
         public Enums.LogLevel CurrentLogLevel { get; set; }
 
-        public Guid Debug(string message, Enums.LogMessageType logMessageType, Exception ex = null, string userName = null, string clientIPAddress = null, [CallerMemberName] string methodName = null, [CallerFilePath] string sourceFile = null, [CallerLineNumber] int lineNumber = 0, decimal? executionTimeInMilliseconds = null, int? httpResponseStatusCode = null, string url = null)
+        public Guid Debug(string message, int logMessageType, Exception ex = null, string userName = null, string clientIPAddress = null, [CallerMemberName] string methodName = null, [CallerFilePath] string sourceFile = null, [CallerLineNumber] int lineNumber = 0, decimal? executionTimeInMilliseconds = null, int? httpResponseStatusCode = null, string url = null)
         {
             if (CurrentLogLevel >= Enums.LogLevel.Debug)
             {
@@ -30,7 +29,7 @@ namespace MSC.BingoBuzz.Xam.Services
             return Guid.Empty;
         }
 
-        public Guid Error(string message, Enums.LogMessageType logMessageType, Exception ex = null, string userName = null, string clientIPAddress = null, [CallerMemberName] string methodName = null, [CallerFilePath] string sourceFile = null, [CallerLineNumber] int lineNumber = 0, decimal? executionTimeInMilliseconds = default(decimal?), int? httpResponseStatusCode = default(int?), string url = null)
+        public Guid Error(string message, int logMessageType, Exception ex = null, string userName = null, string clientIPAddress = null, [CallerMemberName] string methodName = null, [CallerFilePath] string sourceFile = null, [CallerLineNumber] int lineNumber = 0, decimal? executionTimeInMilliseconds = default(decimal?), int? httpResponseStatusCode = default(int?), string url = null)
         {
             if (CurrentLogLevel >= Enums.LogLevel.Error)
             {
@@ -39,7 +38,7 @@ namespace MSC.BingoBuzz.Xam.Services
             return Guid.Empty;
         }
 
-        public Guid Fatal(string message, Enums.LogMessageType logMessageType, Exception ex = null, string userName = null, string clientIPAddress = null, [CallerMemberName] string methodName = null, [CallerFilePath] string sourceFile = null, [CallerLineNumber] int lineNumber = 0, decimal? executionTimeInMilliseconds = default(decimal?), int? httpResponseStatusCode = default(int?), string url = null)
+        public Guid Fatal(string message, int logMessageType, Exception ex = null, string userName = null, string clientIPAddress = null, [CallerMemberName] string methodName = null, [CallerFilePath] string sourceFile = null, [CallerLineNumber] int lineNumber = 0, decimal? executionTimeInMilliseconds = default(decimal?), int? httpResponseStatusCode = default(int?), string url = null)
         {
             if (CurrentLogLevel >= Enums.LogLevel.Fatal)
             {
@@ -48,7 +47,7 @@ namespace MSC.BingoBuzz.Xam.Services
             return Guid.Empty;
         }
 
-        public Guid Info(string message, Enums.LogMessageType logMessageType, Exception ex = null, string userName = null, string clientIPAddress = null, [CallerMemberName] string methodName = null, [CallerFilePath] string sourceFile = null, [CallerLineNumber] int lineNumber = 0, decimal? executionTimeInMilliseconds = default(decimal?), int? httpResponseStatusCode = default(int?), string url = null)
+        public Guid Info(string message, int logMessageType, Exception ex = null, string userName = null, string clientIPAddress = null, [CallerMemberName] string methodName = null, [CallerFilePath] string sourceFile = null, [CallerLineNumber] int lineNumber = 0, decimal? executionTimeInMilliseconds = default(decimal?), int? httpResponseStatusCode = default(int?), string url = null)
         {
             if (CurrentLogLevel >= Enums.LogLevel.Info)
             {
@@ -62,7 +61,7 @@ namespace MSC.BingoBuzz.Xam.Services
             Analytics.TrackEvent(eventName);
         }
 
-        public Guid Warn(string message, Enums.LogMessageType logMessageType, Exception ex = null, string userName = null, string clientIPAddress = null, [CallerMemberName] string methodName = null, [CallerFilePath] string sourceFile = null, [CallerLineNumber] int lineNumber = 0, decimal? executionTimeInMilliseconds = null, int? httpResponseStatusCode = null, string url = null)
+        public Guid Warn(string message, int logMessageType, Exception ex = null, string userName = null, string clientIPAddress = null, [CallerMemberName] string methodName = null, [CallerFilePath] string sourceFile = null, [CallerLineNumber] int lineNumber = 0, decimal? executionTimeInMilliseconds = null, int? httpResponseStatusCode = null, string url = null)
         {
             if (CurrentLogLevel >= Enums.LogLevel.Warn)
             {
@@ -71,7 +70,7 @@ namespace MSC.BingoBuzz.Xam.Services
             return Guid.Empty;
         }
 
-        private void WriteLog(Enums.LogLevel logLevel, string message, Enums.LogMessageType logMessageType, Exception ex = null, string userName = null,
+        private void WriteLog(Enums.LogLevel logLevel, string message, int logMessageType, Exception ex = null, string userName = null,
            string clientIPAddress = null, string methodName = null, string sourceFile = null, int lineNumber = 0, decimal? executionTimeInMilliseconds = default(decimal?),
            int? httpResponseStatusCode = default(int?), string url = null)
         {

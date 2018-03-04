@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
-using MSC.BingoBuzz.Xam.ModelObj.BB;
+using CodeGenHero.BingoBuzz.Xam.ModelObj.BB;
 
-namespace MSC.BingoBuzz.Xam.Interfaces
+namespace CodeGenHero.BingoBuzz.Xam.Interfaces
 {
     public interface IDataLoadService
     {

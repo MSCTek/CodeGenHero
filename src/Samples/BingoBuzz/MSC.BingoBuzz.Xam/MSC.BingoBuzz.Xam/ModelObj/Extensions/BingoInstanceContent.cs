@@ -1,10 +1,10 @@
-﻿using CodeGenHero.EAMVCXamPOCO.Xam.ModelObj;
+﻿using CodeGenHero.Xam.MvvmLight;
 using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MSC.BingoBuzz.Xam.ModelObj.BB
+namespace CodeGenHero.BingoBuzz.Xam.ModelObj.BB
 {
     public partial class BingoInstanceContent : BaseAuditEdit
     {

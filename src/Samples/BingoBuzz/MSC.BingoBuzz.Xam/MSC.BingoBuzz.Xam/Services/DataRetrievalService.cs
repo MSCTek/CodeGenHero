@@ -1,14 +1,14 @@
-﻿using CodeGenHero.EAMVCXamPOCO.Interface;
-using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Xam.ModelObj.BB;
+﻿using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.ModelObj.BB;
 using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CodeGenHero.Logging;
 
-namespace MSC.BingoBuzz.Xam.Services
+namespace CodeGenHero.BingoBuzz.Xam.Services
 {
     public class DataRetrievalService : IDataRetrievalService
     {
@@ -47,7 +47,7 @@ namespace MSC.BingoBuzz.Xam.Services
             if (1 != await _asyncConnection.InsertAsync(newInstance))
             {
                 var message = "Error Writing new meeting instance to SQLite";
-                _log.Fatal(message, CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Exception_Database);
+                _log.Fatal(message, LogMessageType.Instance.Exception_Database);
                 throw new Exception(message);
             }
 
@@ -155,7 +155,7 @@ namespace MSC.BingoBuzz.Xam.Services
 
                         if (1 != await _asyncConnection.InsertAsync(newInstanceContent))
                         {
-                            _log.Error("Error writing new BingoInstanceContent records to SQLite", CodeGenHero.EAMVCXamPOCO.Enums.LogMessageType.Exception_Database);
+                            _log.Error("Error writing new BingoInstanceContent records to SQLite", LogMessageType.Instance.Exception_Database);
                         }
                     }
                 }

@@ -1,5 +1,5 @@
-﻿using MSC.BingoBuzz.Interfaces;
-using MSC.BingoBuzz.Xam.ViewModels;
+﻿using CodeGenHero.BingoBuzz.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace MSC.BingoBuzz.Xam.Interfaces
+namespace CodeGenHero.BingoBuzz.Xam.Interfaces
 {
     public interface INavigationService
     {

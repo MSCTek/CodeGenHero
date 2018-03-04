@@ -1,12 +1,12 @@
-﻿using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Xam.ModelData.BB;
+﻿using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.ModelData.BB;
 using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSC.BingoBuzz.Xam.Database
+namespace CodeGenHero.BingoBuzz.Xam.Database
 {
     public sealed class Database : IDatabase
     {

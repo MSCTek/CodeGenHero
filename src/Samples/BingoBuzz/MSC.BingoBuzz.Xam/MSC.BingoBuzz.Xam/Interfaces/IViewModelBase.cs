@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSC.BingoBuzz.Interfaces
+namespace CodeGenHero.BingoBuzz.Interfaces
 {
     public interface IViewModelBase
     {

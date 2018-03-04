@@ -12,7 +12,7 @@
     //ConnectionString = "Data Source=(local);Initial Catalog=Northwind;Integrated Security=True;Application Name=EntityFramework Reverse POCO Generator";
     //ProviderName = "System.Data.SqlClient";
 
-    Namespace = "MSC.BingoBuzz.Repository.Entities.BB"; // Override the default namespace here
+    Namespace = "CodeGenHero.BingoBuzz.Repository.Entities.BB"; // Override the default namespace here
     DbContextName = "BBDataContext"; // Note: If generating separate files, please give the db context a different name from this tt filename.
     //DbContextInterfaceName = "IMyDbContext"; // Defaults to "I" + DbContextName or set string empty to not implement any interface.
     DbContextInterfaceBaseClasses = "System.IDisposable";    // Specify what the base classes are for your database context interface

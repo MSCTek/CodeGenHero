@@ -1,10 +1,10 @@
-﻿using MSC.BingoBuzz.Xam.ModelObj.BB;
+﻿using CodeGenHero.BingoBuzz.Xam.ModelObj.BB;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSC.BingoBuzz.Xam.Interfaces
+namespace CodeGenHero.BingoBuzz.Xam.Interfaces
 {
     public interface IDataRetrievalService
     {

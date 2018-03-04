@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MSC.BingoBuzz.Xam.iOS")]
+[assembly: AssemblyTitle("CodeGenHero.BingoBuzz.Xam.iOS")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MSC.BingoBuzz.Xam.iOS")]
+[assembly: AssemblyProduct("CodeGenHero.BingoBuzz.Xam.iOS")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

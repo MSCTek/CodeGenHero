@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
-using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Xam.ViewModels;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.ViewModels;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MSC.BingoBuzz.Xam.Views
+namespace CodeGenHero.BingoBuzz.Xam.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WelcomePage : ContentPage, IContentPage

@@ -1,0 +1,14 @@
+[
+  {
+    "BlueprintFilename": "BingoBuzz.Web.cghc",
+    "IsValid": true,
+    "SchemaFilename": "BingoBuzz_POCO.cghs",
+    "SetId": "c754b4ab-5be8-427f-9b1c-0c55d4d3e2e2"
+  },
+  {
+    "BlueprintFilename": "BingoBuzz.Xam.cghc",
+    "IsValid": true,
+    "SchemaFilename": "BingoBuzz_POCO.cghs",
+    "SetId": "dea30021-4605-4296-bcf2-d9d96a47d4a6"
+  }
+]

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MSC.BingoBuzz.Xam.Interfaces
+namespace CodeGenHero.BingoBuzz.Xam.Interfaces
 {
     public interface ISQLite
     {

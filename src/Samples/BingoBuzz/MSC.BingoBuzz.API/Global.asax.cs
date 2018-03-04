@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
-using CodeGenHero.EAMVCXamPOCO.Repository.Mappers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using CodeGenHero.Repository.AutoMapper;
 using System.Web.Http;
-using System.Web.Routing;
 
 namespace MSC.BingoBuzz.API
 {

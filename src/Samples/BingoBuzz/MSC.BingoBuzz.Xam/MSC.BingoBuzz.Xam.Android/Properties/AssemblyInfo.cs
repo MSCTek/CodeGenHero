@@ -6,11 +6,11 @@ using Android.App;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MSC.BingoBuzz.Xam.Android")]
+[assembly: AssemblyTitle("CodeGenHero.BingoBuzz.Xam.Android")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MSC.BingoBuzz.Xam.Android")]
+[assembly: AssemblyProduct("CodeGenHero.BingoBuzz.Xam.Android")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

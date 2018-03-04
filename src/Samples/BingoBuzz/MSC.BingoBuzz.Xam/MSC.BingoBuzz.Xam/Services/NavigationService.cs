@@ -1,8 +1,8 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
-using MSC.BingoBuzz.Interfaces;
-using MSC.BingoBuzz.Xam.Controls;
-using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Xam.ViewModels;
+using CodeGenHero.BingoBuzz.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Controls;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.ViewModels;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace MSC.BingoBuzz.Xam.Services
+namespace CodeGenHero.BingoBuzz.Xam.Services
 {
     // Based on: https://mallibone.com/post/xamarin.forms-navigation-with-mvvm-light
     public class NavigationService : INavigationService

@@ -1,9 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Xam.Mappers;
-using MSC.BingoBuzz.Xam.ModelData.DemoBB;
-using MSC.BingoBuzz.Xam.ModelObj.BB;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Mappers;
+using CodeGenHero.BingoBuzz.Xam.ModelData.DemoBB;
+using CodeGenHero.BingoBuzz.Xam.ModelObj.BB;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace MSC.BingoBuzz.Xam.ViewModels
+namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
     public class WelcomeViewModel : CustomViewModelBase
     {

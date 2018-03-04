@@ -1,9 +1,9 @@
-﻿using MSC.BingoBuzz.Xam.ModelData.BB;
+﻿using CodeGenHero.BingoBuzz.Xam.ModelData.BB;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MSC.BingoBuzz.Xam.ModelData.DemoBB
+namespace CodeGenHero.BingoBuzz.Xam.ModelData.DemoBB
 {
     public static class DemoMeetingAttendee
     {

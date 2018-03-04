@@ -9,11 +9,11 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using MSC.BingoBuzz.Xam.Droid.Services;
-using MSC.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Droid.Services;
 using Ninject.Modules;
 
-namespace MSC.BingoBuzz.Xam.Droid.Modules
+namespace CodeGenHero.BingoBuzz.Xam.Droid.Modules
 {
     public class DroidPlatformModule : NinjectModule
     {

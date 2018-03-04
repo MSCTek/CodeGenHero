@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Diagnostics;
-using MSC.BingoBuzz.Xam.Interfaces;
-using MSC.BingoBuzz.Xam.Modules;
-using MSC.BingoBuzz.Xam.ViewModels;
-using MSC.BingoBuzz.Xam.Views;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Modules;
+using CodeGenHero.BingoBuzz.Xam.ViewModels;
+using CodeGenHero.BingoBuzz.Xam.Views;
 using Ninject;
 using Ninject.Modules;
 using Xamarin.Forms;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using MSC.BingoBuzz.Constants;
 using System.Threading.Tasks;
+using CodeGenHero.BingoBuzz.Constants;
 
-namespace MSC.BingoBuzz.Xam
+namespace CodeGenHero.BingoBuzz.Xam
 {
     public partial class App : Application
     {

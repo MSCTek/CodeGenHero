@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>MSC.BingoBuzz.Xam.UWP</DisplayName>
+    <DisplayName>CodeGenHero.BingoBuzz.Xam.UWP</DisplayName>
     <PublisherDisplayName>Pierce Boggan</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="MSC.BingoBuzz.Xam.UWP.App">
+      EntryPoint="CodeGenHero.BingoBuzz.Xam.UWP.App">
       <uap:VisualElements
-        DisplayName="MSC.BingoBuzz.Xam.UWP"
+        DisplayName="CodeGenHero.BingoBuzz.Xam.UWP"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="MSC.BingoBuzz.Xam.UWP"
+        Description="CodeGenHero.BingoBuzz.Xam.UWP"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

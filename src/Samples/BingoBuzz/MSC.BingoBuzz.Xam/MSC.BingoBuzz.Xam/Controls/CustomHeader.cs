@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace MSC.BingoBuzz.Xam.Controls
+namespace CodeGenHero.BingoBuzz.Xam.Controls
 {
     public class CustomHeader : ContentView, IDisposable
     {

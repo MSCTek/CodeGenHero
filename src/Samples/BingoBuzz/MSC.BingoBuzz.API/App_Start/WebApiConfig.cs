@@ -1,4 +1,4 @@
-﻿using CodeGenHero.EAMVCXamPOCO.API.Helpers;
+﻿using CodeGenHero.WebApi;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;

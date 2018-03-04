@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MSC.BingoBuzz.Xam.Services
+namespace CodeGenHero.BingoBuzz.Xam.Services
 {
     public interface IDataStore<T>
     {

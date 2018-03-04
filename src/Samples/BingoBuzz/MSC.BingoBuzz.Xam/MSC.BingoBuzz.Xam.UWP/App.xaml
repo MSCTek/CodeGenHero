@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="MSC.BingoBuzz.Xam.UWP.App"
+    x:Class="CodeGenHero.BingoBuzz.Xam.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MSC.BingoBuzz.Xam.UWP"
+    xmlns:local="using:CodeGenHero.BingoBuzz.Xam.UWP"
     RequestedTheme="Light">
 
 </Application>

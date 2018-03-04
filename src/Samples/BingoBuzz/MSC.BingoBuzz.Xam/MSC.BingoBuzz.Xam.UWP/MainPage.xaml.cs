@@ -1,4 +1,4 @@
-﻿using MSC.BingoBuzz.Xam.UWP.Modules;
+﻿using CodeGenHero.BingoBuzz.Xam.UWP.Modules;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace MSC.BingoBuzz.Xam.UWP
+namespace CodeGenHero.BingoBuzz.Xam.UWP
 {
     public sealed partial class MainPage
     {
@@ -22,7 +22,7 @@ namespace MSC.BingoBuzz.Xam.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new MSC.BingoBuzz.Xam.App(new UWPPlatformModule()));
+            LoadApplication(new CodeGenHero.BingoBuzz.Xam.App(new UWPPlatformModule()));
         }
     }
 }
