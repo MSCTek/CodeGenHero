@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MSC.BingoBuzz.API</RootNamespace>
-    <AssemblyName>MSC.BingoBuzz.API</AssemblyName>
+    <RootNamespace>CodeGenHero.BingoBuzz.API</RootNamespace>
+    <AssemblyName>CodeGenHero.BingoBuzz.API</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -84,9 +84,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="MSC.CodeGenHero.EAMVCXamPOCO.Standard">
-      <HintPath>..\Assemblies\MSC.CodeGenHero.EAMVCXamPOCO.Standard.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -229,15 +226,15 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MSC.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj">
+    <ProjectReference Include="..\CodeGenHero.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj">
       <Project>{6774a31a-070b-4c61-adb5-b21dce9e69f9}</Project>
       <Name>CodeGenHero.BingoBuzz.DTO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MSC.BingoBuzz.Repository\CodeGenHero.BingoBuzz.Repository.csproj">
+    <ProjectReference Include="..\CodeGenHero.BingoBuzz.Repository\CodeGenHero.BingoBuzz.Repository.csproj">
       <Project>{a35cdf7f-cf6a-4242-8919-01beeb81e72d}</Project>
       <Name>CodeGenHero.BingoBuzz.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MSC.BingoBuzz.Service.Logging\CodeGenHero.BingoBuzz.Service.Logging.csproj">
+    <ProjectReference Include="..\CodeGenHero.BingoBuzz.Service.Logging\CodeGenHero.BingoBuzz.Service.Logging.csproj">
       <Project>{93bde56d-56d9-4482-8dab-80aaa658352e}</Project>
       <Name>CodeGenHero.BingoBuzz.Service.Logging</Name>
     </ProjectReference>

@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("MSC.BingoBuzz.Xam.Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("CodeGenHero.BingoBuzz.Xam.Droid.Resource", IsApplication=true)]
 
-namespace MSC.BingoBuzz.Xam.Droid
+namespace CodeGenHero.BingoBuzz.Xam.Droid
 {
 	
 	
@@ -26,7 +26,7 @@ namespace MSC.BingoBuzz.Xam.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::MSC.BingoBuzz.Xam.Droid.Resource.Attribute.actionBarSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::CodeGenHero.BingoBuzz.Xam.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation

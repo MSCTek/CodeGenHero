@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.DTO", "MSC.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj", "{D801B844-B10F-46D1-80B1-73A4EBF6F57A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.DTO", "CodeGenHero.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj", "{D801B844-B10F-46D1-80B1-73A4EBF6F57A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Constants", "MSC.BingoBuzz.Constants\CodeGenHero.BingoBuzz.Constants.csproj", "{CE71D050-6A42-436C-B212-1DC2B2958777}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Constants", "CodeGenHero.BingoBuzz.Constants\CodeGenHero.BingoBuzz.Constants.csproj", "{CE71D050-6A42-436C-B212-1DC2B2958777}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Service.DataService", "MSC.BingoBuzz.Service.DataService\CodeGenHero.BingoBuzz.Service.DataService.csproj", "{C8097FFC-C1B2-4694-85F7-2AE10BD851F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Service.DataService", "CodeGenHero.BingoBuzz.Service.DataService\CodeGenHero.BingoBuzz.Service.DataService.csproj", "{C8097FFC-C1B2-4694-85F7-2AE10BD851F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Xam.Android", "MSC.BingoBuzz.Xam\MSC.BingoBuzz.Xam.Android\CodeGenHero.BingoBuzz.Xam.Android.csproj", "{30F2C260-732E-4205-BA10-B83F8D7C95F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Xam.Android", "CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.Android\CodeGenHero.BingoBuzz.Xam.Android.csproj", "{30F2C260-732E-4205-BA10-B83F8D7C95F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Xam.iOS", "MSC.BingoBuzz.Xam\MSC.BingoBuzz.Xam.iOS\CodeGenHero.BingoBuzz.Xam.iOS.csproj", "{C872ACD9-5FC2-467C-B7BA-D359A96576F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Xam.iOS", "CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.iOS\CodeGenHero.BingoBuzz.Xam.iOS.csproj", "{C872ACD9-5FC2-467C-B7BA-D359A96576F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Xam.UWP", "MSC.BingoBuzz.Xam\MSC.BingoBuzz.Xam.UWP\CodeGenHero.BingoBuzz.Xam.UWP.csproj", "{88039EAA-4A05-478B-9338-DA373FB6095C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Xam.UWP", "CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.UWP\CodeGenHero.BingoBuzz.Xam.UWP.csproj", "{88039EAA-4A05-478B-9338-DA373FB6095C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Xam", "MSC.BingoBuzz.Xam\MSC.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.csproj", "{B3C97649-06A9-4D3D-8995-15E275D4BA57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Xam", "CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.csproj", "{B3C97649-06A9-4D3D-8995-15E275D4BA57}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CodeGenHero.Data", "CodeGenHero.Data\CodeGenHero.Data.shproj", "{81C408A1-E76A-448B-B0FF-971D25528FEE}"
 EndProject
@@ -231,8 +231,6 @@ Global
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.AppStore|x86.Build.0 = Release|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.AppStore|x86.Deploy.0 = Release|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|ARM.Build.0 = Debug|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|ARM.Deploy.0 = Debug|Any CPU
@@ -335,6 +333,8 @@ Global
 		{88039EAA-4A05-478B-9338-DA373FB6095C}.AppStore|x86.Build.0 = Release|x86
 		{88039EAA-4A05-478B-9338-DA373FB6095C}.AppStore|x86.Deploy.0 = Release|x86
 		{88039EAA-4A05-478B-9338-DA373FB6095C}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{88039EAA-4A05-478B-9338-DA373FB6095C}.Debug|Any CPU.Build.0 = Debug|x86
+		{88039EAA-4A05-478B-9338-DA373FB6095C}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{88039EAA-4A05-478B-9338-DA373FB6095C}.Debug|ARM.ActiveCfg = Debug|ARM
 		{88039EAA-4A05-478B-9338-DA373FB6095C}.Debug|ARM.Build.0 = Debug|ARM
 		{88039EAA-4A05-478B-9338-DA373FB6095C}.Debug|ARM.Deploy.0 = Debug|ARM

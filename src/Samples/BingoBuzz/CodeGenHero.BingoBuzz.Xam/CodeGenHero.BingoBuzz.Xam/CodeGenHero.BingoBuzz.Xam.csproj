@@ -25,9 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MSC.BingoBuzz.Constants\CodeGenHero.BingoBuzz.Constants.csproj" />
-    <ProjectReference Include="..\..\MSC.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj" />
-    <ProjectReference Include="..\..\MSC.BingoBuzz.Service.DataService\CodeGenHero.BingoBuzz.Service.DataService.csproj" />
+    <ProjectReference Include="..\..\CodeGenHero.BingoBuzz.Constants\CodeGenHero.BingoBuzz.Constants.csproj" />
+    <ProjectReference Include="..\..\CodeGenHero.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj" />
+    <ProjectReference Include="..\..\CodeGenHero.BingoBuzz.Service.DataService\CodeGenHero.BingoBuzz.Service.DataService.csproj" />
   </ItemGroup>
 
   <ItemGroup>

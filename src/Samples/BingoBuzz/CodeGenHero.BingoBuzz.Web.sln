@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CodeGenHero.BingoBuzz.Database", "MSC.BingoBuzz.Database\CodeGenHero.BingoBuzz.Database.sqlproj", "{D19760CF-5E16-4E08-91FF-B5DA1D95D89E}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CodeGenHero.BingoBuzz.Database", "CodeGenHero.BingoBuzz.Database\CodeGenHero.BingoBuzz.Database.sqlproj", "{D19760CF-5E16-4E08-91FF-B5DA1D95D89E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Service.Logging", "MSC.BingoBuzz.Service.Logging\CodeGenHero.BingoBuzz.Service.Logging.csproj", "{93BDE56D-56D9-4482-8DAB-80AAA658352E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Service.Logging", "CodeGenHero.BingoBuzz.Service.Logging\CodeGenHero.BingoBuzz.Service.Logging.csproj", "{93BDE56D-56D9-4482-8DAB-80AAA658352E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Repository", "MSC.BingoBuzz.Repository\CodeGenHero.BingoBuzz.Repository.csproj", "{A35CDF7F-CF6A-4242-8919-01BEEB81E72D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Repository", "CodeGenHero.BingoBuzz.Repository\CodeGenHero.BingoBuzz.Repository.csproj", "{A35CDF7F-CF6A-4242-8919-01BEEB81E72D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.API", "MSC.BingoBuzz.API\CodeGenHero.BingoBuzz.API.csproj", "{66944B27-D31A-4818-9176-F8BA94B1AFFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.API", "CodeGenHero.BingoBuzz.API\CodeGenHero.BingoBuzz.API.csproj", "{66944B27-D31A-4818-9176-F8BA94B1AFFA}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CodeGenHero.Data", "CodeGenHero.Data\CodeGenHero.Data.shproj", "{81C408A1-E76A-448B-B0FF-971D25528FEE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Model", "MSC.BingoBuzz.Model\CodeGenHero.BingoBuzz.Model.csproj", "{F1331F2D-B87A-479A-8100-7480971D8C29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Model", "CodeGenHero.BingoBuzz.Model\CodeGenHero.BingoBuzz.Model.csproj", "{F1331F2D-B87A-479A-8100-7480971D8C29}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.DTO", "MSC.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj", "{6774A31A-070B-4C61-ADB5-B21DCE9E69F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.DTO", "CodeGenHero.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj", "{6774A31A-070B-4C61-ADB5-B21DCE9E69F9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Service.DataService", "MSC.BingoBuzz.Service.DataService\CodeGenHero.BingoBuzz.Service.DataService.csproj", "{C5E8455A-A316-4F59-B041-0186A5E27225}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Service.DataService", "CodeGenHero.BingoBuzz.Service.DataService\CodeGenHero.BingoBuzz.Service.DataService.csproj", "{C5E8455A-A316-4F59-B041-0186A5E27225}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

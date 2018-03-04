@@ -7,8 +7,8 @@
     <ProjectGuid>{88039EAA-4A05-478B-9338-DA373FB6095C}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MSC.BingoBuzz.Xam.UWP</RootNamespace>
-    <AssemblyName>MSC.BingoBuzz.Xam.UWP</AssemblyName>
+    <RootNamespace>CodeGenHero.BingoBuzz.Xam.UWP</RootNamespace>
+    <AssemblyName>CodeGenHero.BingoBuzz.Xam.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
@@ -17,7 +17,7 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>MSC.BingoBuzz.Xam.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>CodeGenHero.BingoBuzz.Xam.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -103,7 +103,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="MSC.BingoBuzz.Xam.UWP_TemporaryKey.pfx" />
+    <None Include="CodeGenHero.BingoBuzz.Xam.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
@@ -188,11 +188,11 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MSC.BingoBuzz.Constants\CodeGenHero.BingoBuzz.Constants.csproj">
+    <ProjectReference Include="..\..\CodeGenHero.BingoBuzz.Constants\CodeGenHero.BingoBuzz.Constants.csproj">
       <Project>{ce71d050-6a42-436c-b212-1dc2b2958777}</Project>
       <Name>CodeGenHero.BingoBuzz.Constants</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MSC.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.csproj">
+    <ProjectReference Include="..\CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.csproj">
       <Project>{B3C97649-06A9-4D3D-8995-15E275D4BA57}</Project>
       <Name>CodeGenHero.BingoBuzz.Xam</Name>
     </ProjectReference>

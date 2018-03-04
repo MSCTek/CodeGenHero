@@ -6,8 +6,8 @@
     <ProjectGuid>{30F2C260-732E-4205-BA10-B83F8D7C95F8}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>MSC.BingoBuzz.Xam.Droid</RootNamespace>
-    <AssemblyName>MSC.BingoBuzz.Xam.Android</AssemblyName>
+    <RootNamespace>CodeGenHero.BingoBuzz.Xam.Droid</RootNamespace>
+    <AssemblyName>CodeGenHero.BingoBuzz.Xam.Android</AssemblyName>
     <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
@@ -119,11 +119,11 @@
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MSC.BingoBuzz.Constants\CodeGenHero.BingoBuzz.Constants.csproj">
+    <ProjectReference Include="..\..\CodeGenHero.BingoBuzz.Constants\CodeGenHero.BingoBuzz.Constants.csproj">
       <Project>{ce71d050-6a42-436c-b212-1dc2b2958777}</Project>
       <Name>CodeGenHero.BingoBuzz.Constants</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MSC.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.csproj">
+    <ProjectReference Include="..\CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.csproj">
       <Project>{b3c97649-06a9-4d3d-8995-15e275d4ba57}</Project>
       <Name>CodeGenHero.BingoBuzz.Xam</Name>
     </ProjectReference>

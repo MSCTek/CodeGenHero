@@ -8,9 +8,9 @@
     <ProjectGuid>{C872ACD9-5FC2-467C-B7BA-D359A96576F0}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MSC.BingoBuzz.Xam.iOS</RootNamespace>
+    <RootNamespace>CodeGenHero.BingoBuzz.Xam.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>MSC.BingoBuzz.Xam.iOS</AssemblyName>
+    <AssemblyName>CodeGenHero.BingoBuzz.Xam.iOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -184,7 +184,7 @@
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MSC.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.csproj">
+    <ProjectReference Include="..\CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.csproj">
       <Project>{B3C97649-06A9-4D3D-8995-15E275D4BA57}</Project>
       <Name>CodeGenHero.BingoBuzz.Xam</Name>
     </ProjectReference>

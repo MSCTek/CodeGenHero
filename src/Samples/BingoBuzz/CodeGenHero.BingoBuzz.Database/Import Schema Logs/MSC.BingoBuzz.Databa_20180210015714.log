@@ -1,0 +1,84 @@
+2/9/2018 7:57:14 PM	This log contains information about the import schema operation into project 'MSC.BingoBuzz.Database' on computer 'BATMAN' by user 'paul'.
+2/9/2018 7:57:14 PM	Import of database schema has started.
+2/9/2018 7:57:20 PM	Gathering database credentials
+2/9/2018 7:57:20 PM	Gathering database options
+2/9/2018 7:57:20 PM	Gathering users
+2/9/2018 7:57:20 PM	Gathering roles
+2/9/2018 7:57:20 PM	Gathering application roles
+2/9/2018 7:57:20 PM	Gathering role memberships
+2/9/2018 7:57:20 PM	Gathering filegroups
+2/9/2018 7:57:20 PM	Gathering full-text catalogs
+2/9/2018 7:57:20 PM	Gathering assemblies
+2/9/2018 7:57:20 PM	Gathering certificates
+2/9/2018 7:57:20 PM	Gathering asymmetric keys
+2/9/2018 7:57:20 PM	Gathering symmetric keys
+2/9/2018 7:57:20 PM	Gathering encrypted symmetric keys
+2/9/2018 7:57:20 PM	Gathering schemas
+2/9/2018 7:57:20 PM	Gathering XML schema collections
+2/9/2018 7:57:20 PM	Gathering user-defined data types
+2/9/2018 7:57:20 PM	Gathering user-defined types
+2/9/2018 7:57:20 PM	Gathering table types
+2/9/2018 7:57:20 PM	Gathering unique keys for table types
+2/9/2018 7:57:20 PM	Gathering primary keys for table types
+2/9/2018 7:57:20 PM	Gathering indexes for table types
+2/9/2018 7:57:20 PM	Gathering check constraints for table types
+2/9/2018 7:57:20 PM	Gathering default constraints for table types
+2/9/2018 7:57:20 PM	Gathering partition functions
+2/9/2018 7:57:20 PM	Gathering partition schemes
+2/9/2018 7:57:20 PM	Gathering functions
+2/9/2018 7:57:20 PM	Gathering encrypted functions
+2/9/2018 7:57:20 PM	Gathering aggregates
+2/9/2018 7:57:20 PM	Gathering procedures
+2/9/2018 7:57:20 PM	Gathering encrypted procedures
+2/9/2018 7:57:20 PM	Gathering tables
+2/9/2018 7:57:20 PM	Gathering primary keys
+2/9/2018 7:57:20 PM	Gathering unique constraints
+2/9/2018 7:57:20 PM	Gathering foreign keys
+2/9/2018 7:57:20 PM	Gathering default constraints
+2/9/2018 7:57:20 PM	Gathering check constraints
+2/9/2018 7:57:20 PM	Gathering views
+2/9/2018 7:57:20 PM	Gathering encrypted views
+2/9/2018 7:57:20 PM	Gathering indexes
+2/9/2018 7:57:20 PM	Gathering statistics
+2/9/2018 7:57:20 PM	Gathering full-text index stoplists
+2/9/2018 7:57:20 PM	Gathering search property lists
+2/9/2018 7:57:20 PM	Gathering search properties
+2/9/2018 7:57:20 PM	Gathering full-text indexes
+2/9/2018 7:57:20 PM	Gathering column store indexes
+2/9/2018 7:57:20 PM	Gathering spatial indexes
+2/9/2018 7:57:20 PM	Gathering XML indexes
+2/9/2018 7:57:20 PM	Gathering Selective XML indexes
+2/9/2018 7:57:20 PM	Gathering encrypted triggers
+2/9/2018 7:57:20 PM	Gathering triggers
+2/9/2018 7:57:20 PM	Gathering encrypted and clr ddl triggers
+2/9/2018 7:57:20 PM	Gathering ddl triggers
+2/9/2018 7:57:20 PM	Gathering synonyms
+2/9/2018 7:57:20 PM	Gathering defaults
+2/9/2018 7:57:20 PM	Gathering data constraint uddt bindings
+2/9/2018 7:57:20 PM	Gathering rules
+2/9/2018 7:57:20 PM	Gathering data constraint uddt bindings
+2/9/2018 7:57:20 PM	Gathering message types
+2/9/2018 7:57:20 PM	Gathering queues
+2/9/2018 7:57:20 PM	Gathering contracts
+2/9/2018 7:57:20 PM	Gathering services
+2/9/2018 7:57:20 PM	Gathering event notifications
+2/9/2018 7:57:20 PM	Gathering remote service bindings
+2/9/2018 7:57:20 PM	Gathering broker priorities
+2/9/2018 7:57:20 PM	Gathering signatures
+2/9/2018 7:57:20 PM	Gathering data compression options
+2/9/2018 7:57:20 PM	Gathering sequence types
+2/9/2018 7:57:20 PM	Gathering security policies
+2/9/2018 7:57:20 PM	Gather column encryption keys
+2/9/2018 7:57:20 PM	Gathering column master keys
+2/9/2018 7:57:20 PM	Gathering external data sources
+2/9/2018 7:57:20 PM	Gathering external file formats
+2/9/2018 7:57:20 PM	Gathering external tables
+2/9/2018 7:57:20 PM	Gathering extended properties
+2/9/2018 7:57:20 PM	Gathering credentials
+2/9/2018 7:57:20 PM	Gathering logins
+2/9/2018 7:57:20 PM	Gathering server audits
+2/9/2018 7:57:21 PM	Scanning project for duplicate elements
+2/9/2018 7:57:21 PM	Finished duplicate element processing
+2/9/2018 7:57:21 PM	Finished importing database.
+2/9/2018 7:57:21 PM	A summary of the import was saved to the following location: C:\Code\Repos\CodeGenHero\src\Samples\BingoBuzz\MSC.BingoBuzz.Database\Import Schema Logs\MSC.BingoBuzz.Databa_20180210015714.log
+2/9/2018 7:57:21 PM	Click Finish to continue...
