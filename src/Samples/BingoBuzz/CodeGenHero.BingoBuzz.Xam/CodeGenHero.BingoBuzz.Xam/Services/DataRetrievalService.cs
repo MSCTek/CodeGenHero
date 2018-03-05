@@ -51,7 +51,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                 throw new Exception(message);
             }
 
-            await CreateNewBingoInstanceContents(newInstance.BingoInstanceId);
+            await CreateNewBingoInstanceContentsNoRepeats(newInstance.BingoInstanceId);
 
             return newInstance.ToModelObj();
         }
@@ -78,7 +78,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
         {
             //get all instances for this meeting
             var dataInstance = (await _asyncConnection.Table<ModelData.BB.BingoInstance>()
-                .Where(x => x.MeetingId == meetingId && x.BingoInstanceStatusTypeId == 2 && x.IsDeleted == false).FirstOrDefaultAsync());
+                .Where(x => x.MeetingId == meetingId && x.BingoInstanceStatusTypeId != 4 && x.IsDeleted == false).FirstOrDefaultAsync());
             if (dataInstance != null)
             {
                 return dataInstance.ToModelObj();
@@ -128,7 +128,51 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             return returnMe;
         }
 
-        private async Task CreateNewBingoInstanceContents(Guid bingoInstanceId)
+        private async Task CreateNewBingoInstanceContentsNoRepeats(Guid bingoInstanceId)
+        {
+            var bingoInstance = await _asyncConnection.Table<ModelData.BB.BingoInstance>().Where(x => x.BingoInstanceId == bingoInstanceId).FirstOrDefaultAsync();
+
+            if (bingoInstance != null)
+            {
+                int totalNumberOfSquaresNeeded = bingoInstance.NumberOfColumns * bingoInstance.NumberOfRows;
+
+                int squareCount = totalNumberOfSquaresNeeded - 1;
+
+                List<ModelData.BB.BingoContent> contentData = (await _asyncConnection.QueryAsync<ModelData.BB.BingoContent>($"SELECT * FROM BingoContent ORDER BY RANDOM() LIMIT {totalNumberOfSquaresNeeded};")).ToList();
+
+                for (int c = 0; c < bingoInstance.NumberOfColumns; c++)
+                {
+                    for (int r = 0; r < bingoInstance.NumberOfRows; r++)
+                    {
+                        var bingoContent = contentData[squareCount];
+                        var newInstanceContent = new ModelData.BB.BingoInstanceContent()
+                        {
+                            BingoInstanceContentId = Guid.NewGuid(),
+                            BingoInstanceId = bingoInstanceId,
+                            Row = r,
+                            Col = c,
+                            UpdatedDate = DateTime.UtcNow,
+                            UpdatedUserId = _stateService.GetCurrentUserId(),
+                            CreatedDate = DateTime.UtcNow,
+                            CreatedUserId = _stateService.GetCurrentUserId(),
+                            IsDeleted = false,
+                            FreeSquareIndicator = bingoContent.FreeSquareIndicator,
+                            BingoContentId = bingoContent.BingoContentId
+                        };
+
+                        if (1 != await _asyncConnection.InsertAsync(newInstanceContent))
+                        {
+                            _log.Error("Error writing new BingoInstanceContent records to SQLite", LogMessageType.Instance.Exception_Database);
+                        }
+
+                        squareCount--;
+                    }
+                }
+            }
+        }
+
+        //Please retain this method in case it is more fun to have repeating squares
+        private async Task CreateNewBingoInstanceContentsWithRepeats(Guid bingoInstanceId)
         {
             var bingoInstance = await _asyncConnection.Table<ModelData.BB.BingoInstance>().Where(x => x.BingoInstanceId == bingoInstanceId).FirstOrDefaultAsync();
             if (bingoInstance != null)

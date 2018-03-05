@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CodeGenHero.BingoBuzz.Xam.Controls;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
@@ -15,12 +16,12 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private BingoInstance _bingoInstance;
         private List<BingoInstanceContent> _bingoInstanceContent;
         private Meeting _meeting;
-        private List<MeetingAttendee> _players;
+        private List<PlayerViewModel> _players;
 
         public GameViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService) : base(navService, dataRetrievalService, stateService)
         {
             BingoInstanceContent = new List<ModelObj.BB.BingoInstanceContent>();
-            Players = new List<MeetingAttendee>();
+            Players = new List<PlayerViewModel>();
         }
 
         public BingoInstance BingoInstance
@@ -41,7 +42,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
             set { Set(ref _meeting, value); }
         }
 
-        public List<MeetingAttendee> Players
+        public List<PlayerViewModel> Players
         {
             get { return _players; }
             set { Set(ref _players, value); }
@@ -73,7 +74,19 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
             if (Meeting != null)
             {
-                Players = await DataRetrievalService.GetMeetingAttendeesAsync(meetingId);
+                var players = await DataRetrievalService.GetMeetingAttendeesAsync(meetingId);
+                List<PlayerViewModel> playerVms = new List<PlayerViewModel>();
+                foreach (var p in players)
+                {
+                    playerVms.Add(new PlayerViewModel()
+                    {
+                        PlayerName = $"{p.User_UserId.FirstName}  {p.User_UserId.LastName.Substring(0, 1)}.",
+                        Score = 0 //TODO: need to wire this up
+                    });
+                }
+                Players = playerVms;
+                RaisePropertyChanged(nameof(Players));
+
                 BingoInstance = await DataRetrievalService.GetCurrentBingoInstanceOrNullAsync(meetingId);
                 if (BingoInstance == null)
                 {
