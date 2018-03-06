@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:ctr="clr-namespace:CodeGenHero.BingoBuzz.Xam.Controls"
+             xmlns:ctr="clr-namespace:CodeGenHero.BingoBuzz.Xam.Controls"
              x:Class="CodeGenHero.BingoBuzz.Xam.Views.GamePage">
 
     <ContentPage.Content>
@@ -16,57 +16,10 @@
             <ctr:CustomHeader Grid.Row="0" ShowBackButton="True" Title="BingoBuzz Game" ShowHamburger="False" />
 
             <Grid Grid.Row="1" x:Name="PlayerGrid" HeightRequest="55" BackgroundColor="LightGray" Margin="10,5">
+                <ctr:PlayerWrapLayout  SourcePlayers="{Binding Players}" />
             </Grid>
 
-            <ctr:GameBoard Grid.Row="2" GameBoardContent="{Binding BingoInstanceContent}" Margin="10,0"/>
-
-            <!-- <Grid Grid.Row="2" x:Name="GameGrid">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-
-                <BoxView Grid.Column="0" Grid.Row="0" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="0" Grid.Row="1" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="0" Grid.Row="2" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="0" Grid.Row="3" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="0" Grid.Row="4" BackgroundColor="AliceBlue" />
-
-                <BoxView Grid.Column="1" Grid.Row="0" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="1" Grid.Row="1" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="1" Grid.Row="2" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="1" Grid.Row="3" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="1" Grid.Row="4" BackgroundColor="AliceBlue" />
-
-                <BoxView Grid.Column="2" Grid.Row="0" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="2" Grid.Row="1" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="2" Grid.Row="2" BackgroundColor="Azure" />
-                <Label Grid.Column="2" Grid.Row="2" Text="FREE SQUARE" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-                <BoxView Grid.Column="2" Grid.Row="3" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="2" Grid.Row="4" BackgroundColor="AliceBlue" />
-
-                <BoxView Grid.Column="3" Grid.Row="0" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="3" Grid.Row="1" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="3" Grid.Row="2" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="3" Grid.Row="3" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="3" Grid.Row="4" BackgroundColor="AliceBlue" />
-
-                <BoxView Grid.Column="4" Grid.Row="0" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="4" Grid.Row="1" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="4" Grid.Row="2" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="4" Grid.Row="3" BackgroundColor="AliceBlue" />
-                <BoxView Grid.Column="4" Grid.Row="4" BackgroundColor="AliceBlue" />
-            </Grid>-->
+            <ctr:GameBoard Grid.Row="2" GameBoardContent="{Binding BingoInstanceContent}" Margin="10,0" />
 
             <Grid Grid.Row="3" x:Name="AdvertisingGrid" HeightRequest="55" BackgroundColor="Gray" Margin="10,5">
             </Grid>
