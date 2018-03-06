@@ -51,11 +51,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 			{
 				if (_recurrenceRules == null)
 				{
-					_recurrenceRules = new List<IRecurrenceRule>();
-					foreach (var dtoItem in _dto.RecurrenceRules)
-					{
-						_recurrenceRules.Add(new RecurrenceRule(Log, DataService, dtoItem));
-					}
+					OnLazyLoadRequest(this, new LoadRequestFrequencyType(nameof(RecurrenceRules)));
 				}
 
 				return _recurrenceRules;

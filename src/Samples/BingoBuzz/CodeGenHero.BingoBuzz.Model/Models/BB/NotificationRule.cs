@@ -66,11 +66,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 			{
 				if (_meetingAttendees == null)
 				{
-					_meetingAttendees = new List<IMeetingAttendee>();
-					foreach (var dtoItem in _dto.MeetingAttendees)
-					{
-						_meetingAttendees.Add(new MeetingAttendee(Log, DataService, dtoItem));
-					}
+					OnLazyLoadRequest(this, new LoadRequestNotificationRule(nameof(MeetingAttendees)));
 				}
 
 				return _meetingAttendees;

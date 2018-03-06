@@ -15,10 +15,12 @@ namespace CodeGenHero.BingoBuzz.Xam.ModelObj.BB
 
 		private System.Guid _bingoContentId;
 		private System.Guid _bingoInstanceContentId;
+		private int _bingoInstanceContentStatusTypeId;
 		private System.Guid _bingoInstanceId;
 		private int _col;
 		private bool _freeSquareIndicator;
 		private int _row;
+		private System.Guid _userId;
 
 
 		public System.Guid BingoContentId
@@ -38,6 +40,16 @@ namespace CodeGenHero.BingoBuzz.Xam.ModelObj.BB
 			{
 				Set<System.Guid>(() => BingoInstanceContentId, ref _bingoInstanceContentId, value);
 				RunCustomLogicSetBingoInstanceContentId(value);
+			}
+		}
+
+		public int BingoInstanceContentStatusTypeId
+		{
+			get { return _bingoInstanceContentStatusTypeId; }
+			set
+			{
+				Set<int>(() => BingoInstanceContentStatusTypeId, ref _bingoInstanceContentStatusTypeId, value);
+				RunCustomLogicSetBingoInstanceContentStatusTypeId(value);
 			}
 		}
 
@@ -81,11 +93,23 @@ namespace CodeGenHero.BingoBuzz.Xam.ModelObj.BB
 			}
 		}
 
+		public System.Guid UserId
+		{
+			get { return _userId; }
+			set
+			{
+				Set<System.Guid>(() => UserId, ref _userId, value);
+				RunCustomLogicSetUserId(value);
+			}
+		}
+
 		public virtual System.Collections.Generic.IList<BingoInstanceEvent> BingoInstanceEvents { get; set; } // Many to many mapping
 		public virtual BingoContent BingoContent { get; set; } 
 		public virtual BingoInstance BingoInstance { get; set; } 
+		public virtual BingoInstanceContentStatusType BingoInstanceContentStatusType { get; set; } 
 		public virtual User CreatedUser { get; set; } 
 		public virtual User UpdatedUser { get; set; } 
+		public virtual User User_UserId { get; set; } 
 
 
 		partial void InitializePartial();
@@ -94,10 +118,12 @@ namespace CodeGenHero.BingoBuzz.Xam.ModelObj.BB
 
 		partial void RunCustomLogicSetBingoContentId(System.Guid value);
 		partial void RunCustomLogicSetBingoInstanceContentId(System.Guid value);
+		partial void RunCustomLogicSetBingoInstanceContentStatusTypeId(int value);
 		partial void RunCustomLogicSetBingoInstanceId(System.Guid value);
 		partial void RunCustomLogicSetCol(int value);
 		partial void RunCustomLogicSetFreeSquareIndicator(bool value);
 		partial void RunCustomLogicSetRow(int value);
+		partial void RunCustomLogicSetUserId(System.Guid value);
 
 		#endregion RunCustomLogicSet
 

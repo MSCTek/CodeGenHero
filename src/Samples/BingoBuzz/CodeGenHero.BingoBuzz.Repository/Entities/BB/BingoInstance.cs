@@ -45,6 +45,11 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         // Foreign keys
 
         /// <summary>
+        /// Parent BingoInstanceStatusType pointed by [BingoInstance].([BingoInstanceStatusTypeId]) (FK_BingoInstance_BingoInstanceStatusType)
+        /// </summary>
+        public virtual BingoInstanceStatusType BingoInstanceStatusType { get; set; } // FK_BingoInstance_BingoInstanceStatusType
+
+        /// <summary>
         /// Parent Meeting pointed by [BingoInstance].([MeetingId]) (FK_BingoInstance_Meeting)
         /// </summary>
         public virtual Meeting Meeting { get; set; } // FK_BingoInstance_Meeting

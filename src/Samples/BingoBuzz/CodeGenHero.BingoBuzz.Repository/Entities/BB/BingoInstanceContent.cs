@@ -22,9 +22,11 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         public System.Guid BingoInstanceContentId { get; set; } // BingoInstanceContentId (Primary key)
         public System.Guid BingoContentId { get; set; } // BingoContentId
         public System.Guid BingoInstanceId { get; set; } // BingoInstanceId
+        public System.Guid UserId { get; set; } // UserId
         public int Col { get; set; } // Col
         public int Row { get; set; } // Row
         public bool FreeSquareIndicator { get; set; } // FreeSquareIndicator
+        public int BingoInstanceContentStatusTypeId { get; set; } // BingoInstanceContentStatusTypeId
         public System.DateTime CreatedDate { get; set; } // CreatedDate
         public System.Guid CreatedUserId { get; set; } // CreatedUserId
         public System.DateTime UpdatedDate { get; set; } // UpdatedDate
@@ -51,6 +53,11 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         public virtual BingoInstance BingoInstance { get; set; } // FK_BingoInstanceContent_BingoInstance
 
         /// <summary>
+        /// Parent BingoInstanceContentStatusType pointed by [BingoInstanceContent].([BingoInstanceContentStatusTypeId]) (FK_BingoInstanceContent_BingoInstanceContentStatusType)
+        /// </summary>
+        public virtual BingoInstanceContentStatusType BingoInstanceContentStatusType { get; set; } // FK_BingoInstanceContent_BingoInstanceContentStatusType
+
+        /// <summary>
         /// Parent User pointed by [BingoInstanceContent].([CreatedUserId]) (FK_BingoInstanceContent_User_Created)
         /// </summary>
         public virtual User CreatedUser { get; set; } // FK_BingoInstanceContent_User_Created
@@ -60,10 +67,16 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// </summary>
         public virtual User UpdatedUser { get; set; } // FK_BingoInstanceContent_User_Updated
 
+        /// <summary>
+        /// Parent User pointed by [BingoInstanceContent].([UserId]) (FK_BingoInstanceContent_User)
+        /// </summary>
+        public virtual User User_UserId { get; set; } // FK_BingoInstanceContent_User
+
         public BingoInstanceContent()
         {
             BingoInstanceContentId = System.Guid.NewGuid();
             FreeSquareIndicator = true;
+            BingoInstanceContentStatusTypeId = 1;
             IsDeleted = false;
             BingoInstanceEvents = new System.Collections.Generic.List<BingoInstanceEvent>();
             InitializePartial();

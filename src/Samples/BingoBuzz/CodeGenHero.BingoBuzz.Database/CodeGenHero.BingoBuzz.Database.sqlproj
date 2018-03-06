@@ -62,21 +62,27 @@
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="Security\" />
+    <Folder Include="Migration" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\NotificationRule.sql" />
     <Build Include="dbo\Tables\NotificationMethodType.sql" />
     <Build Include="dbo\Tables\MeetingAttendee.sql" />
-    <Build Include="dbo\Tables\BingoInstanceEventType.sql" />
-    <Build Include="dbo\Tables\BingoInstanceContent.sql" />
     <Build Include="dbo\Tables\User.sql" />
-    <Build Include="dbo\Tables\BingoInstanceEvent.sql" />
     <Build Include="dbo\Tables\Company.sql" />
     <Build Include="dbo\Tables\Meeting.sql" />
     <Build Include="dbo\Tables\RecurrenceRule.sql" />
     <Build Include="dbo\Tables\FrequencyType.sql" />
     <Build Include="dbo\Tables\MeetingSchedule.sql" />
     <Build Include="dbo\Tables\BingoContent.sql" />
+    <Build Include="dbo\Tables\BingoInstanceStatusType.sql" />
+    <Build Include="dbo\Tables\BingoInstanceEventType.sql" />
+    <Build Include="dbo\Tables\BingoInstanceEvent.sql" />
+    <Build Include="dbo\Tables\BingoInstanceContentStatusType.sql" />
+    <Build Include="dbo\Tables\BingoInstanceContent.sql" />
     <Build Include="dbo\Tables\BingoInstance.sql" />
+    <Build Include="Migration\999_BingoBuzz_SD_Final.sql" />
+    <Build Include="Migration\110_BingoBuzz_NewRequirements.sql" />
+    <Build Include="Migration\100_BingoBuzz_Start.sql" />
   </ItemGroup>
 </Project>

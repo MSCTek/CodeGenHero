@@ -57,6 +57,10 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// </summary>
         public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_UpdatedUserId { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_User_Updated
         /// <summary>
+        /// Child BingoInstanceContents where [BingoInstanceContent].[UserId] point to this entity (FK_BingoInstanceContent_User)
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_UserId { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_User
+        /// <summary>
         /// Child BingoInstanceEvents where [BingoInstanceEvent].[CreatedUserId] point to this entity (FK_BingoInstanceEvent_User_Created)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents_CreatedUserId { get; set; } // BingoInstanceEvent.FK_BingoInstanceEvent_User_Created
@@ -131,6 +135,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
             BingoInstances_UpdatedUserId = new System.Collections.Generic.List<BingoInstance>();
             BingoInstanceContents_CreatedUserId = new System.Collections.Generic.List<BingoInstanceContent>();
             BingoInstanceContents_UpdatedUserId = new System.Collections.Generic.List<BingoInstanceContent>();
+            BingoInstanceContents_UserId = new System.Collections.Generic.List<BingoInstanceContent>();
             BingoInstanceEvents_CreatedUserId = new System.Collections.Generic.List<BingoInstanceEvent>();
             BingoInstanceEvents_UpdatedUserId = new System.Collections.Generic.List<BingoInstanceEvent>();
             Companies_CreatedUserId = new System.Collections.Generic.List<Company>();

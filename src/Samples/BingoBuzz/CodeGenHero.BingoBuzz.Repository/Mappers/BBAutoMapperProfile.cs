@@ -26,6 +26,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Infrastructure
 			CreateMap<xDTO.BingoInstance, xENT.BingoInstance>()
 				.ForMember(d => d.BingoInstanceContents, opt => opt.Ignore()) // Reverse nav
 				.ForMember(d => d.BingoInstanceEvents, opt => opt.Ignore()) // Reverse nav
+				.ForMember(d => d.BingoInstanceStatusType, opt => opt.Ignore())
 				.ForMember(d => d.CreatedUser, opt => opt.Ignore())
 				.ForMember(d => d.Meeting, opt => opt.Ignore())
 				.ForMember(d => d.UpdatedUser, opt => opt.Ignore())
@@ -35,8 +36,14 @@ namespace CodeGenHero.BingoBuzz.Repository.Infrastructure
 				.ForMember(d => d.BingoInstanceEvents, opt => opt.Ignore()) // Reverse nav
 				.ForMember(d => d.BingoContent, opt => opt.Ignore())
 				.ForMember(d => d.BingoInstance, opt => opt.Ignore())
+				.ForMember(d => d.BingoInstanceContentStatusType, opt => opt.Ignore())
 				.ForMember(d => d.CreatedUser, opt => opt.Ignore())
 				.ForMember(d => d.UpdatedUser, opt => opt.Ignore())
+				.ForMember(d => d.User_UserId, opt => opt.Ignore())
+			.ReverseMap();
+
+			CreateMap<xDTO.BingoInstanceContentStatusType, xENT.BingoInstanceContentStatusType>()
+				.ForMember(d => d.BingoInstanceContents, opt => opt.Ignore()) // Reverse nav
 			.ReverseMap();
 
 			CreateMap<xDTO.BingoInstanceEvent, xENT.BingoInstanceEvent>()
@@ -52,6 +59,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Infrastructure
 			.ReverseMap();
 
 			CreateMap<xDTO.BingoInstanceStatusType, xENT.BingoInstanceStatusType>()
+				.ForMember(d => d.BingoInstances, opt => opt.Ignore()) // Reverse nav
 			.ReverseMap();
 
 			CreateMap<xDTO.Company, xENT.Company>()
@@ -106,6 +114,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Infrastructure
 				.ForMember(d => d.BingoContents_UpdatedUserId, opt => opt.Ignore()) // Reverse nav
 				.ForMember(d => d.BingoInstanceContents_CreatedUserId, opt => opt.Ignore()) // Reverse nav
 				.ForMember(d => d.BingoInstanceContents_UpdatedUserId, opt => opt.Ignore()) // Reverse nav
+				.ForMember(d => d.BingoInstanceContents_UserId, opt => opt.Ignore()) // Reverse nav
 				.ForMember(d => d.BingoInstanceEvents_CreatedUserId, opt => opt.Ignore()) // Reverse nav
 				.ForMember(d => d.BingoInstanceEvents_UpdatedUserId, opt => opt.Ignore()) // Reverse nav
 				.ForMember(d => d.BingoInstances_CreatedUserId, opt => opt.Ignore()) // Reverse nav

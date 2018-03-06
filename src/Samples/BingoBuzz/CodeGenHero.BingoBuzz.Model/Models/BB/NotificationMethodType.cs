@@ -51,11 +51,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 			{
 				if (_notificationRules == null)
 				{
-					_notificationRules = new List<INotificationRule>();
-					foreach (var dtoItem in _dto.NotificationRules)
-					{
-						_notificationRules.Add(new NotificationRule(Log, DataService, dtoItem));
-					}
+					OnLazyLoadRequest(this, new LoadRequestNotificationMethodType(nameof(NotificationRules)));
 				}
 
 				return _notificationRules;

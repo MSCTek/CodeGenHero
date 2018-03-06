@@ -32,9 +32,11 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
             Property(x => x.BingoInstanceContentId).HasColumnName(@"BingoInstanceContentId").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
             Property(x => x.BingoContentId).HasColumnName(@"BingoContentId").HasColumnType("uniqueidentifier").IsRequired();
             Property(x => x.BingoInstanceId).HasColumnName(@"BingoInstanceId").HasColumnType("uniqueidentifier").IsRequired();
+            Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("uniqueidentifier").IsRequired();
             Property(x => x.Col).HasColumnName(@"Col").HasColumnType("int").IsRequired();
             Property(x => x.Row).HasColumnName(@"Row").HasColumnType("int").IsRequired();
             Property(x => x.FreeSquareIndicator).HasColumnName(@"FreeSquareIndicator").HasColumnType("bit").IsRequired();
+            Property(x => x.BingoInstanceContentStatusTypeId).HasColumnName(@"BingoInstanceContentStatusTypeId").HasColumnType("int").IsRequired();
             Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").HasColumnType("datetime2").IsRequired();
             Property(x => x.CreatedUserId).HasColumnName(@"CreatedUserId").HasColumnType("uniqueidentifier").IsRequired();
             Property(x => x.UpdatedDate).HasColumnName(@"UpdatedDate").HasColumnType("datetime2").IsRequired();
@@ -44,8 +46,10 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
             // Foreign keys
             HasRequired(a => a.BingoContent).WithMany(b => b.BingoInstanceContents).HasForeignKey(c => c.BingoContentId).WillCascadeOnDelete(false); // FK_BingoInstanceContent_BingoContent
             HasRequired(a => a.BingoInstance).WithMany(b => b.BingoInstanceContents).HasForeignKey(c => c.BingoInstanceId).WillCascadeOnDelete(false); // FK_BingoInstanceContent_BingoInstance
+            HasRequired(a => a.BingoInstanceContentStatusType).WithMany(b => b.BingoInstanceContents).HasForeignKey(c => c.BingoInstanceContentStatusTypeId).WillCascadeOnDelete(false); // FK_BingoInstanceContent_BingoInstanceContentStatusType
             HasRequired(a => a.CreatedUser).WithMany(b => b.BingoInstanceContents_CreatedUserId).HasForeignKey(c => c.CreatedUserId).WillCascadeOnDelete(false); // FK_BingoInstanceContent_User_Created
             HasRequired(a => a.UpdatedUser).WithMany(b => b.BingoInstanceContents_UpdatedUserId).HasForeignKey(c => c.UpdatedUserId).WillCascadeOnDelete(false); // FK_BingoInstanceContent_User_Updated
+            HasRequired(a => a.User_UserId).WithMany(b => b.BingoInstanceContents_UserId).HasForeignKey(c => c.UserId).WillCascadeOnDelete(false); // FK_BingoInstanceContent_User
             InitializePartial();
         }
         partial void InitializePartial();

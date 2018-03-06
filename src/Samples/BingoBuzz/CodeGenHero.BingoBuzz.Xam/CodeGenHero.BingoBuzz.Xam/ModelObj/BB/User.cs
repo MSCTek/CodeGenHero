@@ -14,6 +14,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ModelObj.BB
 			BingoInstances_UpdatedUserId = new System.Collections.Generic.List<BingoInstance>(); // Reverse Navigation
 			BingoInstanceContents_CreatedUserId = new System.Collections.Generic.List<BingoInstanceContent>(); // Reverse Navigation
 			BingoInstanceContents_UpdatedUserId = new System.Collections.Generic.List<BingoInstanceContent>(); // Reverse Navigation
+			BingoInstanceContents_UserId = new System.Collections.Generic.List<BingoInstanceContent>(); // Reverse Navigation
 			BingoInstanceEvents_CreatedUserId = new System.Collections.Generic.List<BingoInstanceEvent>(); // Reverse Navigation
 			BingoInstanceEvents_UpdatedUserId = new System.Collections.Generic.List<BingoInstanceEvent>(); // Reverse Navigation
 			Companies_CreatedUserId = new System.Collections.Generic.List<Company>(); // Reverse Navigation
@@ -94,6 +95,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ModelObj.BB
 		public virtual System.Collections.Generic.IList<BingoInstance> BingoInstances_UpdatedUserId { get; set; } // Many to many mapping
 		public virtual System.Collections.Generic.IList<BingoInstanceContent> BingoInstanceContents_CreatedUserId { get; set; } // Many to many mapping
 		public virtual System.Collections.Generic.IList<BingoInstanceContent> BingoInstanceContents_UpdatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.IList<BingoInstanceContent> BingoInstanceContents_UserId { get; set; } // Many to many mapping
 		public virtual System.Collections.Generic.IList<BingoInstanceEvent> BingoInstanceEvents_CreatedUserId { get; set; } // Many to many mapping
 		public virtual System.Collections.Generic.IList<BingoInstanceEvent> BingoInstanceEvents_UpdatedUserId { get; set; } // Many to many mapping
 		public virtual System.Collections.Generic.IList<Company> Companies_CreatedUserId { get; set; } // Many to many mapping

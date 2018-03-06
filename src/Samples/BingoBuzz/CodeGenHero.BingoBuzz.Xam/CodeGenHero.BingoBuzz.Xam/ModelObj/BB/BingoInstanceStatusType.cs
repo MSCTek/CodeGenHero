@@ -7,6 +7,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ModelObj.BB
 	{
 		public BingoInstanceStatusType()
 		{
+			BingoInstances = new System.Collections.Generic.List<BingoInstance>(); // Reverse Navigation
+
 			InitializePartial();
 		}
 
@@ -34,6 +36,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ModelObj.BB
 			}
 		}
 
+		public virtual System.Collections.Generic.IList<BingoInstance> BingoInstances { get; set; } // Many to many mapping
 
 
 		partial void InitializePartial();

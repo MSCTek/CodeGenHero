@@ -13,9 +13,11 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 		public System.Guid BingoInstanceContentId { get; set; } // Primary key
 		public System.Guid BingoContentId { get; set; }
 		public System.Guid BingoInstanceId { get; set; }
+		public System.Guid UserId { get; set; }
 		public int Col { get; set; }
 		public int Row { get; set; }
 		public bool FreeSquareIndicator { get; set; }
+		public int BingoInstanceContentStatusTypeId { get; set; }
 		public System.DateTime CreatedDate { get; set; }
 		public System.Guid CreatedUserId { get; set; }
 		public System.DateTime UpdatedDate { get; set; }
@@ -23,9 +25,11 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 		public bool IsDeleted { get; set; }
 		public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents { get; set; } // Many to many mapping
 		public virtual BingoContent BingoContent { get; set; } 
-		public virtual BingoInstance BingoInstance { get; set; } 
+		// public virtual BingoInstance BingoInstance { get; set; }  -- Excluded navigation property per configuration.
+		public virtual BingoInstanceContentStatusType BingoInstanceContentStatusType { get; set; } 
 		public virtual User CreatedUser { get; set; } 
 		public virtual User UpdatedUser { get; set; } 
+		public virtual User User_UserId { get; set; } 
 
 
 		partial void InitializePartial();

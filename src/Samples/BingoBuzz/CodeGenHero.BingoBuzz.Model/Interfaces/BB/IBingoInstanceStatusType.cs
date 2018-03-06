@@ -9,6 +9,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB.Interface
 		int BingoInstanceStatusTypeId { get; }
 		string Name { get; }
 
+		List<IBingoInstance> BingoInstances { get; }
 
 
 	}

@@ -25,6 +25,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB.Interface
 		List<IBingoInstance> BingoInstances_UpdatedUserId { get; }
 		List<IBingoInstanceContent> BingoInstanceContents_CreatedUserId { get; }
 		List<IBingoInstanceContent> BingoInstanceContents_UpdatedUserId { get; }
+		List<IBingoInstanceContent> BingoInstanceContents_UserId { get; }
 		List<IBingoInstanceEvent> BingoInstanceEvents_CreatedUserId { get; }
 		List<IBingoInstanceEvent> BingoInstanceEvents_UpdatedUserId { get; }
 		List<ICompany> Companies_CreatedUserId { get; }

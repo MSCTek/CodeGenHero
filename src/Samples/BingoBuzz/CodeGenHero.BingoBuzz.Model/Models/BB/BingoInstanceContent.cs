@@ -41,6 +41,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 
 		public virtual System.Guid BingoContentId { get { return _dto.BingoContentId; } }
 		public virtual System.Guid BingoInstanceContentId { get { return _dto.BingoInstanceContentId; } }
+		public virtual int BingoInstanceContentStatusTypeId { get { return _dto.BingoInstanceContentStatusTypeId; } }
 		public virtual System.Guid BingoInstanceId { get { return _dto.BingoInstanceId; } }
 		public virtual int Col { get { return _dto.Col; } }
 		public virtual System.DateTime CreatedDate { get { return _dto.CreatedDate; } }
@@ -50,11 +51,14 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public virtual int Row { get { return _dto.Row; } }
 		public virtual System.DateTime UpdatedDate { get { return _dto.UpdatedDate; } }
 		public virtual System.Guid UpdatedUserId { get { return _dto.UpdatedUserId; } }
+		public virtual System.Guid UserId { get { return _dto.UserId; } }
 
 		private IBingoContent _bingoContent = null; // Foreign Key
 		private IBingoInstance _bingoInstance = null; // Foreign Key
+		private IBingoInstanceContentStatusType _bingoInstanceContentStatusType = null; // Foreign Key
 		private IUser _createdUser = null; // Foreign Key
 		private IUser _updatedUser = null; // Foreign Key
+		private IUser _user_UserId = null; // Foreign Key
 		private List<IBingoInstanceEvent> _bingoInstanceEvents = null; // Reverse Navigation
 
 
@@ -77,10 +81,23 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 			{
 				if (_bingoInstance == null)
 				{
-					_bingoInstance = new BingoInstance(Log, DataService, _dto.BingoInstance);
+					OnLazyLoadRequest(this, new LoadRequestBingoInstanceContent(nameof(BingoInstance)));
 				}
 
 				return _bingoInstance;
+			}
+		}
+
+		public virtual IBingoInstanceContentStatusType BingoInstanceContentStatusType
+		{
+			get
+			{
+				if (_bingoInstanceContentStatusType == null)
+				{
+					_bingoInstanceContentStatusType = new BingoInstanceContentStatusType(Log, DataService, _dto.BingoInstanceContentStatusType);
+				}
+
+				return _bingoInstanceContentStatusType;
 			}
 		}
 
@@ -107,6 +124,19 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 				}
 
 				return _updatedUser;
+			}
+		}
+
+		public virtual IUser User_UserId
+		{
+			get
+			{
+				if (_user_UserId == null)
+				{
+					_user_UserId = new User(Log, DataService, _dto.User_UserId);
+				}
+
+				return _user_UserId;
 			}
 		}
 

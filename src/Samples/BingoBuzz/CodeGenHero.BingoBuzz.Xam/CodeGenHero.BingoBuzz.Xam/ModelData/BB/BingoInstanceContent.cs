@@ -12,9 +12,11 @@ namespace CodeGenHero.BingoBuzz.Xam.ModelData.BB
 		[PrimaryKey]
 		public System.Guid BingoInstanceContentId { get; set; }
 
+		public int BingoInstanceContentStatusTypeId { get; set; }
 		public System.Guid BingoInstanceId { get; set; }
 		public int Col { get; set; }
 		public bool FreeSquareIndicator { get; set; }
 		public int Row { get; set; }
+		public System.Guid UserId { get; set; }
 	}
 }

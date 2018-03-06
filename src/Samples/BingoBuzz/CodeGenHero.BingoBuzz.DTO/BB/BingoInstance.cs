@@ -24,6 +24,7 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 		public bool IsDeleted { get; set; }
 		public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents { get; set; } // Many to many mapping
 		public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents { get; set; } // Many to many mapping
+		public virtual BingoInstanceStatusType BingoInstanceStatusType { get; set; } 
 		public virtual Meeting Meeting { get; set; } 
 		public virtual User CreatedUser { get; set; } 
 		public virtual User UpdatedUser { get; set; } 

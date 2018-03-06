@@ -62,7 +62,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 			{
 				if (_bingoInstance == null)
 				{
-					_bingoInstance = new BingoInstance(Log, DataService, _dto.BingoInstance);
+					OnLazyLoadRequest(this, new LoadRequestBingoInstanceEvent(nameof(BingoInstance)));
 				}
 
 				return _bingoInstance;
@@ -75,7 +75,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 			{
 				if (_bingoInstanceContent == null)
 				{
-					_bingoInstanceContent = new BingoInstanceContent(Log, DataService, _dto.BingoInstanceContent);
+					OnLazyLoadRequest(this, new LoadRequestBingoInstanceEvent(nameof(BingoInstanceContent)));
 				}
 
 				return _bingoInstanceContent;

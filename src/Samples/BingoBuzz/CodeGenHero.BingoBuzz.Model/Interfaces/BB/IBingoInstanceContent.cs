@@ -8,6 +8,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB.Interface
 	{
 		System.Guid BingoContentId { get; }
 		System.Guid BingoInstanceContentId { get; }
+		int BingoInstanceContentStatusTypeId { get; }
 		System.Guid BingoInstanceId { get; }
 		int Col { get; }
 		System.DateTime CreatedDate { get; }
@@ -17,11 +18,14 @@ namespace CodeGenHero.BingoBuzz.Model.BB.Interface
 		int Row { get; }
 		System.DateTime UpdatedDate { get; }
 		System.Guid UpdatedUserId { get; }
+		System.Guid UserId { get; }
 
 		IBingoContent BingoContent { get; }
 		IBingoInstance BingoInstance { get; }
+		IBingoInstanceContentStatusType BingoInstanceContentStatusType { get; }
 		IUser CreatedUser { get; }
 		IUser UpdatedUser { get; }
+		IUser User_UserId { get; }
 		List<IBingoInstanceEvent> BingoInstanceEvents { get; }
 
 

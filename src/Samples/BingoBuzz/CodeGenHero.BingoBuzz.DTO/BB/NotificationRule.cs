@@ -5,7 +5,7 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public NotificationRule()
 		{
-			MeetingAttendees = new System.Collections.Generic.List<MeetingAttendee>();
+			// MeetingAttendees = new System.Collections.Generic.List<MeetingAttendee>(); -- Excluded navigation property per configuration.
 
 			InitializePartial();
 		}
@@ -13,7 +13,7 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 		public System.Guid NotificationRuleId { get; set; } // Primary key
 		public int NotificationMethodTypeId { get; set; }
 		public int MinutesBeforehand { get; set; }
-		public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees { get; set; } // Many to many mapping
+		// public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
 		public virtual NotificationMethodType NotificationMethodType { get; set; } 
 
 

@@ -5,11 +5,14 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public BingoInstanceStatusType()
 		{
+			// BingoInstances = new System.Collections.Generic.List<BingoInstance>(); -- Excluded navigation property per configuration.
+
 			InitializePartial();
 		}
 
 		public int BingoInstanceStatusTypeId { get; set; } // Primary key
 		public string Name { get; set; }
+		// public virtual System.Collections.Generic.ICollection<BingoInstance> BingoInstances { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
 
 
 		partial void InitializePartial();

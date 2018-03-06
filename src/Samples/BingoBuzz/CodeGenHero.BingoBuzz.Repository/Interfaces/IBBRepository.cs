@@ -18,6 +18,8 @@ namespace CodeGenHero.BingoBuzz.Repository.Interface
 
 		RepositoryActionResult<BingoInstanceContent> DeleteBingoInstanceContent(System.Guid bingoInstanceContentId);
 
+		RepositoryActionResult<BingoInstanceContentStatusType> DeleteBingoInstanceContentStatusType(int bingoInstanceContentStatusTypeId);
+
 		RepositoryActionResult<BingoInstanceEvent> DeleteBingoInstanceEvent(System.Guid bingoInstanceEventId);
 
 		RepositoryActionResult<BingoInstanceEventType> DeleteBingoInstanceEventType(int bingoInstanceEventTypeId);
@@ -52,6 +54,8 @@ namespace CodeGenHero.BingoBuzz.Repository.Interface
 		BingoInstance GetBingoInstance(System.Guid bingoInstanceId);
 
 		BingoInstanceContent GetBingoInstanceContent(System.Guid bingoInstanceContentId);
+
+		BingoInstanceContentStatusType GetBingoInstanceContentStatusType(int bingoInstanceContentStatusTypeId);
 
 		BingoInstanceEvent GetBingoInstanceEvent(System.Guid bingoInstanceEventId);
 

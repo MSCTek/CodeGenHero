@@ -23,6 +23,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         public System.Data.Entity.DbSet<BingoContent> BingoContents { get; set; }
         public System.Data.Entity.DbSet<BingoInstance> BingoInstances { get; set; }
         public System.Data.Entity.DbSet<BingoInstanceContent> BingoInstanceContents { get; set; }
+        public System.Data.Entity.DbSet<BingoInstanceContentStatusType> BingoInstanceContentStatusTypes { get; set; }
         public System.Data.Entity.DbSet<BingoInstanceEvent> BingoInstanceEvents { get; set; }
         public System.Data.Entity.DbSet<BingoInstanceEventType> BingoInstanceEventTypes { get; set; }
         public System.Data.Entity.DbSet<BingoInstanceStatusType> BingoInstanceStatusTypes { get; set; }
@@ -41,6 +42,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
             BingoContents = new FakeDbSet<BingoContent>("BingoContentId");
             BingoInstances = new FakeDbSet<BingoInstance>("BingoInstanceId");
             BingoInstanceContents = new FakeDbSet<BingoInstanceContent>("BingoInstanceContentId");
+            BingoInstanceContentStatusTypes = new FakeDbSet<BingoInstanceContentStatusType>("BingoInstanceContentStatusTypeId");
             BingoInstanceEvents = new FakeDbSet<BingoInstanceEvent>("BingoInstanceEventId");
             BingoInstanceEventTypes = new FakeDbSet<BingoInstanceEventType>("BingoInstanceEventTypeId");
             BingoInstanceStatusTypes = new FakeDbSet<BingoInstanceStatusType>("BingoInstanceStatusTypeId");

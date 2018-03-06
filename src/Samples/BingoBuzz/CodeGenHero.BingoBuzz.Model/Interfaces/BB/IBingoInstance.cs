@@ -18,6 +18,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB.Interface
 		System.DateTime UpdatedDate { get; }
 		System.Guid UpdatedUserId { get; }
 
+		IBingoInstanceStatusType BingoInstanceStatusType { get; }
 		IMeeting Meeting { get; }
 		IUser CreatedUser { get; }
 		IUser UpdatedUser { get; }

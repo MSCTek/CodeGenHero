@@ -34,6 +34,11 @@ namespace CodeGenHero.BingoBuzz.API.Client
 			return await GetAllPageDataResultsAsync<BingoInstanceContent>(GetBingoInstanceContentsAsync, minUpdatedDate);
 		}
 
+		public async Task<List<BingoInstanceContentStatusType>> GetAllPagesBingoInstanceContentStatusTypesAsync()
+		{
+			return await GetAllPageDataResultsAsync<BingoInstanceContentStatusType>(GetBingoInstanceContentStatusTypesAsync);
+		}
+
 		public async Task<List<BingoInstanceEvent>> GetAllPagesBingoInstanceEventsAsync(DateTime? minUpdatedDate)
 		{
 			return await GetAllPageDataResultsAsync<BingoInstanceEvent>(GetBingoInstanceEventsAsync, minUpdatedDate);
@@ -114,6 +119,12 @@ namespace CodeGenHero.BingoBuzz.API.Client
 		{
 			List<string> filter = BuildFilter(minUpdatedDate, "UpdatedDate");
 			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceContent>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstanceContents", filter, page: page, pageSize: pageSize); 
+		}
+
+		public async Task<PageData<List<BingoInstanceContentStatusType>>> GetBingoInstanceContentStatusTypesAsync(int page = 1, int pageSize = 100)
+		{
+			List<string> filter = null;
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceContentStatusType>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstanceContentStatusTypes", filter, page: page, pageSize: pageSize); 
 		}
 
 		public async Task<PageData<List<BingoInstanceEvent>>> GetBingoInstanceEventsAsync(DateTime? minUpdatedDate, int page = 1, int pageSize = 100)
@@ -207,6 +218,12 @@ namespace CodeGenHero.BingoBuzz.API.Client
 		public async Task<HttpCallResult<BingoInstanceContent>> GetBingoInstanceContentAsync(System.Guid bingoInstanceContentId, int numChildLevels)
 		{
 			var retVal = await SerializationHelper.Instance.SerializeCallResultsGet<BingoInstanceContent>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstanceContents/{bingoInstanceContentId}?numChildLevels={numChildLevels}");
+			return retVal;
+		}
+
+		public async Task<HttpCallResult<BingoInstanceContentStatusType>> GetBingoInstanceContentStatusTypeAsync(int bingoInstanceContentStatusTypeId, int numChildLevels)
+		{
+			var retVal = await SerializationHelper.Instance.SerializeCallResultsGet<BingoInstanceContentStatusType>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstanceContentStatusTypes/{bingoInstanceContentStatusTypeId}?numChildLevels={numChildLevels}");
 			return retVal;
 		}
 
@@ -307,6 +324,14 @@ namespace CodeGenHero.BingoBuzz.API.Client
 				var retVal = await SerializationHelper.Instance.SerializeCallResultsPost<BingoInstanceContent>(
 					Log, GetClient(),
 					$"{ExecutionContext.BaseWebApiUrl}BingoInstanceContents/", item);
+				return retVal;
+			}
+
+			public async Task<HttpCallResult<BingoInstanceContentStatusType>> CreateBingoInstanceContentStatusTypeAsync(BingoInstanceContentStatusType item)
+			{
+				var retVal = await SerializationHelper.Instance.SerializeCallResultsPost<BingoInstanceContentStatusType>(
+					Log, GetClient(),
+					$"{ExecutionContext.BaseWebApiUrl}BingoInstanceContentStatusTypes/", item);
 				return retVal;
 			}
 
@@ -434,6 +459,14 @@ namespace CodeGenHero.BingoBuzz.API.Client
 				return retVal;
 			}
 
+			public async Task<HttpCallResult<BingoInstanceContentStatusType>> UpdateBingoInstanceContentStatusTypeAsync(BingoInstanceContentStatusType item)
+			{
+				var retVal = await SerializationHelper.Instance.SerializeCallResultsPut<BingoInstanceContentStatusType>(
+					Log, GetClient(),
+					$"{ExecutionContext.BaseWebApiUrl}BingoInstanceContentStatusTypes/{item.BingoInstanceContentStatusTypeId}", item);
+				return retVal;
+			}
+
 			public async Task<HttpCallResult<BingoInstanceEvent>> UpdateBingoInstanceEventAsync(BingoInstanceEvent item)
 			{
 				var retVal = await SerializationHelper.Instance.SerializeCallResultsPut<BingoInstanceEvent>(
@@ -549,6 +582,12 @@ namespace CodeGenHero.BingoBuzz.API.Client
 		public async Task<HttpCallResult<BingoInstanceContent>> DeleteBingoInstanceContentAsync(System.Guid bingoInstanceContentId)
 		{
 			var retVal = await SerializationHelper.Instance.SerializeCallResultsDelete<BingoInstanceContent>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstanceContents/{bingoInstanceContentId}");
+			return retVal;
+		}
+
+		public async Task<HttpCallResult<BingoInstanceContentStatusType>> DeleteBingoInstanceContentStatusTypeAsync(int bingoInstanceContentStatusTypeId)
+		{
+			var retVal = await SerializationHelper.Instance.SerializeCallResultsDelete<BingoInstanceContentStatusType>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstanceContentStatusTypes/{bingoInstanceContentStatusTypeId}");
 			return retVal;
 		}
 

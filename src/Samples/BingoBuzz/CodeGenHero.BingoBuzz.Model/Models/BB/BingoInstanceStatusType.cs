@@ -42,7 +42,21 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public virtual int BingoInstanceStatusTypeId { get { return _dto.BingoInstanceStatusTypeId; } }
 		public virtual string Name { get { return _dto.Name; } }
 
+		private List<IBingoInstance> _bingoInstances = null; // Reverse Navigation
 
+
+		public virtual List<IBingoInstance> BingoInstances
+		{
+			get
+			{
+				if (_bingoInstances == null)
+				{
+					OnLazyLoadRequest(this, new LoadRequestBingoInstanceStatusType(nameof(BingoInstances)));
+				}
+
+				return _bingoInstances;
+			}
+		}
 
 
 

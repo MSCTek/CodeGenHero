@@ -20,6 +20,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         System.Data.Entity.DbSet<BingoContent> BingoContents { get; set; } // BingoContent
         System.Data.Entity.DbSet<BingoInstance> BingoInstances { get; set; } // BingoInstance
         System.Data.Entity.DbSet<BingoInstanceContent> BingoInstanceContents { get; set; } // BingoInstanceContent
+        System.Data.Entity.DbSet<BingoInstanceContentStatusType> BingoInstanceContentStatusTypes { get; set; } // BingoInstanceContentStatusType
         System.Data.Entity.DbSet<BingoInstanceEvent> BingoInstanceEvents { get; set; } // BingoInstanceEvent
         System.Data.Entity.DbSet<BingoInstanceEventType> BingoInstanceEventTypes { get; set; } // BingoInstanceEventType
         System.Data.Entity.DbSet<BingoInstanceStatusType> BingoInstanceStatusTypes { get; set; } // BingoInstanceStatusType

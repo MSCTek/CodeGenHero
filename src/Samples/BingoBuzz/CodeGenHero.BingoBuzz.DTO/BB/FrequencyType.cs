@@ -5,14 +5,14 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public FrequencyType()
 		{
-			RecurrenceRules = new System.Collections.Generic.List<RecurrenceRule>();
+			// RecurrenceRules = new System.Collections.Generic.List<RecurrenceRule>(); -- Excluded navigation property per configuration.
 
 			InitializePartial();
 		}
 
 		public int FrequencyTypeId { get; set; } // Primary key
 		public string Name { get; set; }
-		public virtual System.Collections.Generic.ICollection<RecurrenceRule> RecurrenceRules { get; set; } // Many to many mapping
+		// public virtual System.Collections.Generic.ICollection<RecurrenceRule> RecurrenceRules { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
 
 
 		partial void InitializePartial();

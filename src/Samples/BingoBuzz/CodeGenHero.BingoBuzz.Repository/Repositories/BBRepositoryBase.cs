@@ -128,6 +128,10 @@ namespace CodeGenHero.BingoBuzz.Repository
 		{
 			return Insert<BingoInstanceContent>(item);
 		}
+		public RepositoryActionResult<BingoInstanceContentStatusType> Insert(BingoInstanceContentStatusType item)
+		{
+			return Insert<BingoInstanceContentStatusType>(item);
+		}
 		public RepositoryActionResult<BingoInstanceEvent> Insert(BingoInstanceEvent item)
 		{
 			return Insert<BingoInstanceEvent>(item);
@@ -192,6 +196,10 @@ namespace CodeGenHero.BingoBuzz.Repository
 		public IQueryable<BingoInstanceContent> GetQueryableBingoInstanceContent()
 		{
 			return _ctx.Set<BingoInstanceContent>();
+		}
+		public IQueryable<BingoInstanceContentStatusType> GetQueryableBingoInstanceContentStatusType()
+		{
+			return _ctx.Set<BingoInstanceContentStatusType>();
 		}
 		public IQueryable<BingoInstanceEvent> GetQueryableBingoInstanceEvent()
 		{
@@ -269,6 +277,14 @@ namespace CodeGenHero.BingoBuzz.Repository
 			public BingoInstanceContent GetFirstOrDefault(BingoInstanceContent item)
 			{
 				return _ctx.BingoInstanceContents.Where(x => x.BingoInstanceContentId == item.BingoInstanceContentId).FirstOrDefault();
+			}
+			public BingoInstanceContentStatusType GetBingoInstanceContentStatusType(int bingoInstanceContentStatusTypeId)
+			{
+				return _ctx.BingoInstanceContentStatusTypes.Where(x => x.BingoInstanceContentStatusTypeId == bingoInstanceContentStatusTypeId).FirstOrDefault();
+			}
+			public BingoInstanceContentStatusType GetFirstOrDefault(BingoInstanceContentStatusType item)
+			{
+				return _ctx.BingoInstanceContentStatusTypes.Where(x => x.BingoInstanceContentStatusTypeId == item.BingoInstanceContentStatusTypeId).FirstOrDefault();
 			}
 			public BingoInstanceEvent GetBingoInstanceEvent(System.Guid bingoInstanceEventId)
 			{
@@ -382,6 +398,10 @@ namespace CodeGenHero.BingoBuzz.Repository
 		{
 			return Update<BingoInstanceContent>(item, _ctx.BingoInstanceContents.FirstOrDefault(x => x.BingoInstanceContentId == item.BingoInstanceContentId));
 		}
+		public RepositoryActionResult<BingoInstanceContentStatusType> Update(BingoInstanceContentStatusType item)
+		{
+			return Update<BingoInstanceContentStatusType>(item, _ctx.BingoInstanceContentStatusTypes.FirstOrDefault(x => x.BingoInstanceContentStatusTypeId == item.BingoInstanceContentStatusTypeId));
+		}
 		public RepositoryActionResult<BingoInstanceEvent> Update(BingoInstanceEvent item)
 		{
 			return Update<BingoInstanceEvent>(item, _ctx.BingoInstanceEvents.FirstOrDefault(x => x.BingoInstanceEventId == item.BingoInstanceEventId));
@@ -458,6 +478,14 @@ namespace CodeGenHero.BingoBuzz.Repository
 			public RepositoryActionResult<BingoInstanceContent> Delete(BingoInstanceContent item)
 			{
 				return Delete<BingoInstanceContent>(_ctx.BingoInstanceContents.Where(x => x.BingoInstanceContentId == item.BingoInstanceContentId).FirstOrDefault());
+			}
+			public RepositoryActionResult<BingoInstanceContentStatusType> DeleteBingoInstanceContentStatusType(int bingoInstanceContentStatusTypeId)
+			{
+				return Delete<BingoInstanceContentStatusType>(_ctx.BingoInstanceContentStatusTypes.Where(x => x.BingoInstanceContentStatusTypeId == bingoInstanceContentStatusTypeId).FirstOrDefault());
+			}
+			public RepositoryActionResult<BingoInstanceContentStatusType> Delete(BingoInstanceContentStatusType item)
+			{
+				return Delete<BingoInstanceContentStatusType>(_ctx.BingoInstanceContentStatusTypes.Where(x => x.BingoInstanceContentStatusTypeId == item.BingoInstanceContentStatusTypeId).FirstOrDefault());
 			}
 			public RepositoryActionResult<BingoInstanceEvent> DeleteBingoInstanceEvent(System.Guid bingoInstanceEventId)
 			{

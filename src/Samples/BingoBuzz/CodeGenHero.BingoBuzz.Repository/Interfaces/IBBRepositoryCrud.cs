@@ -9,6 +9,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Interface
 		ICRUDOperation<BingoContent>,
 		ICRUDOperation<BingoInstance>,
 		ICRUDOperation<BingoInstanceContent>,
+		ICRUDOperation<BingoInstanceContentStatusType>,
 		ICRUDOperation<BingoInstanceEvent>,
 		ICRUDOperation<BingoInstanceEventType>,
 		ICRUDOperation<BingoInstanceStatusType>,
@@ -28,6 +29,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Interface
 		IQueryable<BingoContent> GetQueryableBingoContent();
 		IQueryable<BingoInstance> GetQueryableBingoInstance();
 		IQueryable<BingoInstanceContent> GetQueryableBingoInstanceContent();
+		IQueryable<BingoInstanceContentStatusType> GetQueryableBingoInstanceContentStatusType();
 		IQueryable<BingoInstanceEvent> GetQueryableBingoInstanceEvent();
 		IQueryable<BingoInstanceEventType> GetQueryableBingoInstanceEventType();
 		IQueryable<BingoInstanceStatusType> GetQueryableBingoInstanceStatusType();

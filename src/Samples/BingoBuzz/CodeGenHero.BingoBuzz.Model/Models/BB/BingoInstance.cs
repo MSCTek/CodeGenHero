@@ -51,12 +51,26 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public virtual System.DateTime UpdatedDate { get { return _dto.UpdatedDate; } }
 		public virtual System.Guid UpdatedUserId { get { return _dto.UpdatedUserId; } }
 
+		private IBingoInstanceStatusType _bingoInstanceStatusType = null; // Foreign Key
 		private IMeeting _meeting = null; // Foreign Key
 		private IUser _createdUser = null; // Foreign Key
 		private IUser _updatedUser = null; // Foreign Key
 		private List<IBingoInstanceContent> _bingoInstanceContents = null; // Reverse Navigation
 		private List<IBingoInstanceEvent> _bingoInstanceEvents = null; // Reverse Navigation
 
+
+		public virtual IBingoInstanceStatusType BingoInstanceStatusType
+		{
+			get
+			{
+				if (_bingoInstanceStatusType == null)
+				{
+					_bingoInstanceStatusType = new BingoInstanceStatusType(Log, DataService, _dto.BingoInstanceStatusType);
+				}
+
+				return _bingoInstanceStatusType;
+			}
+		}
 
 		public virtual IMeeting Meeting
 		{

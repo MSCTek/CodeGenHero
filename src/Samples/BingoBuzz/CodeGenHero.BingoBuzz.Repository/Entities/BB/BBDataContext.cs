@@ -23,6 +23,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         public System.Data.Entity.DbSet<BingoContent> BingoContents { get; set; } // BingoContent
         public System.Data.Entity.DbSet<BingoInstance> BingoInstances { get; set; } // BingoInstance
         public System.Data.Entity.DbSet<BingoInstanceContent> BingoInstanceContents { get; set; } // BingoInstanceContent
+        public System.Data.Entity.DbSet<BingoInstanceContentStatusType> BingoInstanceContentStatusTypes { get; set; } // BingoInstanceContentStatusType
         public System.Data.Entity.DbSet<BingoInstanceEvent> BingoInstanceEvents { get; set; } // BingoInstanceEvent
         public System.Data.Entity.DbSet<BingoInstanceEventType> BingoInstanceEventTypes { get; set; } // BingoInstanceEventType
         public System.Data.Entity.DbSet<BingoInstanceStatusType> BingoInstanceStatusTypes { get; set; } // BingoInstanceStatusType
@@ -92,6 +93,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
             modelBuilder.Configurations.Add(new BingoContentConfiguration());
             modelBuilder.Configurations.Add(new BingoInstanceConfiguration());
             modelBuilder.Configurations.Add(new BingoInstanceContentConfiguration());
+            modelBuilder.Configurations.Add(new BingoInstanceContentStatusTypeConfiguration());
             modelBuilder.Configurations.Add(new BingoInstanceEventConfiguration());
             modelBuilder.Configurations.Add(new BingoInstanceEventTypeConfiguration());
             modelBuilder.Configurations.Add(new BingoInstanceStatusTypeConfiguration());
@@ -113,6 +115,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
             modelBuilder.Configurations.Add(new BingoContentConfiguration(schema));
             modelBuilder.Configurations.Add(new BingoInstanceConfiguration(schema));
             modelBuilder.Configurations.Add(new BingoInstanceContentConfiguration(schema));
+            modelBuilder.Configurations.Add(new BingoInstanceContentStatusTypeConfiguration(schema));
             modelBuilder.Configurations.Add(new BingoInstanceEventConfiguration(schema));
             modelBuilder.Configurations.Add(new BingoInstanceEventTypeConfiguration(schema));
             modelBuilder.Configurations.Add(new BingoInstanceStatusTypeConfiguration(schema));

@@ -101,11 +101,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 			{
 				if (_bingoInstances == null)
 				{
-					_bingoInstances = new List<IBingoInstance>();
-					foreach (var dtoItem in _dto.BingoInstances)
-					{
-						_bingoInstances.Add(new BingoInstance(Log, DataService, dtoItem));
-					}
+					OnLazyLoadRequest(this, new LoadRequestMeeting(nameof(BingoInstances)));
 				}
 
 				return _bingoInstances;

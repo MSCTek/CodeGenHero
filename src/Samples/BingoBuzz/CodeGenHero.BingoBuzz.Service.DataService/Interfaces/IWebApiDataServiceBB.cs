@@ -17,6 +17,8 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 
 		Task<List<BingoInstanceContent>> GetAllPagesBingoInstanceContentsAsync(DateTime? minUpdatedDate);
 
+		Task<List<BingoInstanceContentStatusType>> GetAllPagesBingoInstanceContentStatusTypesAsync();
+
 		Task<List<BingoInstanceEvent>> GetAllPagesBingoInstanceEventsAsync(DateTime? minUpdatedDate);
 
 		Task<List<BingoInstanceEventType>> GetAllPagesBingoInstanceEventTypesAsync();
@@ -51,6 +53,8 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 		Task<PageData<List<BingoInstance>>> GetBingoInstancesAsync(DateTime? minUpdatedDate, int page, int pageSize);
 
 		Task<PageData<List<BingoInstanceContent>>> GetBingoInstanceContentsAsync(DateTime? minUpdatedDate, int page, int pageSize);
+
+		Task<PageData<List<BingoInstanceContentStatusType>>> GetBingoInstanceContentStatusTypesAsync(int page, int pageSize);
 
 		Task<PageData<List<BingoInstanceEvent>>> GetBingoInstanceEventsAsync(DateTime? minUpdatedDate, int page, int pageSize);
 
@@ -87,6 +91,8 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 
 		Task<HttpCallResult<BingoInstanceContent>> GetBingoInstanceContentAsync(System.Guid bingoInstanceContentId, int numChildLevels);
 
+		Task<HttpCallResult<BingoInstanceContentStatusType>> GetBingoInstanceContentStatusTypeAsync(int bingoInstanceContentStatusTypeId, int numChildLevels);
+
 		Task<HttpCallResult<BingoInstanceEvent>> GetBingoInstanceEventAsync(System.Guid bingoInstanceEventId, int numChildLevels);
 
 		Task<HttpCallResult<BingoInstanceEventType>> GetBingoInstanceEventTypeAsync(int bingoInstanceEventTypeId, int numChildLevels);
@@ -122,6 +128,8 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 
 		Task<HttpCallResult<BingoInstanceContent>> CreateBingoInstanceContentAsync(BingoInstanceContent item);
 
+		Task<HttpCallResult<BingoInstanceContentStatusType>> CreateBingoInstanceContentStatusTypeAsync(BingoInstanceContentStatusType item);
+
 		Task<HttpCallResult<BingoInstanceEvent>> CreateBingoInstanceEventAsync(BingoInstanceEvent item);
 
 		Task<HttpCallResult<BingoInstanceEventType>> CreateBingoInstanceEventTypeAsync(BingoInstanceEventType item);
@@ -156,6 +164,8 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 
 		Task<HttpCallResult<BingoInstanceContent>> UpdateBingoInstanceContentAsync(BingoInstanceContent item);
 
+		Task<HttpCallResult<BingoInstanceContentStatusType>> UpdateBingoInstanceContentStatusTypeAsync(BingoInstanceContentStatusType item);
+
 		Task<HttpCallResult<BingoInstanceEvent>> UpdateBingoInstanceEventAsync(BingoInstanceEvent item);
 
 		Task<HttpCallResult<BingoInstanceEventType>> UpdateBingoInstanceEventTypeAsync(BingoInstanceEventType item);
@@ -189,6 +199,8 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 		Task<HttpCallResult<BingoInstance>> DeleteBingoInstanceAsync(System.Guid bingoInstanceId);
 
 		Task<HttpCallResult<BingoInstanceContent>> DeleteBingoInstanceContentAsync(System.Guid bingoInstanceContentId);
+
+		Task<HttpCallResult<BingoInstanceContentStatusType>> DeleteBingoInstanceContentStatusTypeAsync(int bingoInstanceContentStatusTypeId);
 
 		Task<HttpCallResult<BingoInstanceEvent>> DeleteBingoInstanceEventAsync(System.Guid bingoInstanceEventId);
 

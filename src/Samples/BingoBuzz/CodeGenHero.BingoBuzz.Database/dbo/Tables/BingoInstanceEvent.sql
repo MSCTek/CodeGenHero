@@ -16,5 +16,3 @@
     CONSTRAINT [FK_BingoInstanceEvent_User_Updated] FOREIGN KEY ([UpdatedUserId]) REFERENCES [dbo].[User] ([UserId])
 );
 
-
-

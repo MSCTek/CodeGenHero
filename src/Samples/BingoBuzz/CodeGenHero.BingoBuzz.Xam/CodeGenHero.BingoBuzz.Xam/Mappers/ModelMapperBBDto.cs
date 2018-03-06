@@ -51,6 +51,7 @@ namespace CodeGenHero.BingoBuzz.Xam
 			{
 				BingoContentId = source.BingoContentId,
 				BingoInstanceContentId = source.BingoInstanceContentId,
+				BingoInstanceContentStatusTypeId = source.BingoInstanceContentStatusTypeId,
 				BingoInstanceId = source.BingoInstanceId,
 				Col = source.Col,
 				CreatedDate = source.CreatedDate,
@@ -60,6 +61,16 @@ namespace CodeGenHero.BingoBuzz.Xam
 				Row = source.Row,
 				UpdatedDate = source.UpdatedDate,
 				UpdatedUserId = source.UpdatedUserId,
+				UserId = source.UserId,
+			};
+		}
+
+		public static dtoBB.BingoInstanceContentStatusType ToDto(this objBB.BingoInstanceContentStatusType source)
+		{
+			return new dtoBB.BingoInstanceContentStatusType()
+			{
+				BingoInstanceContentStatusTypeId = source.BingoInstanceContentStatusTypeId,
+				Name = source.Name,
 			};
 		}
 
@@ -273,6 +284,7 @@ namespace CodeGenHero.BingoBuzz.Xam
 			{
 				BingoContentId = source.BingoContentId,
 				BingoInstanceContentId = source.BingoInstanceContentId,
+				BingoInstanceContentStatusTypeId = source.BingoInstanceContentStatusTypeId,
 				BingoInstanceId = source.BingoInstanceId,
 				Col = source.Col,
 				CreatedDate = source.CreatedDate,
@@ -282,6 +294,16 @@ namespace CodeGenHero.BingoBuzz.Xam
 				Row = source.Row,
 				UpdatedDate = source.UpdatedDate,
 				UpdatedUserId = source.UpdatedUserId,
+				UserId = source.UserId,
+			};
+		}
+
+		public static dtoBB.BingoInstanceContentStatusType ToDto(this dataBB.BingoInstanceContentStatusType source)
+		{
+			return new dtoBB.BingoInstanceContentStatusType()
+			{
+				BingoInstanceContentStatusTypeId = source.BingoInstanceContentStatusTypeId,
+				Name = source.Name,
 			};
 		}
 
@@ -495,6 +517,7 @@ namespace CodeGenHero.BingoBuzz.Xam
 			{
 				BingoContentId = source.BingoContentId,
 				BingoInstanceContentId = source.BingoInstanceContentId,
+				BingoInstanceContentStatusTypeId = source.BingoInstanceContentStatusTypeId,
 				BingoInstanceId = source.BingoInstanceId,
 				Col = source.Col,
 				CreatedDate = source.CreatedDate,
@@ -504,6 +527,16 @@ namespace CodeGenHero.BingoBuzz.Xam
 				Row = source.Row,
 				UpdatedDate = source.UpdatedDate,
 				UpdatedUserId = source.UpdatedUserId,
+				UserId = source.UserId,
+			};
+		}
+
+		public static objBB.BingoInstanceContentStatusType ToModelObj(this dtoBB.BingoInstanceContentStatusType source)
+		{
+			return new objBB.BingoInstanceContentStatusType()
+			{
+				BingoInstanceContentStatusTypeId = source.BingoInstanceContentStatusTypeId,
+				Name = source.Name,
 			};
 		}
 
@@ -717,6 +750,7 @@ namespace CodeGenHero.BingoBuzz.Xam
 			{
 				BingoContentId = source.BingoContentId,
 				BingoInstanceContentId = source.BingoInstanceContentId,
+				BingoInstanceContentStatusTypeId = source.BingoInstanceContentStatusTypeId,
 				BingoInstanceId = source.BingoInstanceId,
 				Col = source.Col,
 				CreatedDate = source.CreatedDate,
@@ -726,6 +760,16 @@ namespace CodeGenHero.BingoBuzz.Xam
 				Row = source.Row,
 				UpdatedDate = source.UpdatedDate,
 				UpdatedUserId = source.UpdatedUserId,
+				UserId = source.UserId,
+			};
+		}
+
+		public static dataBB.BingoInstanceContentStatusType ToModelData(this dtoBB.BingoInstanceContentStatusType source)
+		{
+			return new dataBB.BingoInstanceContentStatusType()
+			{
+				BingoInstanceContentStatusTypeId = source.BingoInstanceContentStatusTypeId,
+				Name = source.Name,
 			};
 		}
 

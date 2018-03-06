@@ -62,7 +62,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 			{
 				if (_meeting == null)
 				{
-					_meeting = new Meeting(Log, DataService, _dto.Meeting);
+					OnLazyLoadRequest(this, new LoadRequestMeetingSchedule(nameof(Meeting)));
 				}
 
 				return _meeting;

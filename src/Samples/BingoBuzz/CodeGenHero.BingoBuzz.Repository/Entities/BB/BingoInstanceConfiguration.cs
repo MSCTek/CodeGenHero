@@ -43,6 +43,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
 
             // Foreign keys
             HasOptional(a => a.Meeting).WithMany(b => b.BingoInstances).HasForeignKey(c => c.MeetingId).WillCascadeOnDelete(false); // FK_BingoInstance_Meeting
+            HasRequired(a => a.BingoInstanceStatusType).WithMany(b => b.BingoInstances).HasForeignKey(c => c.BingoInstanceStatusTypeId).WillCascadeOnDelete(false); // FK_BingoInstance_BingoInstanceStatusType
             HasRequired(a => a.CreatedUser).WithMany(b => b.BingoInstances_CreatedUserId).HasForeignKey(c => c.CreatedUserId).WillCascadeOnDelete(false); // FK_BingoInstance_User_Created
             HasRequired(a => a.UpdatedUser).WithMany(b => b.BingoInstances_UpdatedUserId).HasForeignKey(c => c.UpdatedUserId).WillCascadeOnDelete(false); // FK_BingoInstance_User_Updated
             InitializePartial();

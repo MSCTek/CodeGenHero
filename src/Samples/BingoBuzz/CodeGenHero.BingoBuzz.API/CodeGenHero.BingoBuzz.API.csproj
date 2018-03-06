@@ -164,6 +164,9 @@
     <Compile Include="Controllers\BB\BingoInstanceContentsController.cs">
       <DependentUpon>WebApiController_BB.cgh</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\BB\BingoInstanceContentStatusTypesController.cs">
+      <DependentUpon>WebApiController_BB.cgh</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\BB\BingoInstanceEventsController.cs">
       <DependentUpon>WebApiController_BB.cgh</DependentUpon>
     </Compile>

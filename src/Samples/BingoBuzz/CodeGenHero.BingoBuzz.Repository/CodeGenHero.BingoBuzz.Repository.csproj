@@ -72,6 +72,12 @@
     <Compile Include="Entities\BB\BingoInstanceContentConfiguration.cs">
       <DependentUpon>BingoBuzzContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\BB\BingoInstanceContentStatusType.cs">
+      <DependentUpon>BingoBuzzContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BB\BingoInstanceContentStatusTypeConfiguration.cs">
+      <DependentUpon>BingoBuzzContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\BB\BingoInstanceEvent.cs">
       <DependentUpon>BingoBuzzContext.tt</DependentUpon>
     </Compile>
@@ -191,7 +197,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Entities\EF.Reverse.POCO.Core.ttinclude" />
     <None Include="Entities\EF.Reverse.POCO.ttinclude" />
     <None Include="Interfaces\RepositoryInterfaceCrud_BB.cgh" />
