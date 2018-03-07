@@ -217,6 +217,8 @@
     <Content Include="Controllers\APIStatusController_BB.cgh" />
     <Content Include="Controllers\BB\WebApiController_BB.cgh" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\bingobuzz - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\bingobuzz - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
