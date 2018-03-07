@@ -69,6 +69,8 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 
 		protected IBBRepository Repo { get { return _repository; } }
 
+		/*
+		 * Formatting this way to exclude from XML Doc file.
 		/// <summary>
 		///
 		/// </summary>
@@ -78,6 +80,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 		/// This is because those attributes are used by the compiler (not at runtime) to do their magic.
 		/// Thus, by abstracting them in an interface the compiler cannot tell which methods are calling.
 		/// </remarks>
+		*/
 		private ILoggingService Log
 		{
 			get

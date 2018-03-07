@@ -37,6 +37,11 @@ public partial class FrequencyTypesBBController : BBBaseApiController
 		{
 		}
 
+		/// <summary>
+		/// Testing XML comments.
+		/// </summary>
+		/// <param name="frequencyTypeId"></param>
+		/// <returns></returns>
 		[HttpDelete]
 		[VersionedRoute(template: "FrequencyTypes/{frequencyTypeId}", allowedVersion: 1)]
 		public async Task<IHttpActionResult> Delete(int frequencyTypeId)

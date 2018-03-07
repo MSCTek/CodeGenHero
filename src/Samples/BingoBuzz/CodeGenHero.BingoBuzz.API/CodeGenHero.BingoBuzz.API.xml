@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodeGenHero.BingoBuzz.API</name>
+    </assembly>
+    <members>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.FrequencyTypesBBController.Delete(System.Int32)">
+            <summary>
+            Testing XML comments.
+            </summary>
+            <param name="frequencyTypeId"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
