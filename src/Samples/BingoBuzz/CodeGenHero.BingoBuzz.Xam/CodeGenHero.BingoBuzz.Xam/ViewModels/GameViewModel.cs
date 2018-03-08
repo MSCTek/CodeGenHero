@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CodeGenHero.BingoBuzz.Xam.Controls;
+using System.Diagnostics;
+using Plugin.Vibrate;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
@@ -64,6 +66,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                         selectedContent.IsSelected = true;
                     }
                     RaisePropertyChanged(nameof(BingoInstanceContent));
+                    CheckForBingo();
                 });
             }
         }
@@ -96,6 +99,74 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
                 BingoInstanceContent = await DataRetrievalService.GetBingoInstanceContentAsync(BingoInstance.BingoInstanceId);
                 RaisePropertyChanged(nameof(BingoInstanceContent));
+            }
+        }
+
+        private void CheckForBingo()
+        {
+            var selected = BingoInstanceContent.Where(x => x.IsSelected).ToList();
+
+            //vertical bingo
+            for (var i = 0; i < BingoInstance.NumberOfRows; i++)
+            {
+                //iterate through the rows
+                //see if you have the same number of selected squares in the same row as you have columns, if so, you have horizontal bingo.
+                if (selected.Where(x => x.Row == i).Count() == BingoInstance.NumberOfColumns)
+                {
+                    Debug.WriteLine("Horizontal Bingo");
+                    CrossVibrate.Current.Vibration(TimeSpan.FromSeconds(1)); // 1 second vibration
+                }
+            }
+
+            //horizontal bingo
+            for (var i = 0; i < BingoInstance.NumberOfColumns; i++)
+            {
+                //iterate through the columns
+                //see if you have the same number of selected squares in the same column as you have rows, if so, you have vertical bingo.
+                if (selected.Where(x => x.Col == i).Count() == BingoInstance.NumberOfRows)
+                {
+                    Debug.WriteLine("Vertical Bingo");
+                    CrossVibrate.Current.Vibration(TimeSpan.FromSeconds(1)); // 1 second vibration
+                }
+            }
+
+            //this will only work if we have a square board...
+            if (BingoInstance.NumberOfColumns == BingoInstance.NumberOfRows)
+            {
+                int countDiaSqs = 0;
+                //diagonal bingo 0,0 to x,x - top left to bottom right
+                for (var i = 0; i < BingoInstance.NumberOfColumns; i++)
+                {
+                    bool isAContender = true;
+                    //iterate through the columns
+                    //see if the selected squares have a row and column number that match
+                    if (selected.Where(x => x.Row == i && x.Col == i).Any() && isAContender)
+                    {
+                        countDiaSqs++;
+                    }
+                    else
+                    {
+                        isAContender = false;
+                    }
+
+                    if (isAContender && countDiaSqs == BingoInstance.NumberOfColumns)
+                    {
+                        Debug.WriteLine("Diagonal Bingo top left to bottom right");
+                        CrossVibrate.Current.Vibration(TimeSpan.FromSeconds(1)); // 1 second vibration
+                    }
+                }
+            }
+
+            //this will only work if we have a square board...
+            if (BingoInstance.NumberOfColumns == BingoInstance.NumberOfRows)
+            {
+                //diagonal bingo bottom left to top right
+                //see if the selected squares have a row and col number that add up to the total number of cols -1
+                if (selected.Where(x => x.Row + x.Col == (BingoInstance.NumberOfColumns - 1)).Count() == BingoInstance.NumberOfColumns)
+                {
+                    Debug.WriteLine("Diagonal Bingo  bottom left to top right");
+                    CrossVibrate.Current.Vibration(TimeSpan.FromSeconds(1)); // 1 second vibration
+                }
             }
         }
     }
