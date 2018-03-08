@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.14
+Bug Fixes & Enhancements:
+* Minor change to BaseModel making default UNKNOWNLOGMESSAGETYPE constant and HandleLazyLoadRequest not async.
+
 ### 1.0.13
 Bug Fixes & Enhancements:
 * Consolidated CodeGenHero.DataService and CodeGenHero.DataService.Core projects.

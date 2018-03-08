@@ -10,6 +10,7 @@ namespace CodeGenHero.DataService
 	{
 		private IDataService<T> _dataService;
 		private ILoggingService _log;
+		protected const int UNKNOWNLOGMESSAGETYPE = 100;
 
 		public BaseModel(ILoggingService log, IDataService<T> dataService)
 		{
@@ -37,12 +38,12 @@ namespace CodeGenHero.DataService
 			}
 		}
 
-		public virtual async void HandleLazyLoadRequestAsync(object sender, EventArgs e)
+		public virtual void HandleLazyLoadRequest(object sender, EventArgs e)
 		{
 			// Override this method in a custom class to load properties that are not contained in the core DTO.
 		}
 
-		public virtual void LogDebug(Exception ex, int logMessageType = 100, // LogMessageType.Instance.Unknown
+		public virtual void LogDebug(Exception ex, int logMessageType = UNKNOWNLOGMESSAGETYPE,
 			[CallerMemberName] string methodName = "",
 			[CallerFilePath] string sourceFile = "",
 			[CallerLineNumber] int lineNumber = 0)
@@ -61,7 +62,7 @@ namespace CodeGenHero.DataService
 				lineNumber: lineNumber);
 		}
 
-		public virtual void LogDebug(string message, int logMessageType = 100, // LogMessageType.Instance.Unknown
+		public virtual void LogDebug(string message, int logMessageType = UNKNOWNLOGMESSAGETYPE,
 		[CallerMemberName] string methodName = "",
 		[CallerFilePath] string sourceFile = "",
 		[CallerLineNumber] int lineNumber = 0)
@@ -72,7 +73,7 @@ namespace CodeGenHero.DataService
 				lineNumber: lineNumber);
 		}
 
-		public virtual void LogError(Exception ex, int logMessageType = 100, // LogMessageType.Instance.Unknown
+		public virtual void LogError(Exception ex, int logMessageType = UNKNOWNLOGMESSAGETYPE,
 			[CallerMemberName] string methodName = "",
 			[CallerFilePath] string sourceFile = "",
 			[CallerLineNumber] int lineNumber = 0)
@@ -91,7 +92,7 @@ namespace CodeGenHero.DataService
 				lineNumber: lineNumber);
 		}
 
-		public virtual void LogError(string message, int logMessageType = 100, // LogMessageType.Instance.Unknown
+		public virtual void LogError(string message, int logMessageType = UNKNOWNLOGMESSAGETYPE,
 		[CallerMemberName] string methodName = "",
 		[CallerFilePath] string sourceFile = "",
 		[CallerLineNumber] int lineNumber = 0)
@@ -102,7 +103,7 @@ namespace CodeGenHero.DataService
 				lineNumber: lineNumber);
 		}
 
-		public virtual void LogFatal(Exception ex, int logMessageType = 100, // LogMessageType.Instance.Unknown
+		public virtual void LogFatal(Exception ex, int logMessageType = UNKNOWNLOGMESSAGETYPE,
 			[CallerMemberName] string methodName = "",
 			[CallerFilePath] string sourceFile = "",
 			[CallerLineNumber] int lineNumber = 0)
@@ -121,7 +122,7 @@ namespace CodeGenHero.DataService
 				lineNumber: lineNumber);
 		}
 
-		public virtual void LogFatal(string message, int logMessageType = 100, // LogMessageType.Instance.Unknown
+		public virtual void LogFatal(string message, int logMessageType = UNKNOWNLOGMESSAGETYPE,
 		[CallerMemberName] string methodName = "",
 		[CallerFilePath] string sourceFile = "",
 		[CallerLineNumber] int lineNumber = 0)
@@ -132,8 +133,8 @@ namespace CodeGenHero.DataService
 				lineNumber: lineNumber);
 		}
 
-		public virtual void LogInfo(Exception ex, int logMessageType = 100, // LogMessageType.Instance.Unknown
-															[CallerMemberName] string methodName = "",
+		public virtual void LogInfo(Exception ex, int logMessageType = UNKNOWNLOGMESSAGETYPE,
+			[CallerMemberName] string methodName = "",
 			[CallerFilePath] string sourceFile = "",
 			[CallerLineNumber] int lineNumber = 0)
 		{
@@ -151,7 +152,7 @@ namespace CodeGenHero.DataService
 				lineNumber: lineNumber);
 		}
 
-		public virtual void LogInfo(string message, int logMessageType = 100, // LogMessageType.Instance.Unknown
+		public virtual void LogInfo(string message, int logMessageType = UNKNOWNLOGMESSAGETYPE,
 		[CallerMemberName] string methodName = "",
 		[CallerFilePath] string sourceFile = "",
 		[CallerLineNumber] int lineNumber = 0)
