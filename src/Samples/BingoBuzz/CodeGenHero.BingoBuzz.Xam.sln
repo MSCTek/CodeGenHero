@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.DTO", "CodeGenHero.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj", "{D801B844-B10F-46D1-80B1-73A4EBF6F57A}"
 EndProject
@@ -231,6 +231,8 @@ Global
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.AppStore|x86.Build.0 = Release|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.AppStore|x86.Deploy.0 = Release|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|ARM.Build.0 = Debug|Any CPU
 		{30F2C260-732E-4205-BA10-B83F8D7C95F8}.Debug|ARM.Deploy.0 = Debug|Any CPU
