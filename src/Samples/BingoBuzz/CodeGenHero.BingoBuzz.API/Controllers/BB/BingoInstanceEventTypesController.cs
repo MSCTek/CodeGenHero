@@ -295,8 +295,7 @@ public partial class BingoInstanceEventTypesBBController : BBBaseApiController
 		// {
 			// if (numChildLevels > 0)
 			// {
-				// qryItem = qryItem.Include(x => x.RelatedParentEntity)
-					// .Include(x => x.RelatedChildEntities);
+				// qryItem = qryItem.Include(x => x.BingoInstanceEvents).AsNoTracking()
 			// }
 
 		// }

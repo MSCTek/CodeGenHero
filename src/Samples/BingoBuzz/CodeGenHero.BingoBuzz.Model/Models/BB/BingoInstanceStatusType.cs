@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public BingoInstanceStatusType(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.BingoInstanceStatusType();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public BingoInstanceStatusType(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.BingoInstanceStatusType dto) : this(log, dataService)
@@ -49,9 +49,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstances == null)
+				if (_bingoInstances == null && _dto != null && _dto.BingoInstances != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestBingoInstanceStatusType(nameof(BingoInstances)));
+					_bingoInstances = new List<IBingoInstance>();
+					foreach (var dtoItem in _dto.BingoInstances)
+					{
+						_bingoInstances.Add(new BingoInstance(Log, DataService, dtoItem));
+					}
 				}
 
 				return _bingoInstances;

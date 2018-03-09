@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public BingoInstance(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.BingoInstance();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public BingoInstance(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.BingoInstance dto) : this(log, dataService)
@@ -63,7 +63,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceStatusType == null)
+				if (_bingoInstanceStatusType == null && _dto != null && _dto.BingoInstanceStatusType != null)
 				{
 					_bingoInstanceStatusType = new BingoInstanceStatusType(Log, DataService, _dto.BingoInstanceStatusType);
 				}
@@ -76,7 +76,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meeting == null)
+				if (_meeting == null && _dto != null && _dto.Meeting != null)
 				{
 					_meeting = new Meeting(Log, DataService, _dto.Meeting);
 				}
@@ -89,7 +89,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_createdUser == null)
+				if (_createdUser == null && _dto != null && _dto.CreatedUser != null)
 				{
 					_createdUser = new User(Log, DataService, _dto.CreatedUser);
 				}
@@ -102,7 +102,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_updatedUser == null)
+				if (_updatedUser == null && _dto != null && _dto.UpdatedUser != null)
 				{
 					_updatedUser = new User(Log, DataService, _dto.UpdatedUser);
 				}
@@ -115,7 +115,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceContents == null)
+				if (_bingoInstanceContents == null && _dto != null && _dto.BingoInstanceContents != null)
 				{
 					_bingoInstanceContents = new List<IBingoInstanceContent>();
 					foreach (var dtoItem in _dto.BingoInstanceContents)
@@ -132,7 +132,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceEvents == null)
+				if (_bingoInstanceEvents == null && _dto != null && _dto.BingoInstanceEvents != null)
 				{
 					_bingoInstanceEvents = new List<IBingoInstanceEvent>();
 					foreach (var dtoItem in _dto.BingoInstanceEvents)

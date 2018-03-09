@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public BingoInstanceEventType(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.BingoInstanceEventType();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public BingoInstanceEventType(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.BingoInstanceEventType dto) : this(log, dataService)
@@ -49,9 +49,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceEvents == null)
+				if (_bingoInstanceEvents == null && _dto != null && _dto.BingoInstanceEvents != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestBingoInstanceEventType(nameof(BingoInstanceEvents)));
+					_bingoInstanceEvents = new List<IBingoInstanceEvent>();
+					foreach (var dtoItem in _dto.BingoInstanceEvents)
+					{
+						_bingoInstanceEvents.Add(new BingoInstanceEvent(Log, DataService, dtoItem));
+					}
 				}
 
 				return _bingoInstanceEvents;

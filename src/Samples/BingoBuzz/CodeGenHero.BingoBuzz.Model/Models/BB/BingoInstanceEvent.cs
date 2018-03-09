@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public BingoInstanceEvent(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.BingoInstanceEvent();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public BingoInstanceEvent(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.BingoInstanceEvent dto) : this(log, dataService)
@@ -60,9 +60,9 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstance == null)
+				if (_bingoInstance == null && _dto != null && _dto.BingoInstance != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestBingoInstanceEvent(nameof(BingoInstance)));
+					_bingoInstance = new BingoInstance(Log, DataService, _dto.BingoInstance);
 				}
 
 				return _bingoInstance;
@@ -73,9 +73,9 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceContent == null)
+				if (_bingoInstanceContent == null && _dto != null && _dto.BingoInstanceContent != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestBingoInstanceEvent(nameof(BingoInstanceContent)));
+					_bingoInstanceContent = new BingoInstanceContent(Log, DataService, _dto.BingoInstanceContent);
 				}
 
 				return _bingoInstanceContent;
@@ -86,7 +86,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceEventType == null)
+				if (_bingoInstanceEventType == null && _dto != null && _dto.BingoInstanceEventType != null)
 				{
 					_bingoInstanceEventType = new BingoInstanceEventType(Log, DataService, _dto.BingoInstanceEventType);
 				}
@@ -99,7 +99,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_createdUser == null)
+				if (_createdUser == null && _dto != null && _dto.CreatedUser != null)
 				{
 					_createdUser = new User(Log, DataService, _dto.CreatedUser);
 				}
@@ -112,7 +112,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_updatedUser == null)
+				if (_updatedUser == null && _dto != null && _dto.UpdatedUser != null)
 				{
 					_updatedUser = new User(Log, DataService, _dto.UpdatedUser);
 				}

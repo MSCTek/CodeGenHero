@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public NotificationRule(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.NotificationRule();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public NotificationRule(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.NotificationRule dto) : this(log, dataService)
@@ -51,7 +51,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_notificationMethodType == null)
+				if (_notificationMethodType == null && _dto != null && _dto.NotificationMethodType != null)
 				{
 					_notificationMethodType = new NotificationMethodType(Log, DataService, _dto.NotificationMethodType);
 				}
@@ -64,9 +64,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetingAttendees == null)
+				if (_meetingAttendees == null && _dto != null && _dto.MeetingAttendees != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestNotificationRule(nameof(MeetingAttendees)));
+					_meetingAttendees = new List<IMeetingAttendee>();
+					foreach (var dtoItem in _dto.MeetingAttendees)
+					{
+						_meetingAttendees.Add(new MeetingAttendee(Log, DataService, dtoItem));
+					}
 				}
 
 				return _meetingAttendees;

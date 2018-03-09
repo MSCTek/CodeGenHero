@@ -5,7 +5,7 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public RecurrenceRule()
 		{
-			// MeetingSchedules = new System.Collections.Generic.List<MeetingSchedule>(); -- Excluded navigation property per configuration.
+			MeetingSchedules = new System.Collections.Generic.List<MeetingSchedule>();
 
 			InitializePartial();
 		}
@@ -19,7 +19,7 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 		public int? WeekDayNum { get; set; }
 		public int? OrdWeek { get; set; }
 		public string WeekDay { get; set; }
-		// public virtual System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
+		public virtual System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules { get; set; } // Many to many mapping
 		public virtual FrequencyType FrequencyType { get; set; } 
 
 

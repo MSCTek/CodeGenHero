@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public User(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.User();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public User(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.User dto) : this(log, dataService)
@@ -78,9 +78,9 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_user_CreatedUserId == null)
+				if (_user_CreatedUserId == null && _dto != null && _dto.User_CreatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(User_CreatedUserId)));
+					_user_CreatedUserId = new User(Log, DataService, _dto.User_CreatedUserId);
 				}
 
 				return _user_CreatedUserId;
@@ -91,9 +91,9 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_user_UpdatedUserId == null)
+				if (_user_UpdatedUserId == null && _dto != null && _dto.User_UpdatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(User_UpdatedUserId)));
+					_user_UpdatedUserId = new User(Log, DataService, _dto.User_UpdatedUserId);
 				}
 
 				return _user_UpdatedUserId;
@@ -104,9 +104,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoContents_UpdatedUserId == null)
+				if (_bingoContents_UpdatedUserId == null && _dto != null && _dto.BingoContents_UpdatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(BingoContents_UpdatedUserId)));
+					_bingoContents_UpdatedUserId = new List<IBingoContent>();
+					foreach (var dtoItem in _dto.BingoContents_UpdatedUserId)
+					{
+						_bingoContents_UpdatedUserId.Add(new BingoContent(Log, DataService, dtoItem));
+					}
 				}
 
 				return _bingoContents_UpdatedUserId;
@@ -117,9 +121,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_createdUser == null)
+				if (_createdUser == null && _dto != null && _dto.CreatedUser != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(CreatedUser)));
+					_createdUser = new List<IBingoContent>();
+					foreach (var dtoItem in _dto.CreatedUser)
+					{
+						_createdUser.Add(new BingoContent(Log, DataService, dtoItem));
+					}
 				}
 
 				return _createdUser;
@@ -130,9 +138,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstances_CreatedUserId == null)
+				if (_bingoInstances_CreatedUserId == null && _dto != null && _dto.BingoInstances_CreatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(BingoInstances_CreatedUserId)));
+					_bingoInstances_CreatedUserId = new List<IBingoInstance>();
+					foreach (var dtoItem in _dto.BingoInstances_CreatedUserId)
+					{
+						_bingoInstances_CreatedUserId.Add(new BingoInstance(Log, DataService, dtoItem));
+					}
 				}
 
 				return _bingoInstances_CreatedUserId;
@@ -143,9 +155,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstances_UpdatedUserId == null)
+				if (_bingoInstances_UpdatedUserId == null && _dto != null && _dto.BingoInstances_UpdatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(BingoInstances_UpdatedUserId)));
+					_bingoInstances_UpdatedUserId = new List<IBingoInstance>();
+					foreach (var dtoItem in _dto.BingoInstances_UpdatedUserId)
+					{
+						_bingoInstances_UpdatedUserId.Add(new BingoInstance(Log, DataService, dtoItem));
+					}
 				}
 
 				return _bingoInstances_UpdatedUserId;
@@ -156,9 +172,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceContents_CreatedUserId == null)
+				if (_bingoInstanceContents_CreatedUserId == null && _dto != null && _dto.BingoInstanceContents_CreatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(BingoInstanceContents_CreatedUserId)));
+					_bingoInstanceContents_CreatedUserId = new List<IBingoInstanceContent>();
+					foreach (var dtoItem in _dto.BingoInstanceContents_CreatedUserId)
+					{
+						_bingoInstanceContents_CreatedUserId.Add(new BingoInstanceContent(Log, DataService, dtoItem));
+					}
 				}
 
 				return _bingoInstanceContents_CreatedUserId;
@@ -169,9 +189,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceContents_UpdatedUserId == null)
+				if (_bingoInstanceContents_UpdatedUserId == null && _dto != null && _dto.BingoInstanceContents_UpdatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(BingoInstanceContents_UpdatedUserId)));
+					_bingoInstanceContents_UpdatedUserId = new List<IBingoInstanceContent>();
+					foreach (var dtoItem in _dto.BingoInstanceContents_UpdatedUserId)
+					{
+						_bingoInstanceContents_UpdatedUserId.Add(new BingoInstanceContent(Log, DataService, dtoItem));
+					}
 				}
 
 				return _bingoInstanceContents_UpdatedUserId;
@@ -182,9 +206,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceContents_UserId == null)
+				if (_bingoInstanceContents_UserId == null && _dto != null && _dto.BingoInstanceContents_UserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(BingoInstanceContents_UserId)));
+					_bingoInstanceContents_UserId = new List<IBingoInstanceContent>();
+					foreach (var dtoItem in _dto.BingoInstanceContents_UserId)
+					{
+						_bingoInstanceContents_UserId.Add(new BingoInstanceContent(Log, DataService, dtoItem));
+					}
 				}
 
 				return _bingoInstanceContents_UserId;
@@ -195,9 +223,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceEvents_CreatedUserId == null)
+				if (_bingoInstanceEvents_CreatedUserId == null && _dto != null && _dto.BingoInstanceEvents_CreatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(BingoInstanceEvents_CreatedUserId)));
+					_bingoInstanceEvents_CreatedUserId = new List<IBingoInstanceEvent>();
+					foreach (var dtoItem in _dto.BingoInstanceEvents_CreatedUserId)
+					{
+						_bingoInstanceEvents_CreatedUserId.Add(new BingoInstanceEvent(Log, DataService, dtoItem));
+					}
 				}
 
 				return _bingoInstanceEvents_CreatedUserId;
@@ -208,9 +240,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceEvents_UpdatedUserId == null)
+				if (_bingoInstanceEvents_UpdatedUserId == null && _dto != null && _dto.BingoInstanceEvents_UpdatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(BingoInstanceEvents_UpdatedUserId)));
+					_bingoInstanceEvents_UpdatedUserId = new List<IBingoInstanceEvent>();
+					foreach (var dtoItem in _dto.BingoInstanceEvents_UpdatedUserId)
+					{
+						_bingoInstanceEvents_UpdatedUserId.Add(new BingoInstanceEvent(Log, DataService, dtoItem));
+					}
 				}
 
 				return _bingoInstanceEvents_UpdatedUserId;
@@ -221,9 +257,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_companies_CreatedUserId == null)
+				if (_companies_CreatedUserId == null && _dto != null && _dto.Companies_CreatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(Companies_CreatedUserId)));
+					_companies_CreatedUserId = new List<ICompany>();
+					foreach (var dtoItem in _dto.Companies_CreatedUserId)
+					{
+						_companies_CreatedUserId.Add(new Company(Log, DataService, dtoItem));
+					}
 				}
 
 				return _companies_CreatedUserId;
@@ -234,9 +274,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_companies_UpdatedUserId == null)
+				if (_companies_UpdatedUserId == null && _dto != null && _dto.Companies_UpdatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(Companies_UpdatedUserId)));
+					_companies_UpdatedUserId = new List<ICompany>();
+					foreach (var dtoItem in _dto.Companies_UpdatedUserId)
+					{
+						_companies_UpdatedUserId.Add(new Company(Log, DataService, dtoItem));
+					}
 				}
 
 				return _companies_UpdatedUserId;
@@ -247,9 +291,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetings_CreatedUserId == null)
+				if (_meetings_CreatedUserId == null && _dto != null && _dto.Meetings_CreatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(Meetings_CreatedUserId)));
+					_meetings_CreatedUserId = new List<IMeeting>();
+					foreach (var dtoItem in _dto.Meetings_CreatedUserId)
+					{
+						_meetings_CreatedUserId.Add(new Meeting(Log, DataService, dtoItem));
+					}
 				}
 
 				return _meetings_CreatedUserId;
@@ -260,9 +308,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetings_UpdatedUserId == null)
+				if (_meetings_UpdatedUserId == null && _dto != null && _dto.Meetings_UpdatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(Meetings_UpdatedUserId)));
+					_meetings_UpdatedUserId = new List<IMeeting>();
+					foreach (var dtoItem in _dto.Meetings_UpdatedUserId)
+					{
+						_meetings_UpdatedUserId.Add(new Meeting(Log, DataService, dtoItem));
+					}
 				}
 
 				return _meetings_UpdatedUserId;
@@ -273,9 +325,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetingAttendees_CreatedUserId == null)
+				if (_meetingAttendees_CreatedUserId == null && _dto != null && _dto.MeetingAttendees_CreatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(MeetingAttendees_CreatedUserId)));
+					_meetingAttendees_CreatedUserId = new List<IMeetingAttendee>();
+					foreach (var dtoItem in _dto.MeetingAttendees_CreatedUserId)
+					{
+						_meetingAttendees_CreatedUserId.Add(new MeetingAttendee(Log, DataService, dtoItem));
+					}
 				}
 
 				return _meetingAttendees_CreatedUserId;
@@ -286,9 +342,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetingAttendees_UpdatedUserId == null)
+				if (_meetingAttendees_UpdatedUserId == null && _dto != null && _dto.MeetingAttendees_UpdatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(MeetingAttendees_UpdatedUserId)));
+					_meetingAttendees_UpdatedUserId = new List<IMeetingAttendee>();
+					foreach (var dtoItem in _dto.MeetingAttendees_UpdatedUserId)
+					{
+						_meetingAttendees_UpdatedUserId.Add(new MeetingAttendee(Log, DataService, dtoItem));
+					}
 				}
 
 				return _meetingAttendees_UpdatedUserId;
@@ -299,9 +359,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetingAttendees_UserId == null)
+				if (_meetingAttendees_UserId == null && _dto != null && _dto.MeetingAttendees_UserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(MeetingAttendees_UserId)));
+					_meetingAttendees_UserId = new List<IMeetingAttendee>();
+					foreach (var dtoItem in _dto.MeetingAttendees_UserId)
+					{
+						_meetingAttendees_UserId.Add(new MeetingAttendee(Log, DataService, dtoItem));
+					}
 				}
 
 				return _meetingAttendees_UserId;
@@ -312,9 +376,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetingSchedules_CreatedUserId == null)
+				if (_meetingSchedules_CreatedUserId == null && _dto != null && _dto.MeetingSchedules_CreatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(MeetingSchedules_CreatedUserId)));
+					_meetingSchedules_CreatedUserId = new List<IMeetingSchedule>();
+					foreach (var dtoItem in _dto.MeetingSchedules_CreatedUserId)
+					{
+						_meetingSchedules_CreatedUserId.Add(new MeetingSchedule(Log, DataService, dtoItem));
+					}
 				}
 
 				return _meetingSchedules_CreatedUserId;
@@ -325,9 +393,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetingSchedules_UpdatedUserId == null)
+				if (_meetingSchedules_UpdatedUserId == null && _dto != null && _dto.MeetingSchedules_UpdatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(MeetingSchedules_UpdatedUserId)));
+					_meetingSchedules_UpdatedUserId = new List<IMeetingSchedule>();
+					foreach (var dtoItem in _dto.MeetingSchedules_UpdatedUserId)
+					{
+						_meetingSchedules_UpdatedUserId.Add(new MeetingSchedule(Log, DataService, dtoItem));
+					}
 				}
 
 				return _meetingSchedules_UpdatedUserId;
@@ -338,9 +410,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_users_CreatedUserId == null)
+				if (_users_CreatedUserId == null && _dto != null && _dto.Users_CreatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(Users_CreatedUserId)));
+					_users_CreatedUserId = new List<IUser>();
+					foreach (var dtoItem in _dto.Users_CreatedUserId)
+					{
+						_users_CreatedUserId.Add(new User(Log, DataService, dtoItem));
+					}
 				}
 
 				return _users_CreatedUserId;
@@ -351,9 +427,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_users_UpdatedUserId == null)
+				if (_users_UpdatedUserId == null && _dto != null && _dto.Users_UpdatedUserId != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestUser(nameof(Users_UpdatedUserId)));
+					_users_UpdatedUserId = new List<IUser>();
+					foreach (var dtoItem in _dto.Users_UpdatedUserId)
+					{
+						_users_UpdatedUserId.Add(new User(Log, DataService, dtoItem));
+					}
 				}
 
 				return _users_UpdatedUserId;

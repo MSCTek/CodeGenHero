@@ -295,8 +295,8 @@ public partial class NotificationRulesBBController : BBBaseApiController
 		// {
 			// if (numChildLevels > 0)
 			// {
-				// qryItem = qryItem.Include(x => x.RelatedParentEntity)
-					// .Include(x => x.RelatedChildEntities);
+				// qryItem = qryItem.Include(x => x.NotificationMethodType).AsNoTracking()
+				// .Include(x => x.MeetingAttendees).AsNoTracking()
 			// }
 
 		// }

@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public Company(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.Company();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public Company(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.Company dto) : this(log, dataService)
@@ -63,7 +63,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_createdUser == null)
+				if (_createdUser == null && _dto != null && _dto.CreatedUser != null)
 				{
 					_createdUser = new User(Log, DataService, _dto.CreatedUser);
 				}
@@ -76,7 +76,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_updatedUser == null)
+				if (_updatedUser == null && _dto != null && _dto.UpdatedUser != null)
 				{
 					_updatedUser = new User(Log, DataService, _dto.UpdatedUser);
 				}
@@ -89,9 +89,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetings == null)
+				if (_meetings == null && _dto != null && _dto.Meetings != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestCompany(nameof(Meetings)));
+					_meetings = new List<IMeeting>();
+					foreach (var dtoItem in _dto.Meetings)
+					{
+						_meetings.Add(new Meeting(Log, DataService, dtoItem));
+					}
 				}
 
 				return _meetings;

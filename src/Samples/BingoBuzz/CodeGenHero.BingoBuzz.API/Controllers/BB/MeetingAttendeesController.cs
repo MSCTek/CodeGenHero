@@ -295,8 +295,11 @@ public partial class MeetingAttendeesBBController : BBBaseApiController
 		// {
 			// if (numChildLevels > 0)
 			// {
-				// qryItem = qryItem.Include(x => x.RelatedParentEntity)
-					// .Include(x => x.RelatedChildEntities);
+				// qryItem = qryItem.Include(x => x.Meeting).AsNoTracking()
+				// .Include(x => x.NotificationRule).AsNoTracking()
+				// .Include(x => x.CreatedUser).AsNoTracking()
+				// .Include(x => x.UpdatedUser).AsNoTracking()
+				// .Include(x => x.User_UserId).AsNoTracking()
 			// }
 
 		// }

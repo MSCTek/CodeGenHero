@@ -295,8 +295,28 @@ public partial class UsersBBController : BBBaseApiController
 		// {
 			// if (numChildLevels > 0)
 			// {
-				// qryItem = qryItem.Include(x => x.RelatedParentEntity)
-					// .Include(x => x.RelatedChildEntities);
+				// qryItem = qryItem.Include(x => x.User_CreatedUserId).AsNoTracking()
+				// .Include(x => x.User_UpdatedUserId).AsNoTracking()
+				// .Include(x => x.BingoContents_UpdatedUserId).AsNoTracking()
+				// .Include(x => x.CreatedUser).AsNoTracking()
+				// .Include(x => x.BingoInstances_CreatedUserId).AsNoTracking()
+				// .Include(x => x.BingoInstances_UpdatedUserId).AsNoTracking()
+				// .Include(x => x.BingoInstanceContents_CreatedUserId).AsNoTracking()
+				// .Include(x => x.BingoInstanceContents_UpdatedUserId).AsNoTracking()
+				// .Include(x => x.BingoInstanceContents_UserId).AsNoTracking()
+				// .Include(x => x.BingoInstanceEvents_CreatedUserId).AsNoTracking()
+				// .Include(x => x.BingoInstanceEvents_UpdatedUserId).AsNoTracking()
+				// .Include(x => x.Companies_CreatedUserId).AsNoTracking()
+				// .Include(x => x.Companies_UpdatedUserId).AsNoTracking()
+				// .Include(x => x.Meetings_CreatedUserId).AsNoTracking()
+				// .Include(x => x.Meetings_UpdatedUserId).AsNoTracking()
+				// .Include(x => x.MeetingAttendees_CreatedUserId).AsNoTracking()
+				// .Include(x => x.MeetingAttendees_UpdatedUserId).AsNoTracking()
+				// .Include(x => x.MeetingAttendees_UserId).AsNoTracking()
+				// .Include(x => x.MeetingSchedules_CreatedUserId).AsNoTracking()
+				// .Include(x => x.MeetingSchedules_UpdatedUserId).AsNoTracking()
+				// .Include(x => x.Users_CreatedUserId).AsNoTracking()
+				// .Include(x => x.Users_UpdatedUserId).AsNoTracking()
 			// }
 
 		// }

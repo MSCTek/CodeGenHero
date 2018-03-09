@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public FrequencyType(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.FrequencyType();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public FrequencyType(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.FrequencyType dto) : this(log, dataService)
@@ -49,9 +49,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_recurrenceRules == null)
+				if (_recurrenceRules == null && _dto != null && _dto.RecurrenceRules != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestFrequencyType(nameof(RecurrenceRules)));
+					_recurrenceRules = new List<IRecurrenceRule>();
+					foreach (var dtoItem in _dto.RecurrenceRules)
+					{
+						_recurrenceRules.Add(new RecurrenceRule(Log, DataService, dtoItem));
+					}
 				}
 
 				return _recurrenceRules;
