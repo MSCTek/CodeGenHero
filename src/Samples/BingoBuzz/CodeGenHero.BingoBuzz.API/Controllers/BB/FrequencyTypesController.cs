@@ -37,11 +37,6 @@ public partial class FrequencyTypesBBController : BBBaseApiController
 		{
 		}
 
-		/// <summary>
-		/// Testing XML comments.
-		/// </summary>
-		/// <param name="frequencyTypeId"></param>
-		/// <returns></returns>
 		[HttpDelete]
 		[VersionedRoute(template: "FrequencyTypes/{frequencyTypeId}", allowedVersion: 1)]
 		public async Task<IHttpActionResult> Delete(int frequencyTypeId)
@@ -300,8 +295,7 @@ public partial class FrequencyTypesBBController : BBBaseApiController
 		// {
 			// if (numChildLevels > 0)
 			// {
-				// qryItem = qryItem.Include(x => x.RelatedParentEntity)
-					// .Include(x => x.RelatedChildEntities);
+				// qryItem = qryItem.Include(x => x.RecurrenceRules).AsNoTracking()
 			// }
 
 		// }

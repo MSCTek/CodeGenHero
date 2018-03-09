@@ -17,7 +17,7 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 		public System.DateTime UpdatedDate { get; set; }
 		public System.Guid UpdatedUserId { get; set; }
 		public bool IsDeleted { get; set; }
-		// public virtual Meeting Meeting { get; set; }  -- Excluded navigation property per configuration.
+		public virtual Meeting Meeting { get; set; } 
 		public virtual NotificationRule NotificationRule { get; set; } 
 		public virtual User CreatedUser { get; set; } 
 		public virtual User UpdatedUser { get; set; } 

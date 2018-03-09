@@ -295,8 +295,7 @@ public partial class BingoInstanceContentStatusTypesBBController : BBBaseApiCont
 		// {
 			// if (numChildLevels > 0)
 			// {
-				// qryItem = qryItem.Include(x => x.RelatedParentEntity)
-					// .Include(x => x.RelatedChildEntities);
+				// qryItem = qryItem.Include(x => x.BingoInstanceContents).AsNoTracking()
 			// }
 
 		// }

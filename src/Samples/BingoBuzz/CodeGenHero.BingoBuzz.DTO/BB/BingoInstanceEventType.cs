@@ -5,14 +5,14 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public BingoInstanceEventType()
 		{
-			// BingoInstanceEvents = new System.Collections.Generic.List<BingoInstanceEvent>(); -- Excluded navigation property per configuration.
+			BingoInstanceEvents = new System.Collections.Generic.List<BingoInstanceEvent>();
 
 			InitializePartial();
 		}
 
 		public int BingoInstanceEventTypeId { get; set; } // Primary key
 		public string Name { get; set; }
-		// public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
+		public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents { get; set; } // Many to many mapping
 
 
 		partial void InitializePartial();

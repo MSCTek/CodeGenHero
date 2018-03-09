@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public MeetingAttendee(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.MeetingAttendee();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public MeetingAttendee(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.MeetingAttendee dto) : this(log, dataService)
@@ -60,9 +60,9 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meeting == null)
+				if (_meeting == null && _dto != null && _dto.Meeting != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestMeetingAttendee(nameof(Meeting)));
+					_meeting = new Meeting(Log, DataService, _dto.Meeting);
 				}
 
 				return _meeting;
@@ -73,7 +73,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_notificationRule == null)
+				if (_notificationRule == null && _dto != null && _dto.NotificationRule != null)
 				{
 					_notificationRule = new NotificationRule(Log, DataService, _dto.NotificationRule);
 				}
@@ -86,7 +86,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_createdUser == null)
+				if (_createdUser == null && _dto != null && _dto.CreatedUser != null)
 				{
 					_createdUser = new User(Log, DataService, _dto.CreatedUser);
 				}
@@ -99,7 +99,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_updatedUser == null)
+				if (_updatedUser == null && _dto != null && _dto.UpdatedUser != null)
 				{
 					_updatedUser = new User(Log, DataService, _dto.UpdatedUser);
 				}
@@ -112,7 +112,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_user_UserId == null)
+				if (_user_UserId == null && _dto != null && _dto.User_UserId != null)
 				{
 					_user_UserId = new User(Log, DataService, _dto.User_UserId);
 				}

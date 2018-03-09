@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public MeetingSchedule(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.MeetingSchedule();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public MeetingSchedule(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.MeetingSchedule dto) : this(log, dataService)
@@ -60,9 +60,9 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meeting == null)
+				if (_meeting == null && _dto != null && _dto.Meeting != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestMeetingSchedule(nameof(Meeting)));
+					_meeting = new Meeting(Log, DataService, _dto.Meeting);
 				}
 
 				return _meeting;
@@ -73,7 +73,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_recurrenceRule == null)
+				if (_recurrenceRule == null && _dto != null && _dto.RecurrenceRule != null)
 				{
 					_recurrenceRule = new RecurrenceRule(Log, DataService, _dto.RecurrenceRule);
 				}
@@ -86,7 +86,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_createdUser == null)
+				if (_createdUser == null && _dto != null && _dto.CreatedUser != null)
 				{
 					_createdUser = new User(Log, DataService, _dto.CreatedUser);
 				}
@@ -99,7 +99,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_updatedUser == null)
+				if (_updatedUser == null && _dto != null && _dto.UpdatedUser != null)
 				{
 					_updatedUser = new User(Log, DataService, _dto.UpdatedUser);
 				}

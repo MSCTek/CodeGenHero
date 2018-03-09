@@ -5,26 +5,26 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public User()
 		{
-			// BingoContents_UpdatedUserId = new System.Collections.Generic.List<BingoContent>(); -- Excluded navigation property per configuration.
-			// CreatedUser = new System.Collections.Generic.List<BingoContent>(); -- Excluded navigation property per configuration.
-			// BingoInstances_CreatedUserId = new System.Collections.Generic.List<BingoInstance>(); -- Excluded navigation property per configuration.
-			// BingoInstances_UpdatedUserId = new System.Collections.Generic.List<BingoInstance>(); -- Excluded navigation property per configuration.
-			// BingoInstanceContents_CreatedUserId = new System.Collections.Generic.List<BingoInstanceContent>(); -- Excluded navigation property per configuration.
-			// BingoInstanceContents_UpdatedUserId = new System.Collections.Generic.List<BingoInstanceContent>(); -- Excluded navigation property per configuration.
-			// BingoInstanceContents_UserId = new System.Collections.Generic.List<BingoInstanceContent>(); -- Excluded navigation property per configuration.
-			// BingoInstanceEvents_CreatedUserId = new System.Collections.Generic.List<BingoInstanceEvent>(); -- Excluded navigation property per configuration.
-			// BingoInstanceEvents_UpdatedUserId = new System.Collections.Generic.List<BingoInstanceEvent>(); -- Excluded navigation property per configuration.
-			// Companies_CreatedUserId = new System.Collections.Generic.List<Company>(); -- Excluded navigation property per configuration.
-			// Companies_UpdatedUserId = new System.Collections.Generic.List<Company>(); -- Excluded navigation property per configuration.
-			// Meetings_CreatedUserId = new System.Collections.Generic.List<Meeting>(); -- Excluded navigation property per configuration.
-			// Meetings_UpdatedUserId = new System.Collections.Generic.List<Meeting>(); -- Excluded navigation property per configuration.
-			// MeetingAttendees_CreatedUserId = new System.Collections.Generic.List<MeetingAttendee>(); -- Excluded navigation property per configuration.
-			// MeetingAttendees_UpdatedUserId = new System.Collections.Generic.List<MeetingAttendee>(); -- Excluded navigation property per configuration.
-			// MeetingAttendees_UserId = new System.Collections.Generic.List<MeetingAttendee>(); -- Excluded navigation property per configuration.
-			// MeetingSchedules_CreatedUserId = new System.Collections.Generic.List<MeetingSchedule>(); -- Excluded navigation property per configuration.
-			// MeetingSchedules_UpdatedUserId = new System.Collections.Generic.List<MeetingSchedule>(); -- Excluded navigation property per configuration.
-			// Users_CreatedUserId = new System.Collections.Generic.List<User>(); -- Excluded navigation property per configuration.
-			// Users_UpdatedUserId = new System.Collections.Generic.List<User>(); -- Excluded navigation property per configuration.
+			BingoContents_UpdatedUserId = new System.Collections.Generic.List<BingoContent>();
+			CreatedUser = new System.Collections.Generic.List<BingoContent>();
+			BingoInstances_CreatedUserId = new System.Collections.Generic.List<BingoInstance>();
+			BingoInstances_UpdatedUserId = new System.Collections.Generic.List<BingoInstance>();
+			BingoInstanceContents_CreatedUserId = new System.Collections.Generic.List<BingoInstanceContent>();
+			BingoInstanceContents_UpdatedUserId = new System.Collections.Generic.List<BingoInstanceContent>();
+			BingoInstanceContents_UserId = new System.Collections.Generic.List<BingoInstanceContent>();
+			BingoInstanceEvents_CreatedUserId = new System.Collections.Generic.List<BingoInstanceEvent>();
+			BingoInstanceEvents_UpdatedUserId = new System.Collections.Generic.List<BingoInstanceEvent>();
+			Companies_CreatedUserId = new System.Collections.Generic.List<Company>();
+			Companies_UpdatedUserId = new System.Collections.Generic.List<Company>();
+			Meetings_CreatedUserId = new System.Collections.Generic.List<Meeting>();
+			Meetings_UpdatedUserId = new System.Collections.Generic.List<Meeting>();
+			MeetingAttendees_CreatedUserId = new System.Collections.Generic.List<MeetingAttendee>();
+			MeetingAttendees_UpdatedUserId = new System.Collections.Generic.List<MeetingAttendee>();
+			MeetingAttendees_UserId = new System.Collections.Generic.List<MeetingAttendee>();
+			MeetingSchedules_CreatedUserId = new System.Collections.Generic.List<MeetingSchedule>();
+			MeetingSchedules_UpdatedUserId = new System.Collections.Generic.List<MeetingSchedule>();
+			Users_CreatedUserId = new System.Collections.Generic.List<User>();
+			Users_UpdatedUserId = new System.Collections.Generic.List<User>();
 
 			InitializePartial();
 		}
@@ -39,28 +39,28 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 		public System.DateTime UpdatedDate { get; set; }
 		public System.Guid UpdatedUserId { get; set; }
 		public bool IsDeleted { get; set; }
-		// public virtual System.Collections.Generic.ICollection<BingoContent> BingoContents_UpdatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<BingoContent> CreatedUser { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<BingoInstance> BingoInstances_CreatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<BingoInstance> BingoInstances_UpdatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_CreatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_UpdatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_UserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents_CreatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents_UpdatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<Company> Companies_CreatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<Company> Companies_UpdatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<Meeting> Meetings_CreatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<Meeting> Meetings_UpdatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_CreatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_UpdatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_UserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules_CreatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules_UpdatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<User> Users_CreatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual System.Collections.Generic.ICollection<User> Users_UpdatedUserId { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
-		// public virtual User User_CreatedUserId { get; set; }  -- Excluded navigation property per configuration.
-		// public virtual User User_UpdatedUserId { get; set; }  -- Excluded navigation property per configuration.
+		public virtual System.Collections.Generic.ICollection<BingoContent> BingoContents_UpdatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<BingoContent> CreatedUser { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<BingoInstance> BingoInstances_CreatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<BingoInstance> BingoInstances_UpdatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_CreatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_UpdatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_UserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents_CreatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents_UpdatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<Company> Companies_CreatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<Company> Companies_UpdatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<Meeting> Meetings_CreatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<Meeting> Meetings_UpdatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_CreatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_UpdatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_UserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules_CreatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules_UpdatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<User> Users_CreatedUserId { get; set; } // Many to many mapping
+		public virtual System.Collections.Generic.ICollection<User> Users_UpdatedUserId { get; set; } // Many to many mapping
+		public virtual User User_CreatedUserId { get; set; } 
+		public virtual User User_UpdatedUserId { get; set; } 
 
 
 		partial void InitializePartial();

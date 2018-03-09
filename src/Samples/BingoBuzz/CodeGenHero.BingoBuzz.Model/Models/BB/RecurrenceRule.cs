@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public RecurrenceRule(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.RecurrenceRule();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public RecurrenceRule(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.RecurrenceRule dto) : this(log, dataService)
@@ -57,7 +57,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_frequencyType == null)
+				if (_frequencyType == null && _dto != null && _dto.FrequencyType != null)
 				{
 					_frequencyType = new FrequencyType(Log, DataService, _dto.FrequencyType);
 				}
@@ -70,9 +70,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetingSchedules == null)
+				if (_meetingSchedules == null && _dto != null && _dto.MeetingSchedules != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestRecurrenceRule(nameof(MeetingSchedules)));
+					_meetingSchedules = new List<IMeetingSchedule>();
+					foreach (var dtoItem in _dto.MeetingSchedules)
+					{
+						_meetingSchedules.Add(new MeetingSchedule(Log, DataService, dtoItem));
+					}
 				}
 
 				return _meetingSchedules;

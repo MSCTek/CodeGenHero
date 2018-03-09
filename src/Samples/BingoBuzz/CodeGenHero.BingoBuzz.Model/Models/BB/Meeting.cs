@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public Meeting(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.Meeting();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public Meeting(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.Meeting dto) : this(log, dataService)
@@ -60,7 +60,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_company == null)
+				if (_company == null && _dto != null && _dto.Company != null)
 				{
 					_company = new Company(Log, DataService, _dto.Company);
 				}
@@ -73,7 +73,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_createdUser == null)
+				if (_createdUser == null && _dto != null && _dto.CreatedUser != null)
 				{
 					_createdUser = new User(Log, DataService, _dto.CreatedUser);
 				}
@@ -86,7 +86,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_updatedUser == null)
+				if (_updatedUser == null && _dto != null && _dto.UpdatedUser != null)
 				{
 					_updatedUser = new User(Log, DataService, _dto.UpdatedUser);
 				}
@@ -99,9 +99,13 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstances == null)
+				if (_bingoInstances == null && _dto != null && _dto.BingoInstances != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestMeeting(nameof(BingoInstances)));
+					_bingoInstances = new List<IBingoInstance>();
+					foreach (var dtoItem in _dto.BingoInstances)
+					{
+						_bingoInstances.Add(new BingoInstance(Log, DataService, dtoItem));
+					}
 				}
 
 				return _bingoInstances;
@@ -112,7 +116,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetingAttendees == null)
+				if (_meetingAttendees == null && _dto != null && _dto.MeetingAttendees != null)
 				{
 					_meetingAttendees = new List<IMeetingAttendee>();
 					foreach (var dtoItem in _dto.MeetingAttendees)
@@ -129,7 +133,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetingSchedules == null)
+				if (_meetingSchedules == null && _dto != null && _dto.MeetingSchedules != null)
 				{
 					_meetingSchedules = new List<IMeetingSchedule>();
 					foreach (var dtoItem in _dto.MeetingSchedules)

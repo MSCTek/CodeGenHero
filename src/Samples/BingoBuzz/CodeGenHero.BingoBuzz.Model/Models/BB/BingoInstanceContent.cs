@@ -30,7 +30,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		public BingoInstanceContent(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService) : base(log, dataService)
 		{
 			_dto = new xDTO.BingoInstanceContent();
-			OnLazyLoadRequest += HandleLazyLoadRequestAsync;
+			OnLazyLoadRequest += HandleLazyLoadRequest;
 		}
 
 		public BingoInstanceContent(ILoggingService log, IDataService<IWebApiDataServiceBB> dataService, xDTO.BingoInstanceContent dto) : this(log, dataService)
@@ -66,7 +66,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoContent == null)
+				if (_bingoContent == null && _dto != null && _dto.BingoContent != null)
 				{
 					_bingoContent = new BingoContent(Log, DataService, _dto.BingoContent);
 				}
@@ -79,9 +79,9 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstance == null)
+				if (_bingoInstance == null && _dto != null && _dto.BingoInstance != null)
 				{
-					OnLazyLoadRequest(this, new LoadRequestBingoInstanceContent(nameof(BingoInstance)));
+					_bingoInstance = new BingoInstance(Log, DataService, _dto.BingoInstance);
 				}
 
 				return _bingoInstance;
@@ -92,7 +92,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceContentStatusType == null)
+				if (_bingoInstanceContentStatusType == null && _dto != null && _dto.BingoInstanceContentStatusType != null)
 				{
 					_bingoInstanceContentStatusType = new BingoInstanceContentStatusType(Log, DataService, _dto.BingoInstanceContentStatusType);
 				}
@@ -105,7 +105,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_createdUser == null)
+				if (_createdUser == null && _dto != null && _dto.CreatedUser != null)
 				{
 					_createdUser = new User(Log, DataService, _dto.CreatedUser);
 				}
@@ -118,7 +118,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_updatedUser == null)
+				if (_updatedUser == null && _dto != null && _dto.UpdatedUser != null)
 				{
 					_updatedUser = new User(Log, DataService, _dto.UpdatedUser);
 				}
@@ -131,7 +131,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_user_UserId == null)
+				if (_user_UserId == null && _dto != null && _dto.User_UserId != null)
 				{
 					_user_UserId = new User(Log, DataService, _dto.User_UserId);
 				}
@@ -144,7 +144,7 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceEvents == null)
+				if (_bingoInstanceEvents == null && _dto != null && _dto.BingoInstanceEvents != null)
 				{
 					_bingoInstanceEvents = new List<IBingoInstanceEvent>();
 					foreach (var dtoItem in _dto.BingoInstanceEvents)
