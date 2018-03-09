@@ -56,27 +56,25 @@ namespace CodeGenHero.BingoBuzz.Xam
 
         public async Task SetDemoMode(bool isOn)
         {
-            //if the new value is different from the existing value
-            if (_isDemoMode != isOn)
+            _isDemoMode = isOn;
+
+            //flush all data and start again
+            var db = Kernel.Get<IDatabase>();
+            await db.DropTablesAsync();
+            db.CreateTables();
+
+            if (_isDemoMode)
             {
-                _isDemoMode = isOn;
-                var db = Kernel.Get<IDatabase>();
-                await db.DropTablesAsync();
-                db.CreateTables();
-
-                if (_isDemoMode)
-                {
-                    //rebind the data load service so we can load the demo data instead of using the web api
-                    Kernel.Rebind<IDataLoadService>().To<Services.Design.DesignDataLoadService>().InSingletonScope();
-                }
-                else
-                {
-                    Kernel.Rebind<IDataLoadService>().To<Services.DataLoadService>().InSingletonScope();
-                }
-
-                var newDataLoadService = Kernel.Get<IDataLoadService>();
-                await newDataLoadService.InsertAllDataCleanLocalDB();
+                //rebind the data load service so we can load the demo data instead of using the web api
+                Kernel.Rebind<IDataLoadService>().To<Services.Design.DesignDataLoadService>().InSingletonScope();
             }
+            else
+            {
+                Kernel.Rebind<IDataLoadService>().To<Services.DataLoadService>().InSingletonScope();
+            }
+
+            var newDataLoadService = Kernel.Get<IDataLoadService>();
+            await newDataLoadService.InsertAllDataCleanLocalDB();
         }
 
         public void StartAppCenter()
