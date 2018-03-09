@@ -28,6 +28,7 @@
     <PackageReference Include="Portable.Ninject" Version="3.3.1" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.4.135-beta" />
     <PackageReference Include="sqlite-net-pcl" Version="1.5.166-beta" />
+    <PackageReference Include="Toasts.Forms.Plugin" Version="3.3.2" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.1.1" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xam.Plugins.Vibrate" Version="4.0.0.1-beta" />

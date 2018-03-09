@@ -75,6 +75,9 @@
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.5.166-beta</Version>
     </PackageReference>
+    <PackageReference Include="Toasts.Forms.Plugin">
+      <Version>3.3.2</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugin.Connectivity">
       <Version>3.1.1</Version>
     </PackageReference>

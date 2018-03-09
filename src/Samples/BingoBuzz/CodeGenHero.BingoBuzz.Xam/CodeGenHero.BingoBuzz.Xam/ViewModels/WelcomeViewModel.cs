@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Reflection;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {

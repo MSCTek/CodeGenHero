@@ -5,6 +5,8 @@ using System.Linq;
 using Foundation;
 using CodeGenHero.BingoBuzz.Xam.iOS.Modules;
 using UIKit;
+using Xamarin.Forms;
+using Plugin.Toasts;
 
 namespace CodeGenHero.BingoBuzz.Xam.iOS
 {
@@ -25,6 +27,10 @@ namespace CodeGenHero.BingoBuzz.Xam.iOS
         {
             Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
+
+            DependencyService.Register<ToastNotification>(); // Register your dependency
+            ToastNotification.Init();
+
             //LoadApplication(new App());
             LoadApplication(new App(new IOSPlatformModule()));
             return base.FinishedLaunching(app, options);

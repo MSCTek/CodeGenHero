@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CodeGenHero.BingoBuzz.Xam.Views.WelcomePage"
-             xmlns:ctr="clr-namespace:CodeGenHero.BingoBuzz.Xam.Controls"
+             xmlns:ctr="clr-namespace:CodeGenHero.BingoBuzz.Xam.Controls;assembly=CodeGenHero.BingoBuzz.Xam"
              x:Name="WelcomePage">
 
     <ContentPage.Content>
@@ -19,7 +19,7 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Text="Welcome to" Margin="0,20,0,0" HorizontalOptions="Center" VerticalOptions="End" HorizontalTextAlignment="Center" />
-            <!--<Image Grid.Row="1" Source="{ctr:ImageResource CodeGenHero.BingoBuzz.Xam.Resources.BingoBuzz.png}" HorizontalOptions="Center" />-->
+            <!-- <Image Grid.Row="1" Source="{ctr:ImageResource Resources.BingoBuzz.png}" HorizontalOptions="Center" />-->
             <Label Grid.Row="2" Text="Virtual Meeting Bingo" FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
 
             <Grid Grid.Row="3"  BackgroundColor="LightSkyBlue" HeightRequest="50" Margin="0,25,0,0">
