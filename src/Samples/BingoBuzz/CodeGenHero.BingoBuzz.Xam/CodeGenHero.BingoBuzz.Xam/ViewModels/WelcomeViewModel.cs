@@ -75,7 +75,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         public override async Task Init()
         {
             //TODO: remove - for development only
-            await ((App)Application.Current).SetDemoMode(true);
+            await ((App)Application.Current).SetDemoMode(false);
             StateService.SetCurrentUser(DemoUser.UserGeorge.ToModelObj());
 
             Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();

@@ -17,7 +17,7 @@
                     <Entry  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
                     <BoxView HeightRequest="2" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand" />
 
-                    <Label Text="When" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
+                    <!--<Label Text="When" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
                     <Picker>
                         <Picker.Items>
                             <x:String>Now</x:String>
@@ -25,7 +25,7 @@
                         </Picker.Items>
                     </Picker>
                     <DatePicker></DatePicker>
-                    <BoxView HeightRequest="2" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand" />
+                    <BoxView HeightRequest="2" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand" />-->
 
                     <Label Text="Who" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
                     <StackLayout BackgroundColor="AliceBlue" Margin="5" HeightRequest="150">
