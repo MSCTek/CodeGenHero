@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Reflection;
+using CodeGenHero.BingoBuzz.Xam.Resources;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {

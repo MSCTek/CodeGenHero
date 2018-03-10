@@ -14,6 +14,17 @@
             <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
             <Color x:Key="LightTextColor">#999999</Color>
 
+
+            <!--https://www.canva.com/color-palette/-->
+            <Color x:Key="Cyan">#15F1FA</Color>
+            <Color x:Key="DeepSkyBlue">#07A4E5</Color>
+            <Color x:Key="Lavendar">#F4F9FB</Color>
+            <Color x:Key="DarkCyan">#OC84BC</Color>
+            <Color x:Key="SkyBlue">#6EC2E6</Color>
+
+
+
+
             <Color x:Key="PI.Transparent">Transparent</Color>
             <Color x:Key="PI.White">#ffffff</Color>
             <Color x:Key="PI.NotQuiteWhite">#E8E7E5</Color>

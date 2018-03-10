@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.CodeGenHero.BingoBuzz.Xam" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.CodeGenHero.BingoBuzz" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="25" />
-	<application android:label="CodeGenHero.BingoBuzz.Xam.Android"></application>
+	<application android:label="BingoBuzz" android:icon="@drawable/icon"></application>
 </manifest>

@@ -9,20 +9,20 @@
         <Grid Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="1*" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Text="Welcome to" Margin="0,20,0,0" HorizontalOptions="Center" VerticalOptions="End" HorizontalTextAlignment="Center" />
-            <!-- <Image Grid.Row="1" Source="{ctr:ImageResource Resources.BingoBuzz.png}" HorizontalOptions="Center" />-->
+            <Image Grid.Row="1" Source="{ctr:ImageResource CodeGenHero.BingoBuzz.Xam.Resources.BingoBuzz.png}" HorizontalOptions="Center" Aspect="AspectFit" />
             <Label Grid.Row="2" Text="Virtual Meeting Bingo" FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
 
-            <Grid Grid.Row="3"  BackgroundColor="LightSkyBlue" HeightRequest="50" Margin="0,25,0,0">
+            <Grid Grid.Row="3"  BackgroundColor="{StaticResource SkyBlue}" HeightRequest="50" Margin="0,25,0,0">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NewMeetingCommand}" />
                 </Grid.GestureRecognizers>
@@ -34,11 +34,11 @@
                 <Label Grid.Column="1" Text=">>" VerticalOptions="Center" Margin="10,0" />
             </Grid>
 
-            <ListView  Grid.Row="4" HasUnevenRows="True" ItemsSource="{Binding Meetings}">
+            <ListView  Grid.Row="4" HasUnevenRows="True" ItemsSource="{Binding Meetings}" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid  BackgroundColor="LightSkyBlue" HeightRequest="60">
+                            <Grid  BackgroundColor="{StaticResource DarkCyan}" HeightRequest="60" Margin="10,2,0,2">
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Command="{Binding BindingContext.OpenMeetingCommand, Source={x:Reference WelcomePage}}"
@@ -49,8 +49,8 @@
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0">
-                                    <Label  Text="{Binding Name}" VerticalOptions="Center" Margin="10,5,0,0" />
-                                    <Label  Text="Get this game started..." VerticalOptions="Center" Margin="10,0,0,5" FontSize="Small" />
+                                    <Label  Text="{Binding Name}" VerticalOptions="Center" Margin="10,5,0,0" TextColor="{StaticResource Lavendar}" />
+                                    <Label  Text="Let's get this game started..." VerticalOptions="Center" Margin="10,0,0,5" FontSize="10" TextColor="{StaticResource Lavendar}"/>
                                 </StackLayout>
 
                                 <Label Grid.Column="1" Text=">>" VerticalOptions="Center" Margin="10,0" />
@@ -60,7 +60,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Grid Grid.Row="5"  BackgroundColor="LightSkyBlue" HeightRequest="50" Margin="0">
+            <Grid Grid.Row="5"  BackgroundColor="{StaticResource SkyBlue}" HeightRequest="50" Margin="0">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding MyStatsCommand}" />
                 </Grid.GestureRecognizers>
@@ -72,7 +72,7 @@
                 <Label Grid.Column="1" Text=">>" VerticalOptions="Center" Margin="10,0" />
             </Grid>
 
-            <Grid Grid.Row="6"  BackgroundColor="LightSkyBlue" HeightRequest="50" Margin="0">
+            <Grid Grid.Row="6"  BackgroundColor="{StaticResource DarkCyan}" HeightRequest="50" Margin="0">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding MyProfileCommand}" />
                 </Grid.GestureRecognizers>
@@ -80,7 +80,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Text="My Profile" VerticalOptions="Center" Margin="10,0" />
+                <Label Grid.Column="0" Text="My Profile" VerticalOptions="Center" Margin="10,0" TextColor="{StaticResource Lavendar}" />
                 <Label Grid.Column="1" Text=">>" VerticalOptions="Center" Margin="10,0" />
             </Grid>
 

@@ -124,9 +124,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\CodeGenHero.BingoBuzz.Constants\CodeGenHero.BingoBuzz.Constants.csproj">
       <Project>{ce71d050-6a42-436c-b212-1dc2b2958777}</Project>
       <Name>CodeGenHero.BingoBuzz.Constants</Name>
