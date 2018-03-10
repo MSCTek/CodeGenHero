@@ -195,7 +195,54 @@
     <Compile Include="Controllers\BB\CompaniesController.cs">
       <DependentUpon>WebApiController_BB.cgh</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\BB\Custom\AnswersControllerCustom.cs" />
+    <Compile Include="Controllers\BB\Custom\BingoContentsControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\BingoInstanceContentsControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\BingoInstanceContentStatusTypesControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\BingoInstanceEventsControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\BingoInstanceEventTypesControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\BingoInstancesControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\BingoInstanceStatusTypesControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\CompaniesControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\FrequencyTypesControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\MeetingAttendeesControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\MeetingSchedulesControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\MeetingsControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\NotificationMethodTypesControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\NotificationRulesControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\RecurrenceRulesControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BB\Custom\UsersControllerCustom.cs">
+      <DependentUpon>WebApiControllerPartialMethods_BB.cgh</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\BB\FrequencyTypesController.cs">
       <DependentUpon>WebApiController_BB.cgh</DependentUpon>
     </Compile>
@@ -229,6 +276,7 @@
     <Content Include="Controllers\APIBaseController_BB.cgh" />
     <Content Include="Controllers\APIStatusController_BB.cgh" />
     <Content Include="Controllers\BB\WebApiController_BB.cgh" />
+    <Content Include="Controllers\BB\Custom\WebApiControllerPartialMethods_BB.cgh" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\bingobuzz - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\bingobuzz - Web Deploy.pubxml" />

@@ -5,14 +5,14 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public NotificationMethodType()
 		{
-			NotificationRules = new System.Collections.Generic.List<NotificationRule>();
+			// NotificationRules = new System.Collections.Generic.List<NotificationRule>(); -- Excluded navigation property per configuration.
 
 			InitializePartial();
 		}
 
 		public int NotificationMethodTypeId { get; set; } // Primary key
 		public string Name { get; set; }
-		public virtual System.Collections.Generic.ICollection<NotificationRule> NotificationRules { get; set; } // Many to many mapping
+		// public virtual System.Collections.Generic.ICollection<NotificationRule> NotificationRules { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
 
 
 		partial void InitializePartial();

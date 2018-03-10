@@ -89,7 +89,7 @@
     },
     {
       "Description": "Models Backed By Dto Objects).",
-      "Id": "4d03f2c7-de26-4abe-a267-cad747c9606a",
+      "Id": "f1539c0d-024f-4b1f-b346-132cdd9dd31f",
       "IsActive": false,
       "Name": "ModelsBackedByDto",
       "Settings": [
@@ -209,18 +209,22 @@
         },
         {
           "HiddenIndicator": false,
-          "Name": "WebApiController",
-          "Value": "Controllers\\{namespacePostfix}\\[tablepluralname]Controller.cs"
-        },
-        {
-          "HiddenIndicator": false,
-          "Name": "WebApiControllerNamespace",
-          "Value": "{baseNamespace}.API.Controllers.{namespacePostfix}"
-        },
-        {
-          "HiddenIndicator": false,
           "Name": "WebApiControllerOutputFilePath",
           "Value": "Controllers\\{namespacePostfix}\\[tablepluralname]Controller.cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "A complimentary template for Web API 2.0 controllers that generates sample implementations for partial methods that get invoked as injection points in the controller's REST operations.",
+      "Id": "54f0612b-5235-437d-af2d-0b75efa68630",
+      "IsActive": false,
+      "Name": "WebApiControllerPartialMethods",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "WebApiControllerPartialMethodsOutputFilePath",
+          "Value": "Controllers\\{namespacePostfix}\\Custom\\[tablepluralname]ControllerCustom.cs"
         }
       ],
       "Version": "1.0"
@@ -332,6 +336,11 @@
       "HiddenIndicator": false,
       "Name": "ILoggingServiceNamespace",
       "Value": "CodeGenHero.Logging"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "WebApiControllerNamespace",
+      "Value": "{baseNamespace}.API.Controllers.{namespacePostfix}"
     },
     {
       "HiddenIndicator": false,
