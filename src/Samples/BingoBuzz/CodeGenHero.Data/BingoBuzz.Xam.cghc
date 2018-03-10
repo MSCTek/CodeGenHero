@@ -50,7 +50,7 @@
     },
     {
       "Description": "MvvmLight Model Objects).",
-      "Id": "4d03f2c7-de26-4aee-a267-cad747c9606a",
+      "Id": "c644a31c-7ebc-4383-bc7f-0ea7c5bf6ed4",
       "IsActive": false,
       "Name": "MvvmLightModelObject",
       "Settings": [
@@ -82,6 +82,59 @@
           "HiddenIndicator": false,
           "Name": "sqliteModelDataOutputFilePath",
           "Value": "Xamarin\\ModelData\\{namespacePostfix}\\[tablename].cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Provides functionality to abstract calls to Web API services.",
+      "Id": "424e7ec7-bd9d-4cd3-9257-6ffbc772b82e",
+      "IsActive": false,
+      "Name": "WebApiDataService",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "ILoggingServiceNamespace",
+          "Value": "CodeGenHero.Logging"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "SerializationHelperNamespace",
+          "Value": "{baseNamespace}.Common.Helpers"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "UpdatedDateFieldName",
+          "Value": "UpdatedDate"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "WebApiDataServiceNamespace",
+          "Value": "{baseNamespace}.API.Client"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "WebApiDataServiceOutputFilePath",
+          "Value": "Client\\WebAPIDataService\\WebAPIDataService{namespacePostfix}.cs"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Provides an interface for the implementation class that provides functionality to abstract calls to Web API services.",
+      "Id": "1ea810ed-61a7-443b-97f2-da5b30311e75",
+      "IsActive": false,
+      "Name": "WebApiDataServiceInterface",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "WebApiDataServiceInterfaceClassName",
+          "Value": "IWebApiDataService{namespacePostfix}"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "WebApiDataServiceInterfaceOutputFilePath",
+          "Value": "Client\\IWebApiDataservice\\IWebApiDataService{namespacePostfix}.cs"
         }
       ],
       "Version": "1.0"
@@ -135,6 +188,16 @@
       "HiddenIndicator": false,
       "Name": "SqliteModelObjectNamespace",
       "Value": "{baseNamespace}.Xam.ModelObj.{namespacePostfix}"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "DefaultCriteria",
+      "Value": "DateTime? minUpdatedDate"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "WebApiDataServiceInterfaceNamespace",
+      "Value": "{baseNamespace}.API.Client.Interface"
     }
   ],
   "Version": null

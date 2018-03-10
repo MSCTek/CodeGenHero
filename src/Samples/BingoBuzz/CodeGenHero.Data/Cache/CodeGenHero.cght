@@ -1,33 +1,6 @@
 [
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
-    "DataSetName": "BB",
-    "ProjectName": "CodeGenHero.BingoBuzz.API",
-    "RelativePath": "\\Controllers",
-    "TemplateId": "4cb75f55-706b-4b42-835b-dd823d4afc91",
-    "TemplateName": "APIBaseController",
-    "TemplateVersion": "1.0"
-  },
-  {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
-    "DataSetName": "BB",
-    "ProjectName": "CodeGenHero.BingoBuzz.API",
-    "RelativePath": "\\Controllers",
-    "TemplateId": "a5d78309-5a18-4a09-9225-03e602b52187",
-    "TemplateName": "APIStatusController",
-    "TemplateVersion": "1.0"
-  },
-  {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
-    "DataSetName": "BB",
-    "ProjectName": "CodeGenHero.BingoBuzz.Repository",
-    "RelativePath": "\\Mappers",
-    "TemplateId": "f3f865a7-e545-4bc4-b0ba-c9e7ee587e73",
-    "TemplateName": "AutoMapperProfile",
-    "TemplateVersion": "1.0"
-  },
-  {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.DTO",
     "RelativePath": "\\BB",
@@ -36,16 +9,16 @@
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Model",
     "RelativePath": "\\Models\\BB",
-    "TemplateId": "4d03f2c7-de26-4abe-a267-cad747c9606a",
+    "TemplateId": "f1539c0d-024f-4b1f-b346-132cdd9dd31f",
     "TemplateName": "ModelsBackedByDto",
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Model",
     "RelativePath": "\\Interfaces\\BB",
@@ -54,7 +27,7 @@
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Repository",
     "RelativePath": "\\Repositories",
@@ -63,7 +36,7 @@
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Repository",
     "RelativePath": "\\Repositories",
@@ -72,7 +45,7 @@
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Repository",
     "RelativePath": "\\Interfaces",
@@ -81,7 +54,7 @@
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Repository",
     "RelativePath": "\\Interfaces",
@@ -90,7 +63,7 @@
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.API",
     "RelativePath": "\\Controllers\\BB",
@@ -99,7 +72,16 @@
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.API",
+    "RelativePath": "\\Controllers\\BB\\Custom",
+    "TemplateId": "54f0612b-5235-437d-af2d-0b75efa68630",
+    "TemplateName": "WebApiControllerPartialMethods",
+    "TemplateVersion": "1.0"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Service.DataService",
     "RelativePath": "\\DataService",
@@ -108,7 +90,7 @@
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Service.DataService",
     "RelativePath": "\\Interfaces",
@@ -117,7 +99,34 @@
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.API",
+    "RelativePath": "\\Controllers",
+    "TemplateId": "4cb75f55-706b-4b42-835b-dd823d4afc91",
+    "TemplateName": "APIBaseController",
+    "TemplateVersion": "1.0"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.API",
+    "RelativePath": "\\Controllers",
+    "TemplateId": "a5d78309-5a18-4a09-9225-03e602b52187",
+    "TemplateName": "APIStatusController",
+    "TemplateVersion": "1.0"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Repository",
+    "RelativePath": "\\Mappers",
+    "TemplateId": "f3f865a7-e545-4bc4-b0ba-c9e7ee587e73",
+    "TemplateName": "AutoMapperProfile",
+    "TemplateVersion": "1.0"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Xam",
     "RelativePath": "\\Mappers",
@@ -126,7 +135,7 @@
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Xam",
     "RelativePath": "\\Mappers",
@@ -135,16 +144,16 @@
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Xam",
     "RelativePath": "\\ModelObj\\BB",
-    "TemplateId": "4d03f2c7-de26-4aee-a267-cad747c9606a",
+    "TemplateId": "c644a31c-7ebc-4383-bc7f-0ea7c5bf6ed4",
     "TemplateName": "MvvmLightModelObject",
     "TemplateVersion": "1.0"
   },
   {
-    "ConnectionStringName": "{MSC.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
     "DataSetName": "BB",
     "ProjectName": "CodeGenHero.BingoBuzz.Xam",
     "RelativePath": "\\ModelData\\BB",

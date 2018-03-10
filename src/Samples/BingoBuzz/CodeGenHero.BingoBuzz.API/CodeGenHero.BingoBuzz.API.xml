@@ -4,12 +4,144 @@
         <name>CodeGenHero.BingoBuzz.API</name>
     </assembly>
     <members>
-        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.FrequencyTypesBBController.Delete(System.Int32)">
+        <member name="P:CodeGenHero.BingoBuzz.API.Controllers.BB.BBBaseApiController.Log">
+             <summary>
+            
+             </summary>
+             <remarks>
+             This is private for a reason - using ILoggingService here in place of Log4NetLoggingService would be preferable.
+             However, doing so causes the CallerMemberName and CallerFilePath attributes to return null.
+             This is because those attributes are used by the compiler (not at runtime) to do their magic.
+             Thus, by abstracting them in an interface the compiler cannot tell which methods are calling.
+             </remarks>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.BingoContentsBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.BingoContent}@,System.Guid,System.Int32)">
             <summary>
-            Testing XML comments.
+            A sample implementation of custom logic used to include related entities to return with a DTO.
             </summary>
-            <param name="frequencyTypeId"></param>
-            <returns></returns>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.BingoInstanceContentsBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.BingoInstanceContent}@,System.Guid,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.BingoInstanceContentStatusTypesBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.BingoInstanceContentStatusType}@,System.Int32,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.BingoInstanceEventsBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.BingoInstanceEvent}@,System.Guid,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.BingoInstanceEventTypesBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.BingoInstanceEventType}@,System.Int32,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.BingoInstancesBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.BingoInstance}@,System.Guid,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.BingoInstanceStatusTypesBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.BingoInstanceStatusType}@,System.Int32,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.CompaniesBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.Company}@,System.Guid,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.FrequencyTypesBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.FrequencyType}@,System.Int32,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.MeetingAttendeesBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.MeetingAttendee}@,System.Guid,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.MeetingSchedulesBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.MeetingSchedule}@,System.Guid,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.MeetingsBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.Meeting}@,System.Guid,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.NotificationMethodTypesBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.NotificationMethodType}@,System.Int32,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.NotificationRulesBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.NotificationRule}@,System.Guid,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.RecurrenceRulesBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.RecurrenceRule}@,System.Guid,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
+        </member>
+        <member name="M:CodeGenHero.BingoBuzz.API.Controllers.BB.UsersBBController.RunCustomLogicOnGetQueryableByPK(System.Linq.IQueryable{CodeGenHero.BingoBuzz.Repository.Entities.BB.User}@,System.Guid,System.Int32)">
+            <summary>
+            A sample implementation of custom logic used to include related entities to return with a DTO.
+            </summary>
+            <param name="qryItem"></param>
+            <param name="id"></param>
+            <param name="numChildLevels"></param>
         </member>
     </members>
 </doc>

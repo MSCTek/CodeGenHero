@@ -17,7 +17,7 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 		public System.DateTime UpdatedDate { get; set; }
 		public System.Guid UpdatedUserId { get; set; }
 		public bool IsDeleted { get; set; }
-		public virtual BingoInstance BingoInstance { get; set; } 
+		// public virtual BingoInstance BingoInstance { get; set; }  -- Excluded navigation property per configuration.
 		public virtual BingoInstanceContent BingoInstanceContent { get; set; } 
 		public virtual BingoInstanceEventType BingoInstanceEventType { get; set; } 
 		public virtual User CreatedUser { get; set; } 

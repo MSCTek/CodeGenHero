@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MSC.BingoBuzz.Repository")]
+[assembly: AssemblyTitle("CodeGenHero.BingoBuzz.Repository")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
-[assembly: AssemblyProduct("MSC.BingoBuzz.Repository")]
-[assembly: AssemblyCopyright("Copyright © HP Inc. 2018")]
+[assembly: AssemblyCompany("Micro Support Center, Inc.")]
+[assembly: AssemblyProduct("CodeGenHero.BingoBuzz.Repository")]
+[assembly: AssemblyCopyright("Copyright © Micro Support Center, Inc. 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

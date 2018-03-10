@@ -13,11 +13,9 @@
     <None Include="$(MSBuildThisFileDirectory)BingoBuzz.Web.cghc" />
     <None Include="$(MSBuildThisFileDirectory)BingoBuzz.Xam.cghc" />
     <None Include="$(MSBuildThisFileDirectory)BingoBuzz_POCO.cghs" />
+    <None Include="$(MSBuildThisFileDirectory)Cache\.cghl" />
+    <None Include="$(MSBuildThisFileDirectory)Cache\CodeGenHero.cght" />
+    <None Include="$(MSBuildThisFileDirectory)Cache\SchemaGroups.cghg" />
     <None Include="$(MSBuildThisFileDirectory)CodeGenHero.cght" />
-    <None Include="$(MSBuildThisFileDirectory)MSC.BingoBuzz.API.cghl" />
-    <None Include="$(MSBuildThisFileDirectory)MSC.BingoBuzz.DTO.cghl" />
-    <None Include="$(MSBuildThisFileDirectory)MSC.BingoBuzz.Repository.cghl" />
-    <None Include="$(MSBuildThisFileDirectory)MSC.BingoBuzz.Service.DataService.cghl" />
-    <None Include="$(MSBuildThisFileDirectory)MSC.BingoBuzz.Xam.cghl" />
   </ItemGroup>
 </Project>

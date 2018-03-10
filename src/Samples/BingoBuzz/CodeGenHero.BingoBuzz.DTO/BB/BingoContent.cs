@@ -5,7 +5,7 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public BingoContent()
 		{
-			BingoInstanceContents = new System.Collections.Generic.List<BingoInstanceContent>();
+			// BingoInstanceContents = new System.Collections.Generic.List<BingoInstanceContent>(); -- Excluded navigation property per configuration.
 
 			InitializePartial();
 		}
@@ -20,7 +20,7 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 		public System.DateTime UpdatedDate { get; set; }
 		public System.Guid UpdatedUserId { get; set; }
 		public bool IsDeleted { get; set; }
-		public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents { get; set; } // Many to many mapping
+		// public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
 		public virtual User CreatedUser { get; set; } 
 		public virtual User UpdatedUser { get; set; } 
 
