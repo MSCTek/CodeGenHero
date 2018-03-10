@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms;
+using Plugin.Toasts;
 
 namespace CodeGenHero.BingoBuzz.Xam.Droid
 {
@@ -20,6 +22,9 @@ namespace CodeGenHero.BingoBuzz.Xam.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            DependencyService.Register<ToastNotification>(); // Register your dependency
+            ToastNotification.Init(this);
 
             Rg.Plugins.Popup.Popup.Init(this, bundle);
 
