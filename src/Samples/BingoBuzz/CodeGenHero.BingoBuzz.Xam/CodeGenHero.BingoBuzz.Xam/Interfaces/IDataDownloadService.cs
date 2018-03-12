@@ -7,7 +7,7 @@ using CodeGenHero.BingoBuzz.Xam.ModelObj.BB;
 
 namespace CodeGenHero.BingoBuzz.Xam.Interfaces
 {
-    public interface IDataLoadService
+    public interface IDataDownloadService
     {
         Task InsertAllDataCleanLocalDB();
     }

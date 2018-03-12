@@ -66,14 +66,14 @@ namespace CodeGenHero.BingoBuzz.Xam
             if (_isDemoMode)
             {
                 //rebind the data load service so we can load the demo data instead of using the web api
-                Kernel.Rebind<IDataLoadService>().To<Services.Design.DesignDataLoadService>().InSingletonScope();
+                Kernel.Rebind<IDataDownloadService>().To<Services.Design.DesignDataLoadService>().InSingletonScope();
             }
             else
             {
-                Kernel.Rebind<IDataLoadService>().To<Services.DataLoadService>().InSingletonScope();
+                Kernel.Rebind<IDataDownloadService>().To<Services.DataDownloadService>().InSingletonScope();
             }
 
-            var newDataLoadService = Kernel.Get<IDataLoadService>();
+            var newDataLoadService = Kernel.Get<IDataDownloadService>();
             await newDataLoadService.InsertAllDataCleanLocalDB();
         }
 

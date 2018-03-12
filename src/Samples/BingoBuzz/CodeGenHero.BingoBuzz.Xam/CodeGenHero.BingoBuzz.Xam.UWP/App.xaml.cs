@@ -1,4 +1,6 @@
-﻿using Plugin.Toasts.UWP;
+﻿using CodeGenHero.BingoBuzz.Xam.Messages;
+using CodeGenHero.BingoBuzz.Xam.UWP.Services;
+using Plugin.Toasts.UWP;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -105,6 +107,9 @@ namespace CodeGenHero.BingoBuzz.Xam.UWP
                 // parameter
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
+
+            SubscribeToMessages();
+
             // Ensure the current window is active
             Window.Current.Activate();
         }
@@ -131,6 +136,23 @@ namespace CodeGenHero.BingoBuzz.Xam.UWP
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        private UWPRunQueuedUpdateService myUWPRunQueuedUpdateService;
+
+        private void SubscribeToMessages()
+        {
+            //TODO: should we unsubscribe these somewhere??
+            MessagingCenter.Subscribe<StartUploadDataMessage>(this, "StartUploadDataMessage", async message =>
+            {
+                myUWPRunQueuedUpdateService = new UWPRunQueuedUpdateService();
+                await myUWPRunQueuedUpdateService.StartAsync();
+            });
+
+            MessagingCenter.Subscribe<StopUploadDataMessage>(this, "StopUploadDataMessage", message =>
+            {
+                myUWPRunQueuedUpdateService.Stop();
+            });
         }
     }
 }

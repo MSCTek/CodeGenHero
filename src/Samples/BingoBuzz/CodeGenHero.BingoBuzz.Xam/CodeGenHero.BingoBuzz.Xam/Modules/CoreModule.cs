@@ -9,7 +9,8 @@ namespace CodeGenHero.BingoBuzz.Xam.Modules
     {
         public override void Load()
         {
-            Bind<IDataLoadService>().To<Services.DataLoadService>().InSingletonScope();
+            Bind<IDataDownloadService>().To<Services.DataDownloadService>().InSingletonScope();
+            Bind<IDataUploadService>().To<Services.DataUploadService>().InSingletonScope();
             Bind<IDataRetrievalService>().To<Services.DataRetrievalService>().InSingletonScope();
             Bind<IStateService>().To<Services.StateService>().InSingletonScope();
             Bind<IDatabase>().To<Database.Database>().InSingletonScope();

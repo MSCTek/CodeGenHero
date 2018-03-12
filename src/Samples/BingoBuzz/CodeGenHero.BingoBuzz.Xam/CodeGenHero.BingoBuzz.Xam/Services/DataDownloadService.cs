@@ -15,7 +15,7 @@ using CodeGenHero.BingoBuzz.Constants;
 
 namespace CodeGenHero.BingoBuzz.Xam.Services
 {
-    public class DataLoadService : IDataLoadService
+    public class DataDownloadService : IDataDownloadService
     {
         private SQLiteAsyncConnection _asyncConnection;
         private SQLiteConnection _connection;
@@ -23,7 +23,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
         private ILoggingService _log;
         private IWebApiDataServiceBB _webAPIDataService;
 
-        public DataLoadService(ILoggingService log, IDatabase database)
+        public DataDownloadService(ILoggingService log, IDatabase database)
         {
             _log = log;
             _database = database;

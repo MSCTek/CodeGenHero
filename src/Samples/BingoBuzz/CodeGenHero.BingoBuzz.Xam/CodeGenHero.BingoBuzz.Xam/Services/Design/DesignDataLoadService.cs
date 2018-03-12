@@ -11,7 +11,7 @@ using CodeGenHero.Logging;
 
 namespace CodeGenHero.BingoBuzz.Xam.Services.Design
 {
-    public class DesignDataLoadService : IDataLoadService
+    public class DesignDataLoadService : IDataDownloadService
     {
         private SQLiteAsyncConnection _asyncConnection;
         private SQLiteConnection _connection;
