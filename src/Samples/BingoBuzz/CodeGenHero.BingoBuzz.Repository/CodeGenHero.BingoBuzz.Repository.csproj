@@ -165,6 +165,7 @@
     <Compile Include="Interfaces\IBBRepositoryCrud.cs">
       <DependentUpon>RepositoryInterfaceCrud_BB.cgh</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\AutoMapperInitializer.cs" />
     <Compile Include="Mappers\BBAutoMapperProfile.cs">
       <DependentUpon>AutoMapperProfile_BB.cgh</DependentUpon>
     </Compile>
