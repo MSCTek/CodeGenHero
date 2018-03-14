@@ -87,7 +87,9 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
         public async Task NavigateTo<TVM>()
             where TVM : IViewModelBase
         {
-            await PushActivityIndicatorTransparentPopupAsync();
+            //await PushActivityIndicatorTransparentPopupAsync();
+            await PushAlertPopupAsync("Loading...");
+
             await NavigateToView(typeof(TVM));
 
             if (XamarinFormsNav.NavigationStack.Last().BindingContext is IViewModelBase)
@@ -96,13 +98,17 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             }
 
             PrintOutNavStack();
-            await PopActivityIndicatorTransparentPopupsAsync();
+
+            //await PopActivityIndicatorTransparentPopupsAsync();
+            await PopAlertPopupsAsync();
         }
 
         public async Task NavigateTo<TVM, TParameter>(TParameter parameter)
             where TVM : IViewModelBaseWithParam<TParameter>
         {
-            await PushActivityIndicatorTransparentPopupAsync();
+            //await PushActivityIndicatorTransparentPopupAsync();
+            await PushAlertPopupAsync("Loading...");
+
             await NavigateToView(typeof(TVM));
 
             if (XamarinFormsNav.NavigationStack.Last().BindingContext is IViewModelBaseWithParam<TParameter>)
@@ -111,7 +117,9 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             }
 
             PrintOutNavStack();
-            await PopActivityIndicatorTransparentPopupsAsync();
+
+            await PopAlertPopupsAsync();
+            //await PopActivityIndicatorTransparentPopupsAsync();
         }
 
         public async Task NavigateToNoAnimation<TVM, TParameter>(TParameter parameter)
@@ -151,18 +159,28 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
         public async Task PopActivityIndicatorTransparentPopupsAsync()
         {
             //we are doing this for the situations in which an error message is popped when the page init is loading
-            var removeThese = PopupNavigation.PopupStack.Where(x => x.GetType() == typeof(ActivityIndicatorTransparentPopup)).ToList();
+            var removeThese = PopupNavigation.Instance.PopupStack.Where(x => x.GetType() == typeof(ActivityIndicatorTransparentPopup)).ToList();
             foreach (var r in removeThese)
             {
-                await PopupNavigation.RemovePageAsync(r, true);
+                await PopupNavigation.Instance.RemovePageAsync(r, true);
+            }
+        }
+
+        public async Task PopAlertPopupsAsync()
+        {
+            //we are doing this for the situations in which an error message is popped when the page init is loading
+            var removeThese = PopupNavigation.Instance.PopupStack.Where(x => x.GetType() == typeof(AlertPopup)).ToList();
+            foreach (var r in removeThese)
+            {
+                await PopupNavigation.Instance.RemovePageAsync(r, true);
             }
         }
 
         public async Task PopPopupAsync()
         {
-            if (PopupNavigation.PopupStack.Count > 0)
+            if (PopupNavigation.Instance.PopupStack.Count > 0)
             {
-                await PopupNavigation.PopAsync();
+                await PopupNavigation.Instance.PopAsync();
             }
         }
 
@@ -183,7 +201,17 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
 
         public async Task PushActivityIndicatorTransparentPopupAsync()
         {
-            await PopupNavigation.PushAsync(new ActivityIndicatorTransparentPopup());
+            await PopupNavigation.Instance.PushAsync(new ActivityIndicatorTransparentPopup());
+        }
+
+        public async Task PushAlertPopupAsync(string message)
+        {
+            await PopupNavigation.Instance.PushAsync(new AlertPopup(message));
+        }
+
+        public async Task PushBingoPopupAsync()
+        {
+            await PopupNavigation.Instance.PushAsync(new BingoPopup());
         }
 
         public void RegisterViewMapping(Type viewModel, Type view)
@@ -264,7 +292,8 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
 
         public async Task StartNavStack(Type pageType)
         {
-            await PushActivityIndicatorTransparentPopupAsync();
+            await PushAlertPopupAsync("Loading...");
+            //await PushActivityIndicatorTransparentPopupAsync();
             Type viewType;
 
             var viewModelType = pageType;
@@ -296,7 +325,8 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             }
 
             PrintOutNavStack();
-            await PopActivityIndicatorTransparentPopupsAsync();
+            await PopAlertPopupsAsync();
+            //await PopActivityIndicatorTransparentPopupsAsync();
         }
 
         private async Task NavigateToView(Type viewModelType)

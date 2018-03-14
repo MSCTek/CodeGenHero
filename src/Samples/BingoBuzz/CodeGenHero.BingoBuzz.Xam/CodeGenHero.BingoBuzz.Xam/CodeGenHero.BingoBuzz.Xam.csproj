@@ -42,7 +42,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Controls\BingoPopup.xaml.cs">
+      <DependentUpon>BingoPopup.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Controls\ActivityIndicatorTransparentPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\AlertPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\GamePage.xaml">

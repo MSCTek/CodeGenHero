@@ -66,6 +66,11 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
             throw new NotImplementedException();
         }
 
+        public Task PopAlertPopupsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task PopPopupAsync()
         {
             throw new NotImplementedException();
@@ -77,6 +82,16 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
         }
 
         public Task PushActivityIndicatorTransparentPopupAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task PushAlertPopupAsync(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task PushBingoPopupAsync()
         {
             throw new NotImplementedException();
         }

@@ -4,21 +4,32 @@
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
              x:Class="CodeGenHero.BingoBuzz.Xam.Controls.ActivityIndicatorTransparentPopup">
+
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation
-          PositionIn="Center"
-          PositionOut="Center"
-          ScaleIn="1.2"
-          ScaleOut="0.8"
-          DurationIn="400"
-          DurationOut="300"
-          EasingIn="SinOut"
-          EasingOut="SinIn"
-          HasBackgroundAnimation="True" />
+      PositionIn="Center"
+      PositionOut="Center"
+      ScaleIn="1.2"
+      ScaleOut="0.8"
+      DurationIn="400"
+      DurationOut="300"
+      EasingIn="SinOut"
+      EasingOut="SinIn"
+      HasBackgroundAnimation="True" />
     </pages:PopupPage.Animation>
 
     <Grid WidthRequest="270" HorizontalOptions="Center" VerticalOptions="Center">
-        <ActivityIndicator Grid.Row="0" IsRunning="true" HeightRequest="50" WidthRequest="50"
-         Color="White" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Frame CornerRadius="15" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+            <Frame.HasShadow>
+                <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true" />
+            </Frame.HasShadow>
+            <Grid Padding="8" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <ActivityIndicator Grid.Row="1" IsRunning="True" HeightRequest="100" WidthRequest="100" IsEnabled="True" Color="{StaticResource DeepSkyBlue}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            </Grid>
+        </Frame>
     </Grid>
 </pages:PopupPage>

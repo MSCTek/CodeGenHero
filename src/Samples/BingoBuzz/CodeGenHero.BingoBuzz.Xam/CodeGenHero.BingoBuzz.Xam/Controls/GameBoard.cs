@@ -114,6 +114,11 @@ namespace CodeGenHero.BingoBuzz.Xam.Controls
 
                 Content = _gameGrid;
             }
+            else if (GameBoardContent != null && GameBoardContent.Count == 0)
+            {
+                Grid _gameGrid = new Grid();
+                Content = _gameGrid;
+            }
         }
     }
 }

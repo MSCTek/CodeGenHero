@@ -16,10 +16,10 @@
             <ctr:CustomHeader Grid.Row="0" ShowBackButton="True" Title="BingoBuzz Game" ShowHamburger="False" />
 
             <Grid Grid.Row="1" x:Name="PlayerGrid" HeightRequest="55" BackgroundColor="LightGray" Margin="10,5">
-                <ctr:PlayerWrapLayout  SourcePlayers="{Binding Players}" />
+                <ctr:PlayerWrapLayout x:Name="PlayerWrapLayout" SourcePlayers="{Binding Players}" />
             </Grid>
 
-            <ctr:GameBoard Grid.Row="2" GameBoardContent="{Binding BingoInstanceContent}" Margin="10,0" />
+            <ctr:GameBoard x:Name="GameBoard" Grid.Row="2" GameBoardContent="{Binding BingoInstanceContent}" Margin="10,0" />
 
             <Grid Grid.Row="3" x:Name="AdvertisingGrid" HeightRequest="55" BackgroundColor="Gray" Margin="10,5">
             </Grid>

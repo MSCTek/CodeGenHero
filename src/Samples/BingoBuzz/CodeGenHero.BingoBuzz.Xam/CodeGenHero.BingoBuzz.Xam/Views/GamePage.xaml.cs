@@ -54,6 +54,8 @@ namespace CodeGenHero.BingoBuzz.Xam.Views
             base.OnDisappearing();
             if (vm != null)
             {
+                GameBoard.GameBoardContent = new List<ModelObj.BB.BingoInstanceContent>();
+                PlayerWrapLayout.SourcePlayers = new List<Controls.PlayerViewModel>();
             }
         }
     }

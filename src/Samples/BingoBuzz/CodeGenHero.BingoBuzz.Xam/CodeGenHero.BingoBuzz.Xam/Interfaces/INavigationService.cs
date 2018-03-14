@@ -35,11 +35,17 @@ namespace CodeGenHero.BingoBuzz.Xam.Interfaces
 
         Task PopActivityIndicatorTransparentPopupsAsync();
 
+        Task PopAlertPopupsAsync();
+
         Task PopPopupAsync();
 
         Task PopToRoot();
 
         Task PushActivityIndicatorTransparentPopupAsync();
+
+        Task PushAlertPopupAsync(string message);
+
+        Task PushBingoPopupAsync();
 
         void RemoveDuplicatePageByType(Type pageType);
 

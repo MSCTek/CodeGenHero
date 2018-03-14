@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conv="clr-namespace:PIMobile.Converters;assembly=CodeGenHero.BingoBuzz.Xam.Converters"
+             xmlns:ctr="clr-namespace:CodeGenHero.BingoBuzz.Xam.Controls"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="CodeGenHero.BingoBuzz.Xam.Controls.AlertPopup">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+      PositionIn="Center"
+      PositionOut="Center"
+      ScaleIn="1.2"
+      ScaleOut="0.8"
+      DurationIn="400"
+      DurationOut="300"
+      EasingIn="SinOut"
+      EasingOut="SinIn"
+      HasBackgroundAnimation="True" />
+    </pages:PopupPage.Animation>
+    <!-- Content -->
+    <Grid WidthRequest="270" HorizontalOptions="Center" VerticalOptions="Center">
+        <Frame CornerRadius="15" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"
+               BackgroundColor="White">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OverlayTapped" NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
+            <Frame.HasShadow>
+                <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true" />
+            </Frame.HasShadow>
+            <Grid Padding="8" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OverlayTapped" NumberOfTapsRequired="1" />
+                </Grid.GestureRecognizers>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="{ctr:ImageResource CodeGenHero.BingoBuzz.Xam.Resources.BingoBuzz.png}" HorizontalOptions="Center" Aspect="AspectFit" />
+                <!-- <ctr:IconLabel Text="{StaticResource FAIcon.FAExclamationTriangle}" Margin="10" HorizontalOptions="Center" VerticalOptions="Start" TextColor="{StaticResource PI.Orange}" FontSize="35">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OverlayTapped" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </ctr:IconLabel>-->
+                <Label Grid.Row="1" x:Name="AlertLabel" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Medium"
+                   LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Margin="10,10" />
+            </Grid>
+        </Frame>
+    </Grid>
+</pages:PopupPage>

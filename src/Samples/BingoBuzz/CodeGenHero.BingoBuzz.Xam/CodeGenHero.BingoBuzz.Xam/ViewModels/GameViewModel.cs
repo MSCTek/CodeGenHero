@@ -11,7 +11,8 @@ using CodeGenHero.BingoBuzz.Xam.Controls;
 using System.Diagnostics;
 using Plugin.Vibrate;
 using Xamarin.Forms;
-using Plugin.Toasts;
+
+//using Plugin.Toasts;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
@@ -56,7 +57,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         {
             get
             {
-                return new RelayCommand<Guid>((bingoInstanceContentId) =>
+                return new RelayCommand<Guid>(async (bingoInstanceContentId) =>
                 {
                     var selectedContent = BingoInstanceContent.Where(x => x.BingoInstanceContentId == bingoInstanceContentId).FirstOrDefault();
                     if (selectedContent.IsSelected)
@@ -68,7 +69,11 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                         selectedContent.IsSelected = true;
                     }
                     RaisePropertyChanged(nameof(BingoInstanceContent));
-                    CheckForBingo();
+                    if (await CheckForBingo())
+                    {
+                        //TODO: game is over
+                        await NavService.NavigateToNoAnimation<WelcomeViewModel>();
+                    }
                 });
             }
         }
@@ -104,22 +109,26 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
             }
         }
 
-        private async Task Bingo(string message)
+        private async Task<bool> Bingo(string message)
         {
             Debug.WriteLine(message);
-            CrossVibrate.Current.Vibration(TimeSpan.FromSeconds(1)); // 1 second vibration
-            var notificator = DependencyService.Get<IToastNotificator>();
-            var options = new NotificationOptions()
-            {
-                Title = "BINGO",
-                Description = message
-            };
 
-            var result = await notificator.Notify(options);
-            //once you get bingo, the game should probably be over...need to confirm perhaps to avoid fat fingering.
+            await NavService.PushBingoPopupAsync();
+
+            CrossVibrate.Current.Vibration(TimeSpan.FromSeconds(1)); // 1 second vibration
+
+            return true;
+            //var notificator = DependencyService.Get<IToastNotificator>();
+            //var options = new NotificationOptions()
+            //{
+            //    Title = "BINGO",
+            //    Description = message
+            //};
+
+            //var result = await notificator.Notify(options);
         }
 
-        private void CheckForBingo()
+        private async Task<bool> CheckForBingo()
         {
             var selected = BingoInstanceContent.Where(x => x.IsSelected).ToList();
 
@@ -130,7 +139,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                 //see if you have the same number of selected squares in the same row as you have columns, if so, you have horizontal bingo.
                 if (selected.Where(x => x.Row == i).Count() == BingoInstance.NumberOfColumns)
                 {
-                    Bingo("Horizontal Bingo!");
+                    return await Bingo("Horizontal Bingo!");
                 }
             }
 
@@ -141,7 +150,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                 //see if you have the same number of selected squares in the same column as you have rows, if so, you have vertical bingo.
                 if (selected.Where(x => x.Col == i).Count() == BingoInstance.NumberOfRows)
                 {
-                    Bingo("Vertical Bingo!");
+                    return await Bingo("Vertical Bingo!");
                 }
             }
 
@@ -166,7 +175,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
                     if (isAContender && countDiaSqs == BingoInstance.NumberOfColumns)
                     {
-                        Bingo("Diagonal Bingo top left to bottom right!");
+                        return await Bingo("Diagonal Bingo top left to bottom right!");
                     }
                 }
             }
@@ -178,9 +187,10 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                 //see if the selected squares have a row and col number that add up to the total number of cols -1
                 if (selected.Where(x => x.Row + x.Col == (BingoInstance.NumberOfColumns - 1)).Count() == BingoInstance.NumberOfColumns)
                 {
-                    Bingo("Diagonal Bingo  bottom left to top right!");
+                    return await Bingo("Diagonal Bingo  bottom left to top right!");
                 }
             }
+            return false;
         }
     }
 }

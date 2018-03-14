@@ -17,11 +17,13 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
     public class WelcomeViewModel : CustomViewModelBase
     {
+        private bool _hasLoaded;
         private ObservableCollection<Meeting> _meetings;
 
         public WelcomeViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService) : base(navService, dataRetrievalService, stateService)
         {
             Meetings = new ObservableCollection<Meeting>();
+            _hasLoaded = false;
         }
 
         public ObservableCollection<Meeting> Meetings
@@ -76,11 +78,14 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
         public override async Task Init()
         {
-            //TODO: remove - for development only
-            await ((App)Application.Current).SetDemoMode(false);
-            StateService.SetCurrentUser(DemoUser.UserGeorge.ToModelObj());
-
-            Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();
+            if (!_hasLoaded)
+            {
+                //TODO: remove - for development only
+                await ((App)Application.Current).SetDemoMode(false);
+                StateService.SetCurrentUser(DemoUser.UserGeorge.ToModelObj());
+                _hasLoaded = true;
+                Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();
+            }
         }
     }
 }
