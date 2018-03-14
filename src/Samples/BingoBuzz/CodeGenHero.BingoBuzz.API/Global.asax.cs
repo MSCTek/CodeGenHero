@@ -13,7 +13,8 @@ namespace MSC.BingoBuzz.API
 			System.Web.Http.GlobalConfiguration.Configuration.Formatters.Add(new System.Net.Http.Formatting.BsonMediaTypeFormatter());
 
 			// Initialize Automapper
-			AutoMapperInitializer.Initialize();
+			//AutoMapperInitializer.Initialize();
+			CodeGenHero.BingoBuzz.Repository.Mappers.AutoMapperInitializer.Initialize();
 			Mapper.AssertConfigurationIsValid();
 		}
 	}
