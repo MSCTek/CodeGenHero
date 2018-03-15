@@ -13,7 +13,7 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <ctr:CustomHeader Grid.Row="0" ShowBackButton="True" Title="BingoBuzz Game" ShowHamburger="False" />
+            <ctr:CustomHeader Grid.Row="0" ShowBackButton="True" Title="{Binding Meeting.Name}" ShowHamburger="False" />
 
             <Grid Grid.Row="1" x:Name="PlayerGrid" HeightRequest="55" BackgroundColor="LightGray" Margin="10,5">
                 <ctr:PlayerWrapLayout x:Name="PlayerWrapLayout" SourcePlayers="{Binding Players}" />

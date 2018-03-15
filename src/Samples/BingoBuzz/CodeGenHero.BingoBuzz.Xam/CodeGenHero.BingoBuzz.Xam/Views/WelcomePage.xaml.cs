@@ -41,6 +41,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Views
             base.OnAppearing();
             if (vm != null)
             {
+                //TODO: clean this up here
                 await vm.RefreshMeetings();
             }
         }
