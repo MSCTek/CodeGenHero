@@ -84,8 +84,14 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                 await ((App)Application.Current).SetDemoMode(false);
                 StateService.SetCurrentUser(DemoUser.UserGeorge.ToModelObj());
                 _hasLoaded = true;
-                Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();
+                //meetings are loaded on appearing
+                //Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();
             }
+        }
+
+        public async Task RefreshMeetings()
+        {
+            Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();
         }
     }
 }

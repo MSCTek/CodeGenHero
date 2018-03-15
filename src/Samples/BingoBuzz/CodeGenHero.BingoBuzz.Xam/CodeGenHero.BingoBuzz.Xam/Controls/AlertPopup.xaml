@@ -35,7 +35,7 @@
                 </Grid.GestureRecognizers>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="250" />
                 </Grid.RowDefinitions>
                 <Image Grid.Row="0" Source="{ctr:ImageResource CodeGenHero.BingoBuzz.Xam.Resources.BingoBuzz.png}" HorizontalOptions="Center" Aspect="AspectFit" />
                 <!-- <ctr:IconLabel Text="{StaticResource FAIcon.FAExclamationTriangle}" Margin="10" HorizontalOptions="Center" VerticalOptions="Start" TextColor="{StaticResource PI.Orange}" FontSize="35">
@@ -43,7 +43,7 @@
                         <TapGestureRecognizer Tapped="OverlayTapped" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </ctr:IconLabel>-->
-                <Label Grid.Row="1" x:Name="AlertLabel" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Medium"
+                <Label Grid.Row="1" x:Name="AlertLabel" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"
                    LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Margin="10,10" />
             </Grid>
         </Frame>

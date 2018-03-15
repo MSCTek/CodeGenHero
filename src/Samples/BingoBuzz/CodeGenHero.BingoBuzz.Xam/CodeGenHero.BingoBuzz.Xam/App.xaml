@@ -14,16 +14,12 @@
             <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
             <Color x:Key="LightTextColor">#999999</Color>
 
-
             <!--https://www.canva.com/color-palette/-->
             <Color x:Key="Cyan">#15F1FA</Color>
             <Color x:Key="DeepSkyBlue">#07A4E5</Color>
             <Color x:Key="Lavendar">#F4F9FB</Color>
             <Color x:Key="DarkCyan">#OC84BC</Color>
             <Color x:Key="SkyBlue">#6EC2E6</Color>
-
-
-
 
             <Color x:Key="PI.Transparent">Transparent</Color>
             <Color x:Key="PI.White">#ffffff</Color>
@@ -37,6 +33,9 @@
 
             <x:String x:Key="FAIcon.FAMapMarker">&#xF041;</x:String>
             <x:String x:Key="FAIcon.FACheck">&#xf00c;</x:String>
+            <x:String x:Key="FAIcon.FASquareO">&#xf096;</x:String>
+            <x:String x:Key="FAIcon.FACheckSquareO">&#xf046;</x:String>
+
             <x:String x:Key="FAIcon.FAExclamationTriangle">&#xF071;</x:String>
             <x:String x:Key="FAIcon.FAExclamationCircle">&#xF06a;</x:String>
             <x:String x:Key="FAIcon.FATruck">&#xf0d1;</x:String>

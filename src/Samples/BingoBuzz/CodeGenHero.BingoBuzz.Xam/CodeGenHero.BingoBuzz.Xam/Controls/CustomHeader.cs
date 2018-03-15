@@ -46,7 +46,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Controls
 
         private bool _disposed;
 
-        private IconLabel _hamburgerLabel;
+        //private IconLabel _hamburgerLabel;
 
         private StackLayout _hamburgerStackLayout;
 
@@ -111,7 +111,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Controls
             _headerGrid = null;
             _tapGestureRecognizerHam = null;
             _tapGestureRecognizerBack = null;
-            _hamburgerLabel = null;
+            //_hamburgerLabel = null;
         }
 
         public void Dispose()
@@ -168,7 +168,6 @@ namespace CodeGenHero.BingoBuzz.Xam.Controls
                 _backButtonIcon.Text = "<";
                 _backButtonIcon.FontAttributes = FontAttributes.Bold;
 
-
                 _backButtonIcon.FontSize = 21;
                 // _backButtonIcon.TextColor = (Color)App.Current.Resources["PI.Charcoal"];
                 _backButtonIcon.Margin = new Thickness(12);
@@ -183,37 +182,36 @@ namespace CodeGenHero.BingoBuzz.Xam.Controls
                 _tapGestureRecognizerBack.AutomationId = "BackButton";
                 _backButtonStackLayout.GestureRecognizers.Add(_tapGestureRecognizerBack);
 
-                _headerGrid.Children.Add(_backButtonStackLayout); 
-
+                _headerGrid.Children.Add(_backButtonStackLayout);
             }
 
-            if (ShowHamburger)
-            {
-                _hamburgerStackLayout = new StackLayout();
-                _hamburgerStackLayout.Orientation = StackOrientation.Horizontal;
-                _hamburgerStackLayout.Margin = new Thickness(0);
-                _hamburgerStackLayout.HorizontalOptions = LayoutOptions.StartAndExpand;
-                _hamburgerStackLayout.VerticalOptions = LayoutOptions.End;
+            /* if (ShowHamburger)
+             {
+                 _hamburgerStackLayout = new StackLayout();
+                 _hamburgerStackLayout.Orientation = StackOrientation.Horizontal;
+                 _hamburgerStackLayout.Margin = new Thickness(0);
+                 _hamburgerStackLayout.HorizontalOptions = LayoutOptions.StartAndExpand;
+                 _hamburgerStackLayout.VerticalOptions = LayoutOptions.End;
 
-                _hamburgerLabel = new IconLabel();
-                _hamburgerLabel.BackgroundColor = (Color)App.Current.Resources["PI.Transparent"];
-                _hamburgerLabel.Text = (string)App.Current.Resources["Icon.Hamburger"]; //"\uf008";
-                _hamburgerLabel.FontSize = 21;
-                //_hamburgerLabel.TextColor = (Color)App.Current.Resources["PI.Charcoal"];
-                _hamburgerLabel.Margin = new Thickness(12);
-                _hamburgerLabel.HorizontalOptions = LayoutOptions.Start;
-                _hamburgerLabel.VerticalOptions = LayoutOptions.Center;
-                _hamburgerLabel.AutomationId = "HamburgerButton";
+                 _hamburgerLabel = new IconLabel();
+                 _hamburgerLabel.BackgroundColor = (Color)App.Current.Resources["PI.Transparent"];
+                 _hamburgerLabel.Text = (string)App.Current.Resources["Icon.Hamburger"]; //"\uf008";
+                 _hamburgerLabel.FontSize = 21;
+                 //_hamburgerLabel.TextColor = (Color)App.Current.Resources["PI.Charcoal"];
+                 _hamburgerLabel.Margin = new Thickness(12);
+                 _hamburgerLabel.HorizontalOptions = LayoutOptions.Start;
+                 _hamburgerLabel.VerticalOptions = LayoutOptions.Center;
+                 _hamburgerLabel.AutomationId = "HamburgerButton";
 
-                _hamburgerStackLayout.Children.Add(_hamburgerLabel);
+                 _hamburgerStackLayout.Children.Add(_hamburgerLabel);
 
-                _tapGestureRecognizerHam = new TapGestureRecognizer();
-                _tapGestureRecognizerHam.SetBinding(TapGestureRecognizer.CommandProperty, "HamburgerCommand", BindingMode.TwoWay);
-                _tapGestureRecognizerHam.AutomationId = "HamburgerButton";
-                _hamburgerStackLayout.GestureRecognizers.Add(_tapGestureRecognizerHam);
+                 _tapGestureRecognizerHam = new TapGestureRecognizer();
+                 _tapGestureRecognizerHam.SetBinding(TapGestureRecognizer.CommandProperty, "HamburgerCommand", BindingMode.TwoWay);
+                 _tapGestureRecognizerHam.AutomationId = "HamburgerButton";
+                 _hamburgerStackLayout.GestureRecognizers.Add(_tapGestureRecognizerHam);
 
-                _headerGrid.Children.Add(_hamburgerStackLayout);
-            }
+                 _headerGrid.Children.Add(_hamburgerStackLayout);
+             }*/
 
             _headerLabel = new Label();
             _headerLabel.Text = !string.IsNullOrEmpty(Title) ? Title : string.Empty;

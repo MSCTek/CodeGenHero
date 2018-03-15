@@ -14,9 +14,13 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
     public class DataRetrievalService : IDataRetrievalService
     {
         private SQLiteAsyncConnection _asyncConnection;
+
         private SQLiteConnection _connection;
+
         private IDatabase _database;
+
         private ILoggingService _log;
+
         private IStateService _stateService;
 
         public DataRetrievalService(ILoggingService log, IDatabase database, IStateService stateService)
@@ -57,6 +61,43 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             return newInstance.ToModelObj();
         }
 
+        public async Task<bool> CreateNewMeeting(Meeting meeting, List<User> attendees)
+        {
+            meeting.CreatedDate = DateTime.UtcNow;
+            meeting.UpdatedDate = DateTime.UtcNow;
+            meeting.CreatedUserId = GetCurrentUserId();
+            meeting.UpdatedUserId = GetCurrentUserId();
+            meeting.IsDeleted = false;
+
+            if (1 != await _asyncConnection.InsertAsync(meeting.ToModelData()))
+            {
+                var message = "Error Writing new meeting to SQLite";
+                _log.Fatal(message, LogMessageType.Instance.Exception_Database);
+                throw new Exception(message);
+            }
+            foreach (var a in attendees)
+            {
+                if (1 != await _asyncConnection.InsertAsync(new ModelData.BB.MeetingAttendee()
+                {
+                    MeetingId = meeting.MeetingId,
+                    CreatedDate = DateTime.UtcNow,
+                    CreatedUserId = GetCurrentUserId(),
+                    UpdatedDate = DateTime.UtcNow,
+                    UpdatedUserId = GetCurrentUserId(),
+                    UserId = a.UserId,
+                    IsDeleted = false,
+                    MeetingAttendeeId = Guid.NewGuid()
+                }))
+                {
+                    var message = "Error Writing new meeting attendee to SQLite";
+                    _log.Fatal(message, LogMessageType.Instance.Exception_Database);
+                    throw new Exception(message);
+                }
+            }
+
+            return true;
+        }
+
         public async Task<List<ModelObj.BB.BingoInstanceContent>> GetBingoInstanceContentAsync(Guid bingoInstanceId)
         {
             //returns Bingo Instance Content
@@ -85,6 +126,12 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                 return dataInstance.ToModelObj();
             }
             return null;
+        }
+
+        //TODO: change this when authentication is wired up
+        public Guid GetCurrentUserId()
+        {
+            return Guid.Parse("B79ED0E3-DDB9-4920-8900-FFC55A73B4B5");
         }
 
         public async Task<List<ModelObj.BB.MeetingAttendee>> GetMeetingAttendeesAsync(Guid meetingId)
@@ -120,10 +167,23 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
         {
             List<ModelObj.BB.Meeting> returnMe = new List<ModelObj.BB.Meeting>();
 
-            var dataMeetings = await _asyncConnection.Table<ModelData.BB.Meeting>().ToListAsync();
+            var dataMeetings = await _asyncConnection.Table<ModelData.BB.Meeting>().Where(x => x.IsDeleted == false).ToListAsync();
             if (dataMeetings.Any())
             {
                 returnMe.AddRange(dataMeetings.Select(x => x.ToModelObj()).ToList());
+            }
+
+            return returnMe;
+        }
+
+        public async Task<List<ModelObj.BB.User>> GetUsersAsync()
+        {
+            List<ModelObj.BB.User> returnMe = new List<ModelObj.BB.User>();
+
+            var dataUsers = await _asyncConnection.Table<ModelData.BB.User>().Where(x => x.IsDeleted == false).ToListAsync();
+            if (dataUsers.Any())
+            {
+                returnMe.AddRange(dataUsers.Select(x => x.ToModelObj()).ToList());
             }
 
             return returnMe;

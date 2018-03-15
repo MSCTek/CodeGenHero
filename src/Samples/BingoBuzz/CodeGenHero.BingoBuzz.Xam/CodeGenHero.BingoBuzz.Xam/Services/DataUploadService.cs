@@ -26,7 +26,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
         private IStateService _stateService;
         private IWebApiDataServiceBB _webAPIDataService;
 
-        private DataUploadService(ILoggingService log, IDatabase database)
+        public DataUploadService(ILoggingService log, IDatabase database)
         {
             _log = log;
             _database = database;

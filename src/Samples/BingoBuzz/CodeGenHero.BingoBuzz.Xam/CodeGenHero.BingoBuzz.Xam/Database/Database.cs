@@ -1,5 +1,6 @@
 ﻿using CodeGenHero.BingoBuzz.Xam.Interfaces;
 using CodeGenHero.BingoBuzz.Xam.ModelData.BB;
+using CodeGenHero.BingoBuzz.Xam.ModelData.DataSync;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,8 @@ namespace CodeGenHero.BingoBuzz.Xam.Database
                     _conn.CreateTable<NotificationRule>();
                     _conn.CreateTable<RecurrenceRule>();
                     _conn.CreateTable<User>();
+
+                    _conn.CreateTable<ModelData.DataSync.Queue>();
                 }
             }
             catch (Exception ex)
@@ -77,6 +80,8 @@ namespace CodeGenHero.BingoBuzz.Xam.Database
                     await _asyncConn.DropTableAsync<NotificationRule>();
                     await _asyncConn.DropTableAsync<RecurrenceRule>();
                     await _asyncConn.DropTableAsync<User>();
+
+                    await _asyncConn.DropTableAsync<ModelData.DataSync.Queue>();
                 }
             }
             catch (Exception ex)

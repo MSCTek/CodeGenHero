@@ -57,5 +57,10 @@ namespace CodeGenHero.BingoBuzz.Xam.Views
             {
             }
         }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null; //disable the visual selection state.
+        }
     }
 }

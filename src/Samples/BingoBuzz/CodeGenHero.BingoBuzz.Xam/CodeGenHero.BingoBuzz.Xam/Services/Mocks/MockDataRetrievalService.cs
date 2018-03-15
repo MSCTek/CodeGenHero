@@ -18,12 +18,22 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
             throw new NotImplementedException();
         }
 
+        public Task<bool> CreateNewMeeting(Meeting meeting, List<User> attendees)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<BingoInstanceContent>> GetBingoInstanceContentAsync(Guid bingoInstanceId)
         {
             throw new NotImplementedException();
         }
 
         public Task<BingoInstance> GetCurrentBingoInstanceOrNullAsync(Guid meetingId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Guid GetCurrentUserId()
         {
             throw new NotImplementedException();
         }
@@ -46,6 +56,11 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
         public async Task<List<Meeting>> GetMeetingsAsync()
         {
             return new List<Meeting>();
+        }
+
+        public Task<List<User>> GetUsersAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

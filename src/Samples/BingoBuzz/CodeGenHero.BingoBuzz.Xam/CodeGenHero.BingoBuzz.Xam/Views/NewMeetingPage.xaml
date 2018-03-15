@@ -13,27 +13,28 @@
 
             <ScrollView Grid.Row="1">
                 <StackLayout Margin="20,10">
-                    <Label Text="Name your new meeting" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
-                    <Entry  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+                    <Label Text="Name Your New Meeting" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
+                    <Entry Text="{Binding MeetingName, Mode=TwoWay}"  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
                     <BoxView HeightRequest="2" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand" />
 
-                    <!--<Label Text="When" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
-                    <Picker>
-                        <Picker.Items>
-                            <x:String>Now</x:String>
-                            <x:String>Later</x:String>
-                        </Picker.Items>
-                    </Picker>
-                    <DatePicker></DatePicker>
-                    <BoxView HeightRequest="2" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand" />-->
-
-                    <Label Text="Who" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
-                    <StackLayout BackgroundColor="AliceBlue" Margin="5" HeightRequest="150">
-                    </StackLayout>
-                    <Button Text="Invite More" HorizontalOptions="End" />
-                    <BoxView HeightRequest="2" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand" />
-
-                    <Button Text="Done" HorizontalOptions="CenterAndExpand" />
+                    <Label Text="Invite Some People" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
+                    <ListView  HasUnevenRows="True" ItemsSource="{Binding Users}" SeparatorVisibility="None" HeightRequest="300" ItemSelected="ListView_ItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <ctr:IconLabel Text="{Binding CheckboxIcon}" WidthRequest="40" HeightRequest="40" Margin="1" FontSize="22" VerticalOptions="Center">
+                                            <ctr:IconLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TapCheckboxCommand}" />
+                                            </ctr:IconLabel.GestureRecognizers>
+                                        </ctr:IconLabel>
+                                        <Label Text="{Binding FullName}" VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="45" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Text="Done" HorizontalOptions="CenterAndExpand" Command="{Binding MakeNewMeetingCommand}" />
                 </StackLayout>
             </ScrollView>
         </Grid>
