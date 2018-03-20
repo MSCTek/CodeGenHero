@@ -34,27 +34,27 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Parent Meeting pointed by [MeetingAttendee].([MeetingId]) (FK_MeetingAttendee_Meeting)
         /// </summary>
-        public virtual Meeting Meeting { get; set; } // FK_MeetingAttendee_Meeting
+        public Meeting Meeting { get; set; } // FK_MeetingAttendee_Meeting
 
         /// <summary>
         /// Parent NotificationRule pointed by [MeetingAttendee].([NotificationRuleId]) (FK_MeetingAttendee_NotificationRule)
         /// </summary>
-        public virtual NotificationRule NotificationRule { get; set; } // FK_MeetingAttendee_NotificationRule
+        public NotificationRule NotificationRule { get; set; } // FK_MeetingAttendee_NotificationRule
 
         /// <summary>
         /// Parent User pointed by [MeetingAttendee].([CreatedUserId]) (FK_MeetingAttendee_User_Created)
         /// </summary>
-        public virtual User CreatedUser { get; set; } // FK_MeetingAttendee_User_Created
+        public User CreatedUser { get; set; } // FK_MeetingAttendee_User_Created
 
         /// <summary>
         /// Parent User pointed by [MeetingAttendee].([UpdatedUserId]) (FK_MeetingAttendee_User_Updated)
         /// </summary>
-        public virtual User UpdatedUser { get; set; } // FK_MeetingAttendee_User_Updated
+        public User UpdatedUser { get; set; } // FK_MeetingAttendee_User_Updated
 
         /// <summary>
         /// Parent User pointed by [MeetingAttendee].([UserId]) (FK_MeetingAttendee_User)
         /// </summary>
-        public virtual User User_UserId { get; set; } // FK_MeetingAttendee_User
+        public User User_UserId { get; set; } // FK_MeetingAttendee_User
 
         public MeetingAttendee()
         {

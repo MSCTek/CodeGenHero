@@ -34,27 +34,27 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Parent BingoInstance pointed by [BingoInstanceEvent].([BingoInstanceId]) (FK_BingoInstanceEvent_BingoInstance)
         /// </summary>
-        public virtual BingoInstance BingoInstance { get; set; } // FK_BingoInstanceEvent_BingoInstance
+        public BingoInstance BingoInstance { get; set; } // FK_BingoInstanceEvent_BingoInstance
 
         /// <summary>
         /// Parent BingoInstanceContent pointed by [BingoInstanceEvent].([BingoInstanceContentId]) (FK_BingoInstanceEvent_BingoInstanceContent)
         /// </summary>
-        public virtual BingoInstanceContent BingoInstanceContent { get; set; } // FK_BingoInstanceEvent_BingoInstanceContent
+        public BingoInstanceContent BingoInstanceContent { get; set; } // FK_BingoInstanceEvent_BingoInstanceContent
 
         /// <summary>
         /// Parent BingoInstanceEventType pointed by [BingoInstanceEvent].([BingoInstanceEventTypeId]) (FK_BingoInstanceEvent_BingoInstanceEventType)
         /// </summary>
-        public virtual BingoInstanceEventType BingoInstanceEventType { get; set; } // FK_BingoInstanceEvent_BingoInstanceEventType
+        public BingoInstanceEventType BingoInstanceEventType { get; set; } // FK_BingoInstanceEvent_BingoInstanceEventType
 
         /// <summary>
         /// Parent User pointed by [BingoInstanceEvent].([CreatedUserId]) (FK_BingoInstanceEvent_User_Created)
         /// </summary>
-        public virtual User CreatedUser { get; set; } // FK_BingoInstanceEvent_User_Created
+        public User CreatedUser { get; set; } // FK_BingoInstanceEvent_User_Created
 
         /// <summary>
         /// Parent User pointed by [BingoInstanceEvent].([UpdatedUserId]) (FK_BingoInstanceEvent_User_Updated)
         /// </summary>
-        public virtual User UpdatedUser { get; set; } // FK_BingoInstanceEvent_User_Updated
+        public User UpdatedUser { get; set; } // FK_BingoInstanceEvent_User_Updated
 
         public BingoInstanceEvent()
         {

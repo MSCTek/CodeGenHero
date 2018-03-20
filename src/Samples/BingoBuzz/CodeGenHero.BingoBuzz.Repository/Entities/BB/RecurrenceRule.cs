@@ -34,14 +34,14 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Child MeetingSchedules where [MeetingSchedule].[RecurrenceRuleId] point to this entity (FK_MeetingSchedule_RecurrenceRule)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules { get; set; } // MeetingSchedule.FK_MeetingSchedule_RecurrenceRule
+        public System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules { get; set; } // MeetingSchedule.FK_MeetingSchedule_RecurrenceRule
 
         // Foreign keys
 
         /// <summary>
         /// Parent FrequencyType pointed by [RecurrenceRule].([FrequencyTypeId]) (FK_RecurrenceRule_FrequencyType)
         /// </summary>
-        public virtual FrequencyType FrequencyType { get; set; } // FK_RecurrenceRule_FrequencyType
+        public FrequencyType FrequencyType { get; set; } // FK_RecurrenceRule_FrequencyType
 
         public RecurrenceRule()
         {

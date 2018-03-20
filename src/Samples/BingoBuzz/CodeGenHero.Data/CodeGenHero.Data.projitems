@@ -12,6 +12,8 @@
     <None Include="$(MSBuildThisFileDirectory).cghl" />
     <None Include="$(MSBuildThisFileDirectory)BingoBuzz.Web.cghc" />
     <None Include="$(MSBuildThisFileDirectory)BingoBuzz.Xam.cghc" />
+    <None Include="$(MSBuildThisFileDirectory)BingoBuzz_POCO_After.cghs" />
+    <None Include="$(MSBuildThisFileDirectory)BingoBuzz_POCO_Before.cghs" />
     <None Include="$(MSBuildThisFileDirectory)BingoBuzz_POCO.cghs" />
     <None Include="$(MSBuildThisFileDirectory)Cache\.cghl" />
     <None Include="$(MSBuildThisFileDirectory)Cache\CodeGenHero.cght" />

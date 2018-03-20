@@ -28,14 +28,14 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Child MeetingAttendees where [MeetingAttendee].[NotificationRuleId] point to this entity (FK_MeetingAttendee_NotificationRule)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees { get; set; } // MeetingAttendee.FK_MeetingAttendee_NotificationRule
+        public System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees { get; set; } // MeetingAttendee.FK_MeetingAttendee_NotificationRule
 
         // Foreign keys
 
         /// <summary>
         /// Parent NotificationMethodType pointed by [NotificationRule].([NotificationMethodTypeId]) (FK_NotificationRule_NotificationMethodType)
         /// </summary>
-        public virtual NotificationMethodType NotificationMethodType { get; set; } // FK_NotificationRule_NotificationMethodType
+        public NotificationMethodType NotificationMethodType { get; set; } // FK_NotificationRule_NotificationMethodType
 
         public NotificationRule()
         {

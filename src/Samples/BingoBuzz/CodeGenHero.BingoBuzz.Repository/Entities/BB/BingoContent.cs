@@ -35,19 +35,19 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Child BingoInstanceContents where [BingoInstanceContent].[BingoContentId] point to this entity (FK_BingoInstanceContent_BingoContent)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_BingoContent
+        public System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_BingoContent
 
         // Foreign keys
 
         /// <summary>
         /// Parent User pointed by [BingoContent].([CreatedUserId]) (FK_BingoContent_User_CreatedUserId)
         /// </summary>
-        public virtual User CreatedUser { get; set; } // FK_BingoContent_User_CreatedUserId
+        public User CreatedUser { get; set; } // FK_BingoContent_User_CreatedUserId
 
         /// <summary>
         /// Parent User pointed by [BingoContent].([UpdatedUserId]) (FK_BingoContent_User_UpdatedUserId)
         /// </summary>
-        public virtual User UpdatedUser { get; set; } // FK_BingoContent_User_UpdatedUserId
+        public User UpdatedUser { get; set; } // FK_BingoContent_User_UpdatedUserId
 
         public BingoContent()
         {

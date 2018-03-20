@@ -27,7 +27,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Child BingoInstanceContents where [BingoInstanceContent].[BingoInstanceContentStatusTypeId] point to this entity (FK_BingoInstanceContent_BingoInstanceContentStatusType)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_BingoInstanceContentStatusType
+        public System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_BingoInstanceContentStatusType
 
         public BingoInstanceContentStatusType()
         {

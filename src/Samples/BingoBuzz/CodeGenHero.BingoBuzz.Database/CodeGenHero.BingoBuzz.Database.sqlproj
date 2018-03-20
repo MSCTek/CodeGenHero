@@ -81,8 +81,5 @@
     <Build Include="dbo\Tables\BingoInstanceContentStatusType.sql" />
     <Build Include="dbo\Tables\BingoInstanceContent.sql" />
     <Build Include="dbo\Tables\BingoInstance.sql" />
-    <Build Include="Migration\999_BingoBuzz_SD_Final.sql" />
-    <Build Include="Migration\110_BingoBuzz_NewRequirements.sql" />
-    <Build Include="Migration\100_BingoBuzz_Start.sql" />
   </ItemGroup>
 </Project>
