@@ -2,7 +2,7 @@
 using System;
 using CodeGenHero.BingoBuzz.DTO.BB;
 
-namespace CodeGenHero.BingoBuzz.DTO.BB
+namespace CodeGenHero.BingoBuzz.Xam.ModelData.SampleXam
 {
 	public static class DemoBingoInstanceContent
 		{
@@ -56,4 +56,4 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 
 		}
 	}
-}
+
