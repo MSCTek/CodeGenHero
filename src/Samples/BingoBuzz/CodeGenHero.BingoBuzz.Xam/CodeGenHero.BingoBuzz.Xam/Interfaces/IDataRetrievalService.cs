@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CodeGenHero.BingoBuzz.Xam.Interfaces
 {
-    public interface IDataRetrievalService
+    public partial interface IDataRetrievalService
     {
         Task<BingoInstance> CreateNewBingoInstance(Guid meetingId);
 
