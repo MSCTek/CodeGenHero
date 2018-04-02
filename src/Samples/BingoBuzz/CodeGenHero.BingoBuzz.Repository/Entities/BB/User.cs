@@ -35,95 +35,95 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Child BingoContents where [BingoContent].[UpdatedUserId] point to this entity (FK_BingoContent_User_UpdatedUserId)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoContent> BingoContents_UpdatedUserId { get; set; } // BingoContent.FK_BingoContent_User_UpdatedUserId
+        public System.Collections.Generic.ICollection<BingoContent> BingoContents_UpdatedUserId { get; set; } // BingoContent.FK_BingoContent_User_UpdatedUserId
         /// <summary>
         /// Child BingoContents where [BingoContent].[CreatedUserId] point to this entity (FK_BingoContent_User_CreatedUserId)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoContent> CreatedUser { get; set; } // BingoContent.FK_BingoContent_User_CreatedUserId
+        public System.Collections.Generic.ICollection<BingoContent> CreatedUser { get; set; } // BingoContent.FK_BingoContent_User_CreatedUserId
         /// <summary>
         /// Child BingoInstances where [BingoInstance].[CreatedUserId] point to this entity (FK_BingoInstance_User_Created)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstance> BingoInstances_CreatedUserId { get; set; } // BingoInstance.FK_BingoInstance_User_Created
+        public System.Collections.Generic.ICollection<BingoInstance> BingoInstances_CreatedUserId { get; set; } // BingoInstance.FK_BingoInstance_User_Created
         /// <summary>
         /// Child BingoInstances where [BingoInstance].[UpdatedUserId] point to this entity (FK_BingoInstance_User_Updated)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstance> BingoInstances_UpdatedUserId { get; set; } // BingoInstance.FK_BingoInstance_User_Updated
+        public System.Collections.Generic.ICollection<BingoInstance> BingoInstances_UpdatedUserId { get; set; } // BingoInstance.FK_BingoInstance_User_Updated
         /// <summary>
         /// Child BingoInstanceContents where [BingoInstanceContent].[CreatedUserId] point to this entity (FK_BingoInstanceContent_User_Created)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_CreatedUserId { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_User_Created
+        public System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_CreatedUserId { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_User_Created
         /// <summary>
         /// Child BingoInstanceContents where [BingoInstanceContent].[UpdatedUserId] point to this entity (FK_BingoInstanceContent_User_Updated)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_UpdatedUserId { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_User_Updated
+        public System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_UpdatedUserId { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_User_Updated
         /// <summary>
         /// Child BingoInstanceContents where [BingoInstanceContent].[UserId] point to this entity (FK_BingoInstanceContent_User)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_UserId { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_User
+        public System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents_UserId { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_User
         /// <summary>
         /// Child BingoInstanceEvents where [BingoInstanceEvent].[CreatedUserId] point to this entity (FK_BingoInstanceEvent_User_Created)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents_CreatedUserId { get; set; } // BingoInstanceEvent.FK_BingoInstanceEvent_User_Created
+        public System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents_CreatedUserId { get; set; } // BingoInstanceEvent.FK_BingoInstanceEvent_User_Created
         /// <summary>
         /// Child BingoInstanceEvents where [BingoInstanceEvent].[UpdatedUserId] point to this entity (FK_BingoInstanceEvent_User_Updated)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents_UpdatedUserId { get; set; } // BingoInstanceEvent.FK_BingoInstanceEvent_User_Updated
+        public System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents_UpdatedUserId { get; set; } // BingoInstanceEvent.FK_BingoInstanceEvent_User_Updated
         /// <summary>
         /// Child Companies where [Company].[CreatedUserId] point to this entity (FK_Company_User_Created)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<Company> Companies_CreatedUserId { get; set; } // Company.FK_Company_User_Created
+        public System.Collections.Generic.ICollection<Company> Companies_CreatedUserId { get; set; } // Company.FK_Company_User_Created
         /// <summary>
         /// Child Companies where [Company].[UpdatedUserId] point to this entity (FK_Company_User_Updated)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<Company> Companies_UpdatedUserId { get; set; } // Company.FK_Company_User_Updated
+        public System.Collections.Generic.ICollection<Company> Companies_UpdatedUserId { get; set; } // Company.FK_Company_User_Updated
         /// <summary>
         /// Child Meetings where [Meeting].[CreatedUserId] point to this entity (FK_Meeting_User_Created)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<Meeting> Meetings_CreatedUserId { get; set; } // Meeting.FK_Meeting_User_Created
+        public System.Collections.Generic.ICollection<Meeting> Meetings_CreatedUserId { get; set; } // Meeting.FK_Meeting_User_Created
         /// <summary>
         /// Child Meetings where [Meeting].[UpdatedUserId] point to this entity (FK_Meeting_User_Updated)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<Meeting> Meetings_UpdatedUserId { get; set; } // Meeting.FK_Meeting_User_Updated
+        public System.Collections.Generic.ICollection<Meeting> Meetings_UpdatedUserId { get; set; } // Meeting.FK_Meeting_User_Updated
         /// <summary>
         /// Child MeetingAttendees where [MeetingAttendee].[CreatedUserId] point to this entity (FK_MeetingAttendee_User_Created)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_CreatedUserId { get; set; } // MeetingAttendee.FK_MeetingAttendee_User_Created
+        public System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_CreatedUserId { get; set; } // MeetingAttendee.FK_MeetingAttendee_User_Created
         /// <summary>
         /// Child MeetingAttendees where [MeetingAttendee].[UpdatedUserId] point to this entity (FK_MeetingAttendee_User_Updated)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_UpdatedUserId { get; set; } // MeetingAttendee.FK_MeetingAttendee_User_Updated
+        public System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_UpdatedUserId { get; set; } // MeetingAttendee.FK_MeetingAttendee_User_Updated
         /// <summary>
         /// Child MeetingAttendees where [MeetingAttendee].[UserId] point to this entity (FK_MeetingAttendee_User)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_UserId { get; set; } // MeetingAttendee.FK_MeetingAttendee_User
+        public System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees_UserId { get; set; } // MeetingAttendee.FK_MeetingAttendee_User
         /// <summary>
         /// Child MeetingSchedules where [MeetingSchedule].[CreatedUserId] point to this entity (FK_MeetingSchedule_User_Created)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules_CreatedUserId { get; set; } // MeetingSchedule.FK_MeetingSchedule_User_Created
+        public System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules_CreatedUserId { get; set; } // MeetingSchedule.FK_MeetingSchedule_User_Created
         /// <summary>
         /// Child MeetingSchedules where [MeetingSchedule].[UpdatedUserId] point to this entity (FK_MeetingSchedule_User_Updated)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules_UpdatedUserId { get; set; } // MeetingSchedule.FK_MeetingSchedule_User_Updated
+        public System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules_UpdatedUserId { get; set; } // MeetingSchedule.FK_MeetingSchedule_User_Updated
         /// <summary>
         /// Child Users where [User].[CreatedUserId] point to this entity (FK_User_Created)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<User> Users_CreatedUserId { get; set; } // User.FK_User_Created
+        public System.Collections.Generic.ICollection<User> Users_CreatedUserId { get; set; } // User.FK_User_Created
         /// <summary>
         /// Child Users where [User].[UpdatedUserId] point to this entity (FK_User_Updated)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<User> Users_UpdatedUserId { get; set; } // User.FK_User_Updated
+        public System.Collections.Generic.ICollection<User> Users_UpdatedUserId { get; set; } // User.FK_User_Updated
 
         // Foreign keys
 
         /// <summary>
         /// Parent User pointed by [User].([CreatedUserId]) (FK_User_Created)
         /// </summary>
-        public virtual User User_CreatedUserId { get; set; } // FK_User_Created
+        public User User_CreatedUserId { get; set; } // FK_User_Created
 
         /// <summary>
         /// Parent User pointed by [User].([UpdatedUserId]) (FK_User_Updated)
         /// </summary>
-        public virtual User User_UpdatedUserId { get; set; } // FK_User_Updated
+        public User User_UpdatedUserId { get; set; } // FK_User_Updated
 
         public User()
         {

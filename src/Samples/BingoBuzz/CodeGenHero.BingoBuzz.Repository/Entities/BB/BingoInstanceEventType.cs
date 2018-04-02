@@ -27,7 +27,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Child BingoInstanceEvents where [BingoInstanceEvent].[BingoInstanceEventTypeId] point to this entity (FK_BingoInstanceEvent_BingoInstanceEventType)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents { get; set; } // BingoInstanceEvent.FK_BingoInstanceEvent_BingoInstanceEventType
+        public System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents { get; set; } // BingoInstanceEvent.FK_BingoInstanceEvent_BingoInstanceEventType
 
         public BingoInstanceEventType()
         {

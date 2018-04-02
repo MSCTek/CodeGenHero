@@ -27,7 +27,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Child NotificationRules where [NotificationRule].[NotificationMethodTypeId] point to this entity (FK_NotificationRule_NotificationMethodType)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<NotificationRule> NotificationRules { get; set; } // NotificationRule.FK_NotificationRule_NotificationMethodType
+        public System.Collections.Generic.ICollection<NotificationRule> NotificationRules { get; set; } // NotificationRule.FK_NotificationRule_NotificationMethodType
 
         public NotificationMethodType()
         {

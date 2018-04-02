@@ -27,7 +27,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Child RecurrenceRules where [RecurrenceRule].[FrequencyTypeId] point to this entity (FK_RecurrenceRule_FrequencyType)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<RecurrenceRule> RecurrenceRules { get; set; } // RecurrenceRule.FK_RecurrenceRule_FrequencyType
+        public System.Collections.Generic.ICollection<RecurrenceRule> RecurrenceRules { get; set; } // RecurrenceRule.FK_RecurrenceRule_FrequencyType
 
         public FrequencyType()
         {

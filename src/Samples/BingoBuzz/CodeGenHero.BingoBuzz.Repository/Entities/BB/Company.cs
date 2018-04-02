@@ -39,19 +39,19 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Child Meetings where [Meeting].[CompanyId] point to this entity (FK_Meeting_Company)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<Meeting> Meetings { get; set; } // Meeting.FK_Meeting_Company
+        public System.Collections.Generic.ICollection<Meeting> Meetings { get; set; } // Meeting.FK_Meeting_Company
 
         // Foreign keys
 
         /// <summary>
         /// Parent User pointed by [Company].([CreatedUserId]) (FK_Company_User_Created)
         /// </summary>
-        public virtual User CreatedUser { get; set; } // FK_Company_User_Created
+        public User CreatedUser { get; set; } // FK_Company_User_Created
 
         /// <summary>
         /// Parent User pointed by [Company].([UpdatedUserId]) (FK_Company_User_Updated)
         /// </summary>
-        public virtual User UpdatedUser { get; set; } // FK_Company_User_Updated
+        public User UpdatedUser { get; set; } // FK_Company_User_Updated
 
         public Company()
         {

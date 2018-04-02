@@ -35,22 +35,22 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Parent Meeting pointed by [MeetingSchedule].([MeetingId]) (FK_MeetingSchedule_Meeting)
         /// </summary>
-        public virtual Meeting Meeting { get; set; } // FK_MeetingSchedule_Meeting
+        public Meeting Meeting { get; set; } // FK_MeetingSchedule_Meeting
 
         /// <summary>
         /// Parent RecurrenceRule pointed by [MeetingSchedule].([RecurrenceRuleId]) (FK_MeetingSchedule_RecurrenceRule)
         /// </summary>
-        public virtual RecurrenceRule RecurrenceRule { get; set; } // FK_MeetingSchedule_RecurrenceRule
+        public RecurrenceRule RecurrenceRule { get; set; } // FK_MeetingSchedule_RecurrenceRule
 
         /// <summary>
         /// Parent User pointed by [MeetingSchedule].([CreatedUserId]) (FK_MeetingSchedule_User_Created)
         /// </summary>
-        public virtual User CreatedUser { get; set; } // FK_MeetingSchedule_User_Created
+        public User CreatedUser { get; set; } // FK_MeetingSchedule_User_Created
 
         /// <summary>
         /// Parent User pointed by [MeetingSchedule].([UpdatedUserId]) (FK_MeetingSchedule_User_Updated)
         /// </summary>
-        public virtual User UpdatedUser { get; set; } // FK_MeetingSchedule_User_Updated
+        public User UpdatedUser { get; set; } // FK_MeetingSchedule_User_Updated
 
         public MeetingSchedule()
         {

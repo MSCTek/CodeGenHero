@@ -33,32 +33,32 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Child BingoInstances where [BingoInstance].[MeetingId] point to this entity (FK_BingoInstance_Meeting)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstance> BingoInstances { get; set; } // BingoInstance.FK_BingoInstance_Meeting
+        public System.Collections.Generic.ICollection<BingoInstance> BingoInstances { get; set; } // BingoInstance.FK_BingoInstance_Meeting
         /// <summary>
         /// Child MeetingAttendees where [MeetingAttendee].[MeetingId] point to this entity (FK_MeetingAttendee_Meeting)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees { get; set; } // MeetingAttendee.FK_MeetingAttendee_Meeting
+        public System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees { get; set; } // MeetingAttendee.FK_MeetingAttendee_Meeting
         /// <summary>
         /// Child MeetingSchedules where [MeetingSchedule].[MeetingId] point to this entity (FK_MeetingSchedule_Meeting)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules { get; set; } // MeetingSchedule.FK_MeetingSchedule_Meeting
+        public System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules { get; set; } // MeetingSchedule.FK_MeetingSchedule_Meeting
 
         // Foreign keys
 
         /// <summary>
         /// Parent Company pointed by [Meeting].([CompanyId]) (FK_Meeting_Company)
         /// </summary>
-        public virtual Company Company { get; set; } // FK_Meeting_Company
+        public Company Company { get; set; } // FK_Meeting_Company
 
         /// <summary>
         /// Parent User pointed by [Meeting].([CreatedUserId]) (FK_Meeting_User_Created)
         /// </summary>
-        public virtual User CreatedUser { get; set; } // FK_Meeting_User_Created
+        public User CreatedUser { get; set; } // FK_Meeting_User_Created
 
         /// <summary>
         /// Parent User pointed by [Meeting].([UpdatedUserId]) (FK_Meeting_User_Updated)
         /// </summary>
-        public virtual User UpdatedUser { get; set; } // FK_Meeting_User_Updated
+        public User UpdatedUser { get; set; } // FK_Meeting_User_Updated
 
         public Meeting()
         {

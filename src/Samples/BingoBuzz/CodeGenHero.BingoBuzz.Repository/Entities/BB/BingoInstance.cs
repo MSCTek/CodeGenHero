@@ -36,33 +36,33 @@ namespace CodeGenHero.BingoBuzz.Repository.Entities.BB
         /// <summary>
         /// Child BingoInstanceContents where [BingoInstanceContent].[BingoInstanceId] point to this entity (FK_BingoInstanceContent_BingoInstance)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_BingoInstance
+        public System.Collections.Generic.ICollection<BingoInstanceContent> BingoInstanceContents { get; set; } // BingoInstanceContent.FK_BingoInstanceContent_BingoInstance
         /// <summary>
         /// Child BingoInstanceEvents where [BingoInstanceEvent].[BingoInstanceId] point to this entity (FK_BingoInstanceEvent_BingoInstance)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents { get; set; } // BingoInstanceEvent.FK_BingoInstanceEvent_BingoInstance
+        public System.Collections.Generic.ICollection<BingoInstanceEvent> BingoInstanceEvents { get; set; } // BingoInstanceEvent.FK_BingoInstanceEvent_BingoInstance
 
         // Foreign keys
 
         /// <summary>
         /// Parent BingoInstanceStatusType pointed by [BingoInstance].([BingoInstanceStatusTypeId]) (FK_BingoInstance_BingoInstanceStatusType)
         /// </summary>
-        public virtual BingoInstanceStatusType BingoInstanceStatusType { get; set; } // FK_BingoInstance_BingoInstanceStatusType
+        public BingoInstanceStatusType BingoInstanceStatusType { get; set; } // FK_BingoInstance_BingoInstanceStatusType
 
         /// <summary>
         /// Parent Meeting pointed by [BingoInstance].([MeetingId]) (FK_BingoInstance_Meeting)
         /// </summary>
-        public virtual Meeting Meeting { get; set; } // FK_BingoInstance_Meeting
+        public Meeting Meeting { get; set; } // FK_BingoInstance_Meeting
 
         /// <summary>
         /// Parent User pointed by [BingoInstance].([CreatedUserId]) (FK_BingoInstance_User_Created)
         /// </summary>
-        public virtual User CreatedUser { get; set; } // FK_BingoInstance_User_Created
+        public User CreatedUser { get; set; } // FK_BingoInstance_User_Created
 
         /// <summary>
         /// Parent User pointed by [BingoInstance].([UpdatedUserId]) (FK_BingoInstance_User_Updated)
         /// </summary>
-        public virtual User UpdatedUser { get; set; } // FK_BingoInstance_User_Updated
+        public User UpdatedUser { get; set; } // FK_BingoInstance_User_Updated
 
         public BingoInstance()
         {

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace CodeGenHero.BingoBuzz.Repository.Interface
 {
-	public interface IBBRepositoryCrud : 
+	public interface IBBRepositoryCrud :
 		ICRUDOperation<BingoContent>,
 		ICRUDOperation<BingoInstance>,
 		ICRUDOperation<BingoInstanceContent>,
