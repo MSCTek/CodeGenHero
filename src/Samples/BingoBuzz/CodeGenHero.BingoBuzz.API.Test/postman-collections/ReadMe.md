@@ -8,13 +8,13 @@ These files were originally contributed by Nik Patel (@PatelNik7) as part of a p
 
 Nik demonstrated things like:
 
-  - Creating collections to Organize tests into workflows
+  - Creating collections to organize tests into workflows
 
   - Using variables for things like request headers
 
   - Using different environments within Postman to change settings
 
-  - Using Newman for integrating Postmant tests into a continuous integration / continuous deployment process
+  - Using Newman for integrating Postman tests into a continuous integration / continuous deployment process
 
 ### Usage
 
