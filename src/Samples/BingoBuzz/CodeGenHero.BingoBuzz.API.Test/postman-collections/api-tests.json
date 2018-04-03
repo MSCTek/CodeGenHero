@@ -1,0 +1,713 @@
+{
+	"info": {
+		"name": "CNUG-CodeGenHero",
+		"_postman_id": "b0a0f2fa-9031-2c44-e095-3098d697b5b5",
+		"description": "This collection is created for Chicago .NET User Group meetup which tests CodeGenHeroApi.\n\nGithub Link: https://github.com/MSCTek/CodeGenHero\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Check Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "486e13a9-de40-4596-8ce4-f20413b00189",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseApiUrl}}/APIStatus",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"APIStatus"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Create A Company",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9313c2cf-fc3a-4fd6-85f1-c1dc51adca6a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Company has Data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.globals.set(\"companyId\", jsonData.companyId);",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c2dd2310-6bff-4f2a-9874-8963c8771419",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/json, application/json-patch+json, application/bson",
+						"description": "Accept Headers"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content Type- Json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n   \"companyId\" :\"{{$guid}}\",\r\n   \"name\": \"Houdini\",\r\n   \"codeName\": \"abra-kadabra\",\r\n   \"address1\": \"123 st\",\r\n   \"address2\": \"\",\r\n   \"city\": \"Downers Grove\",\r\n   \"state\": \"IL\",\r\n   \"zip\": \"60565\",\r\n   \"websiteUrl\": \"www.houdini.com\",\r\n   \"createdDate\": \"2018-02-18T10:06:20.6\",\r\n   \"createdUserId\": \"{{rootUserId}}\",\r\n   \"updatedDate\": \"2018-02-18T10:06:20.6\",\r\n   \"updatedUserId\": \"{{rootUserId}}\",\r\n   \"isDeleted\": false,\r\n   \"createdUser\": null,\r\n   \"updatedUser\": null\r\n}"
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/Companies",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"Companies"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Companies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3cf9157c-3f68-4fd7-9104-cd7d76ea150e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							" var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    pm.expect(jsonData.length).to.be.at.least(0);",
+							"});",
+							"",
+							" pm.test(\"New Company Exists in the system.\", function(){",
+							"    var expectedCompanyId = pm.globals.get(\"companyId\");",
+							"    var condition = jsonData.filter(function(e){ return e.companyId === expectedCompanyId}).length > 0;",
+							"    pm.expect(condition).to.be.true;",
+							" });",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/json, application/json-patch+json, application/bson",
+						"description": "Accept Headers"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content Type- Json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/Companies",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"Companies"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Create First User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c0403979-3099-4912-bfd9-034fc68cbade",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"",
+							"pm.test(\"First User has Data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.globals.set(\"fistUserId\", jsonData.userId);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/json, application/json-patch+json, application/bson",
+						"description": "Accept Headers"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content Type- Json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n   \"userId\": \"{{$guid}}\", \n   \"companyId\": \"{{companyId}}\", \n   \"email\": \"me@houdini.com\", \n   \"firstName\": \"Harry\", \n   \"lastName\": \"Houdini\", \n   \"createdDate\": \"2018-03-13T22:51:19.921Z\", \n   \"createdUserId\": \"{{rootUserId}}\", \n   \"updatedDate\": \"2018-03-13T22:51:19.921Z\", \n   \"updatedUserId\": \"{{rootUserId}}\",\n   \"isDeleted\": false \n }"
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/Users",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"Users"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Create Second User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "93631050-95f8-40ba-8b1b-94070a6bcb36",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Second User has Data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.globals.set(\"secondUserId\", jsonData.userId);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/json, application/json-patch+json, application/bson",
+						"description": "Accept Headers"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content Type- Json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n   \"userId\": \"{{$guid}}\", \n   \"companyId\": \"{{companyId}}\", \n   \"email\": \"admin@houdini.com\", \n   \"firstName\": \"Awesome\", \n   \"lastName\": \"Admin\", \n   \"createdDate\": \"2018-03-13T22:51:19.921Z\", \n   \"createdUserId\": \"{{rootUserId}}\", \n   \"updatedDate\": \"2018-03-13T22:51:19.921Z\", \n   \"updatedUserId\": \"{{rootUserId}}\",\n   \"isDeleted\": false \n }"
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/Users",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"Users"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09c8b35a-4ebb-4395-baca-d2056598623f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.be.at.least(0);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/json, application/json-patch+json, application/bson",
+						"description": "Accept Headers"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content Type- Json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/Users",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"Users"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Create a meeting",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8dbcc5d4-6ee1-4e48-a622-e04d0b35fcfd",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Meeting has Data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.globals.set(\"meetingId\", jsonData.meetingId);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/json, application/json-patch+json, application/bson",
+						"description": "Accept Headers"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content Type- Json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n   \"meetingId\": \"{{$guid}}\", \n   \"companyId\": \"{{companyId}}\", \n   \"name\": \"BingoBuzz Cnug Planning\", \n   \"createdDate\": \"2018-03-13T22:51:18.844Z\", \n   \"createdUserId\": \"{{rootUserId}}\", \n   \"updatedDate\": \"2018-03-13T22:51:18.844Z\", \n   \"updatedUserId\": \"{{rootUserId}}\",\n   \"meetingAttendees\": [], \n   \"meetingSchedules\": [], \n   \"company\": null, \n   \"createdUser\": null, \n   \"updatedUser\": null \n }"
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/Meetings",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"Meetings"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Meetings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09c8b35a-4ebb-4395-baca-d2056598623f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.be.at.least(0);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/json, application/json-patch+json, application/bson",
+						"description": "Accept Headers"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content Type- Json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseApiUrl}}/Meetings",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"Meetings"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Meetings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "219f2541-f46e-476d-b137-5c8602fbbc81",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/json, application/json-patch+json, application/bson",
+						"description": "Accept Headers"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content Type- Json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseApiUrl}}/Meetings/{{meetingId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"Meetings",
+						"{{meetingId}}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete First user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0dc49855-6bc1-4920-a4cc-9d9edb617026",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/json, application/json-patch+json, application/bson",
+						"description": "Accept Headers"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content Type- Json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseApiUrl}}/Users/{{fistUserId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"Users",
+						"{{fistUserId}}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Second User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43c32072-af54-40e0-9f85-3430d3efb4a8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/json, application/json-patch+json, application/bson",
+						"description": "Accept Headers"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content Type- Json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseApiUrl}}/Users/{{secondUserId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"Users",
+						"{{secondUserId}}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Company",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "35618702-2bc0-44f0-9209-94c686ebbb5f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "{{api-version}}",
+						"description": "Default ApiVersion"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/json, application/json-patch+json, application/bson",
+						"description": "Accept Headers"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "Content Type- Json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{baseApiUrl}}/Companies/{{companyId}}",
+					"host": [
+						"{{baseApiUrl}}"
+					],
+					"path": [
+						"Companies",
+						"{{companyId}}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4b51d7e3-ac31-4dfa-89b3-17f82a6de442",
+				"type": "text/javascript",
+				"exec": [
+					"pm.environment.set(\"api-version\", 1);",
+					"",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6583cb73-cfed-42bd-a383-6353953d02c9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "6dee9df0-0c83-400e-890e-2012c0a62d66",
+			"key": "rootUserId",
+			"value": "b79ed0e3-ddb9-4920-8900-ffc55a73b4b5",
+			"type": "text"
+		}
+	]
+}

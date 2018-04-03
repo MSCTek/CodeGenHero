@@ -1,0 +1,22 @@
+{
+  "id": "05758b60-98e3-ac8c-7eaf-c0930f1a7cce",
+  "name": "CNUG-QA",
+  "values": [
+    {
+      "enabled": true,
+      "key": "baseApiUrl",
+      "type": "text",
+      "value": "http://bingobuzz.azurewebsites.net/api/BB"
+    },
+    {
+      "enabled": true,
+      "key": "api-version",
+      "type": "text",
+      "value": "1"
+    }
+  ],
+  "timestamp": 1521154963171,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2018-03-15T23:02:57.579Z",
+  "_postman_exported_using": "Postman/5.5.2"
+}
