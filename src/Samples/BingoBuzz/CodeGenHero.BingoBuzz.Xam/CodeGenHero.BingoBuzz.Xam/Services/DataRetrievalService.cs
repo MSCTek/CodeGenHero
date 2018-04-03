@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace CodeGenHero.BingoBuzz.Xam.Services
 {
-    public class DataRetrievalService : IDataRetrievalService
+    public partial class DataRetrievalService : IDataRetrievalService
     {
         private SQLiteAsyncConnection _asyncConnection;
 

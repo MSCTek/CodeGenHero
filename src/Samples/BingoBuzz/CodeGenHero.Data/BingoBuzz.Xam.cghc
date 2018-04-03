@@ -128,13 +128,42 @@
       "Settings": [
         {
           "HiddenIndicator": false,
-          "Name": "WebApiDataServiceInterfaceClassName",
-          "Value": "IWebApiDataService{namespacePostfix}"
+          "Name": "WebApiDataServiceInterfaceOutputFilePath",
+          "Value": "Client\\IWebApiDataservice\\IWebApiDataService{namespacePostfix}.cs"
         },
         {
           "HiddenIndicator": false,
-          "Name": "WebApiDataServiceInterfaceOutputFilePath",
-          "Value": "Client\\IWebApiDataservice\\IWebApiDataService{namespacePostfix}.cs"
+          "Name": "WebApiDataServiceInterfaceClassName",
+          "Value": "IWebApiDataService{namespacePostfix}"
+        }
+      ],
+      "Version": "1.0"
+    },
+    {
+      "Description": "Sample Data Objects for use in generating demo versions.",
+      "Id": "9131a0a2-7ceb-4f4c-b8a9-6740ac19f66c",
+      "IsActive": false,
+      "Name": "XamSample",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "XamSampleCount",
+          "Value": "3"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "XamSampleDigits",
+          "Value": "2"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "XamSampleNamespace",
+          "Value": "{baseNamespace}.XamSample.{namespacePostfix}"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "XamSampleOutputFilePath",
+          "Value": "XamSample\\{namespacePostfix}\\[tablename].cs"
         }
       ],
       "Version": "1.0"

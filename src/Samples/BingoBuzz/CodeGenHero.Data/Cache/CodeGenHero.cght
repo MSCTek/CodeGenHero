@@ -160,5 +160,14 @@
     "TemplateId": "c5caad15-b3be-4443-87d8-7cabde59f7b0",
     "TemplateName": "SqliteModelData",
     "TemplateVersion": "1.0"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Xam",
+    "RelativePath": "\\ModelData\\SampleXam",
+    "TemplateId": "9131a0a2-7ceb-4f4c-b8a9-6740ac19f66c",
+    "TemplateName": "XamSample",
+    "TemplateVersion": "1.0"
   }
 ]

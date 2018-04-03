@@ -84,3 +84,5 @@
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Xam/CodeGenHero.BingoBuzz.Xam.iOS/obj
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Xam/CodeGenHero.BingoBuzz.Xam.UWP/bin
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Xam/CodeGenHero.BingoBuzz.Xam.UWP/obj
+/src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Xam.Tests/bin
+/src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Xam.Tests/obj
