@@ -5,8 +5,6 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public BingoInstanceContent()
 		{
-			BingoInstanceEvents = new System.Collections.Generic.List<BingoInstanceEvent>();
-
 			InitializePartial();
 		}
 

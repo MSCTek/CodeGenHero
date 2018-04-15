@@ -5,8 +5,6 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public BingoContent()
 		{
-			// BingoInstanceContents = new System.Collections.Generic.List<BingoInstanceContent>(); -- Excluded navigation property per configuration.
-
 			InitializePartial();
 		}
 

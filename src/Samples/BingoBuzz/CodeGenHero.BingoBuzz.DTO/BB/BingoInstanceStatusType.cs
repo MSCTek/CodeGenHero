@@ -5,8 +5,6 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public BingoInstanceStatusType()
 		{
-			// BingoInstances = new System.Collections.Generic.List<BingoInstance>(); -- Excluded navigation property per configuration.
-
 			InitializePartial();
 		}
 

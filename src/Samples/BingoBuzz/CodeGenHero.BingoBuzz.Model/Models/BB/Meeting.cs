@@ -112,12 +112,19 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetingAttendees == null && _dto != null && _dto.MeetingAttendees != null)
-				{
-					_meetingAttendees = new List<IMeetingAttendee>();
-					foreach (var dtoItem in _dto.MeetingAttendees)
-					{
-						_meetingAttendees.Add(new MeetingAttendee(Log, DataService, dtoItem));
+				if (_meetingAttendees == null && _dto != null)
+				{	// The core DTO object is loaded, but this property is not loaded.
+					if (_dto.MeetingAttendees != null)
+					{	// The core DTO object has data for this property, load it into the model.
+						_meetingAttendees = new List<IMeetingAttendee>();
+						foreach (var dtoItem in _dto.MeetingAttendees)
+						{
+							_meetingAttendees.Add(new MeetingAttendee(Log, DataService, dtoItem));
+						}
+					}
+					else
+					{	// Trigger the load data request - The core DTO object is loaded and does not have data for this property.
+						OnLazyLoadRequest(this, new LoadRequestMeeting(nameof(MeetingAttendees)));
 					}
 				}
 
@@ -129,12 +136,19 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_meetingSchedules == null && _dto != null && _dto.MeetingSchedules != null)
-				{
-					_meetingSchedules = new List<IMeetingSchedule>();
-					foreach (var dtoItem in _dto.MeetingSchedules)
-					{
-						_meetingSchedules.Add(new MeetingSchedule(Log, DataService, dtoItem));
+				if (_meetingSchedules == null && _dto != null)
+				{	// The core DTO object is loaded, but this property is not loaded.
+					if (_dto.MeetingSchedules != null)
+					{	// The core DTO object has data for this property, load it into the model.
+						_meetingSchedules = new List<IMeetingSchedule>();
+						foreach (var dtoItem in _dto.MeetingSchedules)
+						{
+							_meetingSchedules.Add(new MeetingSchedule(Log, DataService, dtoItem));
+						}
+					}
+					else
+					{	// Trigger the load data request - The core DTO object is loaded and does not have data for this property.
+						OnLazyLoadRequest(this, new LoadRequestMeeting(nameof(MeetingSchedules)));
 					}
 				}
 
