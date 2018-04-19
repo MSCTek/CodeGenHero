@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.7
+Bug Fixes & Enhancements:
+* Removal of AutoMapper profile initializer.
+
 ### 1.0.6
 Bug Fixes & Enhancements:
 * Updated NuGet depencency package version reference for Repository.
