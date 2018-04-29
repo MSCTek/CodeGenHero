@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Xam.U
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Xam", "CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam.csproj", "{B3C97649-06A9-4D3D-8995-15E275D4BA57}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CodeGenHero.Data", "CodeGenHero.Data\CodeGenHero.Data.shproj", "{81C408A1-E76A-448B-B0FF-971D25528FEE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Xam.Tests", "CodeGenHero.BingoBuzz.Xam.Tests\CodeGenHero.BingoBuzz.Xam.Tests.csproj", "{DA1F5F4B-BF61-4EEF-B63F-69830CE725DE}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CodeGenHero", "CodeGenHero.Data\CodeGenHero.shproj", "{81C408A1-E76A-448B-B0FF-971D25528FEE}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

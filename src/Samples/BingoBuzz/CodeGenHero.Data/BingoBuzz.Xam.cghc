@@ -21,20 +21,6 @@
       "Version": "1.0"
     },
     {
-      "Description": "Maps DTO objects to SQLite model data objects as well as MvvmLight objects and vice versa.",
-      "Id": "5078579f-7ab4-430d-9dcc-a3190f678efc",
-      "IsActive": false,
-      "Name": "MapperDtoToSqliteModelDataAndMvvmLightModelObject",
-      "Settings": [
-        {
-          "HiddenIndicator": false,
-          "Name": "MapperDtoToSqliteModelDataAndMvvmLightModelObjectOutputFilePath",
-          "Value": "Xamarin\\ModelMapper\\ModelMapper{namespacePostfix}Dto.cs"
-        }
-      ],
-      "Version": "1.0"
-    },
-    {
       "Description": "Maps SQLite model data objects to MvvmLight objects and vice versa.",
       "Id": "ec39b410-017a-407f-be75-0cf4fd66efd2",
       "IsActive": false,
@@ -44,6 +30,16 @@
           "HiddenIndicator": false,
           "Name": "MapperSqliteModelDataToMvvmLightModelObjectOutputFilePath",
           "Value": "Xamarin\\ModelMapper\\ModelMapper{namespacePostfix}.cs"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "SqliteModelMapperClassName",
+          "Value": "ModelMapper"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "SqliteModelMapperClassNamespace",
+          "Value": "{baseNamespace}.Xam"
         }
       ],
       "Version": "1.0"
@@ -128,13 +124,13 @@
       "Settings": [
         {
           "HiddenIndicator": false,
-          "Name": "WebApiDataServiceInterfaceOutputFilePath",
-          "Value": "Client\\IWebApiDataservice\\IWebApiDataService{namespacePostfix}.cs"
+          "Name": "WebApiDataServiceInterfaceClassName",
+          "Value": "IWebApiDataService{namespacePostfix}"
         },
         {
           "HiddenIndicator": false,
-          "Name": "WebApiDataServiceInterfaceClassName",
-          "Value": "IWebApiDataService{namespacePostfix}"
+          "Name": "WebApiDataServiceInterfaceOutputFilePath",
+          "Value": "Client\\IWebApiDataservice\\IWebApiDataService{namespacePostfix}.cs"
         }
       ],
       "Version": "1.0"
@@ -202,16 +198,6 @@
       "HiddenIndicator": false,
       "Name": "SqliteModelDataNamespace",
       "Value": "{baseNamespace}.Xam.ModelData.{namespacePostfix}"
-    },
-    {
-      "HiddenIndicator": false,
-      "Name": "SqliteModelMapperClassName",
-      "Value": "ModelMapper"
-    },
-    {
-      "HiddenIndicator": false,
-      "Name": "SqliteModelMapperClassNamespace",
-      "Value": "{baseNamespace}.Xam"
     },
     {
       "HiddenIndicator": false,
