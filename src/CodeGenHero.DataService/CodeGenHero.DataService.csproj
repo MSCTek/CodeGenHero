@@ -19,7 +19,7 @@ This package should be added to projects that are the target of CodeGenHero temp
     <PackageTags>CodeGenerator CodeGen MSCTek webapi dataservice</PackageTags>
     <PackageReleaseNotes>Classes to support invoking Web API services via HttpClient.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.0.14</Version>
+    <Version>1.0.21</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>

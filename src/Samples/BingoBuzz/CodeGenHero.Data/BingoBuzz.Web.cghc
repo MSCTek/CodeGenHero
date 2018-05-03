@@ -355,7 +355,17 @@
     {
       "HiddenIndicator": false,
       "Name": "DefaultCriteria",
-      "Value": "DateTime? minUpdatedDate"
+      "Value": "DateTime?:minUpdatedDate:IsGreaterThan:[tablename]UpdDT"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "RegexExclude",
+      "Value": ""
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "RegexInclude",
+      "Value": ""
     }
   ],
   "Version": null

@@ -5,7 +5,7 @@ namespace CodeGenHero.DataService
 	public partial class WebApiExecutionContextType : IEquatable<WebApiExecutionContextType>, IWebApiExecutionContextType
 	{
 		private static readonly Lazy<WebApiExecutionContextType> _lazyInstance = new Lazy<WebApiExecutionContextType>(() => new WebApiExecutionContextType());
-		private int _current;
+		protected int _current;
 
 		public WebApiExecutionContextType()
 		{
@@ -18,7 +18,7 @@ namespace CodeGenHero.DataService
 		}
 
 		public static WebApiExecutionContextType Instance { get { return _lazyInstance.Value; } }
-		public virtual int Base => 1;
+		public virtual int Base => (int)_executionContextTypes.Base;
 
 		public virtual int Current
 		{

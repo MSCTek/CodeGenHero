@@ -76,7 +76,7 @@
         },
         {
           "HiddenIndicator": false,
-          "Name": "sqliteModelDataOutputFilePath",
+          "Name": "SqliteModelDataOutputFilePath",
           "Value": "Xamarin\\ModelData\\{namespacePostfix}\\[tablename].cs"
         }
       ],
@@ -207,12 +207,22 @@
     {
       "HiddenIndicator": false,
       "Name": "DefaultCriteria",
-      "Value": "DateTime? minUpdatedDate"
+      "Value": "DateTime?:minUpdatedDate:IsGreaterThan:[tablename]UpdDT"
     },
     {
       "HiddenIndicator": false,
       "Name": "WebApiDataServiceInterfaceNamespace",
       "Value": "{baseNamespace}.API.Client.Interface"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "RegexExclude",
+      "Value": ""
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "RegexInclude",
+      "Value": ""
     }
   ],
   "Version": null

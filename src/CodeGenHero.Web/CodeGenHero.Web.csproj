@@ -9,21 +9,18 @@
     <Product>CodeGenHero</Product>
     <Description>CodeGenHero is an amazing Visual Studio extension that enhances developer productivity via code generation.
 
-This package should be added to projects that are the target of CodeGenHero templates creating WebApi controllers.</Description>
+This package should be added to projects that are the target of CodeGenHero templates creating Web (MVC) controllers.</Description>
     <Copyright>Copyright © 2016-2018 Micro Support Center, Inc.</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/MSCTek/CodeGenHero/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/MSCTek/CodeGenHero</PackageProjectUrl>
     <PackageIconUrl>https://github.com/MSCTek/CodeGenHero/raw/master/NuGet_Icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/MSCTek/CodeGenHero</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageTags>CodeGenerator CodeGen MSCTek WebApi</PackageTags>
-    <PackageReleaseNotes>Classes to support WebApi controllers</PackageReleaseNotes>
+    <PackageTags>CodeGenerator CodeGen MSCTek Web MVC</PackageTags>
+    <PackageReleaseNotes>Classes to support Web (MVC) controllers</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.0.5</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
-    <AssemblyVersion>1.0.4.0</AssemblyVersion>
-    <FileVersion>1.0.4.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45'">
@@ -35,22 +32,7 @@ This package should be added to projects that are the target of CodeGenHero temp
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeGenHero.Logging" Version="1.0.4" />
-    <PackageReference Include="CodeGenHero.Repository.AutoMapper" Version="1.0.5" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.4" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
-    <PackageReference Include="System.Linq.Dynamic" Version="1.0.7" />
-    <PackageReference Include="System.Net.Http" Version="4.3.3" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
-    <PackageReference Include="Microsoft.Owin">
-      <Version>4.0.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="System.Web" />
   </ItemGroup>
-  
+
 </Project>

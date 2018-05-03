@@ -14,5 +14,23 @@ namespace CodeGenHero.DataService
 			Post, //Posts a new entity as an addition to a URI.
 			Put //Replaces an entity that is identified by a URI.
 		}
+
+		//public enum ApiFilterOperator
+		//{
+		//	CONTAINS,
+		//	DOESNOTCONTAIN,
+		//	ENDSWITH,
+		//	ISEMPTY,
+		//	ISEQUALTO,
+		//	ISGREATERTHAN,
+		//	ISGREATERTHANOREQUAL,
+		//	ISLESSTHAN,
+		//	ISLESSTHANOREQUAL,
+		//	ISNOTEMPTY,
+		//	ISNOTEQUALTO,
+		//	ISNOTNULL,
+		//	ISNULL,
+		//	STARTSWITH
+		//}
 	}
 }

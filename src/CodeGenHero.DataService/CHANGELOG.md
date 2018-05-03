@@ -1,5 +1,17 @@
 ﻿## Changelog
 
+### 1.0.21
+Bug Fixes & Enhancements:
+* Update to add PageDataRequest and FilterCriterion classes.
+
+### 1.0.16
+Bug Fixes & Enhancements:
+* Update to convert _current variable to protected so it can be accessed in inheriting classes.
+
+### 1.0.15
+Bug Fixes & Enhancements:
+* Addition of a List<string> version of GetAllPageDataResultsAsync().
+
 ### 1.0.14
 Bug Fixes & Enhancements:
 * Minor change to BaseModel making default UNKNOWNLOGMESSAGETYPE constant and HandleLazyLoadRequest not async.
