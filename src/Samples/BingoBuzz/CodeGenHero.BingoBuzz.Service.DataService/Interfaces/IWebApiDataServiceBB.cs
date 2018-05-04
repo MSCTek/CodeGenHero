@@ -11,77 +11,111 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 	{
 		#region GetAllPages
 
-		Task<List<BingoContent>> GetAllPagesBingoContentsAsync(DateTime? minUpdatedDate);
+		Task<List<BingoContent>> GetAllPagesBingoContentsAsync(DateTime? minUpdatedDate, string sort = null);
 
-		Task<List<BingoInstance>> GetAllPagesBingoInstancesAsync(DateTime? minUpdatedDate);
+		Task<List<BingoInstance>> GetAllPagesBingoInstancesAsync(DateTime? minUpdatedDate, string sort = null);
 
-		Task<List<BingoInstanceContent>> GetAllPagesBingoInstanceContentsAsync(DateTime? minUpdatedDate);
+		Task<List<BingoInstanceContent>> GetAllPagesBingoInstanceContentsAsync(DateTime? minUpdatedDate, string sort = null);
 
-		Task<List<BingoInstanceContentStatusType>> GetAllPagesBingoInstanceContentStatusTypesAsync();
+		Task<List<BingoInstanceContentStatusType>> GetAllPagesBingoInstanceContentStatusTypesAsync(string sort = null);
 
-		Task<List<BingoInstanceEvent>> GetAllPagesBingoInstanceEventsAsync(DateTime? minUpdatedDate);
+		Task<List<BingoInstanceEvent>> GetAllPagesBingoInstanceEventsAsync(DateTime? minUpdatedDate, string sort = null);
 
-		Task<List<BingoInstanceEventType>> GetAllPagesBingoInstanceEventTypesAsync();
+		Task<List<BingoInstanceEventType>> GetAllPagesBingoInstanceEventTypesAsync(string sort = null);
 
-		Task<List<BingoInstanceStatusType>> GetAllPagesBingoInstanceStatusTypesAsync();
+		Task<List<BingoInstanceStatusType>> GetAllPagesBingoInstanceStatusTypesAsync(string sort = null);
 
-		Task<List<Company>> GetAllPagesCompaniesAsync(DateTime? minUpdatedDate);
+		Task<List<Company>> GetAllPagesCompaniesAsync(DateTime? minUpdatedDate, string sort = null);
 
-		Task<List<FrequencyType>> GetAllPagesFrequencyTypesAsync();
+		Task<List<FrequencyType>> GetAllPagesFrequencyTypesAsync(string sort = null);
 
-		Task<List<Meeting>> GetAllPagesMeetingsAsync(DateTime? minUpdatedDate);
+		Task<List<Meeting>> GetAllPagesMeetingsAsync(DateTime? minUpdatedDate, string sort = null);
 
-		Task<List<MeetingAttendee>> GetAllPagesMeetingAttendeesAsync(DateTime? minUpdatedDate);
+		Task<List<MeetingAttendee>> GetAllPagesMeetingAttendeesAsync(DateTime? minUpdatedDate, string sort = null);
 
-		Task<List<MeetingSchedule>> GetAllPagesMeetingSchedulesAsync(DateTime? minUpdatedDate);
+		Task<List<MeetingSchedule>> GetAllPagesMeetingSchedulesAsync(DateTime? minUpdatedDate, string sort = null);
 
-		Task<List<NotificationMethodType>> GetAllPagesNotificationMethodTypesAsync();
+		Task<List<NotificationMethodType>> GetAllPagesNotificationMethodTypesAsync(string sort = null);
 
-		Task<List<NotificationRule>> GetAllPagesNotificationRulesAsync();
+		Task<List<NotificationRule>> GetAllPagesNotificationRulesAsync(string sort = null);
 
-		Task<List<RecurrenceRule>> GetAllPagesRecurrenceRulesAsync();
+		Task<List<RecurrenceRule>> GetAllPagesRecurrenceRulesAsync(string sort = null);
 
-		Task<List<User>> GetAllPagesUsersAsync(DateTime? minUpdatedDate);
+		Task<List<User>> GetAllPagesUsersAsync(DateTime? minUpdatedDate, string sort = null);
 
 
 		#endregion GetAllPages
 
+
 		#region GetPageData
 
-		Task<PageData<List<BingoContent>>> GetBingoContentsAsync(DateTime? minUpdatedDate, int page, int pageSize);
+		Task<IPageDataT<List<BingoContent>>> GetBingoContentsAsync(IPageDataRequest pageDataRequest);
 
-		Task<PageData<List<BingoInstance>>> GetBingoInstancesAsync(DateTime? minUpdatedDate, int page, int pageSize);
+		Task<IPageDataT<List<BingoContent>>> GetBingoContentsAsync(DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100);
 
-		Task<PageData<List<BingoInstanceContent>>> GetBingoInstanceContentsAsync(DateTime? minUpdatedDate, int page, int pageSize);
+		Task<IPageDataT<List<BingoInstance>>> GetBingoInstancesAsync(IPageDataRequest pageDataRequest);
 
-		Task<PageData<List<BingoInstanceContentStatusType>>> GetBingoInstanceContentStatusTypesAsync(int page, int pageSize);
+		Task<IPageDataT<List<BingoInstance>>> GetBingoInstancesAsync(DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100);
 
-		Task<PageData<List<BingoInstanceEvent>>> GetBingoInstanceEventsAsync(DateTime? minUpdatedDate, int page, int pageSize);
+		Task<IPageDataT<List<BingoInstanceContent>>> GetBingoInstanceContentsAsync(IPageDataRequest pageDataRequest);
 
-		Task<PageData<List<BingoInstanceEventType>>> GetBingoInstanceEventTypesAsync(int page, int pageSize);
+		Task<IPageDataT<List<BingoInstanceContent>>> GetBingoInstanceContentsAsync(DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100);
 
-		Task<PageData<List<BingoInstanceStatusType>>> GetBingoInstanceStatusTypesAsync(int page, int pageSize);
+		Task<IPageDataT<List<BingoInstanceContentStatusType>>> GetBingoInstanceContentStatusTypesAsync(IPageDataRequest pageDataRequest);
 
-		Task<PageData<List<Company>>> GetCompaniesAsync(DateTime? minUpdatedDate, int page, int pageSize);
+		Task<IPageDataT<List<BingoInstanceContentStatusType>>> GetBingoInstanceContentStatusTypesAsync(string sort = null, int page = 1, int pageSize = 100);
 
-		Task<PageData<List<FrequencyType>>> GetFrequencyTypesAsync(int page, int pageSize);
+		Task<IPageDataT<List<BingoInstanceEvent>>> GetBingoInstanceEventsAsync(IPageDataRequest pageDataRequest);
 
-		Task<PageData<List<Meeting>>> GetMeetingsAsync(DateTime? minUpdatedDate, int page, int pageSize);
+		Task<IPageDataT<List<BingoInstanceEvent>>> GetBingoInstanceEventsAsync(DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100);
 
-		Task<PageData<List<MeetingAttendee>>> GetMeetingAttendeesAsync(DateTime? minUpdatedDate, int page, int pageSize);
+		Task<IPageDataT<List<BingoInstanceEventType>>> GetBingoInstanceEventTypesAsync(IPageDataRequest pageDataRequest);
 
-		Task<PageData<List<MeetingSchedule>>> GetMeetingSchedulesAsync(DateTime? minUpdatedDate, int page, int pageSize);
+		Task<IPageDataT<List<BingoInstanceEventType>>> GetBingoInstanceEventTypesAsync(string sort = null, int page = 1, int pageSize = 100);
 
-		Task<PageData<List<NotificationMethodType>>> GetNotificationMethodTypesAsync(int page, int pageSize);
+		Task<IPageDataT<List<BingoInstanceStatusType>>> GetBingoInstanceStatusTypesAsync(IPageDataRequest pageDataRequest);
 
-		Task<PageData<List<NotificationRule>>> GetNotificationRulesAsync(int page, int pageSize);
+		Task<IPageDataT<List<BingoInstanceStatusType>>> GetBingoInstanceStatusTypesAsync(string sort = null, int page = 1, int pageSize = 100);
 
-		Task<PageData<List<RecurrenceRule>>> GetRecurrenceRulesAsync(int page, int pageSize);
+		Task<IPageDataT<List<Company>>> GetCompaniesAsync(IPageDataRequest pageDataRequest);
 
-		Task<PageData<List<User>>> GetUsersAsync(DateTime? minUpdatedDate, int page, int pageSize);
+		Task<IPageDataT<List<Company>>> GetCompaniesAsync(DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100);
+
+		Task<IPageDataT<List<FrequencyType>>> GetFrequencyTypesAsync(IPageDataRequest pageDataRequest);
+
+		Task<IPageDataT<List<FrequencyType>>> GetFrequencyTypesAsync(string sort = null, int page = 1, int pageSize = 100);
+
+		Task<IPageDataT<List<Meeting>>> GetMeetingsAsync(IPageDataRequest pageDataRequest);
+
+		Task<IPageDataT<List<Meeting>>> GetMeetingsAsync(DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100);
+
+		Task<IPageDataT<List<MeetingAttendee>>> GetMeetingAttendeesAsync(IPageDataRequest pageDataRequest);
+
+		Task<IPageDataT<List<MeetingAttendee>>> GetMeetingAttendeesAsync(DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100);
+
+		Task<IPageDataT<List<MeetingSchedule>>> GetMeetingSchedulesAsync(IPageDataRequest pageDataRequest);
+
+		Task<IPageDataT<List<MeetingSchedule>>> GetMeetingSchedulesAsync(DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100);
+
+		Task<IPageDataT<List<NotificationMethodType>>> GetNotificationMethodTypesAsync(IPageDataRequest pageDataRequest);
+
+		Task<IPageDataT<List<NotificationMethodType>>> GetNotificationMethodTypesAsync(string sort = null, int page = 1, int pageSize = 100);
+
+		Task<IPageDataT<List<NotificationRule>>> GetNotificationRulesAsync(IPageDataRequest pageDataRequest);
+
+		Task<IPageDataT<List<NotificationRule>>> GetNotificationRulesAsync(string sort = null, int page = 1, int pageSize = 100);
+
+		Task<IPageDataT<List<RecurrenceRule>>> GetRecurrenceRulesAsync(IPageDataRequest pageDataRequest);
+
+		Task<IPageDataT<List<RecurrenceRule>>> GetRecurrenceRulesAsync(string sort = null, int page = 1, int pageSize = 100);
+
+		Task<IPageDataT<List<User>>> GetUsersAsync(IPageDataRequest pageDataRequest);
+
+		Task<IPageDataT<List<User>>> GetUsersAsync(DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100);
 
 
 		#endregion GetPageData
+
 
 		#region Get By PK
 
@@ -120,6 +154,7 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 
 		#endregion Get By PK
 
+
 		#region Create
 
 		Task<HttpCallResult<BingoContent>> CreateBingoContentAsync(BingoContent item);
@@ -154,7 +189,9 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 
 		Task<HttpCallResult<User>> CreateUserAsync(User item);
 
+
 		#endregion Create
+
 
 		#region Update
 
@@ -190,7 +227,9 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 
 		Task<HttpCallResult<User>> UpdateUserAsync(User item);
 
+
 		#endregion Update
+
 
 		#region Delete
 
@@ -226,6 +265,9 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 
 		Task<HttpCallResult<User>> DeleteUserAsync(System.Guid userId);
 
+
 		#endregion Delete
+
+
 	}
 }

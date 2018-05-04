@@ -355,7 +355,7 @@
     {
       "HiddenIndicator": false,
       "Name": "DefaultCriteria",
-      "Value": "DateTime?:minUpdatedDate:IsGreaterThan:[tablename]UpdDT"
+      "Value": "DateTime?:minUpdatedDate:IsGreaterThan:UpdatedDate"
     },
     {
       "HiddenIndicator": false,

@@ -17,189 +17,582 @@ namespace CodeGenHero.BingoBuzz.API.Client
 		private WebApiDataServiceBB() : base()
 		{ }
 
+
 		#region GetAllPages
 
-		public async Task<List<BingoContent>> GetAllPagesBingoContentsAsync(DateTime? minUpdatedDate)
+		public async Task<List<BingoContent>> GetAllPagesBingoContentsAsync(
+			DateTime? minUpdatedDate, string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<BingoContent>(GetBingoContentsAsync, minUpdatedDate);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<BingoContent>(pageDataRequest, GetBingoContentsAsync);
 		}
 
-		public async Task<List<BingoInstance>> GetAllPagesBingoInstancesAsync(DateTime? minUpdatedDate)
+		public async Task<List<BingoInstance>> GetAllPagesBingoInstancesAsync(
+			DateTime? minUpdatedDate, string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<BingoInstance>(GetBingoInstancesAsync, minUpdatedDate);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<BingoInstance>(pageDataRequest, GetBingoInstancesAsync);
 		}
 
-		public async Task<List<BingoInstanceContent>> GetAllPagesBingoInstanceContentsAsync(DateTime? minUpdatedDate)
+		public async Task<List<BingoInstanceContent>> GetAllPagesBingoInstanceContentsAsync(
+			DateTime? minUpdatedDate, string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<BingoInstanceContent>(GetBingoInstanceContentsAsync, minUpdatedDate);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<BingoInstanceContent>(pageDataRequest, GetBingoInstanceContentsAsync);
 		}
 
-		public async Task<List<BingoInstanceContentStatusType>> GetAllPagesBingoInstanceContentStatusTypesAsync()
+		public async Task<List<BingoInstanceContentStatusType>> GetAllPagesBingoInstanceContentStatusTypesAsync(
+			string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<BingoInstanceContentStatusType>(GetBingoInstanceContentStatusTypesAsync);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<BingoInstanceContentStatusType>(pageDataRequest, GetBingoInstanceContentStatusTypesAsync);
 		}
 
-		public async Task<List<BingoInstanceEvent>> GetAllPagesBingoInstanceEventsAsync(DateTime? minUpdatedDate)
+		public async Task<List<BingoInstanceEvent>> GetAllPagesBingoInstanceEventsAsync(
+			DateTime? minUpdatedDate, string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<BingoInstanceEvent>(GetBingoInstanceEventsAsync, minUpdatedDate);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<BingoInstanceEvent>(pageDataRequest, GetBingoInstanceEventsAsync);
 		}
 
-		public async Task<List<BingoInstanceEventType>> GetAllPagesBingoInstanceEventTypesAsync()
+		public async Task<List<BingoInstanceEventType>> GetAllPagesBingoInstanceEventTypesAsync(
+			string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<BingoInstanceEventType>(GetBingoInstanceEventTypesAsync);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<BingoInstanceEventType>(pageDataRequest, GetBingoInstanceEventTypesAsync);
 		}
 
-		public async Task<List<BingoInstanceStatusType>> GetAllPagesBingoInstanceStatusTypesAsync()
+		public async Task<List<BingoInstanceStatusType>> GetAllPagesBingoInstanceStatusTypesAsync(
+			string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<BingoInstanceStatusType>(GetBingoInstanceStatusTypesAsync);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<BingoInstanceStatusType>(pageDataRequest, GetBingoInstanceStatusTypesAsync);
 		}
 
-		public async Task<List<Company>> GetAllPagesCompaniesAsync(DateTime? minUpdatedDate)
+		public async Task<List<Company>> GetAllPagesCompaniesAsync(
+			DateTime? minUpdatedDate, string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<Company>(GetCompaniesAsync, minUpdatedDate);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<Company>(pageDataRequest, GetCompaniesAsync);
 		}
 
-		public async Task<List<FrequencyType>> GetAllPagesFrequencyTypesAsync()
+		public async Task<List<FrequencyType>> GetAllPagesFrequencyTypesAsync(
+			string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<FrequencyType>(GetFrequencyTypesAsync);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<FrequencyType>(pageDataRequest, GetFrequencyTypesAsync);
 		}
 
-		public async Task<List<Meeting>> GetAllPagesMeetingsAsync(DateTime? minUpdatedDate)
+		public async Task<List<Meeting>> GetAllPagesMeetingsAsync(
+			DateTime? minUpdatedDate, string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<Meeting>(GetMeetingsAsync, minUpdatedDate);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<Meeting>(pageDataRequest, GetMeetingsAsync);
 		}
 
-		public async Task<List<MeetingAttendee>> GetAllPagesMeetingAttendeesAsync(DateTime? minUpdatedDate)
+		public async Task<List<MeetingAttendee>> GetAllPagesMeetingAttendeesAsync(
+			DateTime? minUpdatedDate, string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<MeetingAttendee>(GetMeetingAttendeesAsync, minUpdatedDate);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<MeetingAttendee>(pageDataRequest, GetMeetingAttendeesAsync);
 		}
 
-		public async Task<List<MeetingSchedule>> GetAllPagesMeetingSchedulesAsync(DateTime? minUpdatedDate)
+		public async Task<List<MeetingSchedule>> GetAllPagesMeetingSchedulesAsync(
+			DateTime? minUpdatedDate, string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<MeetingSchedule>(GetMeetingSchedulesAsync, minUpdatedDate);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<MeetingSchedule>(pageDataRequest, GetMeetingSchedulesAsync);
 		}
 
-		public async Task<List<NotificationMethodType>> GetAllPagesNotificationMethodTypesAsync()
+		public async Task<List<NotificationMethodType>> GetAllPagesNotificationMethodTypesAsync(
+			string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<NotificationMethodType>(GetNotificationMethodTypesAsync);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<NotificationMethodType>(pageDataRequest, GetNotificationMethodTypesAsync);
 		}
 
-		public async Task<List<NotificationRule>> GetAllPagesNotificationRulesAsync()
+		public async Task<List<NotificationRule>> GetAllPagesNotificationRulesAsync(
+			string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<NotificationRule>(GetNotificationRulesAsync);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<NotificationRule>(pageDataRequest, GetNotificationRulesAsync);
 		}
 
-		public async Task<List<RecurrenceRule>> GetAllPagesRecurrenceRulesAsync()
+		public async Task<List<RecurrenceRule>> GetAllPagesRecurrenceRulesAsync(
+			string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<RecurrenceRule>(GetRecurrenceRulesAsync);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<RecurrenceRule>(pageDataRequest, GetRecurrenceRulesAsync);
 		}
 
-		public async Task<List<User>> GetAllPagesUsersAsync(DateTime? minUpdatedDate)
+		public async Task<List<User>> GetAllPagesUsersAsync(
+			DateTime? minUpdatedDate, string sort = null)
 		{
-			return await GetAllPageDataResultsAsync<User>(GetUsersAsync, minUpdatedDate);
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: 1, pageSize: 100);
+			return await GetAllPageDataResultsAsync<User>(pageDataRequest, GetUsersAsync);
 		}
 
 		#endregion GetAllPages
 
+
+
 		#region GetOnePage
 
-		public async Task<PageData<List<BingoContent>>> GetBingoContentsAsync(DateTime? minUpdatedDate, int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoContent>>> GetBingoContentsAsync(IPageDataRequest pageDataRequest)
 		{
-			List<string> filter = BuildFilter(minUpdatedDate, "UpdatedDate");
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoContent>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoContents", filter, page: page, pageSize: pageSize); 
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoContent>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}BingoContents", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
 		}
 
-		public async Task<PageData<List<BingoInstance>>> GetBingoInstancesAsync(DateTime? minUpdatedDate, int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoContent>>> GetBingoContentsAsync(
+			DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100)
 		{
-			List<string> filter = BuildFilter(minUpdatedDate, "UpdatedDate");
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstance>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstances", filter, page: page, pageSize: pageSize); 
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetBingoContentsAsync(pageDataRequest);
 		}
 
-		public async Task<PageData<List<BingoInstanceContent>>> GetBingoInstanceContentsAsync(DateTime? minUpdatedDate, int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstance>>> GetBingoInstancesAsync(IPageDataRequest pageDataRequest)
 		{
-			List<string> filter = BuildFilter(minUpdatedDate, "UpdatedDate");
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceContent>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstanceContents", filter, page: page, pageSize: pageSize); 
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstance>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}BingoInstances", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
 		}
 
-		public async Task<PageData<List<BingoInstanceContentStatusType>>> GetBingoInstanceContentStatusTypesAsync(int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstance>>> GetBingoInstancesAsync(
+			DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100)
 		{
-			List<string> filter = null;
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceContentStatusType>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstanceContentStatusTypes", filter, page: page, pageSize: pageSize); 
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetBingoInstancesAsync(pageDataRequest);
 		}
 
-		public async Task<PageData<List<BingoInstanceEvent>>> GetBingoInstanceEventsAsync(DateTime? minUpdatedDate, int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstanceContent>>> GetBingoInstanceContentsAsync(IPageDataRequest pageDataRequest)
 		{
-			List<string> filter = BuildFilter(minUpdatedDate, "UpdatedDate");
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceEvent>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstanceEvents", filter, page: page, pageSize: pageSize); 
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceContent>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}BingoInstanceContents", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
 		}
 
-		public async Task<PageData<List<BingoInstanceEventType>>> GetBingoInstanceEventTypesAsync(int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstanceContent>>> GetBingoInstanceContentsAsync(
+			DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100)
 		{
-			List<string> filter = null;
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceEventType>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstanceEventTypes", filter, page: page, pageSize: pageSize); 
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetBingoInstanceContentsAsync(pageDataRequest);
 		}
 
-		public async Task<PageData<List<BingoInstanceStatusType>>> GetBingoInstanceStatusTypesAsync(int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstanceContentStatusType>>> GetBingoInstanceContentStatusTypesAsync(IPageDataRequest pageDataRequest)
 		{
-			List<string> filter = null;
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceStatusType>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}BingoInstanceStatusTypes", filter, page: page, pageSize: pageSize); 
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceContentStatusType>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}BingoInstanceContentStatusTypes", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
 		}
 
-		public async Task<PageData<List<Company>>> GetCompaniesAsync(DateTime? minUpdatedDate, int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstanceContentStatusType>>> GetBingoInstanceContentStatusTypesAsync(
+			string sort = null, int page = 1, int pageSize = 100)
 		{
-			List<string> filter = BuildFilter(minUpdatedDate, "UpdatedDate");
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<Company>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}Companies", filter, page: page, pageSize: pageSize); 
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetBingoInstanceContentStatusTypesAsync(pageDataRequest);
 		}
 
-		public async Task<PageData<List<FrequencyType>>> GetFrequencyTypesAsync(int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstanceEvent>>> GetBingoInstanceEventsAsync(IPageDataRequest pageDataRequest)
 		{
-			List<string> filter = null;
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<FrequencyType>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}FrequencyTypes", filter, page: page, pageSize: pageSize); 
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceEvent>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}BingoInstanceEvents", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
 		}
 
-		public async Task<PageData<List<Meeting>>> GetMeetingsAsync(DateTime? minUpdatedDate, int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstanceEvent>>> GetBingoInstanceEventsAsync(
+			DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100)
 		{
-			List<string> filter = BuildFilter(minUpdatedDate, "UpdatedDate");
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<Meeting>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}Meetings", filter, page: page, pageSize: pageSize); 
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetBingoInstanceEventsAsync(pageDataRequest);
 		}
 
-		public async Task<PageData<List<MeetingAttendee>>> GetMeetingAttendeesAsync(DateTime? minUpdatedDate, int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstanceEventType>>> GetBingoInstanceEventTypesAsync(IPageDataRequest pageDataRequest)
 		{
-			List<string> filter = BuildFilter(minUpdatedDate, "UpdatedDate");
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<MeetingAttendee>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}MeetingAttendees", filter, page: page, pageSize: pageSize); 
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceEventType>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}BingoInstanceEventTypes", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
 		}
 
-		public async Task<PageData<List<MeetingSchedule>>> GetMeetingSchedulesAsync(DateTime? minUpdatedDate, int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstanceEventType>>> GetBingoInstanceEventTypesAsync(
+			string sort = null, int page = 1, int pageSize = 100)
 		{
-			List<string> filter = BuildFilter(minUpdatedDate, "UpdatedDate");
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<MeetingSchedule>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}MeetingSchedules", filter, page: page, pageSize: pageSize); 
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetBingoInstanceEventTypesAsync(pageDataRequest);
 		}
 
-		public async Task<PageData<List<NotificationMethodType>>> GetNotificationMethodTypesAsync(int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstanceStatusType>>> GetBingoInstanceStatusTypesAsync(IPageDataRequest pageDataRequest)
 		{
-			List<string> filter = null;
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<NotificationMethodType>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}NotificationMethodTypes", filter, page: page, pageSize: pageSize); 
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstanceStatusType>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}BingoInstanceStatusTypes", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
 		}
 
-		public async Task<PageData<List<NotificationRule>>> GetNotificationRulesAsync(int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<BingoInstanceStatusType>>> GetBingoInstanceStatusTypesAsync(
+			string sort = null, int page = 1, int pageSize = 100)
 		{
-			List<string> filter = null;
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<NotificationRule>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}NotificationRules", filter, page: page, pageSize: pageSize); 
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetBingoInstanceStatusTypesAsync(pageDataRequest);
 		}
 
-		public async Task<PageData<List<RecurrenceRule>>> GetRecurrenceRulesAsync(int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<Company>>> GetCompaniesAsync(IPageDataRequest pageDataRequest)
 		{
-			List<string> filter = null;
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<RecurrenceRule>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}RecurrenceRules", filter, page: page, pageSize: pageSize); 
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<Company>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}Companies", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
 		}
 
-		public async Task<PageData<List<User>>> GetUsersAsync(DateTime? minUpdatedDate, int page = 1, int pageSize = 100)
+		public async Task<IPageDataT<List<Company>>> GetCompaniesAsync(
+			DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100)
 		{
-			List<string> filter = BuildFilter(minUpdatedDate, "UpdatedDate");
-			return await SerializationHelper.Instance.SerializeCallResultsGet<List<User>>(Log, GetClient(), $"{ExecutionContext.BaseWebApiUrl}Users", filter, page: page, pageSize: pageSize); 
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetCompaniesAsync(pageDataRequest);
+		}
+
+		public async Task<IPageDataT<List<FrequencyType>>> GetFrequencyTypesAsync(IPageDataRequest pageDataRequest)
+		{
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<FrequencyType>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}FrequencyTypes", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
+		}
+
+		public async Task<IPageDataT<List<FrequencyType>>> GetFrequencyTypesAsync(
+			string sort = null, int page = 1, int pageSize = 100)
+		{
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetFrequencyTypesAsync(pageDataRequest);
+		}
+
+		public async Task<IPageDataT<List<Meeting>>> GetMeetingsAsync(IPageDataRequest pageDataRequest)
+		{
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<Meeting>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}Meetings", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
+		}
+
+		public async Task<IPageDataT<List<Meeting>>> GetMeetingsAsync(
+			DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100)
+		{
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetMeetingsAsync(pageDataRequest);
+		}
+
+		public async Task<IPageDataT<List<MeetingAttendee>>> GetMeetingAttendeesAsync(IPageDataRequest pageDataRequest)
+		{
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<MeetingAttendee>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}MeetingAttendees", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
+		}
+
+		public async Task<IPageDataT<List<MeetingAttendee>>> GetMeetingAttendeesAsync(
+			DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100)
+		{
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetMeetingAttendeesAsync(pageDataRequest);
+		}
+
+		public async Task<IPageDataT<List<MeetingSchedule>>> GetMeetingSchedulesAsync(IPageDataRequest pageDataRequest)
+		{
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<MeetingSchedule>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}MeetingSchedules", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
+		}
+
+		public async Task<IPageDataT<List<MeetingSchedule>>> GetMeetingSchedulesAsync(
+			DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100)
+		{
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetMeetingSchedulesAsync(pageDataRequest);
+		}
+
+		public async Task<IPageDataT<List<NotificationMethodType>>> GetNotificationMethodTypesAsync(IPageDataRequest pageDataRequest)
+		{
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<NotificationMethodType>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}NotificationMethodTypes", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
+		}
+
+		public async Task<IPageDataT<List<NotificationMethodType>>> GetNotificationMethodTypesAsync(
+			string sort = null, int page = 1, int pageSize = 100)
+		{
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetNotificationMethodTypesAsync(pageDataRequest);
+		}
+
+		public async Task<IPageDataT<List<NotificationRule>>> GetNotificationRulesAsync(IPageDataRequest pageDataRequest)
+		{
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<NotificationRule>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}NotificationRules", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
+		}
+
+		public async Task<IPageDataT<List<NotificationRule>>> GetNotificationRulesAsync(
+			string sort = null, int page = 1, int pageSize = 100)
+		{
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetNotificationRulesAsync(pageDataRequest);
+		}
+
+		public async Task<IPageDataT<List<RecurrenceRule>>> GetRecurrenceRulesAsync(IPageDataRequest pageDataRequest)
+		{
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<RecurrenceRule>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}RecurrenceRules", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
+		}
+
+		public async Task<IPageDataT<List<RecurrenceRule>>> GetRecurrenceRulesAsync(
+			string sort = null, int page = 1, int pageSize = 100)
+		{
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetRecurrenceRulesAsync(pageDataRequest);
+		}
+
+		public async Task<IPageDataT<List<User>>> GetUsersAsync(IPageDataRequest pageDataRequest)
+		{
+			List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
+			return await SerializationHelper.Instance.SerializeCallResultsGet<List<User>>(Log, GetClient(), 
+				$"{ExecutionContext.BaseWebApiUrl}Users", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
+		}
+
+		public async Task<IPageDataT<List<User>>> GetUsersAsync(
+			DateTime? minUpdatedDate, string sort = null, int page = 1, int pageSize = 100)
+		{
+			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
+			if (minUpdatedDate.HasValue)
+			{
+				IFilterCriterion filterCriterion = new FilterCriterion();
+				filterCriterion.FieldName = "UpdatedDate";
+				filterCriterion.FieldType = "DateTime?";
+				filterCriterion.FilterOperator = "IsGreaterThan";
+				filterCriterion.Value = minUpdatedDate;
+				filterCriteria.Add(filterCriterion);
+			}
+
+
+			IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: sort, page: page, pageSize: pageSize);
+			return await GetUsersAsync(pageDataRequest);
 		}
 
 		#endregion GetOnePage
+
+
 
 		#region Get By PK
 
@@ -300,6 +693,8 @@ namespace CodeGenHero.BingoBuzz.API.Client
 		}
 
 		#endregion Get By PK
+
+
 
 		#region Create
 
@@ -433,6 +828,8 @@ namespace CodeGenHero.BingoBuzz.API.Client
 
 		#endregion Create
 
+
+
 		#region Update
 
 			public async Task<HttpCallResult<BingoContent>> UpdateBingoContentAsync(BingoContent item)
@@ -565,6 +962,8 @@ namespace CodeGenHero.BingoBuzz.API.Client
 
 		#endregion Update
 
+
+
 		#region Delete
 
 		public async Task<HttpCallResult<BingoContent>> DeleteBingoContentAsync(System.Guid bingoContentId)
@@ -664,5 +1063,7 @@ namespace CodeGenHero.BingoBuzz.API.Client
 		}
 
 		#endregion Delete
+
+
 	}
 }
