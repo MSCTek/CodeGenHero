@@ -40,7 +40,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             var newInstance = new ModelData.BB.BingoInstance()
             {
                 BingoInstanceId = instanceId,
-                BingoInstanceStatusTypeId = 2, //active
+                BingoInstanceStatusTypeId = (int)Constants.Enums.BingoInstanceStatusType.Active,
                 CreatedDate = DateTime.UtcNow,
                 CreatedUserId = _stateService.GetCurrentUserId(),
                 IncludeFreeSquareIndicator = true,
@@ -264,6 +264,8 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                         {
                             BingoInstanceContentId = Guid.NewGuid(),
                             BingoInstanceId = bingoInstanceId,
+                            BingoInstanceContentStatusTypeId = (int)Constants.Enums.BingoInstanceContentStatusType.Untapped, 
+                            UserId = _stateService.GetCurrentUserId(),
                             Row = r,
                             Col = c,
                             UpdatedDate = DateTime.UtcNow,

@@ -11,8 +11,7 @@ namespace CodeGenHero.BingoBuzz.API.Client
 	public partial class WebApiDataServiceBB : WebApiDataServiceBase, IWebApiDataServiceBB
 	{
 
-		public async Task<PageData<List<Meeting>>> GetMeetingsAndAttendeesByUserId(Guid userId, DateTime? minUpdatedDate, bool? isDeleted, string sort = null,
-			int page = 1, int pageSize = 100)
+		public async Task<PageData<List<Meeting>>> GetMeetingsAndAttendeesByUserId(Guid userId, DateTime? minUpdatedDate, bool? isDeleted, string sort = null, int page = 1, int pageSize = 100)
 		{
 			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
 
@@ -85,6 +84,15 @@ namespace CodeGenHero.BingoBuzz.API.Client
             List<string> filter = BuildFilter(pageDataRequest.FilterCriteria);
             return await SerializationHelper.Instance.SerializeCallResultsGet<List<BingoInstance>>(Log, GetClient(),
                 $"{ExecutionContext.BaseWebApiUrl}GetInstancesAndEventsByMeetingId", filter, page: pageDataRequest.Page, pageSize: pageDataRequest.PageSize);
+        }
+
+
+        public async Task<HttpCallResult<BingoInstance>> CreateBingoInstanceWithContentAsync(BingoInstance item)
+        {
+            var retVal = await SerializationHelper.Instance.SerializeCallResultsPost<BingoInstance>(
+                    Log, GetClient(),
+                    $"{ExecutionContext.BaseWebApiUrl}BingoInstances/", item);
+            return retVal;
         }
 
     }

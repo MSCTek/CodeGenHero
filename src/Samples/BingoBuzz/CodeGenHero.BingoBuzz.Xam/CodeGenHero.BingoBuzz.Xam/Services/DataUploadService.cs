@@ -150,17 +150,23 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             if (record != null)
             {
                 //the bingo instance and the instance content need to go to the azure db together as an upload package
+                var instanceWithContentDTO = record.ToDto();
+                instanceWithContentDTO.BingoInstanceContents = new List<DTO.BB.BingoInstanceContent>(); 
 
-
-
-                //var result = await _webAPIDataService.CreateBingoInstanceAsync(record.ToDto());
-                //if (result.IsSuccessStatusCode)
-                //{
-                //    _log.Debug($"Successfully Sent Queued BingoInstance Record", LogMessageType.Instance.Info_Synchronization);
+                var contents = await _asyncConnection.Table<ModelData.BB.BingoInstanceContent>().Where(c => c.BingoInstanceId == record.BingoInstanceId).ToListAsync();
+                foreach(var con in contents)
+                {
+                    instanceWithContentDTO.BingoInstanceContents.Add(con.ToDto());
+                }
+                
+                var result = await _webAPIDataService.CreateBingoInstanceWithContentAsync(instanceWithContentDTO);
+                if (result.IsSuccessStatusCode)
+                {
+                    _log.Debug($"Successfully Sent Queued BingoInstance Record with content", LogMessageType.Instance.Info_Synchronization);
                     return true;
-                //}
-                //_log.Error($"Error Sending Queued BingoInstance record {q.RecordId}", LogMessageType.Instance.Info_Synchronization, ex: result.Exception);
-                //return false;
+                }
+                _log.Error($"Error Sending Queued BingoInstance record {q.RecordId} with content", LogMessageType.Instance.Info_Synchronization, ex: result.Exception);
+                return false;
             }
             return false;
         }

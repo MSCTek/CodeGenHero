@@ -118,7 +118,13 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                                 if (1 == await _asyncConnection.InsertOrReplaceAsync(i.ToModelData())) numBingoInstancesInserted++;
                             }
                             _log.Debug($"Inserted {numBingoInstancesInserted} bingo instance records", LogMessageType.Instance.Info_Synchronization);
-                            
+
+                            //bingo instance contents
+                            var bingoInstanceContents = instancesAndEvents.SelectMany(x => x.BingoInstanceContents).Distinct().ToList();
+                            int numBingoInstanceContentsInserted = await _asyncConnection.InsertAllAsync(bingoInstanceContents.Select(x => x.ToModelData()).ToList());
+                            _log.Debug($"Inserted {numBingoInstanceContentsInserted} bingo instance contents records", LogMessageType.Instance.Info_Synchronization);
+
+
                             //bingo instance events
                             var bingoInstanceEvents = instancesAndEvents.SelectMany(x => x.BingoInstanceEvents).Distinct().ToList();
                             int numBingoInstanceEventsInserted = await _asyncConnection.InsertAllAsync(bingoInstanceEvents.Select(x => x.ToModelData()).ToList());
