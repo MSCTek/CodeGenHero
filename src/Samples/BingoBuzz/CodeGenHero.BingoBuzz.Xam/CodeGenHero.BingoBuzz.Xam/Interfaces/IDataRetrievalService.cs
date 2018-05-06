@@ -13,14 +13,15 @@ namespace CodeGenHero.BingoBuzz.Xam.Interfaces
 
         Task<bool> CreateNewMeeting(Meeting meeting, List<User> attendees);
 
+        Task<bool> CreateSendNewBingoInstanceEvent(Guid bingoInstanceContentId, Guid bingoInstanceId, BingoBuzz.Constants.Enums.BingoInstanceEventType eventType);
+
         Task<List<ModelObj.BB.BingoInstanceContent>> GetBingoInstanceContentAsync(Guid bingoInstanceId);
 
         Task<ModelObj.BB.BingoInstance> GetCurrentBingoInstanceOrNullAsync(Guid meetingId);
 
         Task<ModelObj.BB.User> GetUserByEmailOrNullAsync(string email);
 
-        Guid GetCurrentUserId();
-
+       
         Task<List<ModelObj.BB.MeetingAttendee>> GetMeetingAttendeesAsync(Guid meetingId);
 
         Task<ModelObj.BB.Meeting> GetMeetingOrNullAsync(Guid meetingId);

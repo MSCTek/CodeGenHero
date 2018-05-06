@@ -6,8 +6,15 @@ namespace CodeGenHero.BingoBuzz.Constants
     {
         public enum QueueableObjects
         {
-            BingoInstanceContent,
+            BingoInstance,
             BingoInstanceEvent,
         }
+
+        public enum BingoInstanceEventType
+        {
+            SquareClicked = 1,
+            Bingo = 2,
+        }
+
     }
 }
