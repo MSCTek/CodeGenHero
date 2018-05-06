@@ -80,9 +80,15 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         {
             if (!_hasLoaded)
             {
-                //TODO: remove - for development only
-                await ((App)Application.Current).SetDemoMode(false);
+                //TODO: ask to verify the user, for now, we will hardcode it
+                ((App)Application.Current).CurrentUserEmail = "robin@msctek.com";
+
+                await ((App)Application.Current).SetModeAndSync(false);
                 StateService.SetCurrentUser(DemoUser.UserGeorge.ToModelObj());
+
+                //TODO: For development only
+                //await ((App)Application.Current).SetModeAndSync(true);
+                //StateService.SetCurrentUser(DemoUser.UserGeorge.ToModelObj());
 
                 Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();
                 _hasLoaded = true;

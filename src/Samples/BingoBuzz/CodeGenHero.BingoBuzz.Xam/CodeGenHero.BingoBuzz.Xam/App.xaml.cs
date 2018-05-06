@@ -18,7 +18,7 @@ namespace CodeGenHero.BingoBuzz.Xam
     public partial class App : Application
     {
         private bool _isDemoMode;
-        private bool isAppCenterStarted;
+        private bool _isAppCenterStarted;
 
         public App(params INinjectModule[] platformModules)
         {
@@ -54,9 +54,11 @@ namespace CodeGenHero.BingoBuzz.Xam
 
         public IKernel Kernel { get; set; }
 
-        public async Task SetDemoMode(bool isOn)
+        public string CurrentUserEmail { get; set; }
+
+        public async Task SetModeAndSync(bool isDemoModeOn)
         {
-            _isDemoMode = isOn;
+            _isDemoMode = isDemoModeOn;
 
             //flush all data and start again
             var db = Kernel.Get<IDatabase>();
@@ -81,7 +83,7 @@ namespace CodeGenHero.BingoBuzz.Xam
         {
             if (Xamarin.Forms.Device.RuntimePlatform != Xamarin.Forms.Device.UWP)
             {
-                if (!isAppCenterStarted)
+                if (!_isAppCenterStarted)
                 {
                     //UI Tests have inconsistent popups for in-app distributions being disabled from side loading - just getting rid of them here to get a build to Xam Test Cloud
 
@@ -93,7 +95,7 @@ namespace CodeGenHero.BingoBuzz.Xam
                     AppCenter.Start(secrets, p);
 
                     Analytics.TrackEvent("App Center is Started");
-                    isAppCenterStarted = true;
+                    _isAppCenterStarted = true;
                 }
             }
             else

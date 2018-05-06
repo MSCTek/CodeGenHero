@@ -43,9 +43,32 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
         {
             try
             {
+                //we want all of the bingo contents records
                 var bingoContents = await _webAPIDataService.GetAllPagesBingoContentsAsync(null);
                 int numBingoContentsInserted = await _asyncConnection.InsertAllAsync(bingoContents.Select(x => x.ToModelData()).ToList());
                 _log.Debug($"Inserted {numBingoContentsInserted} bingo contents records", LogMessageType.Instance.Info_Synchronization);
+
+                //we only want meetings for which our user is involved
+                var meetings = await _webAPIDataService.GetAllPagesMeetingsAsync(null);
+                //List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>() { new IFilterCriterion() {  } } ;
+                //IPageDataRequest pageDataRequest = new PageDataRequest(filterCriteria: filterCriteria, sort: null, page: 1, pageSize: 100);
+                //var meetings = await _webAPIDataService.GetMeetingsAsync(pageDataRequest);
+                int numMeetingsInserted = await _asyncConnection.InsertAllAsync(meetings.Select(x => x.ToModelData()).ToList());
+                _log.Debug($"Inserted {numMeetingsInserted} meeting records", LogMessageType.Instance.Info_Synchronization);
+
+                //we only want meetings for which our user is involved
+                var meetingAttendees = await _webAPIDataService.GetAllPagesMeetingAttendeesAsync(null);
+                int numMeetingAttendeesInserted = await _asyncConnection.InsertAllAsync(meetingAttendees.Select(x => x.ToModelData()).ToList());
+                _log.Debug($"Inserted {numMeetingAttendeesInserted} meeting attendee records", LogMessageType.Instance.Info_Synchronization);
+
+              
+
+                //we only want these for the instances for which our user is involved
+                var bingoInstances = await _webAPIDataService.GetAllPagesBingoInstancesAsync(null);
+                int numBingoInstancesInserted = await _asyncConnection.InsertAllAsync(bingoInstances.Select(x => x.ToModelData()).ToList());
+                _log.Debug($"Inserted {numBingoInstancesInserted} bingo instance records", LogMessageType.Instance.Info_Synchronization);
+
+
 
                 var bingoInstanceContents = await _webAPIDataService.GetAllPagesBingoInstanceContentsAsync(null);
                 int numBingoInstanceContentsInserted = await _asyncConnection.InsertAllAsync(bingoInstanceContents.Select(x => x.ToModelData()).ToList());
@@ -59,10 +82,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                 int numBingoInstanceEventTypesInserted = await _asyncConnection.InsertAllAsync(bingoInstanceEventTypes.Select(x => x.ToModelData()).ToList());
                 _log.Debug($"Inserted {numBingoInstanceEventTypesInserted} bingo instance event type records", LogMessageType.Instance.Info_Synchronization);
 
-                var bingoInstances = await _webAPIDataService.GetAllPagesBingoInstancesAsync(null);
-                int numBingoInstancesInserted = await _asyncConnection.InsertAllAsync(bingoInstances.Select(x => x.ToModelData()).ToList());
-                _log.Debug($"Inserted {numBingoInstancesInserted} bingo instance records", LogMessageType.Instance.Info_Synchronization);
-
+          
                 var bingoCompanies = await _webAPIDataService.GetAllPagesCompaniesAsync(null);
                 int numBingoCompaniesInserted = await _asyncConnection.InsertAllAsync(bingoCompanies.Select(x => x.ToModelData()).ToList());
                 _log.Debug($"Inserted {numBingoCompaniesInserted} bingo company records", LogMessageType.Instance.Info_Synchronization);
@@ -71,14 +91,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                 int numBingoFrequencyTypesInserted = await _asyncConnection.InsertAllAsync(bingoFrequencyTypes.Select(x => x.ToModelData()).ToList());
                 _log.Debug($"Inserted {numBingoFrequencyTypesInserted} bingo frequency type records", LogMessageType.Instance.Info_Synchronization);
 
-                var meetingAttendees = await _webAPIDataService.GetAllPagesMeetingAttendeesAsync(null);
-                int numMeetingAttendeesInserted = await _asyncConnection.InsertAllAsync(meetingAttendees.Select(x => x.ToModelData()).ToList());
-                _log.Debug($"Inserted {numMeetingAttendeesInserted} meeting attendee records", LogMessageType.Instance.Info_Synchronization);
-
-                var meetings = await _webAPIDataService.GetAllPagesMeetingsAsync(null);
-                int numMeetingsInserted = await _asyncConnection.InsertAllAsync(meetings.Select(x => x.ToModelData()).ToList());
-                _log.Debug($"Inserted {numMeetingsInserted} meeting records", LogMessageType.Instance.Info_Synchronization);
-
+         
                 var meetingSchedules = await _webAPIDataService.GetAllPagesMeetingSchedulesAsync(null);
                 int numMeetingSchedulesInserted = await _asyncConnection.InsertAllAsync(meetingSchedules.Select(x => x.ToModelData()).ToList());
                 _log.Debug($"Inserted {numMeetingSchedulesInserted} meeting schedule records", LogMessageType.Instance.Info_Synchronization);
