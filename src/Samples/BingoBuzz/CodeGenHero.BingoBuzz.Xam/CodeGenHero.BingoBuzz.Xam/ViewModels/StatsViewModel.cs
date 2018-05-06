@@ -9,7 +9,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
     public class StatsViewModel : CustomViewModelBase
     {
-        public StatsViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService) : base(navService, dataRetrievalService, stateService)
+        public StatsViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService) : base(navService, dataRetrievalService, dataDownloadService, stateService)
         {
         }
 

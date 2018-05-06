@@ -58,6 +58,11 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
             return new List<Meeting>();
         }
 
+        public Task<User> GetUserByEmailOrNullAsync(string email)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<User>> GetUsersAsync()
         {
             throw new NotImplementedException();

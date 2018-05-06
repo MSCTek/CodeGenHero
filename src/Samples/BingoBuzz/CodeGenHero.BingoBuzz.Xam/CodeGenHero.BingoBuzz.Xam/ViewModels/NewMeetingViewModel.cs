@@ -16,7 +16,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private string _meetingName;
         private ObservableCollection<User> _users;
 
-        public NewMeetingViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService, IDataUploadService dataUploadService) : base(navService, dataRetrievalService, stateService)
+        public NewMeetingViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IDataUploadService dataUploadService, IStateService stateService) : base(navService, dataRetrievalService, dataDownloadService, stateService)
         {
             _dataUploadService = dataUploadService;
         }

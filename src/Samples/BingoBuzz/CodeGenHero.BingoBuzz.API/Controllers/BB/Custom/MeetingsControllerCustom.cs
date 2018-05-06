@@ -65,14 +65,61 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 			}
 		}
 
+        [HttpGet]
+        [VersionedRoute(template: "GetInstancesAndEventsByMeetingId", allowedVersion: 1, Name = "GetInstancesAndEventsByMeetingId")]
+        public async Task<IHttpActionResult> GetInstancesContentsAndEventsByMeetingId(string sort = null, string fields = null, string filter = null, int page = 1, int pageSize = int.MaxValue)
+        {
+            try
+            {
+                base.OnActionExecuting();
 
-		/// <summary>
-		/// A sample implementation of custom logic used to include related entities to return with a DTO.
-		/// </summary>
-		/// <param name="qryItem"></param>
-		/// <param name="id"></param>
-		/// <param name="numChildLevels"></param>
-		partial void RunCustomLogicOnGetQueryableByPK(ref IQueryable<entBB.Meeting> qryItem, System.Guid meetingId, int numChildLevels)
+                var fieldList = GetListByDelimiter(fields);
+                var filterList = GetListByDelimiter(filter);
+                var dbItems = Repo.GetQueryableBingoInstance().AsNoTracking()
+                    .Include(c => c.BingoInstanceEvents);
+
+                var queryableFilters = filterList.ToQueryableFilter();
+                var meetingCriterion = queryableFilters.Where(y => y.Member.ToLowerInvariant() == nameof(BingoInstance.MeetingId).ToLowerInvariant()).FirstOrDefault();
+
+                if (meetingCriterion != null)
+                {
+                    dbItems = dbItems.Where(x => x.MeetingId == new Guid(meetingCriterion.Value));
+                    queryableFilters.Remove(meetingCriterion);  // The evaluated criterion needs to be removed from the list of filters before we invoke the ApplyFilter() extension method.
+                    filterList = queryableFilters.ToQueryableStringList();
+                }
+
+                dbItems = dbItems.ApplyFilter(filterList);
+                dbItems = dbItems.ApplySort(sort ?? (typeof(entBB.BingoInstance).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance)).First().Name);
+
+                var urlHelper = new UrlHelper(Request);
+                PageData paginationHeader = BuildPaginationHeader(urlHelper, GET_LIST_ROUTE_NAME, page: page, totalCount: dbItems.Count(), pageSize: pageSize, sort: sort);
+                HttpContext.Current.Response.Headers.Add("X-Pagination", Newtonsoft.Json.JsonConvert.SerializeObject(paginationHeader));
+
+                // return result
+                return Ok(dbItems
+                .Skip(pageSize * (page - 1))
+                .Take(pageSize)
+                .ToList()
+                .Select(x => _factory.CreateDataShapedObject(x, fieldList, false)));
+            }
+            catch (Exception ex)
+            {
+                Error(message: ex.Message, logMessageType: LogMessageType.Instance.Exception_WebApi, ex: ex);
+
+                if (System.Diagnostics.Debugger.IsAttached)
+                    System.Diagnostics.Debugger.Break();
+
+                return InternalServerError();
+            }
+        }
+        
+        /// <summary>
+        /// A sample implementation of custom logic used to include related entities to return with a DTO.
+        /// </summary>
+        /// <param name="qryItem"></param>
+        /// <param name="id"></param>
+        /// <param name="numChildLevels"></param>
+        partial void RunCustomLogicOnGetQueryableByPK(ref IQueryable<entBB.Meeting> qryItem, System.Guid meetingId, int numChildLevels)
 		 {
 			 if (numChildLevels > 0)
 			 {

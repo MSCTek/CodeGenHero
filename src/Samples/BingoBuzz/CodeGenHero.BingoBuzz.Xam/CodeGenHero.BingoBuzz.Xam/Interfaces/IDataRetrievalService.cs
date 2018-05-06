@@ -17,6 +17,8 @@ namespace CodeGenHero.BingoBuzz.Xam.Interfaces
 
         Task<ModelObj.BB.BingoInstance> GetCurrentBingoInstanceOrNullAsync(Guid meetingId);
 
+        Task<ModelObj.BB.User> GetUserByEmailOrNullAsync(string email);
+
         Guid GetCurrentUserId();
 
         Task<List<ModelObj.BB.MeetingAttendee>> GetMeetingAttendeesAsync(Guid meetingId);

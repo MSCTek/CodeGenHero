@@ -128,6 +128,19 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             return null;
         }
 
+        public async Task<ModelObj.BB.User> GetUserByEmailOrNullAsync(string email)
+        {
+            var emailLower = email.ToLower();
+            var user = (await _asyncConnection.Table<ModelData.BB.User>()
+                .Where(x => x.Email.ToLower() == emailLower  && x.IsDeleted == false).FirstOrDefaultAsync());
+            if (user != null)
+            {
+                return user.ToModelObj();
+            }
+            return null;
+        }
+
+
         //TODO: change this when authentication is wired up
         public Guid GetCurrentUserId()
         {
