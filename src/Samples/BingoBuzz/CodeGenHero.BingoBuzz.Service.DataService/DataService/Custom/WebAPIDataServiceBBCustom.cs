@@ -16,30 +16,36 @@ namespace CodeGenHero.BingoBuzz.API.Client
 		{
 			List<IFilterCriterion> filterCriteria = new List<IFilterCriterion>();
 
-			IFilterCriterion filterCriterion = new FilterCriterion();
-			filterCriterion.FieldName = nameof(MeetingAttendee.UserId);
-			filterCriterion.FieldType = "Guid";
-			filterCriterion.FilterOperator = Constants.OPERATOR_ISEQUALTO;
-			filterCriterion.Value = userId;
+			IFilterCriterion filterCriterion = new FilterCriterion
+			{
+				FieldName = nameof(MeetingAttendee.UserId),
+				FieldType = "Guid",
+				FilterOperator = Constants.OPERATOR_ISEQUALTO,
+				Value = userId
+			};
 			filterCriteria.Add(filterCriterion);
 
 			if (minUpdatedDate.HasValue)
 			{
-				filterCriterion = new FilterCriterion();
-				filterCriterion.FieldName = nameof(Meeting.UpdatedDate);
-				filterCriterion.FieldType = "DateTime?";
-				filterCriterion.FilterOperator = Constants.OPERATOR_ISGREATERTHAN;
-				filterCriterion.Value = minUpdatedDate;
+				filterCriterion = new FilterCriterion
+				{
+					FieldName = nameof(Meeting.UpdatedDate),
+					FieldType = "DateTime?",
+					FilterOperator = Constants.OPERATOR_ISGREATERTHAN,
+					Value = minUpdatedDate
+				};
 				filterCriteria.Add(filterCriterion);
 			}
 
 			if (minUpdatedDate.HasValue)
 			{
-				filterCriterion = new FilterCriterion();
-				filterCriterion.FieldName = nameof(Meeting.IsDeleted);
-				filterCriterion.FieldType = "bool?";
-				filterCriterion.FilterOperator = Constants.OPERATOR_ISEQUALTO;
-				filterCriterion.Value = isDeleted;
+				filterCriterion = new FilterCriterion
+				{
+					FieldName = nameof(Meeting.IsDeleted),
+					FieldType = "bool?",
+					FilterOperator = Constants.OPERATOR_ISEQUALTO,
+					Value = isDeleted
+				};
 				filterCriteria.Add(filterCriterion);
 			}
 
