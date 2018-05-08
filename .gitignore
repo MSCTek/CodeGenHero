@@ -48,6 +48,8 @@
 /src/CodeGenHero.Repository.AutoMapper/obj
 /src/CodeGenHero.Template/bin
 /src/CodeGenHero.Template/obj
+/src/CodeGenHero.Web/bin
+/src/CodeGenHero.Web/obj
 /src/CodeGenHero.WebApi/bin
 /src/CodeGenHero.WebApi/obj
 /src/CodeGenHero.Xam.MvvmLight/bin

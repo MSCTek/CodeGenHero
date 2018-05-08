@@ -20,6 +20,7 @@ namespace CodeGenHero.WebApi
 			bool isGuid = fullName.Contains("System.Guid");  // Contains handles nullable fields.
 			bool isBoolean = fullName.Contains("System.Boolean");  // Contains handles nullable fields.
 			bool isShort = fullName.Contains("System.Int16");
+			bool isInt = fullName.Contains("System.Int32");
 
 			Func<string, string, string> condition;
 
@@ -37,6 +38,8 @@ namespace CodeGenHero.WebApi
 				typedFilterValue = Boolean.Parse(filter.Value);
 			else if (isShort)
 				typedFilterValue = Int16.Parse(filter.Value);
+			else if (isInt)
+				typedFilterValue = Int32.Parse(filter.Value);
 
 			switch (filter.Operator)
 			{

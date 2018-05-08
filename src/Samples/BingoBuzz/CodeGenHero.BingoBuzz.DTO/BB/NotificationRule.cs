@@ -5,8 +5,6 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public NotificationRule()
 		{
-			// MeetingAttendees = new System.Collections.Generic.List<MeetingAttendee>(); -- Excluded navigation property per configuration.
-
 			InitializePartial();
 		}
 

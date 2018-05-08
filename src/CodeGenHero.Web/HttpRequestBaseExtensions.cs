@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace CodeGenHero.WebApi
+namespace CodeGenHero.Web
 {
 	public static class HttpRequestBaseExtensions
 	{

@@ -5,8 +5,6 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public FrequencyType()
 		{
-			// RecurrenceRules = new System.Collections.Generic.List<RecurrenceRule>(); -- Excluded navigation property per configuration.
-
 			InitializePartial();
 		}
 

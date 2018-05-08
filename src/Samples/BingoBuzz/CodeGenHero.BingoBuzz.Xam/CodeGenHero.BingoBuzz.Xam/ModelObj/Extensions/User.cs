@@ -18,6 +18,11 @@ namespace CodeGenHero.BingoBuzz.Xam.ModelObj.BB
             get { return $"{FirstName} {LastName}"; }
         }
 
+        public string UserIdDisplay
+        {
+            get { return $"{UserId.ToString()}"; }
+        }
+
         public bool IsSelected
         {
             get { return _isSelected; }

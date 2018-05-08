@@ -145,37 +145,43 @@ namespace CodeGenHero.BingoBuzz.Xam.Controls
 
         private void Init()
         {
-            _headerGrid = new Grid();
-            _headerGrid.BackgroundColor = (Color)App.Current.Resources["PI.Transparent"];
-            _headerGrid.Margin = 0;
-            _headerGrid.Padding = 0;
-            _headerGrid.HorizontalOptions = LayoutOptions.FillAndExpand;
-            _headerGrid.VerticalOptions = LayoutOptions.FillAndExpand;
-            //change the height of the grid depending on the type of header here:
-            _headerGrid.HeightRequest = 48;
+			_headerGrid = new Grid
+			{
+				BackgroundColor = (Color)App.Current.Resources["PI.Transparent"],
+				Margin = 0,
+				Padding = 0,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				//change the height of the grid depending on the type of header here:
+				HeightRequest = 48
+			};
 
-            if (ShowBackButton)
+			if (ShowBackButton)
             {
-                _backButtonStackLayout = new StackLayout();
-                _backButtonStackLayout.Orientation = StackOrientation.Horizontal;
-                _backButtonStackLayout.HorizontalOptions = LayoutOptions.StartAndExpand;
+				_backButtonStackLayout = new StackLayout
+				{
+					Orientation = StackOrientation.Horizontal,
+					HorizontalOptions = LayoutOptions.StartAndExpand
+				};
 
-                /*_backButtonIcon = new IconLabel();
+				/*_backButtonIcon = new IconLabel();
                 _backButtonIcon.Text = (string)App.Current.Resources["Icon.BackArrow"]; //= "\ue800";*/
 
-                //TODO: get font awesome in here
-                _backButtonIcon = new Label();
-                _backButtonIcon.Text = "<";
-                _backButtonIcon.FontAttributes = FontAttributes.Bold;
+				//TODO: get font awesome in here
+				_backButtonIcon = new Label
+				{
+					Text = "<",
+					FontAttributes = FontAttributes.Bold,
 
-                _backButtonIcon.FontSize = 21;
-                // _backButtonIcon.TextColor = (Color)App.Current.Resources["PI.Charcoal"];
-                _backButtonIcon.Margin = new Thickness(12);
-                _backButtonIcon.HorizontalOptions = LayoutOptions.Start;
-                _backButtonIcon.VerticalOptions = LayoutOptions.Center;
-                _backButtonIcon.AutomationId = "BackButton";
+					FontSize = 21,
+					// _backButtonIcon.TextColor = (Color)App.Current.Resources["PI.Charcoal"];
+					Margin = new Thickness(12),
+					HorizontalOptions = LayoutOptions.Start,
+					VerticalOptions = LayoutOptions.Center,
+					AutomationId = "BackButton"
+				};
 
-                _backButtonStackLayout.Children.Add(_backButtonIcon);
+				_backButtonStackLayout.Children.Add(_backButtonIcon);
 
                 _tapGestureRecognizerBack = new TapGestureRecognizer();
                 _tapGestureRecognizerBack.SetBinding(TapGestureRecognizer.CommandProperty, "BackCommand", BindingMode.TwoWay);
@@ -185,7 +191,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Controls
                 _headerGrid.Children.Add(_backButtonStackLayout);
             }
 
-            /* if (ShowHamburger)
+			/* if (ShowHamburger)
              {
                  _hamburgerStackLayout = new StackLayout();
                  _hamburgerStackLayout.Orientation = StackOrientation.Horizontal;
@@ -213,17 +219,19 @@ namespace CodeGenHero.BingoBuzz.Xam.Controls
                  _headerGrid.Children.Add(_hamburgerStackLayout);
              }*/
 
-            _headerLabel = new Label();
-            _headerLabel.Text = !string.IsNullOrEmpty(Title) ? Title : string.Empty;
-            _headerLabel.FontSize = 18;
-            _headerLabel.FontAttributes = FontAttributes.Bold;
-            _headerLabel.LineBreakMode = LineBreakMode.TailTruncation;
-            _headerLabel.HorizontalOptions = LayoutOptions.Center;
-            _headerLabel.VerticalOptions = LayoutOptions.Center;
-            _headerLabel.Margin = 5;
-            //_headerLabel.TextColor = (Color)App.Current.Resources["PI.Charcoal"];
+			_headerLabel = new Label
+			{
+				Text = !string.IsNullOrEmpty(Title) ? Title : string.Empty,
+				FontSize = 18,
+				FontAttributes = FontAttributes.Bold,
+				LineBreakMode = LineBreakMode.TailTruncation,
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.Center,
+				Margin = 5
+			};
+			//_headerLabel.TextColor = (Color)App.Current.Resources["PI.Charcoal"];
 
-            _headerGrid.Children.Add(_headerLabel);
+			_headerGrid.Children.Add(_headerLabel);
 
             Content = _headerGrid;
         }

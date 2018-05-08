@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;net46</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Paul Schroeder</Authors>
+    <Company>Micro Support Center, Inc.</Company>
+    <Product>CodeGenHero</Product>
+    <Description>CodeGenHero is an amazing Visual Studio extension that enhances developer productivity via code generation.
+
+This package should be added to projects that are the target of CodeGenHero templates creating Web (MVC) controllers.</Description>
+    <Copyright>Copyright © 2016-2018 Micro Support Center, Inc.</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/MSCTek/CodeGenHero/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/MSCTek/CodeGenHero</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/MSCTek/CodeGenHero/raw/master/NuGet_Icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/MSCTek/CodeGenHero</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>CodeGenerator CodeGen MSCTek Web MVC</PackageTags>
+    <PackageReleaseNotes>Classes to support Web (MVC) controllers</PackageReleaseNotes>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net45'">
+    <DefineConstants>NET45;NETFULL</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net46'">
+    <DefineConstants>NET46;NETFULL</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+</Project>

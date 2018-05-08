@@ -5,17 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeGenHero.DataService" Version="1.0.14" />
+    <PackageReference Include="CodeGenHero.DataService" Version="1.0.21" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CodeGenHero.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="CodeGenHero.CodeGenHero.EAMVCXamPOCO.Standard">
-      <HintPath>..\Assemblies\CodeGenHero.CodeGenHero.EAMVCXamPOCO.Standard.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

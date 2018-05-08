@@ -135,315 +135,43 @@ namespace CodeGenHero.DataService
 
 		#region Convenience Methods
 
-		protected virtual List<string> BuildFilter(Dictionary<string, string> filters, DateTime? minUpdatedDate, string updatedDateFieldName)
+		protected virtual List<string> BuildFilter(List<IFilterCriterion> filterCriteria)
 		{
 			var retVal = new List<string>();
 
-			if (filters != null)
+			if (filterCriteria != null)
 			{
-				foreach (KeyValuePair<string, string> pair in filters)
+				foreach (IFilterCriterion filterCriterion in filterCriteria)
 				{
-					retVal.Add($"{pair.Key}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISEQUALTO}{cghConstants.API_FILTER_DELIMITER}{pair.Value}");
+					retVal.Add($"{filterCriterion.FieldName}{cghConstants.API_FILTER_DELIMITER}{filterCriterion.FilterOperator}{cghConstants.API_FILTER_DELIMITER}{filterCriterion.Value}");
 				}
 			}
 
-			if (minUpdatedDate.HasValue && !string.IsNullOrEmpty(updatedDateFieldName))
-			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
-				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISGREATERTHANOREQUAL}{cghConstants.API_FILTER_DELIMITER}{encodedDateString}");
-			}
-
 			return retVal;
 		}
 
-		protected virtual List<string> BuildFilter(Guid? companyId, DateTime? minUpdatedDate, string updatedDateFieldName)
-		{
-			return BuildFilter(companyId, null, minUpdatedDate, updatedDateFieldName);
-		}
-
-		protected virtual List<string> BuildFilter(Guid? companyId, bool? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
-
-		{
-			var retVal = new List<string>();
-
-			if (isDeleted.HasValue)
-			{
-				retVal.Add($"isDeleted{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISEQUALTO}{cghConstants.API_FILTER_DELIMITER}{isDeleted}");
-			}
-
-			if (minUpdatedDate.HasValue
-				&& !string.IsNullOrEmpty(updatedDateFieldName))
-			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
-				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISGREATERTHANOREQUAL}{cghConstants.API_FILTER_DELIMITER}{encodedDateString}");
-			}
-
-			return retVal;
-		}
-
-		protected virtual List<string> BuildFilter(bool? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
-
-		{
-			var retVal = new List<string>();
-
-			if (isDeleted.HasValue)
-			{
-				retVal.Add($"isDeleted{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISEQUALTO}{cghConstants.API_FILTER_DELIMITER}{isDeleted}");
-			}
-
-			if (minUpdatedDate.HasValue
-				&& !string.IsNullOrEmpty(updatedDateFieldName))
-			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
-				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISGREATERTHANOREQUAL}{cghConstants.API_FILTER_DELIMITER}{encodedDateString}");
-			}
-
-			return retVal;
-		}
-
-		protected virtual List<string> BuildFilter(short? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
-
-		{
-			var retVal = new List<string>();
-
-			if (isDeleted.HasValue)
-			{
-				retVal.Add($"isDeleted{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISEQUALTO}{cghConstants.API_FILTER_DELIMITER}{isDeleted}");
-			}
-
-			if (minUpdatedDate.HasValue
-				&& !string.IsNullOrEmpty(updatedDateFieldName))
-			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
-				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISGREATERTHANOREQUAL}{cghConstants.API_FILTER_DELIMITER}{encodedDateString}");
-			}
-
-			return retVal;
-		}
-
-		protected virtual List<string> BuildFilter(DateTime? minUpdatedDate, string updatedDateFieldName)
-		{
-			return BuildFilter(Guid.Empty, minUpdatedDate, updatedDateFieldName);
-		}
-
-		protected virtual List<string> BuildFilterForCompanyCatalog(Guid companyCatalogId, bool? isDeleted, DateTime? minUpdatedDate, string updatedDateFieldName)
-
-		{
-			var retVal = new List<string>();
-
-			if (isDeleted.HasValue)
-			{
-				retVal.Add($"isDeleted{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISEQUALTO}{cghConstants.API_FILTER_DELIMITER}{isDeleted}");
-			}
-
-			if (minUpdatedDate.HasValue
-				&& !string.IsNullOrEmpty(updatedDateFieldName))
-			{   // Construct the URL to match - //updateddate~IsGreaterThanOrEqual~1%2F15%2F2020
-				var encodedDateString = System.Net.WebUtility.UrlEncode(minUpdatedDate.Value.ToString());
-				retVal.Add($"{updatedDateFieldName}{cghConstants.API_FILTER_DELIMITER}{cghConstants.OPERATOR_ISGREATERTHANOREQUAL}{cghConstants.API_FILTER_DELIMITER}{encodedDateString}");
-			}
-
-			return retVal;
-		}
-
-		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<int, int,
-			Task<PageData<List<T>>>> getMethodToRun)
+		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(IPageDataRequest pageDataRequest, Func<IPageDataRequest,
+			Task<IPageDataT<List<T>>>> getMethodToRun)
 		{
 			List<T> retVal = new List<T>();
-			PageData<List<T>> results = null;
-			int currentPage = 1;
-			int pageSize = 100;
+			IPageDataT<List<T>> results = null;
+			IPageDataRequest currentPageDataRequest = new PageDataRequest(pageDataRequest.FilterCriteria, pageDataRequest.Sort, pageDataRequest.Page, pageDataRequest.PageSize);
 
 			while (results == null
-				|| (results.IsSuccessStatusCode == true && currentPage <= results.TotalPages))
+				|| (results.IsSuccessStatusCode == true && currentPageDataRequest.Page <= results.TotalPages))
 			{
-				results = await getMethodToRun(currentPage, pageSize);
+				results = await getMethodToRun(currentPageDataRequest);
 				if (results.IsSuccessStatusCode)
 				{
 					retVal.AddRange(results.Data);
 				}
 				else
 				{
-					Log.Error($"Failure detected during data retrieval with currentPage = {currentPage} pageSize = {pageSize}.",
-
-					LogMessageType.Instance.Exception_WebApi);
-				}
-
-				currentPage++;
-			}
-
-			return retVal;
-		}
-
-		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<DateTime?, int, int,
-			Task<PageData<List<T>>>> getMethodToRun, DateTime? minUpdatedDate)
-		{
-			List<T> retVal = new List<T>();
-			PageData<List<T>> results = null;
-			int currentPage = 1;
-			int pageSize = 100;
-
-			while (results == null
-				|| (results.IsSuccessStatusCode == true && currentPage <= results.TotalPages))
-			{
-				results = await getMethodToRun(minUpdatedDate, currentPage, pageSize);
-				if (results.IsSuccessStatusCode)
-				{
-					retVal.AddRange(results.Data);
-				}
-				else
-				{
-					string dateString = minUpdatedDate.HasValue ? minUpdatedDate.Value.ToString() : string.Empty;
-					Log.Error($"Failure detected during data retrieval with currentPage = {currentPage} and pageSize = {pageSize} using minUpdatedDate = {dateString}",
+					Log.Error($"Failure detected during data retrieval with currentPage = {currentPageDataRequest.Page} pageSize = {currentPageDataRequest.PageSize}.",
 						LogMessageType.Instance.Exception_WebApi);
 				}
 
-				currentPage++;
-			}
-
-			return retVal;
-		}
-
-		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<bool?, DateTime?, int, int,
-			Task<PageData<List<T>>>> getMethodToRun, bool? isDeleted, DateTime? minUpdatedDate)
-		{
-			List<T> retVal = new List<T>();
-			PageData<List<T>> results = null;
-			int currentPage = 1;
-			int pageSize = 100;
-
-			while (results == null
-				|| (results.IsSuccessStatusCode == true && currentPage <= results.TotalPages))
-			{
-				results = await getMethodToRun(isDeleted, minUpdatedDate, currentPage, pageSize);
-				if (results.IsSuccessStatusCode)
-				{
-					retVal.AddRange(results.Data);
-				}
-				else
-				{
-					string dateString = minUpdatedDate.HasValue ? minUpdatedDate.Value.ToString() : string.Empty;
-					Log.Error($"Failure detected during data retrieval with currentPage = {currentPage} and pageSize = {pageSize} using isDeleted {isDeleted} and minUpdatedDate = {dateString}",
-						LogMessageType.Instance.Exception_WebApi);
-				}
-
-				currentPage++;
-			}
-
-			return retVal;
-		}
-
-		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<short?, DateTime?, int, int,
-			Task<PageData<List<T>>>> getMethodToRun, short? isDeleted, DateTime? minUpdatedDate)
-		{
-			List<T> retVal = new List<T>();
-			PageData<List<T>> results = null;
-			int currentPage = 1;
-			int pageSize = 100;
-
-			while (results == null
-				|| (results.IsSuccessStatusCode == true && currentPage <= results.TotalPages))
-			{
-				results = await getMethodToRun(isDeleted, minUpdatedDate, currentPage, pageSize);
-				if (results.IsSuccessStatusCode)
-				{
-					retVal.AddRange(results.Data);
-				}
-				else
-				{
-					string dateString = minUpdatedDate.HasValue ? minUpdatedDate.Value.ToString() : string.Empty;
-					Log.Error($"Failure detected during data retrieval with currentPage = {currentPage} and pageSize = {pageSize} using isDeleted {isDeleted} and minUpdatedDate = {dateString}",
-						LogMessageType.Instance.Exception_WebApi);
-				}
-
-				currentPage++;
-			}
-
-			return retVal;
-		}
-
-		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<Guid, bool?, DateTime?, int, int,
-			Task<PageData<List<T>>>> getMethodToRun, Guid idCriterion, bool? isDeleted, DateTime? minUpdatedDate)
-		{
-			List<T> retVal = new List<T>();
-			PageData<List<T>> results = null;
-			int currentPage = 1;
-			int pageSize = 100;
-
-			while (results == null
-				|| (results.IsSuccessStatusCode == true && currentPage <= results.TotalPages))
-			{
-				results = await getMethodToRun(idCriterion, isDeleted, minUpdatedDate, currentPage, pageSize);
-				if (results.IsSuccessStatusCode)
-				{
-					retVal.AddRange(results.Data);
-				}
-				else
-				{
-					string dateString = minUpdatedDate.HasValue ? minUpdatedDate.Value.ToString() : string.Empty;
-					Log.Error($"Failure detected during data retrieval with currentPage = {currentPage} and pageSize = {pageSize} using companyId {idCriterion} isDeleted = {isDeleted} and minUpdatedDate = {dateString}",
-						LogMessageType.Instance.Exception_WebApi);
-				}
-
-				currentPage++;
-			}
-
-			return retVal;
-		}
-
-		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<Guid?, bool?, DateTime?, int, int,
-		Task<PageData<List<T>>>> getMethodToRun, Guid? idCriterion, bool? isDeleted, DateTime? minUpdatedDate)
-		{
-			List<T> retVal = new List<T>();
-			PageData<List<T>> results = null;
-			int currentPage = 1;
-			int pageSize = 100;
-
-			while (results == null
-				|| (results.IsSuccessStatusCode == true && currentPage <= results.TotalPages))
-			{
-				results = await getMethodToRun(idCriterion, isDeleted, minUpdatedDate, currentPage, pageSize);
-				if (results.IsSuccessStatusCode)
-				{
-					retVal.AddRange(results.Data);
-				}
-				else
-				{
-					string dateString = minUpdatedDate.HasValue ? minUpdatedDate.Value.ToString() : string.Empty;
-					Log.Error($"Failure detected during data retrieval with currentPage = {currentPage} and pageSize = {pageSize} using companyId {idCriterion} isDeleted = {isDeleted} and minUpdatedDate = {dateString}",
-						LogMessageType.Instance.Exception_WebApi);
-				}
-
-				currentPage++;
-			}
-
-			return retVal;
-		}
-
-		protected virtual async Task<List<T>> GetAllPageDataResultsAsync<T>(Func<int, Guid?, bool?, DateTime?, int, int,
-			Task<PageData<List<T>>>> getMethodToRun, int id, Guid? companyId, bool? isDeleted, DateTime? minUpdatedDate)
-		{
-			List<T> retVal = new List<T>();
-			PageData<List<T>> results = null;
-			int currentPage = 1;
-			int pageSize = 100;
-
-			while (results == null
-				|| (results.IsSuccessStatusCode == true && currentPage <= results.TotalPages))
-			{
-				results = await getMethodToRun(id, companyId, isDeleted, minUpdatedDate, currentPage, pageSize);
-				if (results.IsSuccessStatusCode)
-				{
-					retVal.AddRange(results.Data);
-				}
-				else
-				{
-					string dateString = minUpdatedDate.HasValue ? minUpdatedDate.Value.ToString() : string.Empty;
-					Log.Error($"Failure detected during data retrieval with currentPage = {currentPage} and pageSize = {pageSize} using companyId {companyId} isDeleted = {isDeleted} and minUpdatedDate = {dateString}",
-						LogMessageType.Instance.Exception_WebApi);
-				}
-
-				currentPage++;
+				currentPageDataRequest.Page += 1;
 			}
 
 			return retVal;

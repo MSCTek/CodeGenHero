@@ -144,12 +144,19 @@ namespace CodeGenHero.BingoBuzz.Model.BB
 		{
 			get
 			{
-				if (_bingoInstanceEvents == null && _dto != null && _dto.BingoInstanceEvents != null)
-				{
-					_bingoInstanceEvents = new List<IBingoInstanceEvent>();
-					foreach (var dtoItem in _dto.BingoInstanceEvents)
-					{
-						_bingoInstanceEvents.Add(new BingoInstanceEvent(Log, DataService, dtoItem));
+				if (_bingoInstanceEvents == null && _dto != null)
+				{	// The core DTO object is loaded, but this property is not loaded.
+					if (_dto.BingoInstanceEvents != null)
+					{	// The core DTO object has data for this property, load it into the model.
+						_bingoInstanceEvents = new List<IBingoInstanceEvent>();
+						foreach (var dtoItem in _dto.BingoInstanceEvents)
+						{
+							_bingoInstanceEvents.Add(new BingoInstanceEvent(Log, DataService, dtoItem));
+						}
+					}
+					else
+					{	// Trigger the load data request - The core DTO object is loaded and does not have data for this property.
+						OnLazyLoadRequest(this, new LoadRequestBingoInstanceContent(nameof(BingoInstanceEvents)));
 					}
 				}
 

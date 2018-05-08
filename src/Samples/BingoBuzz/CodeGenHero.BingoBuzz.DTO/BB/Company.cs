@@ -5,8 +5,6 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public Company()
 		{
-			// Meetings = new System.Collections.Generic.List<Meeting>(); -- Excluded navigation property per configuration.
-
 			InitializePartial();
 		}
 

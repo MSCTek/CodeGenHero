@@ -5,27 +5,6 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public User()
 		{
-			// BingoContents_UpdatedUserId = new System.Collections.Generic.List<BingoContent>(); -- Excluded navigation property per configuration.
-			// CreatedUser = new System.Collections.Generic.List<BingoContent>(); -- Excluded navigation property per configuration.
-			// BingoInstances_CreatedUserId = new System.Collections.Generic.List<BingoInstance>(); -- Excluded navigation property per configuration.
-			// BingoInstances_UpdatedUserId = new System.Collections.Generic.List<BingoInstance>(); -- Excluded navigation property per configuration.
-			// BingoInstanceContents_CreatedUserId = new System.Collections.Generic.List<BingoInstanceContent>(); -- Excluded navigation property per configuration.
-			// BingoInstanceContents_UpdatedUserId = new System.Collections.Generic.List<BingoInstanceContent>(); -- Excluded navigation property per configuration.
-			// BingoInstanceContents_UserId = new System.Collections.Generic.List<BingoInstanceContent>(); -- Excluded navigation property per configuration.
-			// BingoInstanceEvents_CreatedUserId = new System.Collections.Generic.List<BingoInstanceEvent>(); -- Excluded navigation property per configuration.
-			// BingoInstanceEvents_UpdatedUserId = new System.Collections.Generic.List<BingoInstanceEvent>(); -- Excluded navigation property per configuration.
-			// Companies_CreatedUserId = new System.Collections.Generic.List<Company>(); -- Excluded navigation property per configuration.
-			// Companies_UpdatedUserId = new System.Collections.Generic.List<Company>(); -- Excluded navigation property per configuration.
-			// Meetings_CreatedUserId = new System.Collections.Generic.List<Meeting>(); -- Excluded navigation property per configuration.
-			// Meetings_UpdatedUserId = new System.Collections.Generic.List<Meeting>(); -- Excluded navigation property per configuration.
-			// MeetingAttendees_CreatedUserId = new System.Collections.Generic.List<MeetingAttendee>(); -- Excluded navigation property per configuration.
-			// MeetingAttendees_UpdatedUserId = new System.Collections.Generic.List<MeetingAttendee>(); -- Excluded navigation property per configuration.
-			// MeetingAttendees_UserId = new System.Collections.Generic.List<MeetingAttendee>(); -- Excluded navigation property per configuration.
-			// MeetingSchedules_CreatedUserId = new System.Collections.Generic.List<MeetingSchedule>(); -- Excluded navigation property per configuration.
-			// MeetingSchedules_UpdatedUserId = new System.Collections.Generic.List<MeetingSchedule>(); -- Excluded navigation property per configuration.
-			// Users_CreatedUserId = new System.Collections.Generic.List<User>(); -- Excluded navigation property per configuration.
-			// Users_UpdatedUserId = new System.Collections.Generic.List<User>(); -- Excluded navigation property per configuration.
-
 			InitializePartial();
 		}
 

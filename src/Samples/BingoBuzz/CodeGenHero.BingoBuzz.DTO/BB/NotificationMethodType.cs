@@ -5,8 +5,6 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public NotificationMethodType()
 		{
-			// NotificationRules = new System.Collections.Generic.List<NotificationRule>(); -- Excluded navigation property per configuration.
-
 			InitializePartial();
 		}
 

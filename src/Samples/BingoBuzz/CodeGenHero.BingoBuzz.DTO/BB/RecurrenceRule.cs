@@ -5,8 +5,6 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 	{
 		public RecurrenceRule()
 		{
-			// MeetingSchedules = new System.Collections.Generic.List<MeetingSchedule>(); -- Excluded navigation property per configuration.
-
 			InitializePartial();
 		}
 
