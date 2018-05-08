@@ -9,8 +9,8 @@ namespace CodeGenHero.BingoBuzz.Constants
         public static string AppCenterSecretUWP = "8a9cdc03-ee8d-44a3-9d46-fd2729e29794";
 
         public static string BaseFileUrl = string.Empty;
-        //public static string BaseWebApiUrl = "http://bingobuzz.azurewebsites.net/api/BB/";
-		public static string BaseWebApiUrl = "http://localhost/CodeGenHero.BingoBuzz.API/api/BB/";
+        public static string BaseWebApiUrl = "http://bingobuzz.azurewebsites.net/api/BB/";
+		//public static string BaseWebApiUrl = "http://localhost/CodeGenHero.BingoBuzz.API/api/BB/";
 
 		public static string ConnectionIdentifier = string.Empty;
     }

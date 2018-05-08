@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using CodeGenHero.BingoBuzz.Xam.ModelObj.BB;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
@@ -13,8 +14,24 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         {
         }
 
+        public User CurrentUser
+        {
+            get { return _currentUser; }
+            set { Set(ref _currentUser, value); }
+        }
+        public Company CurrentCompany
+        {
+            get { return _currentCompany; }
+            set { Set(ref _currentCompany, value); }
+        }
+
+        private Company _currentCompany;
+        private User _currentUser;
+
         public override async Task Init()
         {
+            CurrentUser = StateService.GetCurrentUser();
+            CurrentCompany = await DataRetrievalService.GetCompanyByIdOrNull(CurrentUser.CompanyId);
         }
     }
 }

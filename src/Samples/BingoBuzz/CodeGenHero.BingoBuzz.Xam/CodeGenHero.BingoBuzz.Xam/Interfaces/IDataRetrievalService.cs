@@ -21,8 +21,9 @@ namespace CodeGenHero.BingoBuzz.Xam.Interfaces
 
         Task<ModelObj.BB.User> GetUserByEmailOrNullAsync(string email);
 
-       
-        Task<List<ModelObj.BB.MeetingAttendee>> GetMeetingAttendeesAsync(Guid meetingId);
+        Task<ModelObj.BB.Company> GetCompanyByIdOrNull(Guid companyId);
+
+         Task<List<ModelObj.BB.MeetingAttendee>> GetMeetingAttendeesAsync(Guid meetingId);
 
         Task<ModelObj.BB.Meeting> GetMeetingOrNullAsync(Guid meetingId);
 

@@ -34,6 +34,11 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
             throw new NotImplementedException();
         }
 
+        public Task<Company> GetCompanyByIdOrNull(Guid companyId)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<BingoInstance> GetCurrentBingoInstanceOrNullAsync(Guid meetingId)
         {
             throw new NotImplementedException();

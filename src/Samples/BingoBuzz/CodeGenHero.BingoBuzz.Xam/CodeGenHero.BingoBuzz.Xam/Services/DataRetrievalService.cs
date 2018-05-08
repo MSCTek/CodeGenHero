@@ -176,6 +176,17 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             return null;
         }
 
+        public async Task<ModelObj.BB.Company> GetCompanyByIdOrNull(Guid companyId)
+        {
+            var company = (await _asyncConnection.Table<ModelData.BB.Company>()
+                .Where(x => x.CompanyId == companyId && x.IsDeleted == false).FirstOrDefaultAsync());
+            if (company != null)
+            {
+                return company.ToModelObj();
+            }
+            return null;
+        }
+
         public async Task<ModelObj.BB.User> GetUserByEmailOrNullAsync(string email)
         {
             var emailLower = email.ToLower();

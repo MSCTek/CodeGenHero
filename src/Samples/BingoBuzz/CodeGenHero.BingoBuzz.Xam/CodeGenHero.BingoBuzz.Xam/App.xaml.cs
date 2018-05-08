@@ -22,6 +22,9 @@ namespace CodeGenHero.BingoBuzz.Xam
 
         public App(params INinjectModule[] platformModules)
         {
+            // Initialize Live Reload.
+            LiveReload.Init();
+
             InitializeComponent();
 
             var mainPage = new SplashPage() as ContentPage;
