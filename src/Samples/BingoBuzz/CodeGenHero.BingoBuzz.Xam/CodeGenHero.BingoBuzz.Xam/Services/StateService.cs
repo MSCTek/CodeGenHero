@@ -28,5 +28,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
         {
             _currentUser = user;
         }
+
+      
     }
 }

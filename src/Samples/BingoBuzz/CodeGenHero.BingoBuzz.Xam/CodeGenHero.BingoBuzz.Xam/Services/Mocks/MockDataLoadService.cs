@@ -11,5 +11,10 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
         public async Task InsertAllDataCleanLocalDB()
         {
         }
+
+        public async Task InsertOrReplaceAuthenticatedUser(Guid userId)
+        {
+           
+        }
     }
 }

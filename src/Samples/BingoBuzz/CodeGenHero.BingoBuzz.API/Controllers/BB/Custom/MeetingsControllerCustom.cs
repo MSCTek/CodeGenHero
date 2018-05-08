@@ -66,13 +66,14 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 		}
 
 
-		/// <summary>
-		/// A sample implementation of custom logic used to include related entities to return with a DTO.
-		/// </summary>
-		/// <param name="qryItem"></param>
-		/// <param name="id"></param>
-		/// <param name="numChildLevels"></param>
-		partial void RunCustomLogicOnGetQueryableByPK(ref IQueryable<entBB.Meeting> qryItem, System.Guid meetingId, int numChildLevels)
+
+        /// <summary>
+        /// A sample implementation of custom logic used to include related entities to return with a DTO.
+        /// </summary>
+        /// <param name="qryItem"></param>
+        /// <param name="id"></param>
+        /// <param name="numChildLevels"></param>
+        partial void RunCustomLogicOnGetQueryableByPK(ref IQueryable<entBB.Meeting> qryItem, System.Guid meetingId, int numChildLevels)
 		 {
 			 if (numChildLevels > 0)
 			 {

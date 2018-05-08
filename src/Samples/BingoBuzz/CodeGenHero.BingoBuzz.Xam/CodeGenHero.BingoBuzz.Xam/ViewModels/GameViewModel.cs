@@ -69,8 +69,10 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                         selectedContent.IsSelected = true;
                     }
                     RaisePropertyChanged(nameof(BingoInstanceContent));
+                    DataRetrievalService.CreateSendNewBingoInstanceEvent(bingoInstanceContentId, BingoInstance.BingoInstanceId, Constants.Enums.BingoInstanceEventType.SquareClicked);
                     if (await CheckForBingo())
                     {
+                        DataRetrievalService.CreateSendNewBingoInstanceEvent(bingoInstanceContentId, BingoInstance.BingoInstanceId, Constants.Enums.BingoInstanceEventType.Bingo);
                         //TODO: game is over
                         await NavService.NavigateToNoAnimation<WelcomeViewModel>();
                     }

@@ -11,5 +11,9 @@ namespace CodeGenHero.BingoBuzz.API.Client.Interface
 	{
 		Task<PageData<List<Meeting>>> GetMeetingsAndAttendeesByUserId(Guid userId, DateTime? minUpdatedDate, bool? isDeleted, string sort = null, int page = 1, int pageSize = 100);
 
-	}
+        Task<PageData<List<BingoInstance>>> GetInstancesAndEventsByMeetingId(Guid meetingId, DateTime? minUpdatedDate, bool? isDeleted, string sort = null, int page = 1, int pageSize = 100);
+
+        Task<HttpCallResult<BingoInstance>> CreateBingoInstanceWithContentAsync(BingoInstance item);
+
+    }
 }

@@ -10,5 +10,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Interfaces
     public interface IDataDownloadService
     {
         Task InsertAllDataCleanLocalDB();
+
+        Task InsertOrReplaceAuthenticatedUser(Guid userId);
     }
 }

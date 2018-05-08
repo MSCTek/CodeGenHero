@@ -106,5 +106,10 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Design
             int numUsersInserted = await _asyncConnection.InsertAllAsync(users);
             _log.Debug($"Inserted {numUsersInserted} user records", LogMessageType.Instance.Info_Synchronization);
         }
+
+        public Task InsertOrReplaceAuthenticatedUser(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

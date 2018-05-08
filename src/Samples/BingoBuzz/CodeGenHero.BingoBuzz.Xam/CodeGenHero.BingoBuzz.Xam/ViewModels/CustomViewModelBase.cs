@@ -59,7 +59,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private bool _isBusy;
         private bool _isDev;
 
-        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService)
+        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService)
         {
             if (navService == null)
                 throw new ArgumentException("Invalid navService");
@@ -72,6 +72,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
             NavService = navService;
             DataRetrievalService = dataRetrievalService;
+            DataDownloadService = dataDownloadService;
             StateService = stateService;
 
             IsDev = false;
@@ -151,6 +152,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         protected static INavigationService NavService { get; set; }
         protected IStateService StateService { get; set; }
         protected IDataRetrievalService DataRetrievalService { get; set; }
+        protected IDataDownloadService DataDownloadService { get; set; }
 
         public override void Cleanup()
         {

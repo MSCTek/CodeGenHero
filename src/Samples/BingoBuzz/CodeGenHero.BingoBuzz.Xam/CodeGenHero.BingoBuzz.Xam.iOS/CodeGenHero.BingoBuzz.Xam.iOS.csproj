@@ -128,8 +128,8 @@
     <PackageReference Include="Microsoft.AppCenter.Crashes">
       <Version>1.6.0</Version>
     </PackageReference>
-    <PackageReference Include="Portable.Ninject">
-      <Version>3.3.1</Version>
+    <PackageReference Include="Ninject">
+      <Version>3.3.4</Version>
     </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.1.4.135-beta</Version>
@@ -149,7 +149,7 @@
     <PackageReference Include="Xam.Plugins.Vibrate">
       <Version>4.0.0.1-beta</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
+    <PackageReference Include="Xamarin.Forms" Version="3.0.0.446417" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\tab_about.png" />

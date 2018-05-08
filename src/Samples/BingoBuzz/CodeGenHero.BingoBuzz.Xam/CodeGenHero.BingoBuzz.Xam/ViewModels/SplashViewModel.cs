@@ -9,7 +9,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
     public class SplashViewModel : CustomViewModelBase
     {
-        public SplashViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService) : base(navService, dataRetrievalService, stateService)
+        public SplashViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService) : base(navService, dataRetrievalService, dataDownloadService, stateService)
         {
         }
 
