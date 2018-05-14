@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.5
+Bug Fixes & Enhancements:
+* Made ICRUDOperation operations asynchronous.
+
 ### 1.0.2
 Bug Fixes & Enhancements:
 * Undo signed assembly via strong name key file.

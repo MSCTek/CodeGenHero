@@ -23,7 +23,7 @@
 		public PageData(int currentPage, bool isSuccessStatusCode, string nextPageLink, int pageSize, string previousPageLink, int totalCount, int totalPages)
 		{
 			CurrentPage = currentPage;
-			IsSuccessStatusCode = isSuccessStatusCode;
+			//IsSuccessStatusCode = isSuccessStatusCode;
 			NextPageLink = nextPageLink;
 			PageSize = pageSize;
 			PreviousPageLink = previousPageLink;
@@ -32,7 +32,7 @@
 		}
 
 		public int CurrentPage { get; set; }
-		public bool IsSuccessStatusCode { get; set; }
+		//public bool IsSuccessStatusCode { get; set; }
 		public string NextPageLink { get; set; }
 		public int PageSize { get; set; }
 		public string PreviousPageLink { get; set; }

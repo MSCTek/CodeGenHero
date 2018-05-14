@@ -21,7 +21,7 @@ This package should be added to projects that are the target of CodeGenHero temp
     <PackageTags>CodeGenerator CodeGen MSCTek repository</PackageTags>
     <PackageReleaseNotes>Classes to support the repository pattern.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>

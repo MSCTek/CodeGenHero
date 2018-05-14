@@ -1,5 +1,13 @@
 ﻿## Changelog
 
+### 1.0.23
+Bug Fixes & Enhancements:
+* SerializationHelper SerializeCallResultsGet now returns IPageDataT instead of PageData concrete class.
+
+### 1.0.22
+Bug Fixes & Enhancements:
+* SerializationHelper changes to return PageData<T> from SerializeCallResultsGet<T> methods.  Better error information returned to data service client methods from SerializationHelper.
+
 ### 1.0.21
 Bug Fixes & Enhancements:
 * Update to add PageDataRequest and FilterCriterion classes.

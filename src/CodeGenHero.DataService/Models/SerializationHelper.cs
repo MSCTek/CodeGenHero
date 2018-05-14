@@ -20,7 +20,7 @@ namespace CodeGenHero.DataService
 
 		public static SerializationHelper Instance { get { return _lazyInstance.Value; } }
 
-		public virtual async Task<HttpCallResult<T>> MakeWebApiBSONCall<T>(
+		public virtual async Task<IHttpCallResultCGHT<T>> MakeWebApiBSONCall<T>(
 			Enums.HttpVerb httpVerb, ILoggingService log, HttpClient client, string requestUri, T item) where T : class
 		{
 			T retValData = default(T);
@@ -63,10 +63,11 @@ namespace CodeGenHero.DataService
 			return retVal;
 		}
 
-		public virtual async Task<HttpCallResult<T>> MakeWebApiFromBodyCall<T>(
+		public virtual async Task<IHttpCallResultCGHT<T>> MakeWebApiFromBodyCall<T>(
 			Enums.HttpVerb httpVerb, ILoggingService log, HttpClient client, string requestUri, T item) where T : class
 		{
 			T retValData = default(T);
+			System.Net.Http.HttpResponseMessage response = null;
 			HttpCallResult<T> retVal = new HttpCallResult<T>();
 
 			try
@@ -79,7 +80,6 @@ namespace CodeGenHero.DataService
 
 				inputMessage.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-				System.Net.Http.HttpResponseMessage response = null;
 				if (httpVerb == Enums.HttpVerb.Post)
 				{
 					response = client.PostAsync(requestUri, inputMessage.Content).Result;
@@ -109,17 +109,25 @@ namespace CodeGenHero.DataService
 			}
 			catch (Exception ex)
 			{
-				retVal.Exception = ex;
+				log.Error(message: $"HttpClient {nameof(MakeWebApiFromBodyCall)} call resulted in error - status code: {response?.StatusCode} " +
+					$"reason: {response?.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Exception_WebApiClient, ex: ex,
+					httpResponseStatusCode: (int)response?.StatusCode, url: requestUri);
+
+				retVal = new HttpCallResult<T>(data: null, requestUri: requestUri, isSuccessStatusCode: response != null ? response.IsSuccessStatusCode : false,
+					statusCode: response != null ? response.StatusCode : System.Net.HttpStatusCode.InternalServerError,
+					reasonPhrase: response != null ? response.ReasonPhrase : ex.Message, exception: ex);
 			}
 
 			return retVal;
 		}
 
-		public virtual async Task<HttpCallResult<T>> SerializeCallResultsDelete<T>(
+		public virtual async Task<IHttpCallResultCGHT<T>> SerializeCallResultsDelete<T>(
 			ILoggingService log, HttpClient client, string webApiRequestUrl) where T : class
 		{
-			var retVal = new HttpCallResult<T>();
-			retVal.IsSuccessStatusCode = false;
+			var retVal = new HttpCallResult<T>
+			{
+				IsSuccessStatusCode = false
+			};
 
 			HttpResponseMessage response = null;
 			string requestUri = webApiRequestUrl; ;
@@ -140,14 +148,19 @@ namespace CodeGenHero.DataService
 			}
 			catch (Exception ex)
 			{
-				log.Error(message: $"HttpClient delete call resulted in error - status code: {response?.StatusCode} reason: {response?.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Exception_WebApiClient, ex: ex,
+				log.Error(message: $"HttpClient {nameof(SerializeCallResultsDelete)} call resulted in error - status code: {response?.StatusCode} " +
+					$"reason: {response?.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Exception_WebApiClient, ex: ex,
 					httpResponseStatusCode: (int)response?.StatusCode, url: requestUri);
+
+				retVal = new HttpCallResult<T>(data: null, requestUri: requestUri, isSuccessStatusCode: response != null ? response.IsSuccessStatusCode : false,
+					statusCode: response != null ? response.StatusCode : System.Net.HttpStatusCode.InternalServerError,
+					reasonPhrase: response != null ? response.ReasonPhrase : ex.Message, exception: ex);
 			}
 
 			return retVal;
 		}
 
-		public virtual async Task<HttpCallResult<T>> SerializeCallResultsGet<T>(
+		public virtual async Task<IHttpCallResultCGHT<T>> SerializeCallResultsGet<T>(
 			ILoggingService log, HttpClient client, string webApiRequestUrl) where T : class
 		{
 			var retVal = new HttpCallResult<T>();
@@ -168,7 +181,7 @@ namespace CodeGenHero.DataService
 				}
 				else
 				{
-					log.Warn(message: $"HttpClient get call was not successful - reason: {response.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Warn_WebApiClient,
+					log.Warn(message: $"HttpClient get call was not successful in {nameof(SerializeCallResultsGet)}_1 - reason: {response.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Warn_WebApiClient,
 						httpResponseStatusCode: (int)response.StatusCode, url: requestUri);
 				}
 
@@ -178,142 +191,156 @@ namespace CodeGenHero.DataService
 			}
 			catch (Exception ex)
 			{
-				int? statusCode = response == null ? null : (int?)response.StatusCode;
-				log.Error(message: $"HttpClient get call resulted in error - status code: {response?.StatusCode} reason: {response?.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Exception_WebApiClient, ex: ex,
-					httpResponseStatusCode: statusCode, url: requestUri);
+				log.Error(message: $"HttpClient {nameof(SerializeCallResultsGet)}_1 call resulted in error - status code: {response?.StatusCode} " +
+					$"reason: {response?.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Exception_WebApiClient, ex: ex,
+					httpResponseStatusCode: (int)response?.StatusCode, url: requestUri);
+
+				retVal = new HttpCallResult<T>(data: null, requestUri: requestUri, isSuccessStatusCode: response != null ? response.IsSuccessStatusCode : false,
+					statusCode: response != null ? response.StatusCode : System.Net.HttpStatusCode.InternalServerError,
+					reasonPhrase: response != null ? response.ReasonPhrase : ex.Message, exception: ex);
 			}
 
 			return retVal;
 		}
 
-		public virtual async Task<PageData<T>> SerializeCallResultsGet<T>(
+		public virtual async Task<IHttpCallResultCGHT<IPageDataT<T>>> SerializeCallResultsGet<T>(
 			ILoggingService log, HttpClient client, string webApiParameterlessPath,
-			List<string> filter, int page, int pageSize) where T : class
+			IList<string> filter, int page, int pageSize) where T : class
 		{
-			var retVal = new PageData<T>();
+			var retVal = new HttpCallResult<IPageDataT<T>>();
 			T retValData = default(T);
 			retVal.IsSuccessStatusCode = false;
 
 			HttpResponseMessage response = null;
-			string webApiRequestUrl = null;
+			string requestUri = null;
+			PageData<T> pageData = null;
 
 			try
 			{
-				webApiRequestUrl = AddFilterToPath(webApiParameterlessPath, filter);
-				webApiRequestUrl = AddPagingToPath(webApiRequestUrl, page, pageSize);
-				response = await client.GetAsync(webApiRequestUrl);
+				requestUri = AddFilterToPath(webApiParameterlessPath, filter);
+				requestUri = AddPagingToPath(requestUri, page, pageSize);
+				response = await client.GetAsync(requestUri);
 
 				if (response.IsSuccessStatusCode)
 				{
 					string content = await response.Content.ReadAsStringAsync();
 					retValData = JsonConvert.DeserializeObject<T>(content); // , new GuidBoolJsonConverter());
-					retVal.Data = retValData;
+					pageData = new PageData<T>(retValData);
 
 					var headers = response.Headers;
-					IEnumerable<string> values;
-					headers.TryGetValues("X-Pagination", out values);
+					headers.TryGetValues("X-Pagination", out IEnumerable<string> values);
 
 					var e = values.GetEnumerator();
 					if (e.MoveNext())
 					{
 						var x = JsonConvert.DeserializeObject<PageData>(e.Current);
-						retVal.CurrentPage = x.CurrentPage;
-						retVal.NextPageLink = x.NextPageLink;
-						retVal.PageSize = x.PageSize;
-						retVal.PreviousPageLink = x.PreviousPageLink;
-						retVal.TotalCount = x.TotalCount;
-						retVal.TotalPages = x.TotalPages;
+						pageData.CurrentPage = x.CurrentPage;
+						pageData.NextPageLink = x.NextPageLink;
+						pageData.PageSize = x.PageSize;
+						pageData.PreviousPageLink = x.PreviousPageLink;
+						pageData.TotalCount = x.TotalCount;
+						pageData.TotalPages = x.TotalPages;
 					}
-
-					retVal.IsSuccessStatusCode = true;
 				}
 				else
 				{
-					log.Warn(message: $"HttpClient get call was not successful - status code: {response.StatusCode} reason: {response.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Warn_WebApiClient,
-						httpResponseStatusCode: (int)response.StatusCode, url: webApiRequestUrl);
+					log.Warn(message: $"HttpClient get call was not successful in {nameof(SerializeCallResultsGet)}_2 - reason: {response.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Warn_WebApiClient,
+						httpResponseStatusCode: (int)response.StatusCode, url: requestUri);
 				}
+
+				retVal = new HttpCallResult<IPageDataT<T>>(data: pageData, requestUri: requestUri, isSuccessStatusCode: response.IsSuccessStatusCode,
+					statusCode: response.StatusCode, reasonPhrase: response.ReasonPhrase);
 			}
 			catch (Exception ex)
 			{
-				int? statusCode = response == null ? null : (int?)response.StatusCode;
-				log.Error(message: $"HttpClient get call resulted in error - status code: {response?.StatusCode} reason: {response?.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Exception_WebApiClient,
-					ex: ex, httpResponseStatusCode: statusCode, url: webApiRequestUrl);
+				log.Error(message: $"HttpClient {nameof(SerializeCallResultsGet)}_2 call resulted in error - status code: {response?.StatusCode} " +
+					$"reason: {response?.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Exception_WebApiClient, ex: ex,
+					httpResponseStatusCode: (int)response?.StatusCode, url: requestUri);
+
+				retVal = new HttpCallResult<IPageDataT<T>>(data: null, requestUri: requestUri, isSuccessStatusCode: response != null ? response.IsSuccessStatusCode : false,
+					statusCode: response != null ? response.StatusCode : System.Net.HttpStatusCode.InternalServerError,
+					reasonPhrase: response != null ? response.ReasonPhrase : ex.Message, exception: ex);
 			}
 
 			return retVal;
 		}
 
-		public virtual async Task<PageData<T>> SerializeCallResultsGet<T>(
-			ILoggingService log, HttpClient client, string webApiParameterlessPath, List<string> fields,
-			List<string> filter, int page, int pageSize) where T : class
+		public virtual async Task<IHttpCallResultCGHT<IPageDataT<T>>> SerializeCallResultsGet<T>(
+			ILoggingService log, HttpClient client, string webApiParameterlessPath, IList<string> fields,
+			IList<string> filter, int page, int pageSize) where T : class
 		{
-			var retVal = new PageData<T>();
+			var retVal = new HttpCallResult<IPageDataT<T>>();
 			T retValData = default(T);
 			retVal.IsSuccessStatusCode = false;
 
 			HttpResponseMessage response = null;
-			string webApiRequestUrl = null;
+			string requestUri = null;
+			PageData<T> pageData = null;
 
 			try
 			{
-				webApiRequestUrl = AddFilterToPath(webApiParameterlessPath, filter);
-				webApiRequestUrl = AddPagingToPath(webApiRequestUrl, page, pageSize);
-				webApiRequestUrl = AddFieldsToPath(webApiRequestUrl, fields);
-				response = await client.GetAsync(webApiRequestUrl);
+				requestUri = AddFilterToPath(webApiParameterlessPath, filter);
+				requestUri = AddPagingToPath(requestUri, page, pageSize);
+				requestUri = AddFieldsToPath(requestUri, fields);
+				response = await client.GetAsync(requestUri);
 
 				if (response.IsSuccessStatusCode)
 				{
 					string content = await response.Content.ReadAsStringAsync();
 					retValData = JsonConvert.DeserializeObject<T>(content); //, new GuidBoolJsonConverter());
-					retVal.Data = retValData;
+					pageData = new PageData<T>(retValData);
 
 					var headers = response.Headers;
-					IEnumerable<string> values;
-					headers.TryGetValues("X-Pagination", out values);
+					headers.TryGetValues("X-Pagination", out IEnumerable<string> values);
 
 					var e = values.GetEnumerator();
 					if (e.MoveNext())
 					{
 						var x = JsonConvert.DeserializeObject<PageData>(e.Current);
-						retVal.CurrentPage = x.CurrentPage;
-						retVal.NextPageLink = x.NextPageLink;
-						retVal.PageSize = x.PageSize;
-						retVal.PreviousPageLink = x.PreviousPageLink;
-						retVal.TotalCount = x.TotalCount;
-						retVal.TotalPages = x.TotalPages;
+						pageData.CurrentPage = x.CurrentPage;
+						pageData.NextPageLink = x.NextPageLink;
+						pageData.PageSize = x.PageSize;
+						pageData.PreviousPageLink = x.PreviousPageLink;
+						pageData.TotalCount = x.TotalCount;
+						pageData.TotalPages = x.TotalPages;
 					}
-
-					retVal.IsSuccessStatusCode = true;
 				}
 				else
 				{
-					log.Warn(message: $"HttpClient get call was not successful - status code: {response.StatusCode} reason: {response.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Warn_WebApiClient,
-						httpResponseStatusCode: (int)response.StatusCode, url: webApiRequestUrl);
+					log.Warn(message: $"HttpClient get call was not successful in {nameof(SerializeCallResultsGet)}_3 - reason: {response.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Warn_WebApiClient,
+						httpResponseStatusCode: (int)response.StatusCode, url: requestUri);
 				}
+
+				retVal = new HttpCallResult<IPageDataT<T>>(data: pageData, requestUri: requestUri, isSuccessStatusCode: response.IsSuccessStatusCode,
+					statusCode: response.StatusCode, reasonPhrase: response.ReasonPhrase);
 			}
 			catch (Exception ex)
 			{
-				int? statusCode = response == null ? null : (int?)response.StatusCode;
-				log.Error(message: $"HttpClient get call resulted in error - status code: {response?.StatusCode} reason: {response?.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Exception_WebApiClient,
-					ex: ex, httpResponseStatusCode: statusCode, url: webApiRequestUrl);
+				log.Error(message: $"HttpClient {nameof(SerializeCallResultsGet)}_3 call resulted in error - status code: {response?.StatusCode} " +
+					$"reason: {response?.ReasonPhrase}.", logMessageType: LogMessageType.Instance.Exception_WebApiClient, ex: ex,
+					httpResponseStatusCode: (int)response?.StatusCode, url: requestUri);
+
+				retVal = new HttpCallResult<IPageDataT<T>>(data: null, requestUri: requestUri, isSuccessStatusCode: response != null ? response.IsSuccessStatusCode : false,
+					statusCode: response != null ? response.StatusCode : System.Net.HttpStatusCode.InternalServerError,
+					reasonPhrase: response != null ? response.ReasonPhrase : ex.Message, exception: ex);
 			}
 
 			return retVal;
 		}
 
-		public virtual async Task<HttpCallResult<T>> SerializeCallResultsPost<T>(
+		public virtual async Task<IHttpCallResultCGHT<T>> SerializeCallResultsPost<T>(
 			ILoggingService log, HttpClient client, string requestUri, T item) where T : class
 		{
 			return await MakeWebApiFromBodyCall<T>(Enums.HttpVerb.Post, log, client, requestUri, item);
 		}
 
-		public virtual async Task<HttpCallResult<T>> SerializeCallResultsPut<T>(
+		public virtual async Task<IHttpCallResultCGHT<T>> SerializeCallResultsPut<T>(
 			ILoggingService log, HttpClient client, string requestUri, T item) where T : class
 		{
 			return await MakeWebApiFromBodyCall<T>(Enums.HttpVerb.Put, log, client, requestUri, item);
 		}
 
-		private string AddFieldsToPath(string requestURL, List<string> fields)
+		private string AddFieldsToPath(string requestURL, IList<string> fields)
 		{
 			string retVal = requestURL;
 			if (fields.Count == 0)
@@ -333,7 +360,7 @@ namespace CodeGenHero.DataService
 			return $"{retVal}fields={string.Join(",", fields)}";
 		}
 
-		private string AddFilterToPath(string requestURL, List<string> filter)
+		private string AddFilterToPath(string requestURL, IList<string> filter)
 		{
 			string retVal = requestURL;
 			if (filter == null || filter.Count == 0)
