@@ -11,7 +11,24 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
+            
             <ctr:CustomHeader Grid.Row="0" ShowBackButton="True" Title="My Stats" ShowHamburger="False" />
+
+            <FlexLayout Grid.Row="1"  Direction="Column" Margin="75,20" >
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding NumGames}" FontSize="Large"/>
+                    <Label Text="Total Number of Games" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding NumSquaresClicked}" FontSize="Large"/>
+                    <Label Text="Number of Squares Clicked" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding NumBingos}" FontSize="Large"/>
+                    <Label Text="Total Number of Bingos" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </FlexLayout>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

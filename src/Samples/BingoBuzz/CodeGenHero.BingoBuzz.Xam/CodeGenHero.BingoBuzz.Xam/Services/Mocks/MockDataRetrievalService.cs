@@ -73,5 +73,21 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
         {
             throw new NotImplementedException();
         }
+
+        public Task<int> GetTotalNumberOfBingos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> GetTotalNumberOfGames()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> GetTotalNumberOfSquareClicks()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

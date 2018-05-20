@@ -14,7 +14,7 @@
             </Grid.RowDefinitions>
             <ctr:CustomHeader Grid.Row="0" ShowBackButton="True" Title="My Profile" ShowHamburger="False" />
 
-            <FlexLayout Grid.Row="1"  Direction="Column" >
+            <FlexLayout Grid.Row="1"  Direction="Column" Margin="75,20" >
                 <StackLayout Orientation="Horizontal">
                     <Label Text="UserId:"/>
                     <Label Text="{Binding CurrentUser.UserIdDisplay}" FontAttributes="Bold"/>
@@ -35,8 +35,8 @@
                     <Label Text="Created:"/>
                     <Label Text="{Binding CurrentUser.CreatedDate, StringFormat='{}{0:MMM dd yyyy}'}" FontAttributes="Bold"/>
                 </StackLayout>
-                
             </FlexLayout>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>
