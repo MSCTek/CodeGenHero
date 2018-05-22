@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using cghConstants = CodeGenHero.DataService.Constants;
 using CodeGenHero.Logging;
 using Newtonsoft.Json;
+using System.Collections.Concurrent;
 
 namespace CodeGenHero.DataService
 {
@@ -101,19 +102,46 @@ namespace CodeGenHero.DataService
 			return GetClient(DefaultAuthenticationHeaderValue, requestedVersion, DefaultConnectionIdentifier);
 		}
 
+		static ConcurrentDictionary<string, HttpClient> _httpClients = new ConcurrentDictionary<string, HttpClient>();
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="authorization"></param>
+		/// <param name="requestedVersion"></param>
+		/// <param name="connectionIdentifier"></param>
+		/// <remarks>Converted to use a static implementation because HttpClient, is actually a shared object. Under the covers it is reentrant and thread safe.</remarks>
+		/// <seealso cref="https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/"/>
+		/// <returns></returns>
 		public virtual HttpClient GetClient(AuthenticationHeaderValue authorization, int requestedVersion, string connectionIdentifier)
 		{
-			HttpClient client = new HttpClient
+			string key = $"{requestedVersion}:{connectionIdentifier}:{authorization}";
+
+			if (_httpClients.Count > 1000)
+			{	// Cache up to 1000 http clients instances.
+				_httpClients.Clear();
+			}
+
+			HttpClient retVal = _httpClients.GetOrAdd(key, x => {
+				var newClient = GetNewHttpClient(authorization, requestedVersion, connectionIdentifier); 
+				return newClient;
+			});
+
+			return retVal;
+		}
+
+		private HttpClient GetNewHttpClient(AuthenticationHeaderValue authorization, int requestedVersion, string connectionIdentifier)
+		{
+			HttpClient retVal = new HttpClient
 			{
 				BaseAddress = new Uri(ExecutionContext.BaseWebApiUrl)
 			};
-			client.DefaultRequestHeaders.Accept.Clear();
-			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			retVal.DefaultRequestHeaders.Accept.Clear();
+			retVal.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 			if (requestedVersion > 0)
 			{
 				// Using a custom request header
-				client.DefaultRequestHeaders.Add("api-version", requestedVersion.ToString());
+				retVal.DefaultRequestHeaders.Add("api-version", requestedVersion.ToString());
 
 				// Using content negotiation
 				//client.DefaultRequestHeaders.Accept.Add(
@@ -123,15 +151,15 @@ namespace CodeGenHero.DataService
 
 			if (!string.IsNullOrEmpty(connectionIdentifier))
 			{
-				client.DefaultRequestHeaders.Add(cghConstants.CONNECTIONIDENTIFIER, connectionIdentifier);
+				retVal.DefaultRequestHeaders.Add(cghConstants.CONNECTIONIDENTIFIER, connectionIdentifier);
 			}
 
 			if (authorization != null)
 			{
-				client.DefaultRequestHeaders.Authorization = authorization;
+				retVal.DefaultRequestHeaders.Authorization = authorization;
 			}
 
-			return client;
+			return retVal;
 		}
 
 		#endregion Client Code

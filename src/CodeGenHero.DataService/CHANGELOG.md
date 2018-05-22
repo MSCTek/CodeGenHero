@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.26
+Bug Fixes & Enhancements:
+* Static caching/reuse of the HttpClient, based upon incoming authorization, requestedVersion, and connectionIdentifier parameters.
+
 ### 1.0.23
 Bug Fixes & Enhancements:
 * SerializationHelper SerializeCallResultsGet now returns IPageDataT instead of PageData concrete class.
