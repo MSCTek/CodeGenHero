@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.6
+Bug Fixes & Enhancements:
+* ICRUDOperation returns IRepositoryActionResult interface instead of concrete class.
+
 ### 1.0.5
 Bug Fixes & Enhancements:
 * Made ICRUDOperation operations asynchronous.
