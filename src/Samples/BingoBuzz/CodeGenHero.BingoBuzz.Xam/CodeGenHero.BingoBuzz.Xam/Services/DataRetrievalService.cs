@@ -176,6 +176,32 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             return null;
         }
 
+        public async Task<int> GetTotalNumberOfBingos()
+        {
+            Guid currentUserId = _stateService.GetCurrentUserId();
+            int bingoTypeId = (int)Constants.Enums.BingoInstanceEventType.Bingo;
+            var count = (await _asyncConnection.Table<ModelData.BB.BingoInstanceEvent>()
+                .Where(x => x.CreatedUserId == currentUserId && x.BingoInstanceEventTypeId == bingoTypeId && x.IsDeleted == false).CountAsync());
+            return count;
+        }
+
+        public async Task<int> GetTotalNumberOfSquareClicks()
+        {
+            Guid currentUserId = _stateService.GetCurrentUserId();
+            int squareClickTypeId = (int)Constants.Enums.BingoInstanceEventType.SquareClicked;
+            var count = (await _asyncConnection.Table<ModelData.BB.BingoInstanceEvent>()
+                .Where(x => x.CreatedUserId == currentUserId && x.BingoInstanceEventTypeId == squareClickTypeId && x.IsDeleted == false).CountAsync());
+            return count;
+        }
+
+        public async Task<int> GetTotalNumberOfGames()
+        {
+            Guid currentUserId = _stateService.GetCurrentUserId();
+            var count = (await _asyncConnection.Table<ModelData.BB.BingoInstance>()
+                .Where(x => x.CreatedUserId == currentUserId && x.IsDeleted == false).CountAsync());
+            return count;
+        }
+
         public async Task<ModelObj.BB.Company> GetCompanyByIdOrNull(Guid companyId)
         {
             var company = (await _asyncConnection.Table<ModelData.BB.Company>()

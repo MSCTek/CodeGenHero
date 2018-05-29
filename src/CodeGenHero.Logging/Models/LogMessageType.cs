@@ -22,7 +22,9 @@ namespace CodeGenHero.Logging
 		public virtual int Exception_Application => 101;
 		public virtual int Exception_Authenticate => 111;
 		public virtual int Exception_Database => 102;
+		public virtual int Exception_Domain => 115;
 		public virtual int Exception_General => 103;
+		public virtual int Exception_Repository => 116;
 		public virtual int Exception_Synchronization => 110;
 		public virtual int Exception_Unhandled => 104;
 		public virtual int Exception_WebApi => 105;
@@ -33,6 +35,8 @@ namespace CodeGenHero.Logging
 		public virtual int Info_Synchronization => 310;
 		public virtual int Unauthorized => 401;
 		public virtual int Unknown => 100;
+		public virtual int Warn_Domain => 215;
+		public virtual int Warn_Repository => 216;
 		public virtual int Warn_Mobile => 206;
 		public virtual int Warn_Synchronization => 210;
 		public virtual int Warn_Web => 207;
