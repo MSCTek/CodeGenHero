@@ -1,1 +1,9 @@
-This filegroup contains the generated code for C:\Code\Repos\CodeGenHero\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam\Mappers\MapperSqliteModelDataToMvvmLightModelObject_BB.cgh
+{
+  "FileGroupMessage": "This filegroup contains the generated code for C:\\Code\\PublicRepo\\src\\Samples\\BingoBuzz\\CodeGenHero.BingoBuzz.Xam\\CodeGenHero.BingoBuzz.Xam\\Mappers\\MapperSqliteModelDataToMvvmLightModelObject_BB.cgh",
+  "FileList": [
+    {
+      "FileLastChange": "2018-06-03T14:27:16.6616953-05:00",
+      "Filename": "ModelMapperBB.cs"
+    }
+  ]
+}

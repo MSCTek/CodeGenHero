@@ -181,6 +181,9 @@
     <PackageReference Include="AutoMapper">
       <Version>6.2.2</Version>
     </PackageReference>
+    <PackageReference Include="CodeGenHero.Repository">
+      <Version>1.0.6</Version>
+    </PackageReference>
     <PackageReference Include="CodeGenHero.Repository.AutoMapper">
       <Version>1.0.7</Version>
     </PackageReference>

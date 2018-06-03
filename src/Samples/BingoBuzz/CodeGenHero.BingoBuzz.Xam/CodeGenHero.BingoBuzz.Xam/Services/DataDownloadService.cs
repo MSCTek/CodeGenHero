@@ -83,7 +83,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
 				var meetingAndAttendeesPageData = await _webAPIDataService.GetMeetingsAndAttendeesByUserId(userId, null, null);
 				if (meetingAndAttendeesPageData.IsSuccessStatusCode)
 				{
-					List<DTO.BB.Meeting> meetingsAndAttendees = meetingAndAttendeesPageData.Data;
+					List<DTO.BB.Meeting> meetingsAndAttendees = meetingAndAttendeesPageData.Data.Data;
 
                     //not inserting children here, only meetings
                     int numMeetingsInserted = await _asyncConnection.InsertAllAsync(meetingsAndAttendees.Select(x => x.ToModelData()).ToList());
@@ -109,7 +109,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                         var instancesAndEventsPageData = await _webAPIDataService.GetInstancesAndEventsByMeetingId(m.MeetingId, null, null);
                         if (instancesAndEventsPageData.IsSuccessStatusCode)
                         {
-                            List<DTO.BB.BingoInstance> instancesAndEvents = instancesAndEventsPageData.Data;
+                            List<DTO.BB.BingoInstance> instancesAndEvents = instancesAndEventsPageData.Data.Data;
 
                             //meetings can have multiple instances and some may already exist on this device
                             int numBingoInstancesInserted = 0;

@@ -50,17 +50,17 @@
     <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="CodeGenHero.DataService, Version=1.0.21.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CodeGenHero.DataService.1.0.21\lib\net46\CodeGenHero.DataService.dll</HintPath>
+    <Reference Include="CodeGenHero.DataService, Version=1.0.29.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeGenHero.DataService.1.0.29\lib\net46\CodeGenHero.DataService.dll</HintPath>
     </Reference>
-    <Reference Include="CodeGenHero.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=32065bcb7d985959, processorArchitecture=MSIL">
-      <HintPath>..\packages\CodeGenHero.Logging.1.0.4\lib\net46\CodeGenHero.Logging.dll</HintPath>
+    <Reference Include="CodeGenHero.Logging, Version=1.0.7.0, Culture=neutral, PublicKeyToken=32065bcb7d985959, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeGenHero.Logging.1.0.7\lib\net46\CodeGenHero.Logging.dll</HintPath>
     </Reference>
     <Reference Include="CodeGenHero.Logging.Log4net, Version=1.0.3.0, Culture=neutral, PublicKeyToken=32065bcb7d985959, processorArchitecture=MSIL">
       <HintPath>..\packages\CodeGenHero.Logging.Log4net.1.0.3\lib\net46\CodeGenHero.Logging.Log4net.dll</HintPath>
     </Reference>
-    <Reference Include="CodeGenHero.Repository, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CodeGenHero.Repository.1.0.4\lib\net46\CodeGenHero.Repository.dll</HintPath>
+    <Reference Include="CodeGenHero.Repository, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeGenHero.Repository.1.0.6\lib\net46\CodeGenHero.Repository.dll</HintPath>
     </Reference>
     <Reference Include="CodeGenHero.Repository.AutoMapper, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CodeGenHero.Repository.AutoMapper.1.0.7\lib\net46\CodeGenHero.Repository.AutoMapper.dll</HintPath>

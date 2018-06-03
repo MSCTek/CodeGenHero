@@ -1,0 +1,173 @@
+[
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.DTO",
+    "RelativePath": "\\BB",
+    "TemplateId": "58fa7ee2-89f7-41e6-85ed-8d4482653990",
+    "TemplateName": "DTO",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Model",
+    "RelativePath": "\\Models\\BB",
+    "TemplateId": "f1539c0d-024f-4b1f-b346-132cdd9dd31f",
+    "TemplateName": "ModelsBackedByDto",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Model",
+    "RelativePath": "\\Interfaces\\BB",
+    "TemplateId": "4d03f2c7-de27-4aae-a267-cad747c9606a",
+    "TemplateName": "ModelsBackedByDtoInterface",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Repository",
+    "RelativePath": "\\Repositories",
+    "TemplateId": "c765a56c-163b-4d2a-863d-3a0a30bbcb15",
+    "TemplateName": "Repository",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Repository",
+    "RelativePath": "\\Repositories",
+    "TemplateId": "70230bd4-f88f-41d8-a9c6-6e40aded5c07",
+    "TemplateName": "RepositoryBase",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Repository",
+    "RelativePath": "\\Interfaces",
+    "TemplateId": "f766650e-5c46-4239-b6fd-0cfca2673207",
+    "TemplateName": "RepositoryInterface",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Repository",
+    "RelativePath": "\\Interfaces",
+    "TemplateId": "387dfdc5-b9f2-4ab4-accb-00a22cdd916c",
+    "TemplateName": "RepositoryInterfaceCrud",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.API",
+    "RelativePath": "\\Controllers\\BB",
+    "TemplateId": "4b60314b-c212-46e3-8945-3d5daecee905",
+    "TemplateName": "WebApiController",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.API",
+    "RelativePath": "\\Controllers\\BB\\Custom",
+    "TemplateId": "54f0612b-5235-437d-af2d-0b75efa68630",
+    "TemplateName": "WebApiControllerPartialMethods",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Service.DataService",
+    "RelativePath": "\\DataService",
+    "TemplateId": "424e7ec7-bd9d-4cd3-9257-6ffbc772b82e",
+    "TemplateName": "WebApiDataService",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Service.DataService",
+    "RelativePath": "\\Interfaces",
+    "TemplateId": "1ea810ed-61a7-443b-97f2-da5b30311e75",
+    "TemplateName": "WebApiDataServiceInterface",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.API",
+    "RelativePath": "\\Controllers",
+    "TemplateId": "4cb75f55-706b-4b42-835b-dd823d4afc91",
+    "TemplateName": "APIBaseController",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.API",
+    "RelativePath": "\\Controllers",
+    "TemplateId": "a5d78309-5a18-4a09-9225-03e602b52187",
+    "TemplateName": "APIStatusController",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Repository",
+    "RelativePath": "\\Mappers",
+    "TemplateId": "f3f865a7-e545-4bc4-b0ba-c9e7ee587e73",
+    "TemplateName": "AutoMapperProfile",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Xam",
+    "RelativePath": "\\Mappers",
+    "TemplateId": "5078579f-7ab4-430d-9dcc-a3190f678efc",
+    "TemplateName": "MapperDtoToSqliteModelDataAndMvvmLightModelObject",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Xam",
+    "RelativePath": "\\Mappers",
+    "TemplateId": "ec39b410-017a-407f-be75-0cf4fd66efd2",
+    "TemplateName": "MapperSqliteModelDataToMvvmLightModelObject",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Xam",
+    "RelativePath": "\\ModelObj\\BB",
+    "TemplateId": "c644a31c-7ebc-4383-bc7f-0ea7c5bf6ed4",
+    "TemplateName": "MvvmLightModelObject",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Xam",
+    "RelativePath": "\\ModelData\\BB",
+    "TemplateId": "c5caad15-b3be-4443-87d8-7cabde59f7b0",
+    "TemplateName": "SqliteModelData",
+    "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Xam",
+    "RelativePath": "\\ModelData\\SampleXam",
+    "TemplateId": "9131a0a2-7ceb-4f4c-b8a9-6740ac19f66c",
+    "TemplateName": "XamSample",
+    "TemplateVersion": "1.1"
+  }
+]

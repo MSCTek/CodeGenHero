@@ -1,1 +1,69 @@
-This filegroup contains the generated code for D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Xam\CodeGenHero.BingoBuzz.Xam\ModelData\SampleXam\XamSample_BB.cgh
+{
+  "FileGroupMessage": "This filegroup contains the generated code for C:\\Code\\PublicRepo\\src\\Samples\\BingoBuzz\\CodeGenHero.BingoBuzz.Xam\\CodeGenHero.BingoBuzz.Xam\\ModelData\\SampleXam\\XamSample_BB.cgh",
+  "FileList": [
+    {
+      "FileLastChange": "2018-06-03T14:27:18.1287877-05:00",
+      "Filename": "BingoContent.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.1552392-05:00",
+      "Filename": "BingoInstance.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.1791759-05:00",
+      "Filename": "BingoInstanceContent.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.2050261-05:00",
+      "Filename": "BingoInstanceContentStatusType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.2462318-05:00",
+      "Filename": "BingoInstanceEvent.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.2709913-05:00",
+      "Filename": "BingoInstanceEventType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.2860865-05:00",
+      "Filename": "BingoInstanceStatusType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.3160206-05:00",
+      "Filename": "Company.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.3377726-05:00",
+      "Filename": "FrequencyType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.3763491-05:00",
+      "Filename": "Meeting.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.4162333-05:00",
+      "Filename": "MeetingAttendee.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.4501055-05:00",
+      "Filename": "MeetingSchedule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.4742873-05:00",
+      "Filename": "NotificationMethodType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.495268-05:00",
+      "Filename": "NotificationRule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.5269661-05:00",
+      "Filename": "RecurrenceRule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T14:27:18.5931949-05:00",
+      "Filename": "User.cs"
+    }
+  ]
+}

@@ -1,1 +1,69 @@
-This filegroup contains the generated code for C:\Code\Repos\CodeGenHero\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.DTO\BB\DTO_BB.cgh
+{
+  "FileGroupMessage": "This filegroup contains the generated code for C:\\Code\\PublicRepo\\src\\Samples\\BingoBuzz\\CodeGenHero.BingoBuzz.DTO\\BB\\DTO_BB.cgh",
+  "FileList": [
+    {
+      "FileLastChange": "2018-06-03T10:43:53.2070063-05:00",
+      "Filename": "BingoContent.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.2499053-05:00",
+      "Filename": "BingoInstance.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.270851-05:00",
+      "Filename": "BingoInstanceContent.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.3068416-05:00",
+      "Filename": "BingoInstanceContentStatusType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.3307069-05:00",
+      "Filename": "BingoInstanceEvent.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.3771257-05:00",
+      "Filename": "BingoInstanceEventType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.420645-05:00",
+      "Filename": "BingoInstanceStatusType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.4571834-05:00",
+      "Filename": "Company.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.4924651-05:00",
+      "Filename": "FrequencyType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.5213687-05:00",
+      "Filename": "Meeting.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.5520439-05:00",
+      "Filename": "MeetingAttendee.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.5838791-05:00",
+      "Filename": "MeetingSchedule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.6119698-05:00",
+      "Filename": "NotificationMethodType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.6449242-05:00",
+      "Filename": "NotificationRule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.6797096-05:00",
+      "Filename": "RecurrenceRule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T10:43:53.710577-05:00",
+      "Filename": "User.cs"
+    }
+  ]
+}

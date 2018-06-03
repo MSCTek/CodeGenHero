@@ -1,1 +1,9 @@
-This filegroup contains the generated code for C:\Code\Repos\CodeGenHero\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Repository\Repositories\RepositoryBase_BB.cgh
+{
+  "FileGroupMessage": "This filegroup contains the generated code for C:\\Code\\PublicRepo\\src\\Samples\\BingoBuzz\\CodeGenHero.BingoBuzz.Repository\\Repositories\\RepositoryBase_BB.cgh",
+  "FileList": [
+    {
+      "FileLastChange": "2018-06-03T10:43:53.190045-05:00",
+      "Filename": "BBRepositoryBase.cs"
+    }
+  ]
+}
