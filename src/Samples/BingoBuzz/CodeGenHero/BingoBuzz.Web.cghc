@@ -29,11 +29,6 @@
         },
         {
           "HiddenIndicator": false,
-          "Name": "IsAuthorizedControllerBaseClass",
-          "Value": "false"
-        },
-        {
-          "HiddenIndicator": false,
           "Name": "UseIdentityBasicAuthenticationAttribute",
           "Value": "false"
         }
@@ -145,7 +140,7 @@
       "Version": "1.1"
     },
     {
-      "Description": "Creates the base repository class where most of the actual implementation of CRUD operations resides..",
+      "Description": "Creates the base repository class where most of the actual implementation of CRUD operations resides.",
       "Id": "70230bd4-f88f-41d8-a9c6-6e40aded5c07",
       "IsActive": false,
       "Name": "RepositoryBase",
@@ -154,6 +149,20 @@
           "HiddenIndicator": false,
           "Name": "RepositoryBaseOutputFilePath",
           "Value": "Repository\\Repository\\{namespacePostfix}RepositoryBase.cs"
+        }
+      ],
+      "Version": "1.1"
+    },
+    {
+      "Description": "Creates sample partial method injections to compliment the base repository class.",
+      "Id": "ee9fed0b-0773-4b23-a17f-a9fb2004f9be",
+      "IsActive": false,
+      "Name": "RepositoryBasePartialMethods",
+      "Settings": [
+        {
+          "HiddenIndicator": true,
+          "Name": "RepositoryBasePartialMethodsOutputFilePath",
+          "Value": "Repository\\Repository\\Custom\\{namespacePostfix}RepositoryBaseCustom.cs"
         }
       ],
       "Version": "1.1"
@@ -366,6 +375,11 @@
       "HiddenIndicator": false,
       "Name": "RegexInclude",
       "Value": ""
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "UseAuthorizedBaseController",
+      "Value": "false"
     }
   ],
   "Version": null

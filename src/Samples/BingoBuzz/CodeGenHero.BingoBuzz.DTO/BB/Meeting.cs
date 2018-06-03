@@ -16,7 +16,7 @@ namespace CodeGenHero.BingoBuzz.DTO.BB
 		public System.DateTime UpdatedDate { get; set; }
 		public System.Guid UpdatedUserId { get; set; }
 		public bool IsDeleted { get; set; }
-		// public virtual System.Collections.Generic.ICollection<BingoInstance> BingoInstances { get; set; } // Many to many mapping -- Excluded navigation property per configuration.
+		public virtual System.Collections.Generic.ICollection<BingoInstance> BingoInstances { get; set; } // Many to many mapping
 		public virtual System.Collections.Generic.ICollection<MeetingAttendee> MeetingAttendees { get; set; } // Many to many mapping
 		public virtual System.Collections.Generic.ICollection<MeetingSchedule> MeetingSchedules { get; set; } // Many to many mapping
 		public virtual Company Company { get; set; } 

@@ -28,7 +28,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Infrastructure
 				// .ForMember(d => d.BingoInstanceEvents, opt => opt.Ignore()) // Reverse nav
 				// .ForMember(d => d.BingoInstanceStatusType, opt => opt.Ignore())
 				// .ForMember(d => d.CreatedUser, opt => opt.Ignore())
-				// .ForMember(d => d.Meeting, opt => opt.Ignore())
+				.ForMember(d => d.Meeting, opt => opt.Ignore()) //  -- Excluded navigation property per configuration.
 				// .ForMember(d => d.UpdatedUser, opt => opt.Ignore())
 			.ReverseMap();
 
@@ -48,7 +48,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Infrastructure
 
 			CreateMap<xDTO.BingoInstanceEvent, xENT.BingoInstanceEvent>()
 				.ForMember(d => d.BingoInstance, opt => opt.Ignore()) //  -- Excluded navigation property per configuration.
-				// .ForMember(d => d.BingoInstanceContent, opt => opt.Ignore())
+				.ForMember(d => d.BingoInstanceContent, opt => opt.Ignore()) //  -- Excluded navigation property per configuration.
 				// .ForMember(d => d.BingoInstanceEventType, opt => opt.Ignore())
 				// .ForMember(d => d.CreatedUser, opt => opt.Ignore())
 				// .ForMember(d => d.UpdatedUser, opt => opt.Ignore())
@@ -73,7 +73,7 @@ namespace CodeGenHero.BingoBuzz.Repository.Infrastructure
 			.ReverseMap();
 
 			CreateMap<xDTO.Meeting, xENT.Meeting>()
-				.ForMember(d => d.BingoInstances, opt => opt.Ignore()) // Reverse nav -- Excluded navigation property per configuration.
+				// .ForMember(d => d.BingoInstances, opt => opt.Ignore()) // Reverse nav
 				// .ForMember(d => d.MeetingAttendees, opt => opt.Ignore()) // Reverse nav
 				// .ForMember(d => d.MeetingSchedules, opt => opt.Ignore()) // Reverse nav
 				// .ForMember(d => d.Company, opt => opt.Ignore())

@@ -1,1 +1,69 @@
-This filegroup contains the generated code for C:\Code\Repos\CodeGenHero\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Model\Interfaces\BB\ModelsBackedByDtoInterface_BB.cgh
+{
+  "FileGroupMessage": "This filegroup contains the generated code for C:\\Code\\PublicRepo\\src\\Samples\\BingoBuzz\\CodeGenHero.BingoBuzz.Model\\Interfaces\\BB\\ModelsBackedByDtoInterface_BB.cgh",
+  "FileList": [
+    {
+      "FileLastChange": "2018-06-03T16:28:30.3818834-05:00",
+      "Filename": "IUser.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:30.5771059-05:00",
+      "Filename": "IRecurrenceRule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:30.8587734-05:00",
+      "Filename": "INotificationRule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:30.9321841-05:00",
+      "Filename": "INotificationMethodType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:30.9621237-05:00",
+      "Filename": "IMeetingSchedule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:30.981064-05:00",
+      "Filename": "IMeetingAttendee.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:31.0360606-05:00",
+      "Filename": "IMeeting.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:31.0781245-05:00",
+      "Filename": "IFrequencyType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:31.1050734-05:00",
+      "Filename": "ICompany.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:31.1429515-05:00",
+      "Filename": "IBingoInstanceStatusType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:31.1958097-05:00",
+      "Filename": "IBingoInstanceEventType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:31.2357045-05:00",
+      "Filename": "IBingoInstanceEvent.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:31.2636278-05:00",
+      "Filename": "IBingoInstanceContentStatusType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:31.2855698-05:00",
+      "Filename": "IBingoInstanceContent.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:31.348401-05:00",
+      "Filename": "IBingoInstance.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:31.3713407-05:00",
+      "Filename": "IBingoContent.cs"
+    }
+  ]
+}

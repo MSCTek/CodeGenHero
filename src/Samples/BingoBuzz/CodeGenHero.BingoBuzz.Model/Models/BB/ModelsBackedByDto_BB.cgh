@@ -1,1 +1,69 @@
-This filegroup contains the generated code for C:\Code\Repos\CodeGenHero\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Model\Models\BB\ModelsBackedByDto_BB.cgh
+{
+  "FileGroupMessage": "This filegroup contains the generated code for C:\\Code\\PublicRepo\\src\\Samples\\BingoBuzz\\CodeGenHero.BingoBuzz.Model\\Models\\BB\\ModelsBackedByDto_BB.cgh",
+  "FileList": [
+    {
+      "FileLastChange": "2018-06-03T16:28:28.9259274-05:00",
+      "Filename": "User.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:29.4942422-05:00",
+      "Filename": "RecurrenceRule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:29.5400293-05:00",
+      "Filename": "NotificationRule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:29.6023033-05:00",
+      "Filename": "NotificationMethodType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:29.6730665-05:00",
+      "Filename": "MeetingSchedule.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:29.7279377-05:00",
+      "Filename": "MeetingAttendee.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T17:14:02.5677663-05:00",
+      "Filename": "Meeting.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:29.834729-05:00",
+      "Filename": "FrequencyType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:29.9586706-05:00",
+      "Filename": "Company.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:29.9925235-05:00",
+      "Filename": "BingoInstanceStatusType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:30.0239174-05:00",
+      "Filename": "BingoInstanceEventType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:30.0598486-05:00",
+      "Filename": "BingoInstanceEvent.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:30.1146759-05:00",
+      "Filename": "BingoInstanceContentStatusType.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:30.1775082-05:00",
+      "Filename": "BingoInstanceContent.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T17:14:02.6315942-05:00",
+      "Filename": "BingoInstance.cs"
+    },
+    {
+      "FileLastChange": "2018-06-03T16:28:30.2953681-05:00",
+      "Filename": "BingoContent.cs"
+    }
+  ]
+}

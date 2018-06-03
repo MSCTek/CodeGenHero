@@ -169,5 +169,14 @@
     "TemplateId": "9131a0a2-7ceb-4f4c-b8a9-6740ac19f66c",
     "TemplateName": "XamSample",
     "TemplateVersion": "1.1"
+  },
+  {
+    "ConnectionStringName": "{CodeGenHero.BingoBuzz.Repository}\\Entities\\BB\\BingoBuzzContext.tt",
+    "DataSetName": "BB",
+    "ProjectName": "CodeGenHero.BingoBuzz.Repository",
+    "RelativePath": "\\Repositories\\Custom",
+    "TemplateId": "ee9fed0b-0773-4b23-a17f-a9fb2004f9be",
+    "TemplateName": "RepositoryBasePartialMethods",
+    "TemplateVersion": "1.1"
   }
 ]
