@@ -17,13 +17,13 @@ namespace CodeGenHero.BingoBuzz.Xam
 {
     public partial class App : Application
     {
-        private bool _isDemoMode;
         private bool _isAppCenterStarted;
+        private bool _isDemoMode;
 
         public App(params INinjectModule[] platformModules)
         {
             // Initialize Live Reload.
-            LiveReload.Init();
+            //LiveReload.Init();
 
             InitializeComponent();
 
@@ -55,9 +55,8 @@ namespace CodeGenHero.BingoBuzz.Xam
             MainPage = mainPage;
         }
 
-        public IKernel Kernel { get; set; }
-
         public string CurrentUserEmail { get; set; }
+        public IKernel Kernel { get; set; }
 
         public async Task SetModeAndSync(bool isDemoModeOn)
         {
