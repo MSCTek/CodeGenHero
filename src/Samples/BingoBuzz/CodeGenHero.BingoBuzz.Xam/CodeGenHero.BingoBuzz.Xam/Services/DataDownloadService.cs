@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using CodeGenHero.Logging;
 using CodeGenHero.DataService;
 using CodeGenHero.BingoBuzz.Constants;
+using cghConstants = CodeGenHero.DataService.Constants;
 
 namespace CodeGenHero.BingoBuzz.Xam.Services
 {
@@ -81,9 +82,9 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                 Guid userId = new Guid("9F3441F1-625C-439E-96EB-19EC41076408");
 
 				var meetingAndAttendeesPageData = await _webAPIDataService.GetMeetingsAndAttendeesByUserId(userId, null, null);
-				if (meetingAndAttendeesPageData.IsSuccessStatusCode)
+                if (meetingAndAttendeesPageData.IsSuccessStatusCode)
 				{
-					List<DTO.BB.Meeting> meetingsAndAttendees = meetingAndAttendeesPageData.Data;
+					List<DTO.BB.Meeting> meetingsAndAttendees = meetingAndAttendeesPageData.Data.Data;
 
                     //not inserting children here, only meetings
                     int numMeetingsInserted = await _asyncConnection.InsertAllAsync(meetingsAndAttendees.Select(x => x.ToModelData()).ToList());
@@ -104,32 +105,37 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                     }
                     _log.Debug($"Inserted {numUsersInserted} user records", LogMessageType.Instance.Info_Synchronization);
 
-                    foreach (var m in meetingsAndAttendees)
+                    //insert or update the instances
+                    var instances = meetingsAndAttendees.SelectMany(x => x.BingoInstances).ToList();
+                    int numInstancesInserted = await _asyncConnection.InsertAllAsync(instances.Select(x => x.ToModelData()).ToList());
+                    _log.Debug($"Inserted {numInstancesInserted} instance records", LogMessageType.Instance.Info_Synchronization);
+
+                    foreach (var instance in instances)
                     {
-                        var instancesAndEventsPageData = await _webAPIDataService.GetInstancesAndEventsByMeetingId(m.MeetingId, null, null);
-                        if (instancesAndEventsPageData.IsSuccessStatusCode)
-                        {
-                            List<DTO.BB.BingoInstance> instancesAndEvents = instancesAndEventsPageData.Data;
-
-                            //meetings can have multiple instances and some may already exist on this device
-                            int numBingoInstancesInserted = 0;
-                            foreach (var i in instancesAndEvents)
+                        IList<IFilterCriterion> filterCriteria = new List<IFilterCriterion>() {
+                            new FilterCriterion()
                             {
-                                if (1 == await _asyncConnection.InsertOrReplaceAsync(i.ToModelData())) numBingoInstancesInserted++;
+                                FieldName = nameof(DTO.BB.BingoInstanceContent.BingoInstanceId),
+                                FieldType = "Guid",
+                                FilterOperator = cghConstants.OPERATOR_ISEQUALTO,
+                                Value = instance.BingoInstanceId
                             }
-                            _log.Debug($"Inserted {numBingoInstancesInserted} bingo instance records", LogMessageType.Instance.Info_Synchronization);
+                        };
 
+                        PageDataRequest pdr = new PageDataRequest(filterCriteria);
+
+                        var instanceContentPageData = await _webAPIDataService.GetBingoInstanceContentsAsync(pdr);
+                        if (instanceContentPageData.IsSuccessStatusCode)
+                        {
                             //bingo instance contents
-                            var bingoInstanceContents = instancesAndEvents.SelectMany(x => x.BingoInstanceContents).Distinct().ToList();
+                            var bingoInstanceContents = instanceContentPageData.Data.Data;
                             int numBingoInstanceContentsInserted = await _asyncConnection.InsertAllAsync(bingoInstanceContents.Select(x => x.ToModelData()).ToList());
                             _log.Debug($"Inserted {numBingoInstanceContentsInserted} bingo instance contents records", LogMessageType.Instance.Info_Synchronization);
 
-
                             //bingo instance events
-                            var bingoInstanceEvents = instancesAndEvents.SelectMany(x => x.BingoInstanceEvents).Distinct().ToList();
+                            var bingoInstanceEvents = bingoInstanceContents.SelectMany(x => x.BingoInstanceEvents).Distinct().ToList();
                             int numBingoInstanceEventsInserted = await _asyncConnection.InsertAllAsync(bingoInstanceEvents.Select(x => x.ToModelData()).ToList());
                             _log.Debug($"Inserted {numBingoInstanceEventsInserted} bingo instance event records", LogMessageType.Instance.Info_Synchronization);
-                            
                         }
                     }
                 }

@@ -1,5 +1,4 @@
-﻿using CodeGenHero.BingoBuzz.DTO.BB;
-using CodeGenHero.BingoBuzz.Xam.Interfaces;
+﻿using CodeGenHero.BingoBuzz.Xam.Interfaces;
 using CodeGenHero.BingoBuzz.Xam.ModelData.DemoBB;
 using SQLite;
 using System;

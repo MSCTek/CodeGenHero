@@ -176,10 +176,16 @@
     <Compile Include="Repositories\BBRepositoryBase.cs">
       <DependentUpon>RepositoryBase_BB.cgh</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\Custom\BBRepositoryBaseCustom.cs">
+      <DependentUpon>RepositoryBasePartialMethods_BB.cgh</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper">
       <Version>6.2.2</Version>
+    </PackageReference>
+    <PackageReference Include="CodeGenHero.Repository">
+      <Version>1.0.6</Version>
     </PackageReference>
     <PackageReference Include="CodeGenHero.Repository.AutoMapper">
       <Version>1.0.7</Version>
@@ -206,6 +212,7 @@
     <None Include="Interfaces\RepositoryInterfaceCrud_BB.cgh" />
     <None Include="Interfaces\RepositoryInterface_BB.cgh" />
     <None Include="Mappers\AutoMapperProfile_BB.cgh" />
+    <None Include="Repositories\Custom\RepositoryBasePartialMethods_BB.cgh" />
     <None Include="Repositories\RepositoryBase_BB.cgh" />
     <None Include="Repositories\Repository_BB.cgh" />
   </ItemGroup>

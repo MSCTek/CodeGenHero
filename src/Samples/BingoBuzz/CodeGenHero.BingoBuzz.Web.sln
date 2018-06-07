@@ -11,18 +11,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.Repos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.BingoBuzz.API", "CodeGenHero.BingoBuzz.API\CodeGenHero.BingoBuzz.API.csproj", "{66944B27-D31A-4818-9176-F8BA94B1AFFA}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CodeGenHero", "CodeGenHero.Data\CodeGenHero.shproj", "{81C408A1-E76A-448B-B0FF-971D25528FEE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Model", "CodeGenHero.BingoBuzz.Model\CodeGenHero.BingoBuzz.Model.csproj", "{F1331F2D-B87A-479A-8100-7480971D8C29}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.DTO", "CodeGenHero.BingoBuzz.DTO\CodeGenHero.BingoBuzz.DTO.csproj", "{6774A31A-070B-4C61-ADB5-B21DCE9E69F9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero.BingoBuzz.Service.DataService", "CodeGenHero.BingoBuzz.Service.DataService\CodeGenHero.BingoBuzz.Service.DataService.csproj", "{C5E8455A-A316-4F59-B041-0186A5E27225}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenHero", "CodeGenHero\CodeGenHero.csproj", "{EF1FF518-15B8-4C30-BD18-DCF13AD26B80}"
+EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		CodeGenHero.Data\CodeGenHero.Data.projitems*{81c408a1-e76a-448b-b0ff-971d25528fee}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -54,6 +51,10 @@ Global
 		{C5E8455A-A316-4F59-B041-0186A5E27225}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5E8455A-A316-4F59-B041-0186A5E27225}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5E8455A-A316-4F59-B041-0186A5E27225}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF1FF518-15B8-4C30-BD18-DCF13AD26B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF1FF518-15B8-4C30-BD18-DCF13AD26B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF1FF518-15B8-4C30-BD18-DCF13AD26B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF1FF518-15B8-4C30-BD18-DCF13AD26B80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
