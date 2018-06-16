@@ -13,5 +13,10 @@ namespace CodeGenHero.BingoBuzz.Constants
 		public static string BaseWebApiUrl = "http://localhost/CodeGenHero.BingoBuzz.API/api/BB/";
 
 		public static string ConnectionIdentifier = string.Empty;
+
+        public static string AuthenticationClientId_iOS = "85c803d6-f2d7-4158-bb36-ef9e4a480766";
+        public static string AuthenticationClientId_Android = "794aa5be-101f-454b-a905-1494713daf8b";
+        public static string AuthenticationClientId_UWP = "0bf864c5-c5a3-4f25-aa5f-fca32b244692";
+
     }
 }

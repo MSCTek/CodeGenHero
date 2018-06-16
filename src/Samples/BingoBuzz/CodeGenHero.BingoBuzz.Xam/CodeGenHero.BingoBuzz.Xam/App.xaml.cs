@@ -12,6 +12,7 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using System.Threading.Tasks;
 using CodeGenHero.BingoBuzz.Constants;
+using Microsoft.Identity.Client;
 
 namespace CodeGenHero.BingoBuzz.Xam
 {
@@ -19,6 +20,15 @@ namespace CodeGenHero.BingoBuzz.Xam
     {
         private bool _isAppCenterStarted;
         private bool _isDemoMode;
+
+
+        public static PublicClientApplication PCA = null;
+        public static string AuthenticationClientId;
+        public static string[] Scopes = { "User.Read" };
+        public static string Username = string.Empty;
+        public static UIParent UiParent = null;
+
+
 
         public App(params INinjectModule[] platformModules)
         {
@@ -51,8 +61,34 @@ namespace CodeGenHero.BingoBuzz.Xam
                 throw new InvalidOperationException("ERROR: SQLite Database could not be created.");
             }
 
+            SetUpAuthentication();
+
             mainPage.BindingContext = Kernel.Get<SplashViewModel>();
             MainPage = mainPage;
+        }
+
+        private void SetUpAuthentication()
+        {
+            //get the right the clientID for the platform
+            switch (Xamarin.Forms.Device.RuntimePlatform)
+            {
+                case Xamarin.Forms.Device.iOS:
+                    AuthenticationClientId = Consts.AuthenticationClientId_iOS;
+                    break;
+                case Xamarin.Forms.Device.Android:
+                    AuthenticationClientId = Consts.AuthenticationClientId_Android;
+                    break;
+                case Xamarin.Forms.Device.UWP:
+                    AuthenticationClientId = Consts.AuthenticationClientId_UWP;
+                    break;
+            }
+
+            //this is set in the application properties in Azure
+            PCA = new PublicClientApplication(AuthenticationClientId)
+            {
+                RedirectUri = $"msal{App.AuthenticationClientId}://auth"
+            };
+
         }
 
         public string CurrentUserEmail { get; set; }
