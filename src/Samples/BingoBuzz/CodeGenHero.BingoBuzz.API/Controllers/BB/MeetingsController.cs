@@ -44,7 +44,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 		{
 			try
 			{
-				base.OnActionExecuting();
+				if (!base.OnActionExecuting(out HttpStatusCode httpStatusCode, out string message)) { return Content(httpStatusCode, message); }
 
 				var result = await Repo.Delete_MeetingAsync(meetingId);
 
@@ -78,7 +78,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 		{
 			try
 			{
-				base.OnActionExecuting();
+				if (!base.OnActionExecuting(out HttpStatusCode httpStatusCode, out string message)) { return Content(httpStatusCode, message); }
 
 				var fieldList = GetListByDelimiter(fields);
 				bool childrenRequested = false; // TODO: set this based upon actual fields requested.
@@ -122,7 +122,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 		{
 			try
 			{
-				base.OnActionExecuting();
+				if (!base.OnActionExecuting(out HttpStatusCode httpStatusCode, out string message)) { return Content(httpStatusCode, message); }
 				var dbItem = await Repo.Get_MeetingAsync(meetingId, numChildLevels);
 
 				if (dbItem == null)
@@ -151,7 +151,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 		{
 			try
 			{
-				base.OnActionExecuting();
+				if (!base.OnActionExecuting(out HttpStatusCode httpStatusCode, out string message)) { return Content(httpStatusCode, message); }
 
 				if (patchDocument == null)
 				{
@@ -173,6 +173,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 				// map the DTO with applied changes to the entity, & update
 				var updatedDBItem = _factory.Create(dtoItem); // map
 				var result = await Repo.UpdateAsync(updatedDBItem);
+				RunCustomLogicAfterUpdatePatch(ref updatedDBItem, ref result);
 
 				if (result.Status == cghEnums.RepositoryActionStatus.Updated)
 				{
@@ -201,7 +202,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 		{
 			try
 			{
-				base.OnActionExecuting();
+				if (!base.OnActionExecuting(out HttpStatusCode httpStatusCode, out string message)) { return Content(httpStatusCode, message); }
 
 				if (dtoItem == null)
 				{
@@ -212,7 +213,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 				var newDBItem = _factory.Create(dtoItem);
 
 				var result = await Repo.InsertAsync(newDBItem);
-				RunCustomLogicAfterInsert(newDBItem, result);
+				RunCustomLogicAfterInsert(ref newDBItem, ref result);
 
 				if (result.Status == cghEnums.RepositoryActionStatus.Created)
 				{   // map to dto
@@ -241,7 +242,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 		{
 			try
 			{
-				base.OnActionExecuting();
+				if (!base.OnActionExecuting(out HttpStatusCode httpStatusCode, out string message)) { return Content(httpStatusCode, message); }
 
 				if (dtoItem == null)
 				{
@@ -252,6 +253,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 
 				var updatedDBItem = _factory.Create(dtoItem); // map
 				var result = await Repo.UpdateAsync(updatedDBItem);
+				RunCustomLogicAfterUpdatePut(ref updatedDBItem, ref result);
 
 				if (result.Status == cghEnums.RepositoryActionStatus.Updated)
 				{
@@ -278,7 +280,11 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 			}
 		}
 
-		partial void RunCustomLogicAfterInsert(entBB.Meeting newDBItem, IRepositoryActionResult<entBB.Meeting> result);
+		partial void RunCustomLogicAfterInsert(ref CodeGenHero.BingoBuzz.Repository.Entities.BB.Meeting newDBItem, ref IRepositoryActionResult<entBB.Meeting> result);
+
+		partial void RunCustomLogicAfterUpdatePatch(ref CodeGenHero.BingoBuzz.Repository.Entities.BB.Meeting updatedDBItem, ref IRepositoryActionResult<entBB.Meeting> result);
+
+		partial void RunCustomLogicAfterUpdatePut(ref CodeGenHero.BingoBuzz.Repository.Entities.BB.Meeting updatedDBItem, ref IRepositoryActionResult<entBB.Meeting> result);
 
 		partial void RunCustomLogicOnGetEntityByPK(ref entBB.Meeting dbItem, System.Guid meetingId, int numChildLevels);
 

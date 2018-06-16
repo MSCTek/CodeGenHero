@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Runtime.CompilerServices;
@@ -131,14 +132,17 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
 			return request?.RequestUri?.PathAndQuery;
 		}
 
-		protected void OnActionExecuting([CallerMemberName] string methodName = null)
+		protected bool OnActionExecuting(out HttpStatusCode httpStatusCode, out string message, [CallerMemberName] string methodName = null)
 		{
-			RunCustomLogicOnActionExecuting(methodName);
+			httpStatusCode = HttpStatusCode.OK;
+			message = null;
+			RunCustomLogicOnActionExecuting(ref httpStatusCode, ref message, methodName);
+			return (httpStatusCode == HttpStatusCode.OK);
 		}
 
 		partial void RunCustomLogicAfterCtor();
 
-		partial void RunCustomLogicOnActionExecuting(string methodName);
+		partial void RunCustomLogicOnActionExecuting(ref HttpStatusCode httpStatusCode, ref string message, string methodName);
 
 		#region ILoggingService
 

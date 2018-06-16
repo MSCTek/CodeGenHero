@@ -7,6 +7,7 @@ using System.Linq;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using CodeGenHero.Logging;
+using Microsoft.AppCenter.Crashes;
 
 namespace CodeGenHero.BingoBuzz.Xam.Services
 {
@@ -91,11 +92,11 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                        { "method", $"{abbrSourceName}: {methodName}: {lineNumber}"}
                     };
 
-                    Analytics.TrackEvent($"{CurrentLogLevel}: {message}", dict);
+                    Analytics.TrackEvent($"{logLevel}: {message}", dict);
                 }
                 else
                 {
-                    Analytics.TrackEvent($"{CurrentLogLevel}: {message}");
+                    Analytics.TrackEvent($"{logLevel}: {message}");
                 }
 
                 if (ex != null)
@@ -109,11 +110,12 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine($"{DateTime.Now} {CurrentLogLevel}: {message}");
+                    System.Diagnostics.Debug.WriteLine($"{DateTime.Now} {logLevel}: {message}");
                 }
             }
             catch (Exception e)
             {
+                Crashes.TrackError(ex);
                 System.Diagnostics.Debug.WriteLine($"FAILURE TO LOG! Serious application exception which is also blocking analytics functionality! Error: {e.Message} StackTrace: {e.StackTrace}");
             }
         }

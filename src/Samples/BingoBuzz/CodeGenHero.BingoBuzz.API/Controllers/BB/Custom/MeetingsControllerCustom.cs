@@ -6,6 +6,7 @@ using CodeGenHero.WebApi;
 using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -23,7 +24,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
         {
             try
             {
-                base.OnActionExecuting();
+                if (!base.OnActionExecuting(out HttpStatusCode httpStatusCode, out string message)) { return Content(httpStatusCode, message); }
 
                 var fieldList = GetListByDelimiter(fields);
                 var filterList = GetListByDelimiter(filter);
@@ -75,7 +76,7 @@ namespace CodeGenHero.BingoBuzz.API.Controllers.BB
         {
             try
             {
-                base.OnActionExecuting();
+                if (!base.OnActionExecuting(out HttpStatusCode httpStatusCode, out string message)) { return Content(httpStatusCode, message); }
 
                 var fieldList = GetListByDelimiter(fields);
                 var filterList = GetListByDelimiter(filter);
