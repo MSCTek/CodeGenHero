@@ -24,8 +24,8 @@
     <PackageReference Include="CodeGenHero.Xam.Sqlite" Version="1.0.4" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.6.1" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.6.1" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="1.1.4-preview0002" />
-    <PackageReference Include="Ninject" Version="3.3.4" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="1.1.2-preview0008" />
+    <PackageReference Include="Portable.Ninject" Version="3.3.1" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.4.135-beta" />
     <PackageReference Include="sqlite-net-pcl" Version="1.5.166-beta" />
     <PackageReference Include="Toasts.Forms.Plugin" Version="3.3.2" />

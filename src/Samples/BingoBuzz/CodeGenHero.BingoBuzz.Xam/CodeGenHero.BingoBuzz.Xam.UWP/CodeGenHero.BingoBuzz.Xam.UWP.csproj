@@ -170,10 +170,10 @@
       <Version>1.6.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Identity.Client">
-      <Version>1.1.4-preview0002</Version>
+      <Version>1.1.2-preview0008</Version>
     </PackageReference>
-    <PackageReference Include="Ninject">
-      <Version>3.3.4</Version>
+    <PackageReference Include="Portable.Ninject">
+      <Version>3.3.1</Version>
     </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.1.4.135-beta</Version>

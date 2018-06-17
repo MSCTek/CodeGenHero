@@ -7,6 +7,7 @@ using CodeGenHero.BingoBuzz.Xam.iOS.Modules;
 using UIKit;
 using Xamarin.Forms;
 using Plugin.Toasts;
+using Microsoft.Identity.Client;
 
 namespace CodeGenHero.BingoBuzz.Xam.iOS
 {
@@ -34,6 +35,12 @@ namespace CodeGenHero.BingoBuzz.Xam.iOS
             //LoadApplication(new App());
             LoadApplication(new App(new IOSPlatformModule()));
             return base.FinishedLaunching(app, options);
+        }
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
+            return true;
         }
     }
 }

@@ -91,9 +91,9 @@ namespace CodeGenHero.BingoBuzz.Xam.Views
                     btnOpenApp.IsVisible = false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                await DisplayAlert("ERROR", ex.Message, "OK, Thanks.");
             }
         }
 

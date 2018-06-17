@@ -37,6 +37,8 @@ namespace CodeGenHero.BingoBuzz.Xam
 
             InitializeComponent();
 
+            SetUpAuthentication();
+
             var mainPage = new SplashPage() as ContentPage;
             var navPage = new NavigationPage();
 
@@ -61,7 +63,7 @@ namespace CodeGenHero.BingoBuzz.Xam
                 throw new InvalidOperationException("ERROR: SQLite Database could not be created.");
             }
 
-            SetUpAuthentication();
+            
 
             mainPage.BindingContext = Kernel.Get<SplashViewModel>();
             MainPage = mainPage;

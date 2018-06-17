@@ -23,11 +23,24 @@
     <key>MinimumOSVersion</key>
     <string>11.2</string>
     <key>CFBundleDisplayName</key>
-    <string>CodeGenHero.BingoBuzz.Xam</string>
+    <string>BingoBuzz</string>
     <key>CFBundleIdentifier</key>
-    <string>com.companyname.CodeGenHero.BingoBuzz.Xam</string>
+    <string>com.msctek.bingobuzz</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLName</key>
+        <string>com.msctek.bingobuzz</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>msal85c803d6-f2d7-4158-bb36-ef9e4a480766</string>
+        </array>
+      </dict>
+    </array>
     <key>CFBundleIconFiles</key>
     <array>
       <string>Icon-App-20x20@1x</string>
