@@ -13,6 +13,7 @@ using CodeGenHero.Logging;
 using CodeGenHero.DataService;
 using CodeGenHero.BingoBuzz.Constants;
 using cghConstants = CodeGenHero.DataService.Constants;
+using Microsoft.AppCenter.Crashes;
 
 namespace CodeGenHero.BingoBuzz.Xam.Services
 {
@@ -48,7 +49,56 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                 int num = await _asyncConnection.InsertOrReplaceAsync(user.Data.ToModelData());
                 _log.Debug($"Inserted authenticated user", LogMessageType.Instance.Info_Synchronization);
             }
+            else
+            {
+                string whatHappened = "Can't find this BingoBuzz user!";
+                _log.Error(whatHappened, LogMessageType.Instance.Info_Synchronization);
+                throw new Exception(whatHappened);
+            }
         }
+
+        public async Task InsertOrReplaceAuthenticatedUser(string email, Guid userId, string givenName, string surName)
+        {
+            var user = await _webAPIDataService.GetUserAsync(userId, 1);
+            if (user.IsSuccessStatusCode)
+            {
+                int num = await _asyncConnection.InsertOrReplaceAsync(user.Data.ToModelData());
+                _log.Debug($"Inserted authenticated user", LogMessageType.Instance.Info_Synchronization);
+            }
+            else
+            {
+                //didn't find this user in our db yet, let's add them
+                DTO.BB.User newUser = new DTO.BB.User()
+                {
+                    UserId = userId,
+                    FirstName = givenName,
+                    LastName = surName,
+                    Email = email,
+                    CreatedDate = DateTime.UtcNow,
+                    CreatedUserId = userId,
+                    UpdatedDate = DateTime.UtcNow,
+                    UpdatedUserId = userId,
+                    IsDeleted = false
+                };
+
+                //send the new user to the Azure DB via the webAPI
+                var result = await _webAPIDataService.CreateUserAsync(newUser);
+
+                if (result.IsSuccessStatusCode)
+                {
+                    //insert the new user into the local SQLite db
+                    int num = await _asyncConnection.InsertOrReplaceAsync(result.Data.ToModelData());
+                    _log.Debug($"Inserted NEW authenticated user", LogMessageType.Instance.Info_Synchronization);
+                }
+                else
+                {
+                    string whatHappened = "Can't make a new BingoBuzz User!";
+                    _log.Error(whatHappened, LogMessageType.Instance.Info_Synchronization);
+                    throw new Exception(whatHappened);
+                }
+            }
+        }
+
 
         public async Task InsertAllDataCleanLocalDB()
 		{

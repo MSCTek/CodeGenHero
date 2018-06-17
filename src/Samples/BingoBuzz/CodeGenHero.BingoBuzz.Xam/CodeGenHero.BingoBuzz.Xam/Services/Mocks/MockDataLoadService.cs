@@ -16,5 +16,10 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
         {
            
         }
+
+        public Task InsertOrReplaceAuthenticatedUser(string email, Guid userId, string givenName, string surName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

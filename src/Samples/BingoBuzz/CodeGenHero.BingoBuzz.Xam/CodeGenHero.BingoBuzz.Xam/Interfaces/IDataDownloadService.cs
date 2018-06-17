@@ -12,5 +12,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Interfaces
         Task InsertAllDataCleanLocalDB();
 
         Task InsertOrReplaceAuthenticatedUser(Guid userId);
+
+        Task InsertOrReplaceAuthenticatedUser(string email, Guid userId, string givenName, string surName);
     }
 }

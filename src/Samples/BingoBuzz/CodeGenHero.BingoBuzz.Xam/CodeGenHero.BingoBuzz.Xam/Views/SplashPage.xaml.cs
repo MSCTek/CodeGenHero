@@ -103,17 +103,16 @@ namespace CodeGenHero.BingoBuzz.Xam.Views
             //navigate to the welcome page
             if (vm != null)
             {
-                await vm.Init();
+                await vm.Init(authenticationObject);
             }
         }
 
         private async void OnViewRawUserInfo(object sender, EventArgs e)
         {
-            await DisplayAlert("Raw User Token", userResponse, "OK, Thanks.");
+            await DisplayAlert("Raw User Token", authenticationObject.ToString(), "OK, Thanks.");
         }
 
-        private string userResponse = string.Empty;
-
+        private JObject authenticationObject;
 
         public async void RefreshUserData(string token)
         {
@@ -125,16 +124,14 @@ namespace CodeGenHero.BingoBuzz.Xam.Views
             string responseString = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                JObject user = JObject.Parse(responseString);
+                authenticationObject = JObject.Parse(responseString);
 
                 slUser.IsVisible = true;
-                lblDisplayName.Text = user["displayName"].ToString();
-                lblGivenName.Text = user["givenName"].ToString();
-                lblId.Text = user["id"].ToString();
-                lblSurname.Text = user["surname"].ToString();
-                lblUserPrincipalName.Text = user["userPrincipalName"].ToString();
-
-                userResponse = user.ToString();
+                lblDisplayName.Text = authenticationObject["displayName"].ToString();
+                lblGivenName.Text = authenticationObject["givenName"].ToString();
+                lblId.Text = authenticationObject["id"].ToString();
+                lblSurname.Text = authenticationObject["surname"].ToString();
+                lblUserPrincipalName.Text = authenticationObject["userPrincipalName"].ToString();
 
                 // just in case
                 btnSignInSignOut.Text = "Sign out";

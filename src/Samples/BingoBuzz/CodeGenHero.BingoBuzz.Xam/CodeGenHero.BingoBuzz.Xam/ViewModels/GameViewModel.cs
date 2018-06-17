@@ -11,6 +11,7 @@ using CodeGenHero.BingoBuzz.Xam.Controls;
 using System.Diagnostics;
 using Plugin.Vibrate;
 using Xamarin.Forms;
+using CodeGenHero.Logging;
 
 //using Plugin.Toasts;
 
@@ -23,8 +24,9 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private Meeting _meeting;
         private List<PlayerViewModel> _players;
 
-        public GameViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService) : base(navService, dataRetrievalService, stateService)
-        {
+        public GameViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService)
+            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService)
+        { 
             BingoInstanceContent = new List<ModelObj.BB.BingoInstanceContent>();
             Players = new List<PlayerViewModel>();
         }

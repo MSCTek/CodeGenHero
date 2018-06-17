@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using CodeGenHero.Logging;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
@@ -13,7 +14,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private int _numBingos;
         private int _numGames;
 
-        public StatsViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService) : base(navService, dataRetrievalService, dataDownloadService, stateService)
+        public StatsViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService)
+            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService)
         {
         }
 

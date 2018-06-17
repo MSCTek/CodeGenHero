@@ -4,13 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using CodeGenHero.Logging;
 using CodeGenHero.BingoBuzz.Xam.ModelObj.BB;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
     public class ProfileViewModel : CustomViewModelBase
     {
-        public ProfileViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService) : base(navService, dataRetrievalService, dataDownloadService, stateService)
+        public ProfileViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService)
+            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService)
         {
         }
 

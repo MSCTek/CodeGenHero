@@ -110,5 +110,10 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Design
         {
             throw new NotImplementedException();
         }
+
+        public Task InsertOrReplaceAuthenticatedUser(string email, Guid userId, string givenName, string surName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
