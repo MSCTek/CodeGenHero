@@ -41,7 +41,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
                         var selectedUsers = Users.Where(x => x.IsSelected).ToList();
 
-                        if (await DataRetrievalService.CreateNewMeeting(meeting, selectedUsers))
+                        if (await DataRetrievalService.CreateSendNewMeeting(meeting, selectedUsers))
                         {
                             NavService.NavigateTo<WelcomeViewModel>();
                         }
@@ -72,9 +72,12 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
         public override async Task Init()
         {
-            _dataUploadService.StartSafeQueuedUpdates();
+            await NavService.PushAlertPopupAsync("Loading...");
 
+            MeetingName = string.Empty;
             Users = (await DataRetrievalService.GetUsersAsync()).ToObservableCollection();
+
+            await NavService.PopAlertPopupsAsync();
         }
     }
 }

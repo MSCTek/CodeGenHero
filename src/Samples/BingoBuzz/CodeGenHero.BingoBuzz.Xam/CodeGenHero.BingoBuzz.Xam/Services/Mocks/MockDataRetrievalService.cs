@@ -89,5 +89,9 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
             throw new NotImplementedException();
         }
 
+        public Task<bool> CreateSendNewMeeting(Meeting meeting, List<User> attendees)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

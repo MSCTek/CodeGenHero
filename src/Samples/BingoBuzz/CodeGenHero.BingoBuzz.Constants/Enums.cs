@@ -8,6 +8,8 @@ namespace CodeGenHero.BingoBuzz.Constants
         {
             BingoInstance,
             BingoInstanceEvent,
+            Meeting,
+            MeetingAttendee
         }
 
         public enum BingoInstanceStatusType

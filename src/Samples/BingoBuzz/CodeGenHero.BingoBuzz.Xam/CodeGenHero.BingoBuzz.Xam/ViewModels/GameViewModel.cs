@@ -84,6 +84,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
         public override async Task Init(Guid meetingId)
         {
+            await NavService.PushAlertPopupAsync("Loading...");
+
             Meeting = await DataRetrievalService.GetMeetingOrNullAsync(meetingId);
 
             if (Meeting != null)
@@ -111,6 +113,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                 BingoInstanceContent = await DataRetrievalService.GetBingoInstanceContentAsync(BingoInstance.BingoInstanceId);
                 RaisePropertyChanged(nameof(BingoInstanceContent));
             }
+
+            await NavService.PopAlertPopupsAsync();
         }
 
         private async Task<bool> Bingo(string message)

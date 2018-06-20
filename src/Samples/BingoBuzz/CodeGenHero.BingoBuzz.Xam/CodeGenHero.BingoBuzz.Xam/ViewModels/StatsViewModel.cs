@@ -21,9 +21,13 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
         public override async Task Init()
         {
+            await NavService.PushAlertPopupAsync("Loading...");
+
             NumSquaresClicked = await DataRetrievalService.GetTotalNumberOfSquareClicks();
             NumBingos = await DataRetrievalService.GetTotalNumberOfBingos();
             NumGames = await DataRetrievalService.GetTotalNumberOfGames();
+
+            await NavService.PopAlertPopupsAsync();
         }
 
         public int NumGames

@@ -70,7 +70,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             return newInstance.ToModelObj();
         }
 
-        public async Task<bool> CreateNewMeeting(Meeting meeting, List<User> attendees)
+        public async Task<bool> CreateSendNewMeeting(Meeting meeting, List<User> attendees)
         {
             meeting.CreatedDate = DateTime.UtcNow;
             meeting.UpdatedDate = DateTime.UtcNow;
@@ -84,8 +84,13 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                 _log.Fatal(message, LogMessageType.Instance.Exception_Database);
                 throw new Exception(message);
             }
+
+            //queue meeting for upload
+            await DataUploadService.Instance.QueueAsync(meeting.MeetingId, Constants.Enums.QueueableObjects.Meeting);
+
             foreach (var a in attendees)
             {
+                Guid id = Guid.NewGuid();
                 if (1 != await _asyncConnection.InsertAsync(new ModelData.BB.MeetingAttendee()
                 {
                     MeetingId = meeting.MeetingId,
@@ -95,14 +100,18 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                     UpdatedUserId = _stateService.GetCurrentUserId(),
                     UserId = a.UserId,
                     IsDeleted = false,
-                    MeetingAttendeeId = Guid.NewGuid()
+                    MeetingAttendeeId = id
                 }))
                 {
                     var message = "Error Writing new meeting attendee to SQLite";
                     _log.Fatal(message, LogMessageType.Instance.Exception_Database);
                     throw new Exception(message);
                 }
+               
+                await DataUploadService.Instance.QueueAsync(id, Constants.Enums.QueueableObjects.MeetingAttendee);                
             }
+            //fire off safely backgrounded upload
+            DataUploadService.Instance.StartSafeQueuedUpdates();
 
             return true;
         }

@@ -118,7 +118,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                     LoggingService.Error(whatHappened, LogMessageType.Instance.Info_Synchronization);
                     throw new Exception(whatHappened);
                 }
-                await ((App)Application.Current).SetModeAndSync(false);
+                await ((App)Application.Current).SetModeAndSync(user.UserId, false);
 
                 //Load the contents of the welcome page
                 Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();

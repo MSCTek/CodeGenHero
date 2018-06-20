@@ -11,7 +11,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Interfaces
     {
         Task<BingoInstance> CreateNewBingoInstance(Guid meetingId);
 
-        Task<bool> CreateNewMeeting(Meeting meeting, List<User> attendees);
+        Task<bool> CreateSendNewMeeting(Meeting meeting, List<User> attendees);
 
         Task<bool> CreateSendNewBingoInstanceEvent(Guid bingoInstanceContentId, Guid bingoInstanceId, BingoBuzz.Constants.Enums.BingoInstanceEventType eventType);
 

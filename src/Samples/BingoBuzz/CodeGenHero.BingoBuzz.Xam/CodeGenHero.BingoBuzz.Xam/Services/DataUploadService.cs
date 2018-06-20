@@ -124,6 +124,36 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                             await _asyncConnection.UpdateAsync(q);
                         }
                     }
+
+                    if (q.QueueableObject == Constants.Enums.QueueableObjects.Meeting.ToString())
+                    {
+                        if (await RunQueuedMeetingInsert(q))
+                        {
+                            q.NumAttempts += 1;
+                            q.Success = true;
+                            await _asyncConnection.UpdateAsync(q);
+                        }
+                        else
+                        {
+                            q.NumAttempts += 1;
+                            await _asyncConnection.UpdateAsync(q);
+                        }
+                    }
+
+                    if (q.QueueableObject == Constants.Enums.QueueableObjects.MeetingAttendee.ToString())
+                    {
+                        if (await RunQueuedMeetingAttendeeInsert(q))
+                        {
+                            q.NumAttempts += 1;
+                            q.Success = true;
+                            await _asyncConnection.UpdateAsync(q);
+                        }
+                        else
+                        {
+                            q.NumAttempts += 1;
+                            await _asyncConnection.UpdateAsync(q);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -205,6 +235,46 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                     return true;
                 }
                 _log.Error($"Error Sending Queued BingoInstanceEvent record {q.RecordId}", LogMessageType.Instance.Info_Synchronization, ex: result.Exception);
+                return false;
+            }
+            return false;
+        }
+
+        private async Task<bool> RunQueuedMeetingInsert(Queue q)
+        {
+            if (_webAPIDataService == null) { return false; }
+
+            var record = await _asyncConnection.Table<ModelData.BB.Meeting>().Where(x => x.MeetingId == q.RecordId).FirstOrDefaultAsync();
+            if (record != null)
+            {
+                var result = await _webAPIDataService.CreateMeetingAsync(record.ToDto());
+
+                if (result.IsSuccessStatusCode)
+                {
+                    _log.Debug($"Successfully Sent Queued Meeting Record", LogMessageType.Instance.Info_Synchronization);
+                    return true;
+                }
+                _log.Error($"Error Sending Queued Meeting record {q.RecordId}", LogMessageType.Instance.Info_Synchronization, ex: result.Exception);
+                return false;
+            }
+            return false;
+        }
+
+        private async Task<bool> RunQueuedMeetingAttendeeInsert(Queue q)
+        {
+            if (_webAPIDataService == null) { return false; }
+
+            var record = await _asyncConnection.Table<ModelData.BB.MeetingAttendee>().Where(x => x.MeetingAttendeeId == q.RecordId).FirstOrDefaultAsync();
+            if (record != null)
+            {
+                var result = await _webAPIDataService.CreateMeetingAttendeeAsync(record.ToDto());
+
+                if (result.IsSuccessStatusCode)
+                {
+                    _log.Debug($"Successfully Sent Queued Meeting Attendee Record", LogMessageType.Instance.Info_Synchronization);
+                    return true;
+                }
+                _log.Error($"Error Sending Queued Meeting Attendee record {q.RecordId}", LogMessageType.Instance.Info_Synchronization, ex: result.Exception);
                 return false;
             }
             return false;

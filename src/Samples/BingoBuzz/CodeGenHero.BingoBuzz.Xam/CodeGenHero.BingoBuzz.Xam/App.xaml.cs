@@ -96,7 +96,7 @@ namespace CodeGenHero.BingoBuzz.Xam
         public string CurrentUserEmail { get; set; }
         public IKernel Kernel { get; set; }
 
-        public async Task SetModeAndSync(bool isDemoModeOn)
+        public async Task SetModeAndSync(Guid userId, bool isDemoModeOn)
         {
             _isDemoMode = isDemoModeOn;
 
@@ -116,7 +116,7 @@ namespace CodeGenHero.BingoBuzz.Xam
             }
 
             var newDataLoadService = Kernel.Get<IDataDownloadService>();
-            await newDataLoadService.InsertAllDataCleanLocalDB();
+            await newDataLoadService.InsertAllDataCleanLocalDB(userId);
         }
 
         public void StartAppCenter()

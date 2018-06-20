@@ -24,7 +24,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Design
             _connection = _database.GetConnection();
         }
 
-        public async Task InsertAllDataCleanLocalDB()
+        public async Task InsertAllDataCleanLocalDB(Guid userId)
         {
             var bingoContents = new List<ModelData.BB.BingoContent>() { DemoBingoContent.SampleBingoContent01, DemoBingoContent.SampleBingoContent02, DemoBingoContent.SampleBingoContent03, DemoBingoContent.SampleBingoContent04, DemoBingoContent.SampleBingoContent05, DemoBingoContent.SampleBingoContent06, DemoBingoContent.SampleBingoContent07, DemoBingoContent.SampleBingoContent08, DemoBingoContent.SampleBingoContent09, DemoBingoContent.SampleBingoContent10,
                                                                                                              DemoBingoContent.SampleBingoContent11, DemoBingoContent.SampleBingoContent12, DemoBingoContent.SampleBingoContent13, DemoBingoContent.SampleBingoContent14, DemoBingoContent.SampleBingoContent15, DemoBingoContent.SampleBingoContent16, DemoBingoContent.SampleBingoContent17, DemoBingoContent.SampleBingoContent18, DemoBingoContent.SampleBingoContent19, DemoBingoContent.SampleBingoContent20,

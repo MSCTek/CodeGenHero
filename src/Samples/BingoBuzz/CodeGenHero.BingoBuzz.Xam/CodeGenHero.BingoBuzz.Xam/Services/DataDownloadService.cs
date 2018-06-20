@@ -100,7 +100,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
         }
 
 
-        public async Task InsertAllDataCleanLocalDB()
+        public async Task InsertAllDataCleanLocalDB(Guid userId)
 		{
 			try
 			{
@@ -122,16 +122,13 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                 int numBingoInstanceEventTypesInserted = await _asyncConnection.InsertAllAsync(bingoInstanceEventTypes.Select(x => x.ToModelData()).ToList());
                 _log.Debug($"Inserted {numBingoInstanceEventTypesInserted} bingo instance event type records", LogMessageType.Instance.Info_Synchronization);
 
+                //load All Users - will get rid of this when there is better support for companies
+                var bingoPlayers = await _webAPIDataService.GetAllPagesUsersAsync();
+                int numBingoPlayersInserted = await _asyncConnection.InsertAllAsync(bingoPlayers.Select(x => x.ToModelData()).ToList());
+                _log.Debug($"Inserted {numBingoPlayersInserted} bingo player records", LogMessageType.Instance.Info_Synchronization);
 
                 //we only want meetings for which our user is involved
-
-                //var userEmail = ((App)Application.Current).CurrentUserEmail;
-                //use the email to get the user 
-
-                // TODO:  Pick it up here.
-                Guid userId = new Guid("9F3441F1-625C-439E-96EB-19EC41076408");
-
-				var meetingAndAttendeesPageData = await _webAPIDataService.GetMeetingsAndAttendeesByUserId(userId, null, null);
+                var meetingAndAttendeesPageData = await _webAPIDataService.GetMeetingsAndAttendeesByUserId(userId, null, null);
                 if (meetingAndAttendeesPageData.IsSuccessStatusCode)
 				{
 					List<DTO.BB.Meeting> meetingsAndAttendees = meetingAndAttendeesPageData.Data.Data;
@@ -147,9 +144,9 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
 
                     //insert or update the users
                     List<DTO.BB.User> usersDTO = attendeesDTO.Select(x => x.User_UserId).Distinct(new ModelData.Extensions.UserSameUser()).ToList();
-                    var usersModeData = usersDTO.Select(x => x.ToModelData()).ToList();
+                    var usersModelData = usersDTO.Select(x => x.ToModelData()).ToList();
                     int numUsersInserted = 0;
-                    foreach (var u in usersModeData)
+                    foreach (var u in usersModelData)
                     {
                         if (1 == await _asyncConnection.InsertOrReplaceAsync(u)) numUsersInserted++;
                     }

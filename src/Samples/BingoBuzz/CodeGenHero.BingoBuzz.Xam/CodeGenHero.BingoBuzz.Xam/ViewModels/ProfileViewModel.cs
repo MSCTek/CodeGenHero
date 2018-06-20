@@ -32,8 +32,12 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
         public override async Task Init()
         {
+            await NavService.PushAlertPopupAsync("Loading...");
+
             CurrentUser = StateService.GetCurrentUser();
             CurrentCompany = await DataRetrievalService.GetCompanyByIdOrNull(CurrentUser.CompanyId);
+
+            await NavService.PopAlertPopupsAsync();
         }
     }
 }
