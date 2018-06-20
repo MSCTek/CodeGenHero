@@ -23,23 +23,23 @@
                     
                     <Label Text="Hey - You're logged in!" FontAttributes="Bold"/>
                     
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical" Spacing="2" Margin="8">
                         <Label Text="DisplayName " FontAttributes="Bold" />
                         <Label x:Name="lblDisplayName" />
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical" Spacing="2" Margin="8">
                         <Label Text="GivenName " FontAttributes="Bold" />
                         <Label x:Name="lblGivenName" />
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical" Spacing="2" Margin="8">
                         <Label Text="Surname " FontAttributes="Bold" />
                         <Label x:Name="lblSurname" />
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical" Spacing="2" Margin="8">
                         <Label Text="Id " FontAttributes="Bold" />
                         <Label x:Name="lblId" />
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical" Spacing="2" Margin="8">
                         <Label Text="UserPrincipalName " FontAttributes="Bold" />
                         <Label x:Name="lblUserPrincipalName" />
                     </StackLayout>
