@@ -12,17 +12,32 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using System.Threading.Tasks;
 using CodeGenHero.BingoBuzz.Constants;
+using Microsoft.Identity.Client;
 
 namespace CodeGenHero.BingoBuzz.Xam
 {
     public partial class App : Application
     {
+        private bool _isAppCenterStarted;
         private bool _isDemoMode;
-        private bool isAppCenterStarted;
+
+
+        public static PublicClientApplication PCA = null;
+        public static string AuthenticationClientId;
+        public static string[] Scopes = { "User.Read" };
+        public static string Username = string.Empty;
+        public static UIParent UiParent = null;
+
+
 
         public App(params INinjectModule[] platformModules)
         {
+            // Initialize Live Reload.
+            //LiveReload.Init();
+
             InitializeComponent();
+
+            SetUpAuthentication();
 
             var mainPage = new SplashPage() as ContentPage;
             var navPage = new NavigationPage();
@@ -48,15 +63,42 @@ namespace CodeGenHero.BingoBuzz.Xam
                 throw new InvalidOperationException("ERROR: SQLite Database could not be created.");
             }
 
+            
+
             mainPage.BindingContext = Kernel.Get<SplashViewModel>();
             MainPage = mainPage;
         }
 
+        private void SetUpAuthentication()
+        {
+            //get the right the clientID for the platform
+            switch (Xamarin.Forms.Device.RuntimePlatform)
+            {
+                case Xamarin.Forms.Device.iOS:
+                    AuthenticationClientId = Consts.AuthenticationClientId_iOS;
+                    break;
+                case Xamarin.Forms.Device.Android:
+                    AuthenticationClientId = Consts.AuthenticationClientId_Android;
+                    break;
+                case Xamarin.Forms.Device.UWP:
+                    AuthenticationClientId = Consts.AuthenticationClientId_UWP;
+                    break;
+            }
+
+            //this is set in the application properties in Azure
+            PCA = new PublicClientApplication(AuthenticationClientId)
+            {
+                RedirectUri = $"msal{App.AuthenticationClientId}://auth"
+            };
+
+        }
+
+        public string CurrentUserEmail { get; set; }
         public IKernel Kernel { get; set; }
 
-        public async Task SetDemoMode(bool isOn)
+        public async Task SetModeAndSync(Guid userId, bool isDemoModeOn)
         {
-            _isDemoMode = isOn;
+            _isDemoMode = isDemoModeOn;
 
             //flush all data and start again
             var db = Kernel.Get<IDatabase>();
@@ -74,14 +116,14 @@ namespace CodeGenHero.BingoBuzz.Xam
             }
 
             var newDataLoadService = Kernel.Get<IDataDownloadService>();
-            await newDataLoadService.InsertAllDataCleanLocalDB();
+            await newDataLoadService.InsertAllDataCleanLocalDB(userId);
         }
 
         public void StartAppCenter()
         {
             if (Xamarin.Forms.Device.RuntimePlatform != Xamarin.Forms.Device.UWP)
             {
-                if (!isAppCenterStarted)
+                if (!_isAppCenterStarted)
                 {
                     //UI Tests have inconsistent popups for in-app distributions being disabled from side loading - just getting rid of them here to get a build to Xam Test Cloud
 
@@ -93,7 +135,7 @@ namespace CodeGenHero.BingoBuzz.Xam
                     AppCenter.Start(secrets, p);
 
                     Analytics.TrackEvent("App Center is Started");
-                    isAppCenterStarted = true;
+                    _isAppCenterStarted = true;
                 }
             }
             else

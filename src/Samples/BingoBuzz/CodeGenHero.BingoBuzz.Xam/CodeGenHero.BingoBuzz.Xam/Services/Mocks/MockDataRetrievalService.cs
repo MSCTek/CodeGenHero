@@ -1,4 +1,5 @@
-﻿using CodeGenHero.BingoBuzz.Xam.Interfaces;
+﻿using CodeGenHero.BingoBuzz.Constants;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
 using CodeGenHero.BingoBuzz.Xam.ModelObj.BB;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,17 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
             throw new NotImplementedException();
         }
 
+        public Task<bool> CreateSendNewBingoInstanceEvent(Guid bingoInstanceContentId, Guid bingoInstanceId, Enums.BingoInstanceEventType eventType)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<BingoInstanceContent>> GetBingoInstanceContentAsync(Guid bingoInstanceId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Company> GetCompanyByIdOrNull(Guid companyId)
         {
             throw new NotImplementedException();
         }
@@ -32,12 +43,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
         {
             throw new NotImplementedException();
         }
-
-        public Guid GetCurrentUserId()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public Task<Meeting> GetMeetingAsync(Guid meetingId)
         {
             throw new NotImplementedException();
@@ -58,7 +64,32 @@ namespace CodeGenHero.BingoBuzz.Xam.Services.Mocks
             return new List<Meeting>();
         }
 
+        public Task<User> GetUserByEmailOrNullAsync(string email)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<User>> GetUsersAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> GetTotalNumberOfBingos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> GetTotalNumberOfGames()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> GetTotalNumberOfSquareClicks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> CreateSendNewMeeting(Meeting meeting, List<User> attendees)
         {
             throw new NotImplementedException();
         }

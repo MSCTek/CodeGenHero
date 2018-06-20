@@ -88,7 +88,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             where TVM : IViewModelBase
         {
             //await PushActivityIndicatorTransparentPopupAsync();
-            await PushAlertPopupAsync("Loading...");
+            //await PushAlertPopupAsync("Loading...");
 
             await NavigateToView(typeof(TVM));
 
@@ -100,14 +100,14 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             PrintOutNavStack();
 
             //await PopActivityIndicatorTransparentPopupsAsync();
-            await PopAlertPopupsAsync();
+            //await PopAlertPopupsAsync();
         }
 
         public async Task NavigateTo<TVM, TParameter>(TParameter parameter)
             where TVM : IViewModelBaseWithParam<TParameter>
         {
             //await PushActivityIndicatorTransparentPopupAsync();
-            await PushAlertPopupAsync("Loading...");
+            //await PushAlertPopupAsync("Loading...");
 
             await NavigateToView(typeof(TVM));
 
@@ -118,7 +118,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
 
             PrintOutNavStack();
 
-            await PopAlertPopupsAsync();
+            //await PopAlertPopupsAsync();
             //await PopActivityIndicatorTransparentPopupsAsync();
         }
 
@@ -292,7 +292,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
 
         public async Task StartNavStack(Type pageType)
         {
-            await PushAlertPopupAsync("Loading...");
+            //await PushAlertPopupAsync("Loading...");
             //await PushActivityIndicatorTransparentPopupAsync();
             Type viewType;
 
@@ -325,7 +325,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             }
 
             PrintOutNavStack();
-            await PopAlertPopupsAsync();
+            //await PopAlertPopupsAsync();
             //await PopActivityIndicatorTransparentPopupsAsync();
         }
 

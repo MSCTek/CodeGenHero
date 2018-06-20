@@ -9,6 +9,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using CodeGenHero.BingoBuzz.Xam.Interfaces;
 using CodeGenHero.BingoBuzz.Interfaces;
+using CodeGenHero.Logging;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
@@ -17,7 +18,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         //https://developer.xamarin.com/api/type/System.IDisposable/
         //http://stackoverflow.com/questions/538060/proper-use-of-the-idisposable-interface
 
-        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService)
+        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService)
         {
             if (navService == null)
                 throw new ArgumentException("Invalid navService");
@@ -59,7 +60,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private bool _isBusy;
         private bool _isDev;
 
-        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService)
+        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService)
         {
             if (navService == null)
                 throw new ArgumentException("Invalid navService");
@@ -67,12 +68,21 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
             if (dataRetrievalService == null)
                 throw new ArgumentException("Invalid dataRetrievalService");
 
+            if (dataDownloadService == null)
+                throw new ArgumentException("Invalid dataDownloadService");
+
             if (stateService == null)
                 throw new ArgumentException("Invalid stateService");
 
+            if (loggingService == null)
+                throw new ArgumentException("Invalid loggingService");
+
             NavService = navService;
             DataRetrievalService = dataRetrievalService;
+            DataDownloadService = dataDownloadService;
             StateService = stateService;
+            LoggingService = loggingService;
+            
 
             IsDev = false;
 #if DEBUG
@@ -151,6 +161,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         protected static INavigationService NavService { get; set; }
         protected IStateService StateService { get; set; }
         protected IDataRetrievalService DataRetrievalService { get; set; }
+        protected IDataDownloadService DataDownloadService { get; set; }
+        protected ILoggingService LoggingService { get; set; }
 
         public override void Cleanup()
         {

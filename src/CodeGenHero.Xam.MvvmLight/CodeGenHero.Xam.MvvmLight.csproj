@@ -19,7 +19,7 @@ This package should be added to projects that are the target of CodeGenHero temp
     <PackageTags>CodeGenerator CodeGen MSCTek MvvmLight</PackageTags>
     <PackageReleaseNotes>Classes to support implementation of MvvmLight.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -37,6 +37,6 @@ This package should be added to projects that are the target of CodeGenHero temp
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MvvmLightLibs" Version="5.4.1" />
+    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1" />
   </ItemGroup>
 </Project>

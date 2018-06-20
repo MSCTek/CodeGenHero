@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CodeGenHero.BingoBuzz.Xam.Interfaces;
 using CodeGenHero.BingoBuzz.Xam.ModelObj.BB;
+using CodeGenHero.Logging;
 using GalaSoft.MvvmLight.Command;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
@@ -16,7 +17,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private string _meetingName;
         private ObservableCollection<User> _users;
 
-        public NewMeetingViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService, IDataUploadService dataUploadService) : base(navService, dataRetrievalService, stateService)
+        public NewMeetingViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IDataUploadService dataUploadService, IStateService stateService, ILoggingService loggingService)
+            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService)
         {
             _dataUploadService = dataUploadService;
         }
@@ -39,7 +41,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
                         var selectedUsers = Users.Where(x => x.IsSelected).ToList();
 
-                        if (await DataRetrievalService.CreateNewMeeting(meeting, selectedUsers))
+                        if (await DataRetrievalService.CreateSendNewMeeting(meeting, selectedUsers))
                         {
                             NavService.NavigateTo<WelcomeViewModel>();
                         }
@@ -70,9 +72,12 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
         public override async Task Init()
         {
-            _dataUploadService.StartSafeQueuedUpdates();
+            await NavService.PushAlertPopupAsync("Loading...");
 
+            MeetingName = string.Empty;
             Users = (await DataRetrievalService.GetUsersAsync()).ToObservableCollection();
+
+            await NavService.PopAlertPopupsAsync();
         }
     }
 }

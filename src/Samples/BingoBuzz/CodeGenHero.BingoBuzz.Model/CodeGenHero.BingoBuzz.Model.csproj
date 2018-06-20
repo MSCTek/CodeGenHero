@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeGenHero.DataService" Version="1.0.14" />
-    <PackageReference Include="CodeGenHero.Logging" Version="1.0.4" />
+    <PackageReference Include="CodeGenHero.DataService" Version="1.0.29" />
+    <PackageReference Include="CodeGenHero.Logging" Version="1.0.7" />
   </ItemGroup>
 
   <ItemGroup>

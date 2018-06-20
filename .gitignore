@@ -8,7 +8,6 @@
 /src/.vs/config
 /src/.vs/MSC.CodeGenHero/v15
 /src/Samples/BingoBuzz/.vs
-/src/Samples/BingoBuzz/CodeGenHero.Data/.vs/CodeGenHero.Data/v15
 /src/Samples/BingoBuzz/MSC.BingoBuzz.API/bin
 /src/Samples/BingoBuzz/MSC.BingoBuzz.API/obj
 /src/Samples/BingoBuzz/MSC.BingoBuzz.Constants/bin
@@ -36,6 +35,8 @@
 /src/Samples/BingoBuzz/MSC.BingoBuzz.Xam/MSC.BingoBuzz.Xam.iOS/bin
 /src/Samples/BingoBuzz/MSC.BingoBuzz.Xam/MSC.BingoBuzz.Xam.UWP/obj
 /src/Samples/BingoBuzz/MSC.BingoBuzz.Xam/MSC.BingoBuzz.Xam.UWP/bin
+/src/Samples/BingoBuzz/CodeGenHero/bin
+/src/Samples/BingoBuzz/CodeGenHero/obj
 /src/CodeGenHero.DataService/bin
 /src/CodeGenHero.DataService/obj
 /src/CodeGenHero.Logging/bin
@@ -48,6 +49,8 @@
 /src/CodeGenHero.Repository.AutoMapper/obj
 /src/CodeGenHero.Template/bin
 /src/CodeGenHero.Template/obj
+/src/CodeGenHero.Web/bin
+/src/CodeGenHero.Web/obj
 /src/CodeGenHero.WebApi/bin
 /src/CodeGenHero.WebApi/obj
 /src/CodeGenHero.Xam.MvvmLight/bin

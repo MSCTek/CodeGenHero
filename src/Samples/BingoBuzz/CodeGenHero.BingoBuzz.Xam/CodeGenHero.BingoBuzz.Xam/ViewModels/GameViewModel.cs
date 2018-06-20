@@ -11,6 +11,7 @@ using CodeGenHero.BingoBuzz.Xam.Controls;
 using System.Diagnostics;
 using Plugin.Vibrate;
 using Xamarin.Forms;
+using CodeGenHero.Logging;
 
 //using Plugin.Toasts;
 
@@ -23,8 +24,9 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private Meeting _meeting;
         private List<PlayerViewModel> _players;
 
-        public GameViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService) : base(navService, dataRetrievalService, stateService)
-        {
+        public GameViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService)
+            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService)
+        { 
             BingoInstanceContent = new List<ModelObj.BB.BingoInstanceContent>();
             Players = new List<PlayerViewModel>();
         }
@@ -69,8 +71,10 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                         selectedContent.IsSelected = true;
                     }
                     RaisePropertyChanged(nameof(BingoInstanceContent));
+                    DataRetrievalService.CreateSendNewBingoInstanceEvent(bingoInstanceContentId, BingoInstance.BingoInstanceId, Constants.Enums.BingoInstanceEventType.SquareClicked);
                     if (await CheckForBingo())
                     {
+                        DataRetrievalService.CreateSendNewBingoInstanceEvent(bingoInstanceContentId, BingoInstance.BingoInstanceId, Constants.Enums.BingoInstanceEventType.Bingo);
                         //TODO: game is over
                         await NavService.NavigateToNoAnimation<WelcomeViewModel>();
                     }
@@ -80,6 +84,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
         public override async Task Init(Guid meetingId)
         {
+            await NavService.PushAlertPopupAsync("Loading...");
+
             Meeting = await DataRetrievalService.GetMeetingOrNullAsync(meetingId);
 
             if (Meeting != null)
@@ -107,6 +113,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                 BingoInstanceContent = await DataRetrievalService.GetBingoInstanceContentAsync(BingoInstance.BingoInstanceId);
                 RaisePropertyChanged(nameof(BingoInstanceContent));
             }
+
+            await NavService.PopAlertPopupsAsync();
         }
 
         private async Task<bool> Bingo(string message)

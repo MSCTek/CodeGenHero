@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.4
+Bug Fixes & Enhancements:
+* Migrated HttpRequestBaseExtensions to CodeGenHero.Web NuGet package.
+
 ### 1.0.2
 Bug Fixes & Enhancements:
 * Undo signed assembly via strong name key file.

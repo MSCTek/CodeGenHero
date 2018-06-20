@@ -1,5 +1,29 @@
 ﻿## Changelog
 
+### 1.0.26
+Bug Fixes & Enhancements:
+* Static caching/reuse of the HttpClient, based upon incoming authorization, requestedVersion, and connectionIdentifier parameters.
+
+### 1.0.23
+Bug Fixes & Enhancements:
+* SerializationHelper SerializeCallResultsGet now returns IPageDataT instead of PageData concrete class.
+
+### 1.0.22
+Bug Fixes & Enhancements:
+* SerializationHelper changes to return PageData<T> from SerializeCallResultsGet<T> methods.  Better error information returned to data service client methods from SerializationHelper.
+
+### 1.0.21
+Bug Fixes & Enhancements:
+* Update to add PageDataRequest and FilterCriterion classes.
+
+### 1.0.16
+Bug Fixes & Enhancements:
+* Update to convert _current variable to protected so it can be accessed in inheriting classes.
+
+### 1.0.15
+Bug Fixes & Enhancements:
+* Addition of a List<string> version of GetAllPageDataResultsAsync().
+
 ### 1.0.14
 Bug Fixes & Enhancements:
 * Minor change to BaseModel making default UNKNOWNLOGMESSAGETYPE constant and HandleLazyLoadRequest not async.

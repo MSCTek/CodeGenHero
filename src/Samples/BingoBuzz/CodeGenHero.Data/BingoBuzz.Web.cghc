@@ -355,7 +355,17 @@
     {
       "HiddenIndicator": false,
       "Name": "DefaultCriteria",
-      "Value": "DateTime? minUpdatedDate"
+      "Value": "DateTime?:minUpdatedDate:IsGreaterThan:UpdatedDate"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "RegexExclude",
+      "Value": ""
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "RegexInclude",
+      "Value": ""
     }
   ],
   "Version": null

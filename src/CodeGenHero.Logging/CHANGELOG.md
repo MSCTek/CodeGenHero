@@ -1,5 +1,13 @@
 ﻿## Changelog
 
+### 1.0.6
+Bug Fixes & Enhancements:
+* Adding Warn_Domain and Warn_Repository values to the LogMessageType class. 
+
+### 1.0.5
+Bug Fixes & Enhancements:
+* Adding Exception_Domain and Exception_Repository values to the LogMessageType class. 
+
 ### 1.0.2
 Bug Fixes & Enhancements:
 * Undo signed assembly via strong name key file.

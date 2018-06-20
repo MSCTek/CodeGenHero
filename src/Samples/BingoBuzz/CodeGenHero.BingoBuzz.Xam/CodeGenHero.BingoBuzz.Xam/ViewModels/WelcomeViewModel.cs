@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Reflection;
 using CodeGenHero.BingoBuzz.Xam.Resources;
+using CodeGenHero.Logging;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
@@ -20,7 +21,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private bool _hasLoaded;
         private ObservableCollection<Meeting> _meetings;
 
-        public WelcomeViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IStateService stateService) : base(navService, dataRetrievalService, stateService)
+        public WelcomeViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService) 
+            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService)
         {
             Meetings = new ObservableCollection<Meeting>();
             _hasLoaded = false;
@@ -80,10 +82,45 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         {
             if (!_hasLoaded)
             {
-                //TODO: remove - for development only
-                await ((App)Application.Current).SetDemoMode(false);
-                StateService.SetCurrentUser(DemoUser.UserGeorge.ToModelObj());
+                /* TOGGLE DEMO MODE HERE */
 
+                /* DEMO MODE ON */
+                //For development only -> Demo mode
+                //StateService.SetCurrentUser(DemoUser.UserGeorge.ToModelObj());
+                //await ((App)Application.Current).SetModeAndSync(true);
+
+                /* DEMO MODE OFF - BYPASS AZURE AD AUTHENTICATION */
+                // Hardcode authentication by doing this - robin's dev user - already in the db
+                //await DataDownloadService.InsertOrReplaceAuthenticatedUser(Guid.Parse("b79ed0e3-ddb9-4920-8900-ffc55a73b4b5"));
+                //var user = await DataRetrievalService.GetUserByEmailOrNullAsync("robin@msctek.com");
+
+                /* DEMO MODE OFF - USE AZURE AD AUTHENTICATION */
+                //Assuming here that we will be using the same user that just authenticated
+                //now that the user has logged in, we need to see if they are a bingoBuzz user, if not, we can add them
+                //TODO: should probably do a try parse here if we add more providers
+                await DataDownloadService.InsertOrReplaceAuthenticatedUser(
+                    StateService.GetAuthEmail(),
+                    Guid.Parse(StateService.GetAuthId()),
+                    StateService.GetAuthGivenName(),
+                    StateService.GetAuthSurName()
+                );
+                var user = await DataRetrievalService.GetUserByEmailOrNullAsync(StateService.GetAuthEmail());
+
+                /* END TOGGLE DEMO MODE HERE */
+
+                if (user != null)
+                {
+                    StateService.SetCurrentUser(user);
+                }
+                else
+                {
+                    string whatHappened = "Can't find this BingoBuzz user!";
+                    LoggingService.Error(whatHappened, LogMessageType.Instance.Info_Synchronization);
+                    throw new Exception(whatHappened);
+                }
+                await ((App)Application.Current).SetModeAndSync(user.UserId, false);
+
+                //Load the contents of the welcome page
                 Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();
                 _hasLoaded = true;
             }

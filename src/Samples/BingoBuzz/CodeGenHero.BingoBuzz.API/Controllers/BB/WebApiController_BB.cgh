@@ -1,1 +1,69 @@
-This filegroup contains the generated code for C:\Code\Repos\CodeGenHero\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.API\Controllers\BB\WebApiController_BB.cgh
+{
+  "FileGroupMessage": "This filegroup contains the generated code for C:\\Code\\PublicRepo\\src\\Samples\\BingoBuzz\\CodeGenHero.BingoBuzz.API\\Controllers\\BB\\WebApiController_BB.cgh",
+  "FileList": [
+    {
+      "FileLastChange": "2018-06-16T15:01:20.6614511-05:00",
+      "Filename": "BingoContentsController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.6454934-05:00",
+      "Filename": "BingoInstanceContentsController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.6285391-05:00",
+      "Filename": "BingoInstanceContentStatusTypesController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.6036058-05:00",
+      "Filename": "BingoInstanceEventsController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.5866511-05:00",
+      "Filename": "BingoInstanceEventTypesController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.5686987-05:00",
+      "Filename": "BingoInstancesController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.5517462-05:00",
+      "Filename": "BingoInstanceStatusTypesController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.5317968-05:00",
+      "Filename": "CompaniesController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.5158399-05:00",
+      "Filename": "FrequencyTypesController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.4978867-05:00",
+      "Filename": "MeetingAttendeesController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.471956-05:00",
+      "Filename": "MeetingSchedulesController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.4510133-05:00",
+      "Filename": "MeetingsController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.4330601-05:00",
+      "Filename": "NotificationMethodTypesController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.410546-05:00",
+      "Filename": "NotificationRulesController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.3836186-05:00",
+      "Filename": "RecurrenceRulesController.cs"
+    },
+    {
+      "FileLastChange": "2018-06-16T15:01:20.3327549-05:00",
+      "Filename": "UsersController.cs"
+    }
+  ]
+}

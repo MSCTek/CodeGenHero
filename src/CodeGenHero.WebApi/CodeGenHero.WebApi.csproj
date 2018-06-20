@@ -19,9 +19,11 @@ This package should be added to projects that are the target of CodeGenHero temp
     <PackageTags>CodeGenerator CodeGen MSCTek WebApi</PackageTags>
     <PackageReleaseNotes>Classes to support WebApi controllers</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.0.3</Version>
+    <Version>1.0.5</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45'">
@@ -31,10 +33,6 @@ This package should be added to projects that are the target of CodeGenHero temp
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net46'">
     <DefineConstants>NET46;NETFULL</DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Web" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CodeGenHero.Logging" Version="1.0.4" />
@@ -51,4 +49,8 @@ This package should be added to projects that are the target of CodeGenHero temp
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  
 </Project>

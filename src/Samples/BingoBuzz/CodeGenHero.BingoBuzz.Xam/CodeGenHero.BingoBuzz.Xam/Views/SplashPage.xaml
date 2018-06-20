@@ -1,10 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            
+              xmlns:ctr="clr-namespace:CodeGenHero.BingoBuzz.Xam.Controls;assembly=CodeGenHero.BingoBuzz.Xam"
              x:Class="CodeGenHero.BingoBuzz.Xam.Views.SplashPage">
    
     <ContentPage.Content>
-       
+
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="Welcome to" Margin="0,20,0,0" HorizontalOptions="Center" VerticalOptions="End" HorizontalTextAlignment="Center" />
+            <Image Grid.Row="1" Source="{ctr:ImageResource CodeGenHero.BingoBuzz.Xam.Resources.BingoBuzz.png}" HorizontalOptions="Center" Aspect="AspectFit" />
+            <Label Grid.Row="2" Text="Virtual Meeting Bingo" FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
+            <StackLayout Grid.Row="3" Margin="10" BackgroundColor="AliceBlue" HorizontalOptions="Center">
+                <StackLayout x:Name="slUser" IsVisible="False" Padding="15">
+                    
+                    <Label Text="Hey - You're logged in!" FontAttributes="Bold"/>
+                    
+                    <StackLayout Orientation="Vertical" Spacing="2" Margin="8">
+                        <Label Text="DisplayName " FontAttributes="Bold" />
+                        <Label x:Name="lblDisplayName" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="2" Margin="8">
+                        <Label Text="GivenName " FontAttributes="Bold" />
+                        <Label x:Name="lblGivenName" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="2" Margin="8">
+                        <Label Text="Surname " FontAttributes="Bold" />
+                        <Label x:Name="lblSurname" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="2" Margin="8">
+                        <Label Text="Id " FontAttributes="Bold" />
+                        <Label x:Name="lblId" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="2" Margin="8">
+                        <Label Text="UserPrincipalName " FontAttributes="Bold" />
+                        <Label x:Name="lblUserPrincipalName" />
+                    </StackLayout>
+
+                   <Button x:Name="btnRawUserInfo" Text="View Raw User Info" Clicked="OnViewRawUserInfo" HorizontalOptions="Center" />
+
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Row="4">
+                <Button x:Name="btnSignInSignOut" Text="Sign in" Clicked="OnSignInSignOut" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
+                <Button x:Name="btnOpenApp" Text="ENTER" Clicked="OnOpenApp" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            
+        </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

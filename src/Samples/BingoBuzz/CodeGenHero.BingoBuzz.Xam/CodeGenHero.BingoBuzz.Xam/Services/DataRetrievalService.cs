@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CodeGenHero.Logging;
 using System.Threading;
+using Microsoft.AppCenter.Crashes;
 
 namespace CodeGenHero.BingoBuzz.Xam.Services
 {
@@ -34,10 +35,12 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
 
         public async Task<BingoInstance> CreateNewBingoInstance(Guid meetingId)
         {
+            Guid instanceId = Guid.NewGuid();
+
             var newInstance = new ModelData.BB.BingoInstance()
             {
-                BingoInstanceId = Guid.NewGuid(),
-                BingoInstanceStatusTypeId = 2, //active
+                BingoInstanceId = instanceId,
+                BingoInstanceStatusTypeId = (int)Constants.Enums.BingoInstanceStatusType.Active,
                 CreatedDate = DateTime.UtcNow,
                 CreatedUserId = _stateService.GetCurrentUserId(),
                 IncludeFreeSquareIndicator = true,
@@ -56,17 +59,23 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                 throw new Exception(message);
             }
 
+            //queue the instance for upload
+            await DataUploadService.Instance.QueueAsync(instanceId, Constants.Enums.QueueableObjects.BingoInstance);
+            //create the new bingo instance content records, they will be queued for upload with the instance
             await CreateNewBingoInstanceContentsNoRepeats(newInstance.BingoInstanceId);
-
+            
+            //fire off safely backgrounded upload for the instance record and the content
+            DataUploadService.Instance.StartSafeQueuedUpdates();
+            
             return newInstance.ToModelObj();
         }
 
-        public async Task<bool> CreateNewMeeting(Meeting meeting, List<User> attendees)
+        public async Task<bool> CreateSendNewMeeting(Meeting meeting, List<User> attendees)
         {
             meeting.CreatedDate = DateTime.UtcNow;
             meeting.UpdatedDate = DateTime.UtcNow;
-            meeting.CreatedUserId = GetCurrentUserId();
-            meeting.UpdatedUserId = GetCurrentUserId();
+            meeting.CreatedUserId = _stateService.GetCurrentUserId();
+            meeting.UpdatedUserId = _stateService.GetCurrentUserId();
             meeting.IsDeleted = false;
 
             if (1 != await _asyncConnection.InsertAsync(meeting.ToModelData()))
@@ -75,27 +84,75 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                 _log.Fatal(message, LogMessageType.Instance.Exception_Database);
                 throw new Exception(message);
             }
+
+            //queue meeting for upload
+            await DataUploadService.Instance.QueueAsync(meeting.MeetingId, Constants.Enums.QueueableObjects.Meeting);
+
             foreach (var a in attendees)
             {
+                Guid id = Guid.NewGuid();
                 if (1 != await _asyncConnection.InsertAsync(new ModelData.BB.MeetingAttendee()
                 {
                     MeetingId = meeting.MeetingId,
                     CreatedDate = DateTime.UtcNow,
-                    CreatedUserId = GetCurrentUserId(),
+                    CreatedUserId = _stateService.GetCurrentUserId(),
                     UpdatedDate = DateTime.UtcNow,
-                    UpdatedUserId = GetCurrentUserId(),
+                    UpdatedUserId = _stateService.GetCurrentUserId(),
                     UserId = a.UserId,
                     IsDeleted = false,
-                    MeetingAttendeeId = Guid.NewGuid()
+                    MeetingAttendeeId = id
                 }))
                 {
                     var message = "Error Writing new meeting attendee to SQLite";
                     _log.Fatal(message, LogMessageType.Instance.Exception_Database);
                     throw new Exception(message);
                 }
+               
+                await DataUploadService.Instance.QueueAsync(id, Constants.Enums.QueueableObjects.MeetingAttendee);                
             }
+            //fire off safely backgrounded upload
+            DataUploadService.Instance.StartSafeQueuedUpdates();
 
             return true;
+        }
+
+        public async Task<bool> CreateSendNewBingoInstanceEvent(Guid bingoInstanceContentId, Guid bingoInstanceId, BingoBuzz.Constants.Enums.BingoInstanceEventType eventType)
+        {
+            try
+            {
+                Guid eventId = Guid.NewGuid();
+
+                //write it to SQLite
+                if (1 != await _asyncConnection.InsertAsync(new ModelData.BB.BingoInstanceEvent()
+                {
+                    BingoInstanceEventId = eventId,
+                    BingoInstanceContentId = bingoInstanceContentId,
+                    BingoInstanceEventTypeId = (int)eventType,
+                    BingoInstanceId = bingoInstanceId,
+                    CreatedDate = DateTime.UtcNow,
+                    CreatedUserId = _stateService.GetCurrentUserId(),
+                    IsDeleted = false,
+                    UpdatedDate = DateTime.UtcNow,
+                    UpdatedUserId = _stateService.GetCurrentUserId()
+                }))
+                {
+                    var message = "Error Writing new bingo instance event to SQLite";
+                    _log.Fatal(message, LogMessageType.Instance.Exception_Database);
+                    throw new Exception(message);
+                }
+
+                //queue it for upload
+                await DataUploadService.Instance.QueueAsync(eventId, Constants.Enums.QueueableObjects.BingoInstanceEvent);
+
+                //fire off safely backgrounded upload
+                DataUploadService.Instance.StartSafeQueuedUpdates();
+
+                return true;
+            }catch(Exception ex)
+            {
+                Crashes.TrackError(ex);
+                return false;
+            }
         }
 
         public async Task<List<ModelObj.BB.BingoInstanceContent>> GetBingoInstanceContentAsync(Guid bingoInstanceId)
@@ -128,10 +185,53 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
             return null;
         }
 
-        //TODO: change this when authentication is wired up
-        public Guid GetCurrentUserId()
+        public async Task<int> GetTotalNumberOfBingos()
         {
-            return Guid.Parse("B79ED0E3-DDB9-4920-8900-FFC55A73B4B5");
+            Guid currentUserId = _stateService.GetCurrentUserId();
+            int bingoTypeId = (int)Constants.Enums.BingoInstanceEventType.Bingo;
+            var count = (await _asyncConnection.Table<ModelData.BB.BingoInstanceEvent>()
+                .Where(x => x.CreatedUserId == currentUserId && x.BingoInstanceEventTypeId == bingoTypeId && x.IsDeleted == false).CountAsync());
+            return count;
+        }
+
+        public async Task<int> GetTotalNumberOfSquareClicks()
+        {
+            Guid currentUserId = _stateService.GetCurrentUserId();
+            int squareClickTypeId = (int)Constants.Enums.BingoInstanceEventType.SquareClicked;
+            var count = (await _asyncConnection.Table<ModelData.BB.BingoInstanceEvent>()
+                .Where(x => x.CreatedUserId == currentUserId && x.BingoInstanceEventTypeId == squareClickTypeId && x.IsDeleted == false).CountAsync());
+            return count;
+        }
+
+        public async Task<int> GetTotalNumberOfGames()
+        {
+            Guid currentUserId = _stateService.GetCurrentUserId();
+            var count = (await _asyncConnection.Table<ModelData.BB.BingoInstance>()
+                .Where(x => x.CreatedUserId == currentUserId && x.IsDeleted == false).CountAsync());
+            return count;
+        }
+
+        public async Task<ModelObj.BB.Company> GetCompanyByIdOrNull(Guid companyId)
+        {
+            var company = (await _asyncConnection.Table<ModelData.BB.Company>()
+                .Where(x => x.CompanyId == companyId && x.IsDeleted == false).FirstOrDefaultAsync());
+            if (company != null)
+            {
+                return company.ToModelObj();
+            }
+            return null;
+        }
+
+        public async Task<ModelObj.BB.User> GetUserByEmailOrNullAsync(string email)
+        {
+            var emailLower = email.ToLower();
+            var user = (await _asyncConnection.Table<ModelData.BB.User>()
+                .Where(x => x.Email.ToLower() == emailLower  && x.IsDeleted == false).FirstOrDefaultAsync());
+            if (user != null)
+            {
+                return user.ToModelObj();
+            }
+            return null;
         }
 
         public async Task<List<ModelObj.BB.MeetingAttendee>> GetMeetingAttendeesAsync(Guid meetingId)
@@ -210,6 +310,8 @@ namespace CodeGenHero.BingoBuzz.Xam.Services
                         {
                             BingoInstanceContentId = Guid.NewGuid(),
                             BingoInstanceId = bingoInstanceId,
+                            BingoInstanceContentStatusTypeId = (int)Constants.Enums.BingoInstanceContentStatusType.Untapped, 
+                            UserId = _stateService.GetCurrentUserId(),
                             Row = r,
                             Col = c,
                             UpdatedDate = DateTime.UtcNow,

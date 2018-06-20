@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.4
+Bug Fixes & Enhancements:
+* Upgrade MvvmLight NuGet dependency to MvvmLightLibsStd10.
+
 ### 1.0.2
 Bug Fixes & Enhancements:
 * Undo signed assembly via strong name key file.

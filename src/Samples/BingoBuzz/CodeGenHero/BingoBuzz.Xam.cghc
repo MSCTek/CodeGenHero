@@ -1,0 +1,229 @@
+{
+  "Author": null,
+  "BlueprintTemplates": [
+    {
+      "Description": "Simple Data Transfer Objects for use in communicating across process boundaries.  Ideal for sending results from a server-side Web API to a consuming client application (i.e. Xamarin mobile or ASP.Net website).",
+      "Id": "58fa7ee2-89f7-41e6-85ed-8d4482653990",
+      "IsActive": false,
+      "Name": "DTO",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "DTOIncludeRelatedObjects",
+          "Value": "true"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "DTOOutputFilePath",
+          "Value": "DTO\\{namespacePostfix}\\[tablename].cs"
+        }
+      ],
+      "Version": "1.1"
+    },
+    {
+      "Description": "Maps SQLite model data objects to MvvmLight objects and vice versa.",
+      "Id": "ec39b410-017a-407f-be75-0cf4fd66efd2",
+      "IsActive": false,
+      "Name": "MapperSqliteModelDataToMvvmLightModelObject",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "MapperSqliteModelDataToMvvmLightModelObjectOutputFilePath",
+          "Value": "Xamarin\\ModelMapper\\ModelMapper{namespacePostfix}.cs"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "SqliteModelMapperClassName",
+          "Value": "ModelMapper"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "SqliteModelMapperClassNamespace",
+          "Value": "{baseNamespace}.Xam"
+        }
+      ],
+      "Version": "1.1"
+    },
+    {
+      "Description": "MvvmLight Model Objects).",
+      "Id": "c644a31c-7ebc-4383-bc7f-0ea7c5bf6ed4",
+      "IsActive": false,
+      "Name": "MvvmLightModelObject",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "MvvmLightModelObjectOutputFilePath",
+          "Value": "Xamarin\\ModelObj\\{namespacePostfix}\\[tablename].cs"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "SqliteModelObjectBaseAuditEditNamespace",
+          "Value": "CodeGenHero.Xam.MvvmLight"
+        }
+      ],
+      "Version": "1.1"
+    },
+    {
+      "Description": "Provides the classes necessary to read/write data from/into a SQLite database for persistence.",
+      "Id": "c5caad15-b3be-4443-87d8-7cabde59f7b0",
+      "IsActive": false,
+      "Name": "SqliteModelData",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "SqliteModelDataBaseAuditEditNamespace",
+          "Value": "CodeGenHero.Xam.Sqlite"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "SqliteModelDataOutputFilePath",
+          "Value": "Xamarin\\ModelData\\{namespacePostfix}\\[tablename].cs"
+        }
+      ],
+      "Version": "1.1"
+    },
+    {
+      "Description": "Provides functionality to abstract calls to Web API services.",
+      "Id": "424e7ec7-bd9d-4cd3-9257-6ffbc772b82e",
+      "IsActive": false,
+      "Name": "WebApiDataService",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "ILoggingServiceNamespace",
+          "Value": "CodeGenHero.Logging"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "SerializationHelperNamespace",
+          "Value": "{baseNamespace}.Common.Helpers"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "UpdatedDateFieldName",
+          "Value": "UpdatedDate"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "WebApiDataServiceNamespace",
+          "Value": "{baseNamespace}.API.Client"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "WebApiDataServiceOutputFilePath",
+          "Value": "Client\\WebAPIDataService\\WebAPIDataService{namespacePostfix}.cs"
+        }
+      ],
+      "Version": "1.1"
+    },
+    {
+      "Description": "Provides an interface for the implementation class that provides functionality to abstract calls to Web API services.",
+      "Id": "1ea810ed-61a7-443b-97f2-da5b30311e75",
+      "IsActive": false,
+      "Name": "WebApiDataServiceInterface",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "WebApiDataServiceInterfaceClassName",
+          "Value": "IWebApiDataService{namespacePostfix}"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "WebApiDataServiceInterfaceOutputFilePath",
+          "Value": "Client\\IWebApiDataservice\\IWebApiDataService{namespacePostfix}.cs"
+        }
+      ],
+      "Version": "1.1"
+    },
+    {
+      "Description": "Sample Data Objects for use in generating demo versions.",
+      "Id": "9131a0a2-7ceb-4f4c-b8a9-6740ac19f66c",
+      "IsActive": false,
+      "Name": "XamSample",
+      "Settings": [
+        {
+          "HiddenIndicator": false,
+          "Name": "XamSampleCount",
+          "Value": "3"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "XamSampleDigits",
+          "Value": "2"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "XamSampleNamespace",
+          "Value": "{baseNamespace}.XamSample.{namespacePostfix}"
+        },
+        {
+          "HiddenIndicator": false,
+          "Name": "XamSampleOutputFilePath",
+          "Value": "XamSample\\{namespacePostfix}\\[tablename].cs"
+        }
+      ],
+      "Version": "1.1"
+    }
+  ],
+  "Description": null,
+  "Id": "00000000-0000-0000-0000-000000000000",
+  "Name": null,
+  "Settings": [
+    {
+      "HiddenIndicator": false,
+      "Name": "DtoNamespace",
+      "Value": "{baseNamespace}.DTO.{namespacePostfix}"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "BaseNamespace",
+      "Value": "CodeGenHero.BingoBuzz"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "NamespacePostfix",
+      "Value": "BB"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "PrependSchemaNameIndicator",
+      "Value": "true"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "RepositoryDbContextName",
+      "Value": "{namespacePostFix}DataContext"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "SqliteModelDataNamespace",
+      "Value": "{baseNamespace}.Xam.ModelData.{namespacePostfix}"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "SqliteModelObjectNamespace",
+      "Value": "{baseNamespace}.Xam.ModelObj.{namespacePostfix}"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "DefaultCriteria",
+      "Value": "DateTime?:minUpdatedDate:IsGreaterThan:UpdatedDate"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "WebApiDataServiceInterfaceNamespace",
+      "Value": "{baseNamespace}.API.Client.Interface"
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "RegexExclude",
+      "Value": ""
+    },
+    {
+      "HiddenIndicator": false,
+      "Name": "RegexInclude",
+      "Value": ""
+    }
+  ],
+  "Version": null
+}
