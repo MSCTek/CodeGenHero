@@ -80,6 +80,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 
         public override async Task Init()
         {
+            await NavService.PushAlertPopupAsync("Loading...");
             if (!_hasLoaded)
             {
                 /* TOGGLE DEMO MODE HERE */
@@ -124,6 +125,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                 Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();
                 _hasLoaded = true;
             }
+            await NavService.PopAlertPopupsAsync();
         }
 
         public async Task RefreshMeetings()

@@ -15,23 +15,23 @@
             <ctr:CustomHeader Grid.Row="0" ShowBackButton="True" Title="My Profile" ShowHamburger="False" />
 
             <FlexLayout Grid.Row="1"  Direction="Column" Margin="75,20" >
-                <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical" Spacing="2" Margin="4">
                     <Label Text="UserId:"/>
-                    <Label Text="{Binding CurrentUser.UserIdDisplay}" FontAttributes="Bold"/>
+                    <Label Text="{Binding CurrentUser.UserIdDisplay}" FontSize="Micro"/>
                 </StackLayout>
-                <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical" Spacing="2" Margin="4">
                     <Label Text="Name:"/>
                     <Label Text="{Binding CurrentUser.FullName}" FontAttributes="Bold"/>
                 </StackLayout>
-                <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical" Spacing="2" Margin="4">
                     <Label Text="Email:"/>
                     <Label Text="{Binding CurrentUser.Email}" FontAttributes="Bold"/>
                 </StackLayout>
-                <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical" Spacing="2" Margin="4">
                     <Label Text="Company:"/>
                     <Label Text="{Binding CurrentCompany.Name}" FontAttributes="Bold"/>
                 </StackLayout>
-                <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical" Spacing="2" Margin="4">
                     <Label Text="Created:"/>
                     <Label Text="{Binding CurrentUser.CreatedDate, StringFormat='{}{0:MMM dd yyyy}'}" FontAttributes="Bold"/>
                 </StackLayout>
