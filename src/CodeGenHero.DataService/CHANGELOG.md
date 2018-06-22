@@ -1,5 +1,17 @@
 ﻿## Changelog
 
+### 1.0.29
+Bug Fixes & Enhancements:
+* Refactoring GetClient to cache up to 500 HttpClient instances and dispose 10% of them when maximum number allowed is exceeded.
+
+### 1.0.28
+Bug Fixes & Enhancements:
+* BuildFilter now accepts IList interface instead of concrete List.
+
+### 1.0.27
+Bug Fixes & Enhancements:
+* Changing PageDataRequest FilterCriteria property to IList instead of List.
+
 ### 1.0.26
 Bug Fixes & Enhancements:
 * Static caching/reuse of the HttpClient, based upon incoming authorization, requestedVersion, and connectionIdentifier parameters.

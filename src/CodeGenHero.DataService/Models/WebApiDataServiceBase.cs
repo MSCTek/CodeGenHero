@@ -97,14 +97,27 @@ namespace CodeGenHero.DataService
 		//    return retVal;
 		//}
 
+		//private static readonly Object _lock = new Object();
+		private const int MAX_HTTPCLIENT_INSTANCES = 500;
+
+		private static ConcurrentDictionary<string, HttpClient> _httpClients = new ConcurrentDictionary<string, HttpClient>();
+
+		public int HttpClientInstanceCount
+		{
+			get
+			{
+				return _httpClients.Count;
+			}
+		}
+
 		public virtual HttpClient GetClient(int requestedVersion = 1, string connectionIdentifier = null)
 		{
 			return GetClient(DefaultAuthenticationHeaderValue, requestedVersion, DefaultConnectionIdentifier);
 		}
 
-		static ConcurrentDictionary<string, HttpClient> _httpClients = new ConcurrentDictionary<string, HttpClient>();
+		// Cache up to this many http clients instances.
 		/// <summary>
-		/// 
+		///
 		/// </summary>
 		/// <param name="authorization"></param>
 		/// <param name="requestedVersion"></param>
@@ -115,16 +128,37 @@ namespace CodeGenHero.DataService
 		public virtual HttpClient GetClient(AuthenticationHeaderValue authorization, int requestedVersion, string connectionIdentifier)
 		{
 			string key = $"{requestedVersion}:{connectionIdentifier}:{authorization}";
+			HttpClient retVal = null;
 
-			if (_httpClients.Count > 1000)
-			{	// Cache up to 1000 http clients instances.
-				_httpClients.Clear();
+			//lock (_lock) // No need to lock the collection because it is thread-safe.
+			//{
+			if (_httpClients.Count > MAX_HTTPCLIENT_INSTANCES)
+			{
+				HttpClient itemToRemove = null;
+				int itemsRemoved = 0;
+				foreach (var keyToRemove in _httpClients.Keys)
+				{
+					if (_httpClients.TryRemove(keyToRemove, out itemToRemove))
+					{
+						itemToRemove.Dispose();  // Release any resources associated with this HttpClient object.
+					}
+
+					itemsRemoved++;
+					if (itemsRemoved > MAX_HTTPCLIENT_INSTANCES / 10)
+					{   // We've cleand up 10%, exit.
+						break;
+					}
+				}
+
+				//_httpClients.Clear();
 			}
 
-			HttpClient retVal = _httpClients.GetOrAdd(key, x => {
-				var newClient = GetNewHttpClient(authorization, requestedVersion, connectionIdentifier); 
+			retVal = _httpClients.GetOrAdd(key, x =>
+			{
+				var newClient = GetNewHttpClient(authorization, requestedVersion, connectionIdentifier);
 				return newClient;
 			});
+			//}
 
 			return retVal;
 		}
@@ -166,7 +200,7 @@ namespace CodeGenHero.DataService
 
 		#region Convenience Methods
 
-		protected virtual List<string> BuildFilter(List<IFilterCriterion> filterCriteria)
+		protected virtual List<string> BuildFilter(IList<IFilterCriterion> filterCriteria)
 		{
 			var retVal = new List<string>();
 

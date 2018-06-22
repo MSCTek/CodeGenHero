@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.7
+Bug Fixes & Enhancements:
+* Adding Warn_Model and Exception_Model values to the LogMessageType class. 
+
 ### 1.0.6
 Bug Fixes & Enhancements:
 * Adding Warn_Domain and Warn_Repository values to the LogMessageType class. 

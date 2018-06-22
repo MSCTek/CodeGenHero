@@ -16,11 +16,11 @@
 This package should be added to projects that are the target of CodeGenHero templates that use logging.</Description>
     <Copyright>Copyright © 2016-2018 Micro Support Center, Inc.</Copyright>
     <PackageTags>CodeGenerator CodeGen MSCTek logger logging logs</PackageTags>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>1.0.7.0</AssemblyVersion>
     <PackageReleaseNotes>Base classes for logging.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Product>CodeGenHero</Product>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>

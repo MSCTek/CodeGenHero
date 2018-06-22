@@ -12,7 +12,7 @@ namespace CodeGenHero.DataService
 			this.PageSize = 100;
 		}
 
-		public PageDataRequest(List<IFilterCriterion> filterCriteria, string sort = null, int page = 1, int pageSize = 100)
+		public PageDataRequest(IList<IFilterCriterion> filterCriteria, string sort = null, int page = 1, int pageSize = 100)
 		{
 			this.FilterCriteria = filterCriteria;
 			this.Sort = sort;
@@ -20,7 +20,7 @@ namespace CodeGenHero.DataService
 			this.PageSize = pageSize;
 		}
 
-		public List<IFilterCriterion> FilterCriteria { get; set; }
+		public IList<IFilterCriterion> FilterCriteria { get; set; }
 		public int Page { get; set; }
 		public int PageSize { get; set; }
 		public string Sort { get; set; }
