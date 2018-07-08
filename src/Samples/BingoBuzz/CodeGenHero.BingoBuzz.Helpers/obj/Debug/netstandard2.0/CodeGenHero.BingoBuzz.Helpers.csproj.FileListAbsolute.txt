@@ -1,0 +1,11 @@
+D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Helpers\bin\Debug\netstandard2.0\CodeGenHero.BingoBuzz.Helpers.deps.json
+D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Helpers\bin\Debug\netstandard2.0\CodeGenHero.BingoBuzz.Helpers.dll
+D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Helpers\bin\Debug\netstandard2.0\CodeGenHero.BingoBuzz.Helpers.pdb
+D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Helpers\bin\Debug\netstandard2.0\CodeGenHero.BingoBuzz.DTO.dll
+D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Helpers\bin\Debug\netstandard2.0\CodeGenHero.BingoBuzz.DTO.pdb
+D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Helpers\obj\Debug\netstandard2.0\CodeGenHero.BingoBuzz.Helpers.csprojResolveAssemblyReference.cache
+D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Helpers\obj\Debug\netstandard2.0\CodeGenHero.BingoBuzz.Helpers.csproj.CoreCompileInputs.cache
+D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Helpers\obj\Debug\netstandard2.0\CodeGenHero.BingoBuzz.Helpers.AssemblyInfoInputs.cache
+D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Helpers\obj\Debug\netstandard2.0\CodeGenHero.BingoBuzz.Helpers.AssemblyInfo.cs
+D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Helpers\obj\Debug\netstandard2.0\CodeGenHero.BingoBuzz.Helpers.dll
+D:\CGH\PublicRepo\src\Samples\BingoBuzz\CodeGenHero.BingoBuzz.Helpers\obj\Debug\netstandard2.0\CodeGenHero.BingoBuzz.Helpers.pdb
