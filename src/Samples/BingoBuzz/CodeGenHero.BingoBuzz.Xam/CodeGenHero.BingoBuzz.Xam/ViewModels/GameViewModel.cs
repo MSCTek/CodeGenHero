@@ -24,8 +24,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private Meeting _meeting;
         private List<PlayerViewModel> _players;
 
-        public GameViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService)
-            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService)
+        public GameViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService, IMemoryReporterService memoryReporterService)
+            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService, memoryReporterService)
         {
             BingoInstanceContent = new List<ModelObj.BB.BingoInstanceContent>();
             Players = new List<PlayerViewModel>();

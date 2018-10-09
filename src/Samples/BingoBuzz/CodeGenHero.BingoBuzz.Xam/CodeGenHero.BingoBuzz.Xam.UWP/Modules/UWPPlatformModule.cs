@@ -17,9 +17,9 @@ namespace CodeGenHero.BingoBuzz.Xam.UWP.Modules
                  .To<UWPSQLite>()
                  .InSingletonScope();
 
-            // Bind<IMemoryService>()
-            //    .To<UWPMemoryService>()
-            //    .InSingletonScope();
+             Bind<IMemoryReporterService>()
+                .To<UWPMemoryReporterService>()
+                .InSingletonScope();
         }
     }
 }

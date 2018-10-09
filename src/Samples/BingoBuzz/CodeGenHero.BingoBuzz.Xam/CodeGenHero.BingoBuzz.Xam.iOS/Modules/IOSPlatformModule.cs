@@ -15,9 +15,9 @@ namespace CodeGenHero.BingoBuzz.Xam.iOS.Modules
                  .To<IOSSQLite>()
                  .InSingletonScope();
 
-            //Bind<IMemoryService>()
-            //    .To<IOSMemoryService>()
-            //    .InSingletonScope();
+            Bind<IMemoryReporterService>()
+                .To<IOSMemoryReporterService>()
+                .InSingletonScope();
         }
     }
 }

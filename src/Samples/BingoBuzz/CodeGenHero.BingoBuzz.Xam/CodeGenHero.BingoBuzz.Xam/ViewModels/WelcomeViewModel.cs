@@ -21,8 +21,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private bool _hasLoaded;
         private ObservableCollection<Meeting> _meetings;
 
-        public WelcomeViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService) 
-            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService)
+        public WelcomeViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService, IMemoryReporterService memoryReporterService)
+            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService, memoryReporterService)
         {
             Meetings = new ObservableCollection<Meeting>();
             _hasLoaded = false;
@@ -125,12 +125,13 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
                 Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();
                 _hasLoaded = true;
             }
+            await CheckAppCenter();
             await NavService.PopAlertPopupsAsync();
         }
 
         public async Task RefreshMeetings()
         {
-            Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection();
+            Meetings = (await DataRetrievalService.GetMeetingsAsync()).ToObservableCollection(); 
         }
     }
 }

@@ -23,9 +23,9 @@ namespace CodeGenHero.BingoBuzz.Xam.Droid.Modules
                 .To<DroidSQLite>()
                 .InSingletonScope();
 
-            //Bind<IMemoryService>()
-            //   .To<DroidMemoryService>()
-            //   .InSingletonScope();
+            Bind<IMemoryReporterService>()
+               .To<DroidMemoryReporterService>()
+               .InSingletonScope();
         }
     }
 }

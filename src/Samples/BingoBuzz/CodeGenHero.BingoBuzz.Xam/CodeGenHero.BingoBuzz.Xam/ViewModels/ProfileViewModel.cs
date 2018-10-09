@@ -11,8 +11,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
     public class ProfileViewModel : CustomViewModelBase
     {
-        public ProfileViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService)
-            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService)
+        public ProfileViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService, IMemoryReporterService memoryReporterService)
+            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService, memoryReporterService)
         {
         }
 

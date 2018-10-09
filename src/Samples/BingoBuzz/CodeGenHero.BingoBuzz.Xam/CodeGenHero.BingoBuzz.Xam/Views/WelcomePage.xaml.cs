@@ -43,6 +43,7 @@ namespace CodeGenHero.BingoBuzz.Xam.Views
             {
                 //TODO: clean this up here
                 await vm.RefreshMeetings();
+                vm.CheckMemory();
             }
         }
 

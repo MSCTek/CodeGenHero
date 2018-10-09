@@ -1,15 +1,13 @@
-﻿using Plugin.Connectivity;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CodeGenHero.BingoBuzz.Interfaces;
+using CodeGenHero.BingoBuzz.Xam.Interfaces;
+using CodeGenHero.Logging;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using CodeGenHero.BingoBuzz.Xam.Interfaces;
-using CodeGenHero.BingoBuzz.Interfaces;
-using CodeGenHero.Logging;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace CodeGenHero.BingoBuzz.Xam.ViewModels
 {
@@ -18,7 +16,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         //https://developer.xamarin.com/api/type/System.IDisposable/
         //http://stackoverflow.com/questions/538060/proper-use-of-the-idisposable-interface
 
-        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService)
+        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService, IMemoryReporterService memoryReporterService)
         {
             if (navService == null)
                 throw new ArgumentException("Invalid navService");
@@ -26,12 +24,29 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
             if (dataRetrievalService == null)
                 throw new ArgumentException("Invalid dataRetrievalService");
 
+            if (dataDownloadService == null)
+                throw new ArgumentException("Invalid dataDownloadService");
+
             if (stateService == null)
                 throw new ArgumentException("Invalid stateService");
 
+            if (loggingService == null)
+                throw new ArgumentException("Invalid loggingService");
+
+            if (memoryReporterService == null)
+                throw new ArgumentException("Invalid memoryReporterService");
+
             NavService = navService;
             DataRetrievalService = dataRetrievalService;
+            DataDownloadService = dataDownloadService;
             StateService = stateService;
+            LoggingService = loggingService;
+            MemoryReporterService = memoryReporterService;
+
+            IsDev = false;
+#if DEBUG
+            IsDev = true;
+#endif
         }
 
         public override void Cleanup()
@@ -60,7 +75,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private bool _isBusy;
         private bool _isDev;
 
-        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService)
+        public CustomViewModelBase(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService, IMemoryReporterService memoryReporterService)
         {
             if (navService == null)
                 throw new ArgumentException("Invalid navService");
@@ -77,12 +92,15 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
             if (loggingService == null)
                 throw new ArgumentException("Invalid loggingService");
 
+            if (memoryReporterService == null)
+                throw new ArgumentException("Invalid memoryReporterService");
+
             NavService = navService;
             DataRetrievalService = dataRetrievalService;
             DataDownloadService = dataDownloadService;
             StateService = stateService;
             LoggingService = loggingService;
-            
+            MemoryReporterService = memoryReporterService;
 
             IsDev = false;
 #if DEBUG
@@ -119,23 +137,41 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
             }
         }
 
-        /*public async Task CheckAppCenter()
+        public void CheckMemory()
         {
-            if (DataService.DoIHaveInternet())
+            try
+            {
+                LoggingService.Info($"Memory In Use: {MemoryReporterService.GetMemoryInUse()} " +
+                    $"- Usage Limit: {MemoryReporterService.GetUsageLimit()} " +
+                    $"- Last Change: {MemoryReporterService.GetLastChange()} " +
+                    $"- Is Usage Increasing: {MemoryReporterService.IsIncreasing()}", 
+                    LogMessageType.Instance.Info_Diagnostics);
+            }
+            catch (Exception ex)
+            {
+                LoggingService.Error($"MemoryReporterServiceError: {ex.Message}"
+                    , LogMessageType.Instance.Exception_General
+                    , ex: ex);
+            }
+        }
+
+        public async Task CheckAppCenter()
+        {
+            if (Helpers.DoIHaveInternet)
             {
                 try
                 {
-                    Log.Debug($"Analytics are Enabled? {await Analytics.IsEnabledAsync()}", Enums.LogMessageType.Info_Diagnostics);
-                    Log.Debug($"Crash Reporting is Enabled? {await Crashes.IsEnabledAsync()}", Enums.LogMessageType.Info_Diagnostics);
-                    Log.Debug($"Distribution Notices are Enabled? {await Distribute.IsEnabledAsync()}", Enums.LogMessageType.Info_Diagnostics);
-                    Log.Debug($"Push Notifications are Enabled? {await Push.IsEnabledAsync()}", Enums.LogMessageType.Info_Diagnostics);
+                    LoggingService.Debug($"Analytics are Enabled? {await Analytics.IsEnabledAsync()}", LogMessageType.Instance.Info_Diagnostics);
+                    LoggingService.Debug($"Crash Reporting is Enabled? {await Crashes.IsEnabledAsync()}", LogMessageType.Instance.Info_Diagnostics);
+                    //LoggingService.Debug($"Distribution Notices are Enabled? {await Distribute.IsEnabledAsync()}", LogMessageType.Instance.Info_Diagnostics);
+                    //LoggingService.Debug($"Push Notifications are Enabled? {await Push.IsEnabledAsync()}", LogMessageType.Instance.Info_Diagnostics);
                 }
                 catch (Exception ex)
                 {
-                    Log.Error("App Center enable check is Failing!", Enums.LogMessageType.Exception_Application, ex: ex);
+                    LoggingService.Error("App Center enable check is Failing!", LogMessageType.Instance.Exception_Application, ex: ex);
                 }
             }
-        }*/
+        }
 
         public double CurrentViewPortWidth
         {
@@ -163,6 +199,7 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         protected IDataRetrievalService DataRetrievalService { get; set; }
         protected IDataDownloadService DataDownloadService { get; set; }
         protected ILoggingService LoggingService { get; set; }
+        protected IMemoryReporterService MemoryReporterService { get; set; }
 
         public override void Cleanup()
         {

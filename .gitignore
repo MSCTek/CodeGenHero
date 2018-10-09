@@ -63,6 +63,10 @@
 /src/CodeGenHero.Repository.EntityFramework/obj
 /src/Samples/BingoBuzz/MSC.BingoBuzz.Model/bin
 /src/Samples/BingoBuzz/MSC.BingoBuzz.Model/obj
+
+/src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.WebUI/obj
+/src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.WebUI/bin
+
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.API/bin
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.API/obj
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Constants/bin
@@ -79,6 +83,8 @@
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Service.DataService/obj
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Service.Logging/bin
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Service.Logging/obj
+/src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Helpers/bin
+/src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Helpers/obj
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Xam/CodeGenHero.BingoBuzz.Xam/bin
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Xam/CodeGenHero.BingoBuzz.Xam/obj
 /src/Samples/BingoBuzz/CodeGenHero.BingoBuzz.Xam/CodeGenHero.BingoBuzz.Xam.Android/bin

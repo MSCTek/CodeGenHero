@@ -14,8 +14,8 @@ namespace CodeGenHero.BingoBuzz.Xam.ViewModels
         private int _numBingos;
         private int _numGames;
 
-        public StatsViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService)
-            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService)
+        public StatsViewModel(INavigationService navService, IDataRetrievalService dataRetrievalService, IDataDownloadService dataDownloadService, IStateService stateService, ILoggingService loggingService, IMemoryReporterService memoryReporterService)
+            : base(navService, dataRetrievalService, dataDownloadService, stateService, loggingService, memoryReporterService)
         {
         }
 

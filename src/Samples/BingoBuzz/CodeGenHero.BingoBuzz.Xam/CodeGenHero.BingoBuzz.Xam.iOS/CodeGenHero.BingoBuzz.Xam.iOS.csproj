@@ -101,6 +101,7 @@
     <Compile Include="CustomRenderers\IconLabelRenderer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\IOSMemoryReporterService.cs" />
     <Compile Include="Services\IOSSQLite.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist">
