@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.0.30
+Bug Fixes & Enhancements:
+* Changed DefaultRequestedVersion from 0 to 1 upon initialization of WebApiDataServiceBase.
+
 ### 1.0.29
 Bug Fixes & Enhancements:
 * Refactoring GetClient to cache up to 500 HttpClient instances and dispose 10% of them when maximum number allowed is exceeded.
