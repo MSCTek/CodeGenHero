@@ -7,17 +7,11 @@ namespace CodeGenHero.DataService
 {
 	public partial interface IWebApiDataServiceBase
 	{
-		AuthenticationHeaderValue DefaultAuthenticationHeaderValue { get; set; }
+		HttpClient HttpClient { get; set; }
 
-		int DefaultRequestedVersion { get; set; }
-
-		IWebApiExecutionContext ExecutionContext { get; set; }
+		string IsServiceOnlineRelativeUrl { get; set; }
 
 		ILoggingService Log { get; set; }
-
-		//HttpClient GetClient(int requestedVersion = 1);
-
-		HttpClient GetClient(AuthenticationHeaderValue authorization, int requestedVersion, string connectionIdentifier);
 
 		Task<bool> IsServiceOnlineAsync();
 	}
