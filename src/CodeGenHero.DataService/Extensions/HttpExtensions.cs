@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+
+//using Newtonsoft.Json.Bson;
 using System.IO;
 
 namespace CodeGenHero.DataService
@@ -10,7 +12,7 @@ namespace CodeGenHero.DataService
 		{
 			using (MemoryStream ms = new MemoryStream())
 			{
-				using (BsonWriter writer = new BsonWriter(ms))
+				using (BsonDataWriter writer = new BsonDataWriter(ms))
 				{
 					JsonSerializer serializer = new JsonSerializer();
 					serializer.Serialize(writer, obj);

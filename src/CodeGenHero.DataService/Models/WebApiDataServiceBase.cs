@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using cghConstants = CodeGenHero.DataService.Constants;
 using CodeGenHero.Logging;
 using Newtonsoft.Json;
-using System.Collections.Concurrent;
 
 namespace CodeGenHero.DataService
 {
 	public abstract class WebApiDataServiceBase : IWebApiDataServiceBase
 	{
-		private HttpClient _httpclient;
-		private string _isServiceOnlineRelativeUrl;
-
 		#region Constructor and Context
 
 		public WebApiDataServiceBase(ILoggingService log, HttpClient httpclient, string isServiceOnlineRelativeUrl = "APIStatus/")
@@ -89,7 +84,7 @@ namespace CodeGenHero.DataService
 			bool retVal = false;
 			try
 			{
-				HttpResponseMessage response = await HttpClient.GetAsync(IsServiceOnlineRelativeUrl);
+				HttpResponseMessage response = await this.HttpClient.GetAsync(IsServiceOnlineRelativeUrl);
 				string content = await response.Content.ReadAsStringAsync();
 
 				if (response.IsSuccessStatusCode)

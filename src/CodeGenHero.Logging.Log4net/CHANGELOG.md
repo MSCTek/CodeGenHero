@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.1.1
+Bug Fixes & Enhancements:
+* Updating target framework and dependency references.
+
 ### 1.0.2
 Bug Fixes & Enhancements:
 * Undo signed assembly via strong name key file.

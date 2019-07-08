@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45;net46</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461;net472</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Authors>Paul Schroeder</Authors>
+    <Authors>MSC Technology Consulting</Authors>
     <Company>Micro Support Center, Inc.</Company>
     <Product>CodeGenHero</Product>
     <Description>CodeGenHero is an amazing Visual Studio extension that enhances developer productivity via code generation.
@@ -14,8 +14,8 @@
 
 
 This package should be added to projects that are the target of CodeGenHero templates implementing the mapper pattern between data classes and DTO's.</Description>
-    <Copyright>Copyright © 2016-2018 Micro Support Center, Inc.</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/MSCTek/CodeGenHero/master/LICENSE</PackageLicenseUrl>
+    <Copyright>Copyright © 2016-2019 Micro Support Center, Inc.</Copyright>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MSCTek/CodeGenHero</PackageProjectUrl>
     <PackageIconUrl>https://github.com/MSCTek/CodeGenHero/raw/master/NuGet_Icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/MSCTek/CodeGenHero</RepositoryUrl>
@@ -23,7 +23,7 @@ This package should be added to projects that are the target of CodeGenHero temp
     <PackageTags>CodeGenerator CodeGen MSCTek AutoMapper DTO repository</PackageTags>
     <PackageReleaseNotes>Classes to support mapping from repository data classes (Entity Framework) objects to DTO's and back.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.0.7</Version>
+    <Version>1.1.1</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -41,9 +41,13 @@ This package should be added to projects that are the target of CodeGenHero temp
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="CodeGenHero.Repository" Version="1.0.4" />
-    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="4.6.0-rtm-4825">
+    <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="CodeGenHero.Repository" Version="1.1.1" />
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.1.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>

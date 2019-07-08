@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.1.1
+Bug Fixes & Enhancements:
+* Updating target framework and dependency references.
+
 ### 1.0.6
 Bug Fixes & Enhancements:
 * ICRUDOperation returns IRepositoryActionResult interface instead of concrete class.

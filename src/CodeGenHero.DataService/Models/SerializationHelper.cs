@@ -40,7 +40,7 @@ namespace CodeGenHero.DataService
 
 				if (response.IsSuccessStatusCode)
 				{
-					using (BsonReader reader = new BsonReader(await response.Content.ReadAsStreamAsync()))
+					using (BsonDataReader reader = new BsonDataReader(await response.Content.ReadAsStreamAsync()))
 					{
 						JsonSerializer serializer = new JsonSerializer();
 						retValData = serializer.Deserialize<T>(reader);
@@ -82,11 +82,11 @@ namespace CodeGenHero.DataService
 
 				if (httpVerb == Enums.HttpVerb.Post)
 				{
-					response = client.PostAsync(requestUri, inputMessage.Content).Result;
+					response = await client.PostAsync(requestUri, inputMessage.Content);
 				}
 				else if (httpVerb == Enums.HttpVerb.Put)
 				{
-					response = client.PutAsync(requestUri, inputMessage.Content).Result;
+					response = await client.PutAsync(requestUri, inputMessage.Content);
 				}
 				else
 				{

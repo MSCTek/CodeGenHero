@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.1.1
+Bug Fixes & Enhancements:
+* Updating target framework and dependency references.
+
 ### 1.0.4
 Bug Fixes & Enhancements:
 * Upgrade of sqlite-net-pcl to v1.5.166-beta to avoid known bug in version 1.4.118 that prevents App Center from working properly.
