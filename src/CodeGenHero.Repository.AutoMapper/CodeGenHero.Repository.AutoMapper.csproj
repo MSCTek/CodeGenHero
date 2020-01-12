@@ -14,18 +14,19 @@
 
 
 This package should be added to projects that are the target of CodeGenHero templates implementing the mapper pattern between data classes and DTO's.</Description>
-    <Copyright>Copyright © 2016-2019 Micro Support Center, Inc.</Copyright>
+    <Copyright>Copyright © 2016-2020 Micro Support Center, Inc.</Copyright>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MSCTek/CodeGenHero</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/MSCTek/CodeGenHero/raw/master/NuGet_Icon.png</PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <RepositoryUrl>https://github.com/MSCTek/CodeGenHero</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>CodeGenerator CodeGen MSCTek AutoMapper DTO repository</PackageTags>
     <PackageReleaseNotes>Classes to support mapping from repository data classes (Entity Framework) objects to DTO's and back.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
+    <PackageIcon>CGH_Logo2.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
@@ -41,12 +42,16 @@ This package should be added to projects that are the target of CodeGenHero temp
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\CGH_Logo2.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
     <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.1" />
-    <PackageReference Include="CodeGenHero.Repository" Version="1.1.1" />
+    <PackageReference Include="CodeGenHero.Repository" Version="1.1.2" />
     <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.1.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
