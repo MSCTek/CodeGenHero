@@ -6,7 +6,7 @@ namespace CodeGenHero.Core.Metadata
 {
 	public class Navigation : MetadataBase, INavigation
 	{
-		public Type ClrType { get; set; }
+		public ClrType ClrType { get; set; }
 		public IEntityType DeclaringEntityType { get; set; }
 		public ITypeBase DeclaringType { get; set; }
 		public IForeignKey ForeignKey { get; set; }

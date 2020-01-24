@@ -6,7 +6,7 @@ namespace CodeGenHero.Core.Metadata
 {
 	public class Property : MetadataBase, IProperty
 	{
-		public Type ClrType { get; set; }
+		public ClrType ClrType { get; set; }
 
 		public IEntityType DeclaringEntityType { get; set; }
 		public ITypeBase DeclaringType { get; set; }

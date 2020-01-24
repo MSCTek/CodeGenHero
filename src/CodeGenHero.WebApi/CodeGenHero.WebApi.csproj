@@ -45,7 +45,7 @@ This package should be added to projects that are the target of CodeGenHero temp
 
   <ItemGroup>
     <PackageReference Include="CodeGenHero.Logging" Version="1.1.2" />
-    <PackageReference Include="CodeGenHero.Repository.AutoMapper" Version="1.1.2" />
+    <PackageReference Include="CodeGenHero.Repository.AutoMapper" Version="1.1.3" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.7" />
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
     <PackageReference Include="System.Linq.Dynamic" Version="1.0.7" />

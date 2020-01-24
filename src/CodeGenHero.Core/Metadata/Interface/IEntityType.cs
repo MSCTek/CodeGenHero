@@ -28,10 +28,10 @@ namespace CodeGenHero.Core.Metadata
 		string DefiningNavigationName { get; set; }
 
 		SortedSet<IForeignKey> ForeignKeys { get; set; }
-		SortedDictionary<IList<IProperty>, IIndex> Indexes { get; set; }
-		SortedDictionary<IList<IProperty>, IKey> Keys { get; set; }
+		IList<KeyValuePair<IList<IProperty>, IIndex>> Indexes { get; set; }
+		IList<KeyValuePair<IList<IProperty>, IKey>> Keys { get; set; }
 		IList<INavigation> Navigations { get; set; }
-		SortedDictionary<string, IProperty> Properties { get; set; }
+		IList<KeyValuePair<string, IProperty>> Properties { get; set; }
 
 		/// <summary>
 		///     Gets the foreign key for the given properties that points to a given primary or alternate key.

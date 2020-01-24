@@ -14,7 +14,7 @@ namespace CodeGenHero.Core.Metadata
 	/// </summary>
 	public interface IAnnotatable
 	{
-		SortedDictionary<string, IAnnotation> Annotations { get; set; }
+		IList<KeyValuePair<string, IAnnotation>> Annotations { get; set; }
 
 		/// <summary>
 		///     Gets the value annotation with the given name, returning <c>null</c> if it does not exist.
@@ -23,7 +23,7 @@ namespace CodeGenHero.Core.Metadata
 		/// <returns>
 		///     The value of the existing annotation if an annotation with the specified name already exists. Otherwise, <c>null</c>.
 		/// </returns>
-		object this[[NotNull] string name] { get; }
+		//object this[[NotNull] string name] { get; }
 
 		/// <summary>
 		///     Gets the annotation with the given name, returning <c>null</c> if it does not exist.

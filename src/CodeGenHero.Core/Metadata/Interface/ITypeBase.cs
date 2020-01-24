@@ -17,7 +17,10 @@ namespace CodeGenHero.Core.Metadata
 		///         Returns <c>null</c> if the type does not have a corresponding CLR class (known as a shadow type).
 		///     </para>
 		/// </summary>
-		Type ClrType { get; set; }
+		/// <remarks>
+		/// Cannot use "Type ClrType { get; set; }" because JSON.Net cannot deserialize abstract types.
+		/// </remarks>
+		ClrType ClrType { get; set; }
 
 		/// <summary>
 		///     Gets the model that this type belongs to.

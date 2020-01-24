@@ -15,7 +15,7 @@ namespace CodeGenHero.Core.Metadata
 		/// <summary>
 		///     Gets the type of value that this property holds.
 		/// </summary>
-		Type ClrType { get; set; }
+		ClrType ClrType { get; set; }
 
 		/// <summary>
 		///     Gets the type that this property belongs to.

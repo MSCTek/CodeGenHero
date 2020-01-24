@@ -1,15 +1,17 @@
 ﻿// Copyright (c) Micro Support Center, Inc. All rights reserved.
 
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace CodeGenHero.Core.Metadata
 {
-	public class TypeBase : ITypeBase
+	public class ClrType
 	{
-		public ClrType ClrType { get; set; }
-
-		//public IModel Model { get; set; }
+		public string Assembly { get; set; }
+		public string FullName { get; set; }
 		public string Name { get; set; }
+		public string Namespace { get; set; }
 	}
 }

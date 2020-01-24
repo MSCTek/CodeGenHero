@@ -1,26 +1,29 @@
 ﻿// Copyright (c) Micro Support Center, Inc. All rights reserved.
 
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace CodeGenHero.Core.Metadata
 {
 	public class MetadataBase : IAnnotatable
 	{
-		public SortedDictionary<string, IAnnotation> Annotations { get; set; } = new SortedDictionary<string, IAnnotation>(StringComparer.Ordinal);
+		public IList<KeyValuePair<string, IAnnotation>> Annotations { get; set; } = new List<KeyValuePair<string, IAnnotation>>();
 
-		object IAnnotatable.this[string name] { get { return this.Annotations[name]; } }
+		//object IAnnotatable.this[string name] { get { return this.Annotations[name]; } }
 
-		public object this[string name] { get { return this.Annotations[name]; } }
+		//public object this[string name] { get { return this.Annotations[name]; } }
 
 		public IAnnotation FindAnnotation(string name)
 		{
 			IAnnotation retVal = null;
 
-			if (Annotations.ContainsKey(name))
-			{
-				retVal = Annotations[name];
-			}
+			name = name?.ToLowerInvariant();
+			retVal = Annotations.FirstOrDefault(x => x.Key.ToLowerInvariant() == name).Value;
+			//if (Annotations.ContainsKey(name))
+			//{
+			//	retVal = Annotations[name];
+			//}
 
 			return retVal;
 		}
