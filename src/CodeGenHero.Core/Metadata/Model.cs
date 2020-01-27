@@ -1,11 +1,13 @@
 ﻿// Copyright (c) Micro Support Center, Inc. All rights reserved.
 
 using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CodeGenHero.Core.Metadata
 {
+	[Serializable]
 	public class Model : MetadataBase, IModel
 	{
 		public IList<IEntityType> EntityTypes { get; set; } = new List<IEntityType>();
@@ -20,7 +22,7 @@ namespace CodeGenHero.Core.Metadata
 			return EntityTypes.FirstOrDefault(x => x.Name == name && x.DefiningNavigationName == definingNavigationName && x.DefiningEntityType == x.DefiningEntityType);
 		}
 
-		public IEnumerable<IEntityType> GetEntityTypes()
+		public IList<IEntityType> GetEntityTypes()
 		{
 			return EntityTypes;
 		}

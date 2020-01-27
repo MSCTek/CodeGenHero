@@ -4,6 +4,7 @@ using System;
 
 namespace CodeGenHero.Core.Metadata
 {
+	[Serializable]
 	public class Property : MetadataBase, IProperty
 	{
 		public ClrType ClrType { get; set; }

@@ -6,6 +6,7 @@ using System.Text;
 
 namespace CodeGenHero.Core.Metadata
 {
+	[Serializable]
 	public class ForeignKey : MetadataBase, IForeignKey
 	{
 		public IEntityType DeclaringEntityType { get; set; }

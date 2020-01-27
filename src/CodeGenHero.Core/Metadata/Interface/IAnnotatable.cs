@@ -37,6 +37,6 @@ namespace CodeGenHero.Core.Metadata
 		/// <summary>
 		///     Gets all annotations on the current object.
 		/// </summary>
-		IEnumerable<IAnnotation> GetAnnotations();
+		IList<IAnnotation> GetAnnotations();
 	}
 }

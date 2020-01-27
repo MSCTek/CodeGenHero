@@ -7,6 +7,7 @@ using System.Text;
 
 namespace CodeGenHero.Core.Metadata
 {
+	[Serializable]
 	public class ClrType
 	{
 		public string Assembly { get; set; }

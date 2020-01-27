@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace CodeGenHero.Core.Metadata
 {
+	[Serializable]
 	public class MetadataBase : IAnnotatable
 	{
 		public IList<KeyValuePair<string, IAnnotation>> Annotations { get; set; } = new List<KeyValuePair<string, IAnnotation>>();
@@ -28,7 +29,7 @@ namespace CodeGenHero.Core.Metadata
 			return retVal;
 		}
 
-		public IEnumerable<IAnnotation> GetAnnotations()
+		public IList<IAnnotation> GetAnnotations()
 		{
 			var retVal = new List<IAnnotation>();
 

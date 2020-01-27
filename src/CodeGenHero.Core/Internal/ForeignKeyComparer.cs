@@ -1,10 +1,12 @@
 // Copyright (c) Micro Support Center, Inc. All rights reserved.
 
 using CodeGenHero.Core.Metadata;
+using System;
 using System.Collections.Generic;
 
 namespace CodeGenHero.Core
 {
+	[Serializable]
 	public class ForeignKeyComparer : IEqualityComparer<IForeignKey>, IComparer<IForeignKey>
 	{
 		public static readonly ForeignKeyComparer Instance = new ForeignKeyComparer();

@@ -6,6 +6,7 @@ using System.Reflection;
 
 namespace CodeGenHero.Core.Metadata
 {
+	[Serializable]
 	public class MetadataSourceProperties : IMetadataSourceProperties
 	{
 		/// <summary>

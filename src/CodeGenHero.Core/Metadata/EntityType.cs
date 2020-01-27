@@ -7,6 +7,7 @@ using System.Text;
 
 namespace CodeGenHero.Core.Metadata
 {
+	[Serializable]
 	public class EntityType : MetadataBase, IEntityType
 	{
 		public IEntityType BaseType { get; set; }
@@ -47,17 +48,17 @@ namespace CodeGenHero.Core.Metadata
 			throw new NotImplementedException();
 		}
 
-		public IEnumerable<IForeignKey> GetForeignKeys()
+		public IList<IForeignKey> GetForeignKeys()
 		{
 			throw new NotImplementedException();
 		}
 
-		public IEnumerable<IKey> GetKeys()
+		public IList<IKey> GetKeys()
 		{
 			throw new NotImplementedException();
 		}
 
-		public IEnumerable<IProperty> GetProperties()
+		public IList<IProperty> GetProperties()
 		{
 			throw new NotImplementedException();
 		}

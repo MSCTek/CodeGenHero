@@ -80,13 +80,13 @@ namespace CodeGenHero.Core.Metadata
 		///     Gets the foreign keys defined on this entity.
 		/// </summary>
 		/// <returns> The foreign keys defined on this entity. </returns>
-		IEnumerable<IForeignKey> GetForeignKeys();
+		IList<IForeignKey> GetForeignKeys();
 
 		/// <summary>
 		///     Gets the primary and alternate keys for this entity.
 		/// </summary>
 		/// <returns> The primary and alternate keys. </returns>
-		IEnumerable<IKey> GetKeys();
+		IList<IKey> GetKeys();
 
 		/// <summary>
 		///     <para>
@@ -97,6 +97,6 @@ namespace CodeGenHero.Core.Metadata
 		///     </para>
 		/// </summary>
 		/// <returns> The properties defined on this entity. </returns>
-		IEnumerable<IProperty> GetProperties();
+		IList<IProperty> GetProperties();
 	}
 }

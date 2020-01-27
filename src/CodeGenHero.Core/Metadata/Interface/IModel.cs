@@ -40,6 +40,6 @@ namespace CodeGenHero.Core.Metadata
 		///     Gets all entity types defined in the model.
 		/// </summary>
 		/// <returns> All entity types defined in the model. </returns>
-		IEnumerable<IEntityType> GetEntityTypes();
+		IList<IEntityType> GetEntityTypes();
 	}
 }

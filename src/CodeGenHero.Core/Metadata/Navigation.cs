@@ -4,6 +4,7 @@ using System;
 
 namespace CodeGenHero.Core.Metadata
 {
+	[Serializable]
 	public class Navigation : MetadataBase, INavigation
 	{
 		public ClrType ClrType { get; set; }

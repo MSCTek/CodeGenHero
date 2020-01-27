@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace CodeGenHero.Core.Metadata
 {
+	[Serializable]
 	public class TypeBase : ITypeBase
 	{
 		public ClrType ClrType { get; set; }
