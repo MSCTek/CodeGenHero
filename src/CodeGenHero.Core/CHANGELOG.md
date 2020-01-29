@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.1.19
+Bug Fixes:
+* Implementation of missing methods on EntityType.
+
 ### 1.1.18
 Bug Fixes:
 * Made the IModel/Model class serializable and changed the return type for GetEntityTypes to IList.

@@ -19,7 +19,7 @@ This package should be added to projects that are making use of CodeGenHero temp
     <PackageTags>CodeGenerator CodeGen MSCTek</PackageTags>
     <PackageReleaseNotes>Core CodeGenHero classes.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.1.18</Version>
+    <Version>1.1.19</Version>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>CGH_Logo2.png</PackageIcon>
