@@ -15,6 +15,9 @@ namespace CodeGenHero.Core.Metadata
 		/// <returns> All entity types defined in the model. </returns>
 		IList<IEntityType> EntityTypes { get; }
 
+		string ModelFullyQualifiedTypeName { get; set; }
+		string ModelTypeName { get; set; }
+
 		/// <summary>
 		///     Gets the entity type with the given name. Returns null if no entity type with the given name is found
 		///     or the entity type has a defining navigation.

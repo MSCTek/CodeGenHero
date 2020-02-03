@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.1.20
+Bug Fixes:
+* Adding ModelTypeName and ModelFullyQualifiedTypeName to the IModel interface (i.e. for recording the DbContext class name).
+
 ### 1.1.19
 Bug Fixes:
 * Implementation of missing methods on EntityType.

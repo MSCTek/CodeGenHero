@@ -12,6 +12,10 @@ namespace CodeGenHero.Core.Metadata
 	{
 		public IList<IEntityType> EntityTypes { get; set; } = new List<IEntityType>();
 
+		public string ModelFullyQualifiedTypeName { get; set; }
+
+		public string ModelTypeName { get; set; }
+
 		public IEntityType FindEntityType([NotNull] string name)
 		{
 			return EntityTypes.FirstOrDefault(x => x.Name == name);
