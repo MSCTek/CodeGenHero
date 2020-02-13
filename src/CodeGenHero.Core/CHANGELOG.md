@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.1.21
+Bug Fixes:
+* Added FILEEXTENSION_ExcludedNavigationProperties value of NPE to constants.
+
 ### 1.1.20
 Bug Fixes:
 * Adding ModelTypeName and ModelFullyQualifiedTypeName to the IModel interface (i.e. for recording the DbContext class name).
