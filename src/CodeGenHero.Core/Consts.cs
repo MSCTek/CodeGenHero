@@ -16,6 +16,7 @@ namespace CodeGenHero.Core
 		public const string FILEEXTENSION_Metadata = "CGHM";
 		public const string FILEEXTENSION_PropertiesAsJson = "PROPJ";
 		public const string FILEEXTENSION_PropertiesAsYaml = "PROPY";
+		const string FILEEXTENSION_ExcludedNavigationProperties = "NPE";
 
 		public const string METADATASOURCE_PROPERTYNAME_DbContextFilePath = "DbContextFilePath";
 		public const string METADATASOURCE_PROPERTYNAME_FQTypeName = "FQTypeName";
