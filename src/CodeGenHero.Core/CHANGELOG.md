@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.1.27
+Changes:
+* Swapping out Metadatasource constants, adding ContextName, ContextNamespace, OutputCghmFilePath, OutputModelFilePath
+
 ### 1.1.26
 Enhancements:
 * Added IModel convenience methods to assist in filtering by regular expressions: GetEntityTypesByRegEx, GetEntityTypesFilteredByRegEx,  and GetEntityTypesMatchingRegEx.

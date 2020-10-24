@@ -101,4 +101,7 @@
 /src/Samples/BingoBuzz/CodeGenHero.Data/.vs/CodeGenHero.Data/v15/.suo
 /src/CodeGenHero.Core/bin
 /src/CodeGenHero.Core/obj
-
+/src/CodeGenHero.Inflector/bin
+/src/CodeGenHero.Inflector/obj
+/src/CodeGenHero.Inflector.Tests/bin
+/src/CodeGenHero.Inflector.Tests/obj
