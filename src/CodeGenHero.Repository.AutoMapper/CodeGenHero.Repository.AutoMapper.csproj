@@ -9,21 +9,17 @@
     <Product>CodeGenHero</Product>
     <Description>CodeGenHero is an amazing Visual Studio extension that enhances developer productivity via code generation.
 
-
-
-
-
 This package should be added to projects that are the target of CodeGenHero templates implementing the mapper pattern between data classes and DTO's.</Description>
     <Copyright>Copyright © 2016-2020 Micro Support Center, Inc.</Copyright>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MSCTek/CodeGenHero</PackageProjectUrl>
-    <PackageIconUrl></PackageIconUrl>
+	<PackageIconUrl>https://github.com/MSCTek/CodeGenHero/blob/master/CGH_Logo2.png?raw=true</PackageIconUrl>
     <RepositoryUrl>https://github.com/MSCTek/CodeGenHero</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>CodeGenerator CodeGen MSCTek AutoMapper DTO repository</PackageTags>
     <PackageReleaseNotes>Classes to support mapping from repository data classes (Entity Framework) objects to DTO's and back.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.1.3.2</Version>
+    <Version>1.1.6</Version>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>CGH_Logo2.png</PackageIcon>
@@ -42,6 +38,14 @@ This package should be added to projects that are the target of CodeGenHero temp
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="CodeGenHero.Repository" Version="1.1.2" />
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.1.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\CGH_Logo2.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -50,14 +54,6 @@ This package should be added to projects that are the target of CodeGenHero temp
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="8.1.1" />
-    <PackageReference Include="CodeGenHero.Repository" Version="1.1.2" />
-    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.1.0">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
   </ItemGroup>
 
 </Project>

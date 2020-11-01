@@ -5,7 +5,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.5</Version>
+    <Version>1.0.7</Version>
     <Authors>MSC Technology Consulting</Authors>
     <Company>Micro Support Center, Inc.</Company>
     <Product>CodeGenHero</Product>
@@ -23,18 +23,11 @@ This package should be added to projects that are making use of CodeGenHero temp
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\CGH_Logo2.png" Link="CGH_Logo2.png">
-      <PackagePath></PackagePath>
-      <Pack>True</Pack>
-    </None>
     <None Include="..\..\CGH_Logo2.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="..\..\LICENSE.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+    <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
   </ItemGroup>
 
 </Project>

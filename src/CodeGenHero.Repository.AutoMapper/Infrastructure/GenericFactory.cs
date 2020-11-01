@@ -7,51 +7,58 @@ using System.Reflection;
 
 namespace CodeGenHero.Repository.AutoMapper
 {
-	public class GenericFactory<TEntity, TDto> : IGenericFactory<TEntity, TDto>
-	{
-		public TDto Create(TEntity item)
-		{
-			return Mapper.Map<TDto>(item);
-		}
+    public class GenericFactory<TEntity, TDto> : IGenericFactory<TEntity, TDto>
+    {
+        private IMapper _mapper;
 
-		public TEntity Create(TDto item)
-		{
-			return Mapper.Map<TEntity>(item);
-		}
+        public GenericFactory(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
 
-		public object CreateDataShapedObject(TEntity item, List<string> lstOfFields, bool childrenRequested)
-		{
-			return CreateDataShapedObject(Create(item), lstOfFields, childrenRequested);
-		}
+        public TDto Create(TEntity item)
+        {
+            return _mapper.Map<TDto>(item);
+        }
 
-		public virtual object CreateDataShapedObject(object item, List<string> fieldList, bool childrenRequested)
-		{
-			if (!fieldList.Any() || childrenRequested)
-			{
-				return item;
-			}
-			else
-			{
-				// create a new ExpandoObject & dynamically create the properties for this object
-				ExpandoObject objectToReturn = new ExpandoObject();
-				var itemType = item.GetType();
-				foreach (var field in fieldList)
-				{
-					//if (field.ToLowerInvariant() == "children")
-					//    continue;  // Special case 'children' not allowed due to its reserved user for triggering the loading of related child objects in the repository.
+        public TEntity Create(TDto item)
+        {
+            return _mapper.Map<TEntity>(item);
+        }
 
-					// need to include public and instance, b/c specifying a binding flag overwrites the
-					// already-existing binding flags.
-					var fieldValue = itemType
-						.GetProperty(field, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance)
-						.GetValue(item, null);
+        public object CreateDataShapedObject(TEntity item, List<string> lstOfFields, bool childrenRequested)
+        {
+            return CreateDataShapedObject(Create(item), lstOfFields, childrenRequested);
+        }
 
-					// add the field to the ExpandoObject
-					((IDictionary<String, Object>)objectToReturn).Add(field, fieldValue);
-				}
+        public virtual object CreateDataShapedObject(object item, List<string> fieldList, bool childrenRequested)
+        {
+            if (!fieldList.Any() || childrenRequested)
+            {
+                return item;
+            }
+            else
+            {
+                // create a new ExpandoObject & dynamically create the properties for this object
+                ExpandoObject objectToReturn = new ExpandoObject();
+                var itemType = item.GetType();
+                foreach (var field in fieldList)
+                {
+                    //if (field.ToLowerInvariant() == "children")
+                    //    continue;  // Special case 'children' not allowed due to its reserved user for triggering the loading of related child objects in the repository.
 
-				return objectToReturn;
-			}
-		}
-	}
+                    // need to include public and instance, b/c specifying a binding flag overwrites the
+                    // already-existing binding flags.
+                    var fieldValue = itemType
+                        .GetProperty(field, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance)
+                        .GetValue(item, null);
+
+                    // add the field to the ExpandoObject
+                    ((IDictionary<String, Object>)objectToReturn).Add(field, fieldValue);
+                }
+
+                return objectToReturn;
+            }
+        }
+    }
 }

@@ -1,17 +1,17 @@
-using CodeGenHero.Logging;
+using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace CodeGenHero.DataService
 {
-	public partial interface IWebApiDataServiceBase
-	{
-		HttpClient HttpClient { get; set; }
+    public partial interface IWebApiDataServiceBase
+    {
+        HttpClient HttpClient { get; set; }
 
-		string IsServiceOnlineRelativeUrl { get; set; }
+        string IsServiceOnlineRelativeUrl { get; set; }
 
-		ILoggingService Log { get; set; }
+        ILogger Log { get; set; }
 
-		Task<bool> IsServiceOnlineAsync();
-	}
+        Task<bool> IsServiceOnlineAsync();
+    }
 }

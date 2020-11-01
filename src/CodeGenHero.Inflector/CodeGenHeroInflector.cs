@@ -7,10 +7,11 @@ using System.Text.RegularExpressions;
 
 namespace CodeGenHero.Inflector
 {
-    public partial class CodeGenHeroInflector : ICodeGenHeroInflector //, IPluralizer
+    public partial class CodeGenHeroInflector : ICodeGenHeroInflector
+    //, IPluralizer
     {
-        private static Dictionary<string, Lazy<CultureRules>> _localizedRules;
-        private static CultureInfo _currentCulture;
+        private Dictionary<string, Lazy<CultureRules>> _localizedRules;
+        private CultureInfo _currentCulture;
 
         public CodeGenHeroInflector()
         {
@@ -27,7 +28,7 @@ namespace CodeGenHero.Inflector
         /// </summary>
         /// <param name="culture"></param>
         /// <returns></returns>
-        public static bool SetCurrentCulture(CultureInfo culture)
+        public bool SetCurrentCulture(CultureInfo culture)
         {
             bool retVal = false;
 
@@ -56,7 +57,7 @@ namespace CodeGenHero.Inflector
             return retVal;
         }
 
-        public static bool SupportsCulture(CultureInfo culture)
+        public bool SupportsCulture(CultureInfo culture)
         {
             if (culture == null) throw new ArgumentNullException(nameof(culture));
 
@@ -65,7 +66,7 @@ namespace CodeGenHero.Inflector
             return mostSimilarCulture != null;
         }
 
-        private static CultureInfo GetMostSimilarCulture(CultureInfo culture)
+        private CultureInfo GetMostSimilarCulture(CultureInfo culture)
         {
             var cultureName = culture.Name.ToLowerInvariant();
             if (_localizedRules.ContainsKey(cultureName))
@@ -84,11 +85,11 @@ namespace CodeGenHero.Inflector
             return null;
         }
 
-        public static Func<CultureInfo> SetDefaultCultureFunc = () => new CultureInfo("en");
+        public Func<CultureInfo> SetDefaultCultureFunc = () => new CultureInfo("en");
 
-        public static CultureRules CurrentCultureRules => _localizedRules[_currentCulture.Name.ToLowerInvariant()]?.Value;
+        public CultureRules CurrentCultureRules => _localizedRules[_currentCulture.Name.ToLowerInvariant()]?.Value;
 
-        private static CultureRules GetCurrentRules()
+        private CultureRules GetCurrentRules()
         {
             return _localizedRules[_currentCulture.Name.ToLowerInvariant()].Value;
         }
@@ -107,7 +108,7 @@ namespace CodeGenHero.Inflector
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif
 
-        private static string ApplyRules(List<Rule> rules, string word)
+        private string ApplyRules(List<Rule> rules, string word)
         {
             string result = null;
 
@@ -200,7 +201,7 @@ namespace CodeGenHero.Inflector
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif
 
-        private static string Ordanize(int number, string numberString)
+        private string Ordanize(int number, string numberString)
         {
             int nMod100 = number % 100;
 

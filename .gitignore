@@ -105,3 +105,5 @@
 /src/CodeGenHero.Inflector/obj
 /src/CodeGenHero.Inflector.Tests/bin
 /src/CodeGenHero.Inflector.Tests/obj
+/src/CodeGenHero.Serialization/bin
+/src/CodeGenHero.Serialization/obj

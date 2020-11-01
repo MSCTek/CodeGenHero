@@ -1,5 +1,9 @@
 ﻿## Changelog
 
+### 1.1.3
+* Removed LogActionAttribute to eliminate dependency on obsolete CodeGenHero.Logging project.
+* Minor version update of System.Linq.Dynamic package dependency to v1.0.8 prior to conversion to System.Linq.Dynamic.Core NuGet package.
+
 ### 1.1.1
 Bug Fixes & Enhancements:
 * Updating target framework and dependency references.

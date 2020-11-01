@@ -1,5 +1,11 @@
 ﻿## Changelog
 
+### 1.1.4
+Removed FieldType from FilterCriterion.
+
+### 1.1.3
+Swap out CGH custom logging implementation for Microsoft.Extensions.Logging implementation.
+
 ### 1.1.1
 Bug Fixes & Enhancements:
 * Updating target framework and dependency references.

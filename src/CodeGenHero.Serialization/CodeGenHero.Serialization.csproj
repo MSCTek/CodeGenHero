@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461;net472</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461;net472</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>MSC Technology Consulting</Authors>
@@ -9,22 +9,24 @@
     <Product>CodeGenHero</Product>
     <Description>CodeGenHero is an amazing Visual Studio extension that enhances developer productivity via code generation.
 
-This package should be added to projects that are the target of CodeGenHero templates creating WebApi controllers.</Description>
+This package should be added to projects that are used to serialize and deserialize JSON, YAML, and/or zip files.</Description>
     <Copyright>Copyright © 2016-2020 Micro Support Center, Inc.</Copyright>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MSCTek/CodeGenHero</PackageProjectUrl>
-    <PackageIconUrl></PackageIconUrl>
+	<PackageIconUrl>https://github.com/MSCTek/CodeGenHero/blob/master/CGH_Logo2.png?raw=true</PackageIconUrl>
     <RepositoryUrl>https://github.com/MSCTek/CodeGenHero</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageTags>CodeGenerator CodeGen MSCTek WebApi</PackageTags>
-    <PackageReleaseNotes>Classes to support WebApi controllers</PackageReleaseNotes>
+    <PackageTags>CodeGenerator CodeGen MSCTek Serialization</PackageTags>
+    <PackageReleaseNotes>Classes to support serializing and deserializing files.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.1.3</Version>
-    <SignAssembly>false</SignAssembly>
+    <Version>1.0.1</Version>
+    <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
-    <AssemblyVersion>1.1.1.0</AssemblyVersion>
-    <FileVersion>1.1.1.0</FileVersion>
     <PackageIcon>CGH_Logo2.png</PackageIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+    <DefineConstants>NETCORE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45'">
@@ -36,23 +38,19 @@ This package should be added to projects that are the target of CodeGenHero temp
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="YamlDotNet" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\CGH_Logo2.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CodeGenHero.Repository.AutoMapper" Version="1.1.3" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.7" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
-    <PackageReference Include="System.Linq.Dynamic" Version="1.0.8" />
-    <PackageReference Include="System.Net.Http" Version="4.3.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Web" />
-  </ItemGroup>
-  
 </Project>

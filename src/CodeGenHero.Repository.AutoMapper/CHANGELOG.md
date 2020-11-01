@@ -1,5 +1,11 @@
 ﻿## Changelog
 
+### 1.1.6
+* Refactored away from use of AutoMapper's static methods
+
+### 1.1.5
+* Updated AutoMapper NuGet package reference to 10.1.1
+
 ### 1.1.1
 Bug Fixes & Enhancements:
 * Updating target framework and dependency references.
