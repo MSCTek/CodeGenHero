@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenHero.Template.Blazor", "CodeGenHero.Template.Blazor\CodeGenHero.Template.Blazor.csproj", "{4DBEE31B-85F6-434B-9447-D024B4A9D6C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DBEE31B-85F6-434B-9447-D024B4A9D6C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DBEE31B-85F6-434B-9447-D024B4A9D6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DBEE31B-85F6-434B-9447-D024B4A9D6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DBEE31B-85F6-434B-9447-D024B4A9D6C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE65664B-1F78-4297-90DF-4CDC823EE914}
+	EndGlobalSection
+EndGlobal

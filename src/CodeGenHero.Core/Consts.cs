@@ -1,9 +1,4 @@
-﻿//------------------------------------------------------------------------------
-// <copyright file="Consts.cs" company="Micro Support Center, Inc.">
-//     Copyright (c) Micro Support Center, Inc..  All rights reserved.
-// </copyright>
-//------------------------------------------------------------------------------
-namespace CodeGenHero.Core
+﻿namespace CodeGenHero.Core
 {
     public static class Consts
     {

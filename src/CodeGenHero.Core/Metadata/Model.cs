@@ -1,5 +1,4 @@
-﻿// Copyright (c) Micro Support Center, Inc. All rights reserved.
-
+﻿using CodeGenHero.Core.Metadata.Interfaces;
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;

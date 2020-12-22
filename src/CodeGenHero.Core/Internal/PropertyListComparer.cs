@@ -1,44 +1,42 @@
-// Copyright (c) Micro Support Center, Inc. All rights reserved.
-
-using CodeGenHero.Core.Metadata;
+using CodeGenHero.Core.Metadata.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CodeGenHero.Core
 {
-	public class PropertyListComparer : IComparer<IList<IProperty>>, IEqualityComparer<IList<IProperty>>
-	{
-		public static readonly PropertyListComparer Instance = new PropertyListComparer();
+    public class PropertyListComparer : IComparer<IList<IProperty>>, IEqualityComparer<IList<IProperty>>
+    {
+        public static readonly PropertyListComparer Instance = new PropertyListComparer();
 
-		private PropertyListComparer()
-		{
-		}
+        private PropertyListComparer()
+        {
+        }
 
-		public int Compare(IList<IProperty> x, IList<IProperty> y)
-		{
-			var result = x.Count - y.Count;
+        public int Compare(IList<IProperty> x, IList<IProperty> y)
+        {
+            var result = x.Count - y.Count;
 
-			if (result != 0)
-			{
-				return result;
-			}
+            if (result != 0)
+            {
+                return result;
+            }
 
-			var index = 0;
-			while ((result == 0)
-				   && (index < x.Count))
-			{
-				result = StringComparer.Ordinal.Compare(x[index].Name, y[index].Name);
-				index++;
-			}
+            var index = 0;
+            while ((result == 0)
+                   && (index < x.Count))
+            {
+                result = StringComparer.Ordinal.Compare(x[index].Name, y[index].Name);
+                index++;
+            }
 
-			return result;
-		}
+            return result;
+        }
 
-		public bool Equals(IList<IProperty> x, IList<IProperty> y)
-			=> Compare(x, y) == 0;
+        public bool Equals(IList<IProperty> x, IList<IProperty> y)
+            => Compare(x, y) == 0;
 
-		public int GetHashCode(IList<IProperty> obj)
-			=> obj.Aggregate(0, (hash, p) => unchecked((hash * 397) ^ p.GetHashCode()));
-	}
+        public int GetHashCode(IList<IProperty> obj)
+            => obj.Aggregate(0, (hash, p) => unchecked((hash * 397) ^ p.GetHashCode()));
+    }
 }

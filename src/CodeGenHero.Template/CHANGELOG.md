@@ -1,5 +1,8 @@
 ﻿## Changelog
 
+### 1.3.0
+* Added several classes to support open sourcing the Blazor, CSLA, and WebAPI FullFramework templates.
+
 ### 1.0.2
 Bug Fixes & Enhancements:
 * Added HiddenIndicator support.

@@ -2,7 +2,9 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+packages
 *.bak
+.vs
 /.vs
 /src/.vs
 /src/.vs/config
@@ -107,3 +109,10 @@
 /src/CodeGenHero.Inflector.Tests/obj
 /src/CodeGenHero.Serialization/bin
 /src/CodeGenHero.Serialization/obj
+/src/TemplateProjects/CodeGenHero.Template.Blazor/bin
+/src/TemplateProjects/CodeGenHero.Template.Blazor/obj
+/src/TemplateProjects/CodeGenHero.Template.CSLA/bin
+/src/TemplateProjects/CodeGenHero.Template.CSLA/obj
+/src/TemplateProjects/CodeGenHero.Template.WebAPI.FullFramework/bin
+/src/TemplateProjects/CodeGenHero.Template.WebAPI.FullFramework/obj
+*.cghpkg
