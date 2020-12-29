@@ -1,5 +1,8 @@
 ﻿## Changelog
 
+### 1.3.1
+* Added String extension for Replace() that uses StringComparison
+
 ### 1.3.0
 * Adjustments to support open sourcing the Blazor, CSLA, and WebAPI FullFramework templates.
 
