@@ -1,7 +1,7 @@
-﻿using CodeGenHero.Template.WebAPI.FullFramework.Generators.Server;
-using System;
-using CodeGenHero.Core;
+﻿using CodeGenHero.Core;
 using CodeGenHero.Template.Models;
+using CodeGenHero.Template.WebAPI.FullFramework.Generators.Server;
+using System;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Server
 {
@@ -39,13 +39,14 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                 string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
                     fileName: Consts.OUT_repositoryInterfaceCrud);
                 string filepath = outputfile;
+                var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
                 var generator = new RepositoryInterfaceCrudGenerator(inflector: Inflector);
                 string generatedCode = generator.GenerateRepositoryInterfaceCrud(
                     repositoryInterfaceNamespace: RepositoryInterfaceNamespace,
                     namespacePostfix: NamespacePostfix,
                     repositoryEntitiesNamespace: RepositoryEntitiesNamespace,
-                    EntityTypes: ProcessModel.MetadataSourceModel.EntityTypes
+                    EntityTypes: filteredEntityTypes
                 );
 
                 retVal.Files.Add(new OutputFile()

@@ -1,11 +1,11 @@
-﻿using CodeGenHero.Template.WebAPI.FullFramework.Generators.Server;
-using System;
-using CodeGenHero.Core;
+﻿using CodeGenHero.Core;
 using CodeGenHero.Template.Models;
+using CodeGenHero.Template.WebAPI.FullFramework.Generators.Server;
+using System;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Server
 {
-    [Template(name: Consts.TEMPLATE_WebApiControllerPartialMethods, version: "2.0",
+    [Template(name: Consts.TEMPLATE_WebApiControllerPartialMethods, version: "2.1",
         uniqueTemplateIdGuid: "{0AEA3751-020A-4F50-93E5-0C58A2C8E953}",
         description: "A complimentary template for Web API 2.0 controllers that generates sample implementations for partial methods that get invoked as injection points in the controller's REST operations.")]
     public class WebApiControllerPartialMethodsTemplate : BaseAPIFFTemplate
@@ -45,7 +45,8 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
 
             try
             {
-                foreach (var entity in ProcessModel.MetadataSourceModel.EntityTypes)
+                var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
+                foreach (var entity in filteredEntityTypes)
                 {
                     string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
                         fileName: Consts.OUT_webApiControllerPartialMethods);

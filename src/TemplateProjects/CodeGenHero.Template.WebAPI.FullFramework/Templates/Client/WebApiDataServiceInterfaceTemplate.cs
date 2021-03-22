@@ -1,11 +1,7 @@
-﻿using CodeGenHero.Template.Models;
+﻿using CodeGenHero.Core;
+using CodeGenHero.Template.Models;
 using CodeGenHero.Template.WebAPI.FullFramework.Generators.Client;
 using System;
-using CodeGenHero.Core;
-using CodeGenHero.Inflector;
-using CodeGenHero.Core;
-using System.Collections.Generic;
-using CodeGenHero.Template;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Client
 {
@@ -47,13 +43,15 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Client
                 fileName: Consts.OUT_webApiDataServiceInterface);
                 string filepath = outputfile;
                 var generator = new WebApiDataServiceInterfaceGenerator(inflector: Inflector);
+                var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
+
                 var generatedCode = generator.GenerateWebApiDataServiceInterface(dtoNamespace: DtoNamespace,
                     defaultCriteria: DefaultCriteria,
                     baseNamespace: BaseNamespace,
                     webApiDataServiceInterfaceNamespace: WebApiDataServiceInterfaceNamespace,
                     webApiDataServiceInterfaceClassName: WebApiDataServiceInterfaceClassName,
                     prependSchemaNameIndicator: PrependSchemaNameIndicator,
-                     EntityTypes: ProcessModel.MetadataSourceModel.EntityTypes
+                    EntityTypes: filteredEntityTypes
                     );
 
                 retVal.Files.Add(new OutputFile()

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using CodeGenHero.Core.Metadata.Interfaces;
 using CodeGenHero.Inflector;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using CodeGenHero.Core.Metadata.Interfaces;
+using System.Text;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
 {
@@ -84,6 +85,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
             string useDTONamespace = dtoNamespace.Replace("baseNamespace", baseNamespace).Replace("namespacePostfix", namespacePostfix);
 
             sb.AppendLine($"using System;");
+            sb.AppendLine($"using System.Collections.Generic;{Environment.NewLine}");
             sb.AppendLine($"namespace {useDTONamespace}");
             //sb.AppendLine(string.IsNullOrWhiteSpace(namespacePostfix) ? $"namespace {baseNamespace}.DTO" : $"namespace {baseNamespace}.DTO.{namespacePostfix}");
             sb.AppendLine($"{{");
@@ -143,6 +145,11 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
 
             if (dtoIncludeRelatedObjects)
             {
+                if (entity.Navigations.Any())
+                {
+                    sb.Append(Environment.NewLine);
+                }
+
                 foreach (var reverseFK in entity.Navigations)
                 {
                     string name = reverseFK.DeclaringType.ClrType.Name;
@@ -166,7 +173,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
                     }
                     else
                     {
-                        sb.Append($"public virtual System.Collections.Generic.ICollection<{reverseFK.ForeignKey.DeclaringEntityType.ClrType.Name}> {reverseFK.Name} {{ get; set; }} // Many to many mapping"); // Foreign Key
+                        sb.Append($"public virtual System.Collections.Generic.ICollection<{reverseFK.ForeignKey.DeclaringEntityType.ClrType.Name}> {reverseFK.Name} {{ get; set; }} = new List<{reverseFK.ForeignKey.DeclaringEntityType.ClrType.Name}>(); // Many to many mapping"); // Foreign Key
                     }
 
                     if (excludeCircularReferenceNavigationIndicator)

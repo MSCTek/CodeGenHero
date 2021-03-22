@@ -1,11 +1,7 @@
-﻿using CodeGenHero.Template.Models;
+﻿using CodeGenHero.Core;
+using CodeGenHero.Template.Models;
 using CodeGenHero.Template.WebAPI.FullFramework.Generators.Server;
 using System;
-using CodeGenHero.Core;
-using CodeGenHero.Inflector;
-using System.Collections.Generic;
-using CodeGenHero.Template;
-using MSC.CodeGenHero.Library;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Server
 {
@@ -40,6 +36,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                 string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
                     fileName: Consts.OUT_automapperProfile);
                 string filepath = outputfile;
+                var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
                 var generator = new AutomapperProfileControllerGenerator(inflector: Inflector);
                 string generatedCode = generator.GenerateAutomapperProfile(
@@ -47,7 +44,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                                             namespacePostfix: NamespacePostfix,
                                             dtoNamespace: DtoNamespace,
                                             repositoryEntitiesNamespace: RepositoryEntitiesNamespace,
-                                            entityTypes: ProcessModel.MetadataSourceModel.EntityTypes,
+                                            entityTypes: filteredEntityTypes,
                                             excludedNavigationProperties: ProcessModel.ExcludedNavigationProperties);
 
                 retVal.Files.Add(new OutputFile()

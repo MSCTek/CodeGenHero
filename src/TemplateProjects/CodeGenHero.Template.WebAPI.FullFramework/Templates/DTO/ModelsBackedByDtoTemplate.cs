@@ -1,12 +1,7 @@
-﻿using CodeGenHero.Template.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodeGenHero.Inflector;
-using CodeGenHero.Core;
+﻿using CodeGenHero.Core;
+using CodeGenHero.Template.Models;
 using CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO;
+using System;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.DTO
 {
@@ -85,7 +80,8 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.DTO
 
             try
             {
-                foreach (var entity in ProcessModel.MetadataSourceModel.EntityTypes)
+                var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
+                foreach (var entity in filteredEntityTypes)
                 {
                     string entityName = Inflector.Humanize(entity.ClrType.Name);
 

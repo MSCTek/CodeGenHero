@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using CodeGenHero.Core.Metadata.Interfaces;
+using CodeGenHero.Inflector;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CodeGenHero.Inflector;
-using CodeGenHero.Core.Metadata.Interfaces;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.MVVM
 {
@@ -210,12 +210,12 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.MVVM
                 if (navigation.ClrType.Name.Equals("ICollection`1"))
                 {
                     //Collection
-                    sb.AppendLine($"\t\tpublic virtual IList<{fkName}> {fkNamePl} {{ get; set; }} "); // Many to many mapping
+                    sb.AppendLine($"\t\tpublic virtual IList<{fkName}> {fkNamePl} {{ get; set; }} = new List<{fkName}>();"); // Many to many mapping
                 }
                 else if (navigation.ClrType.Name.Equals("List`1"))
                 {
                     //List
-                    sb.AppendLine($"\t\tpublic virtual IList<{fkName}> {fkNamePl} {{ get; set; }} "); // Many to many mapping
+                    sb.AppendLine($"\t\tpublic virtual IList<{fkName}> {fkNamePl} {{ get; set; }} = new List<{fkName}>(); "); // Many to many mapping
                 }
                 else
                 {

@@ -1,12 +1,12 @@
-﻿using CodeGenHero.Template.WebAPI.FullFramework.Generators.Server;
-using System;
-using CodeGenHero.Core;
-using System.Collections.Generic;
+﻿using CodeGenHero.Core;
 using CodeGenHero.Template.Models;
+using CodeGenHero.Template.WebAPI.FullFramework.Generators.Server;
+using System;
+using System.Collections.Generic;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Server
 {
-    [Template(name: Consts.TEMPLATE_WebApiController, version: "2.0",
+    [Template(name: Consts.TEMPLATE_WebApiController, version: "2.1",
         uniqueTemplateIdGuid: "{4F4C0CB1-134C-477A-B796-0EA82A911D33}",
         description: "Web API 2.0 controllers that support web and mobile clients and can, optionally, require basic or OAuth 2.0 security authentication.")]
     public class WebApiControllerTemplate : BaseAPIFFTemplate
@@ -62,7 +62,8 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
 
             try
             {
-                foreach (var entity in ProcessModel.MetadataSourceModel.EntityTypes)
+                var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
+                foreach (var entity in filteredEntityTypes)
                 {
                     string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
                         fileName: Consts.OUT_webApiController);

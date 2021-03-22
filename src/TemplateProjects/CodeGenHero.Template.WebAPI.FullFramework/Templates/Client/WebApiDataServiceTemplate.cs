@@ -3,14 +3,10 @@
 //     Copyright (c) Micro Support Center, Inc..  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
+using CodeGenHero.Core;
 using CodeGenHero.Template.Models;
 using CodeGenHero.Template.WebAPI.FullFramework.Generators.Client;
 using System;
-using CodeGenHero.Core;
-using CodeGenHero.Inflector;
-using CodeGenHero.Core;
-using System.Collections.Generic;
-using CodeGenHero.Template;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Client
 {
@@ -58,6 +54,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Client
                     fileName: Consts.OUT_webApiDataService);
                 string filepath = outputfile;
                 string dtoNamespacePrefix = "xDTO";
+                var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
                 var generator = new WebApiDataServiceGenerator(inflector: Inflector);
                 var generatedCode = generator.GenerateWebApiDataService(
@@ -71,7 +68,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Client
                     namespacePostfix: NamespacePostfix,
                     defaultCriteria: DefaultCriteria,
                     prependSchemaNameIndicator: PrependSchemaNameIndicator,
-                    entityTypes: ProcessModel.MetadataSourceModel.EntityTypes,
+                    entityTypes: filteredEntityTypes,
                     baseNamespace: BaseNamespace
                 );
 

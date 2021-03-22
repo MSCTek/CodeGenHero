@@ -1,9 +1,7 @@
-﻿using CodeGenHero.Template.Models;
+﻿using CodeGenHero.Core;
+using CodeGenHero.Template.Models;
 using CodeGenHero.Template.WebAPI.FullFramework.Generators.Server;
 using System;
-using CodeGenHero.Core;
-using CodeGenHero.Inflector;
-using CodeGenHero.Core;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Server
 {
@@ -41,6 +39,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                 string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
                     fileName: Consts.OUT_repositoryBasePartialMethods);
                 string filepath = outputfile;
+                var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
                 var generator = new RepositoryBasePartialMethodsGenerator(inflector: Inflector);
                 var generatedCode = generator.GenerateRepositoryBasePartialMethods(
@@ -50,7 +49,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                     repositoryEntitiesNamespace: RepositoryEntitiesNamespace,
                     efEntityNamespacePrefix: $"ent{NamespacePostfix}",
                     dbContextName: DbContextName,
-                    EntityTypes: ProcessModel.MetadataSourceModel.EntityTypes,
+                    EntityTypes: filteredEntityTypes,
                     excludedNavigationProperties: ProcessModel.ExcludedNavigationProperties
                 );
 

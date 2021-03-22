@@ -1,8 +1,7 @@
-﻿using CodeGenHero.Template.Models;
+﻿using CodeGenHero.Core;
+using CodeGenHero.Template.Models;
 using CodeGenHero.Template.WebAPI.FullFramework.Generators.Server;
 using System;
-using CodeGenHero.Core;
-using CodeGenHero.Inflector;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Server
 {
@@ -40,6 +39,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                 string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
                     fileName: Consts.OUT_repositoryBase);
                 string filepath = outputfile;
+                var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
                 var generator = new RepositoryBaseGenerator(inflector: Inflector);
                 var generatedCode = generator.GenerateRepositoryBase(
@@ -48,7 +48,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                     dbContextName: DbContextName,
                     namespacePostfix: NamespacePostfix,
                     baseNamespace: BaseNamespace,
-                    entityTypes: ProcessModel.MetadataSourceModel.EntityTypes
+                    entityTypes: filteredEntityTypes
                 );
 
                 retVal.Files.Add(new OutputFile()
