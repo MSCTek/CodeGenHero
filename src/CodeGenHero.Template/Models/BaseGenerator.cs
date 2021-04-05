@@ -1,9 +1,9 @@
-﻿using System;
+﻿using CodeGenHero.Core.Metadata.Interfaces;
+using CodeGenHero.Inflector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CodeGenHero.Inflector;
-using CodeGenHero.Core.Metadata.Interfaces;
 
 namespace CodeGenHero.Template.Models
 {
@@ -96,6 +96,33 @@ namespace CodeGenHero.Template.Models
 
             // If we reach here, then it wasn't one of the above simple types.
             return propertyType;
+        }
+
+        public virtual bool EntityNavigationsContainsNavigationName(
+            IList<IEntityNavigation> entityNavigations,
+            IEntityType entityType,
+            string navigationName)
+        {
+            bool retVal = false;
+            if (entityNavigations == null)
+            {
+                return retVal;
+            }
+
+            var filteredEntityNavigations = entityNavigations.Where(x =>
+                x.EntityType.ClrType.FullName.Equals(entityType.ClrType.FullName, StringComparison.InvariantCultureIgnoreCase))
+                .ToList();
+            foreach (var entityNavigation in filteredEntityNavigations)
+            {
+                if (entityNavigation.Navigation != null
+                    && entityNavigation.Navigation.Name.Equals(navigationName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    retVal = true;
+                    break;
+                }
+            }
+
+            return retVal;
         }
 
         public virtual List<Tuple<string, string, string, string>> FilterFieldTypeAndNamesByExistingColumns(IEntityType entityType, List<Tuple<string, string, string, string>> defaultCriteriaAsTypeAndFieldNameList)
@@ -278,6 +305,48 @@ namespace CodeGenHero.Template.Models
             return sb.ToString();
         }
 
+        public virtual string GetForeignKeyName(INavigation entityNavigation)
+        {
+            string retVal = null;
+            if (entityNavigation == null)
+            {
+                return retVal;
+            }
+
+            var fkMetadataBase = entityNavigation.ForeignKey as CodeGenHero.Core.Metadata.MetadataBase;
+            if (fkMetadataBase != null)
+            {
+                var relationalAnnotation = fkMetadataBase.FindAnnotation("Relational:Name");
+                if (relationalAnnotation != null)
+                {
+                    retVal = relationalAnnotation.Value?.ToString();
+                }
+            }
+
+            return retVal;
+        }
+
+        public virtual IList<string> GetForeignKeyNames(IList<INavigation> entityNavigations)
+        {
+            IList<string> retVal = new List<string>();
+
+            if (entityNavigations == null)
+            {
+                return retVal;
+            }
+
+            entityNavigations.ForEach(entityNavigation =>
+            {
+                var foreignKeyName = GetForeignKeyName(entityNavigation);
+                if (!string.IsNullOrWhiteSpace(foreignKeyName))
+                {
+                    retVal.Add(foreignKeyName);
+                }
+            });
+
+            return retVal;
+        }
+
         public virtual string GetNameModuleLevelVariable(string Propname)
         {
             return "_" + Inflector.ToLowerFirstCharacter(Propname);
@@ -397,22 +466,6 @@ namespace CodeGenHero.Template.Models
             }
 
             return retVal;
-        }
-
-        public virtual bool IsEntityInExcludedReferenceNavigionationProperties(IList<IEntityNavigation> properties, string name)
-        {
-            if (properties == null)
-            {
-                return false;
-            }
-            foreach (var item in properties)
-            {
-                if (item.Navigation != null && item.Navigation.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return true;
-                }
-            }
-            return false;
         }
 
         public virtual bool IsUnknownType(IProperty prop)

@@ -1,8 +1,7 @@
-﻿using CodeGenHero.Template.Models;
+﻿using CodeGenHero.Core;
+using CodeGenHero.Template.Models;
 using CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO;
 using System;
-using CodeGenHero.Core;
-using CodeGenHero.Inflector;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.DTO
 {
@@ -34,10 +33,12 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.DTO
 
             try
             {
-                var entityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(excludeRegExPattern: RegexExclude, includeRegExPattern: RegexInclude);
-                foreach (var entity in entityTypes)
+                var excludedEntityNavigations = ProcessModel.GetAllExcludedEntityNavigations(
+                    excludeRegExPattern: RegexExclude, includeRegExPattern: RegexInclude);
+                var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
+                foreach (var entityType in filteredEntityTypes)
                 {
-                    string entityName = Inflector.Humanize(entity.ClrType.Name);
+                    string entityName = Inflector.Humanize(entityType.ClrType.Name);
 
                     string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity, fileName: Consts.OUT_dto);
                     outputfile = outputfile.Replace("[tablename]", entityName).Replace("[tablepluralname]", Inflector.Pluralize(entityName));
@@ -45,8 +46,8 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.DTO
 
                     var generator = new DTOSimpleGenerator(inflector: Inflector);
                     string generatedCode = generator.GenerateDTO(
-                        excludedNavigationProperties: ProcessModel.ExcludedNavigationProperties,
-                        entity: entity,
+                        excludedEntityNavigations: excludedEntityNavigations,
+                        entity: entityType,
                         namespacePostfix: NamespacePostfix,
                         baseNamespace: BaseNamespace,
                         dtoIncludeRelatedObjects: DTOIncludeRelatedObjects,

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\LICENSE.txt" Link="LICENSE.txt">
+    <None Include="..\..\..\LICENSE.txt" Link="LICENSE.txt">
       <PackagePath></PackagePath>
       <Pack>True</Pack>
     </None>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CodeGenHero.Inflector\CodeGenHero.Inflector.csproj" />
+    <ProjectReference Include="..\..\CodeGenHero.Inflector\CodeGenHero.Inflector.csproj" />
   </ItemGroup>
 
 </Project>

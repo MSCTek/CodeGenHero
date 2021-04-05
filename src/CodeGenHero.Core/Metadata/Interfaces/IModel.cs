@@ -46,5 +46,7 @@ namespace CodeGenHero.Core.Metadata.Interfaces
         IList<IEntityType> GetEntityTypesFilteredByRegEx(string regExPattern);
 
         IList<IEntityType> GetEntityTypesMatchingRegEx(string regExPattern);
+
+        IList<IEntityNavigation> GetExcludedEntityNavigationsByRegEx(string excludeRegExPattern, string includeRegExPattern);
     }
 }

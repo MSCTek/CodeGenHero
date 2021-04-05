@@ -74,13 +74,14 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
         }
 
         public string GenerateDTO(
-            IList<IEntityNavigation> excludedNavigationProperties,
-            IEntityType entity, string namespacePostfix,
+            IList<IEntityNavigation> excludedEntityNavigations,
+            IEntityType entity,
+            string namespacePostfix,
             string baseNamespace, bool dtoIncludeRelatedObjects, bool prependSchemaNameIndicator, string dtoNamespace
         )
         {
             var sb = new StringBuilder();
-            string entityName = Inflector.Pascalize(entity.ClrType.Name);
+            string className = Inflector.Pascalize(entity.ClrType.Name);
 
             string useDTONamespace = dtoNamespace.Replace("baseNamespace", baseNamespace).Replace("namespacePostfix", namespacePostfix);
 
@@ -89,13 +90,13 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
             sb.AppendLine($"namespace {useDTONamespace}");
             //sb.AppendLine(string.IsNullOrWhiteSpace(namespacePostfix) ? $"namespace {baseNamespace}.DTO" : $"namespace {baseNamespace}.DTO.{namespacePostfix}");
             sb.AppendLine($"{{");
-            sb.AppendLine($"\tpublic partial class {entityName}");
+            sb.AppendLine($"\tpublic partial class {className}");
             sb.AppendLine($"\t{{");
             sb.AppendLine(GenerateConstructor(
                 prependSchemaNameIndicator: prependSchemaNameIndicator,
                 dtoIncludeRelatedObjects: dtoIncludeRelatedObjects,
                 entity: entity,
-                excludedNavigationProperties: excludedNavigationProperties));
+                excludedNavigationProperties: excludedEntityNavigations));
 
             //var keys = entity.Keys;
             var primaryKeyList = GetPrimaryKeys(entity);
@@ -123,7 +124,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
                 prependSchemaNameIndicator: prependSchemaNameIndicator,
                 dtoIncludeRelatedObjects: dtoIncludeRelatedObjects,
                 entity: entity,
-                excludedNavigationProperties: excludedNavigationProperties));
+                excludedNavigationProperties: excludedEntityNavigations));
 
             sb.AppendLine(string.Empty);
             sb.AppendLine("\t\tpartial void InitializePartial();");
@@ -150,26 +151,26 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
                     sb.Append(Environment.NewLine);
                 }
 
+                var excludedNavigations = excludedNavigationProperties.Select(x => x.Navigation).ToList();
+                var excludedForeignKeyNames = GetForeignKeyNames(excludedNavigations);
                 foreach (var reverseFK in entity.Navigations)
                 {
-                    string name = reverseFK.DeclaringType.ClrType.Name;
-                    string humanCase = Inflector.Humanize(name);
-
                     sb.Append("\t\t");
-                    //bool excludeCircularReferenceNavigationIndicator = reverseFK.ExcludeCircularReferenceNavigationIndicator(excludedNavigationProperties);
-                    bool excludeCircularReferenceNavigationIndicator = IsEntityInExcludedReferenceNavigionationProperties(excludedNavigationProperties, name);
-                    if (excludeCircularReferenceNavigationIndicator)
-                    {   // Include the line, but comment it out.
-                        sb.Append("// ");
+
+                    bool excludeCircularReferenceNavigationIndicator = false;
+                    var fkName = GetForeignKeyName(reverseFK);
+                    if (!string.IsNullOrWhiteSpace(fkName))
+                    {
+                        excludeCircularReferenceNavigationIndicator = excludedForeignKeyNames.Contains(fkName);
+                        if (excludeCircularReferenceNavigationIndicator)
+                        {   // Include the line, but comment it out.
+                            sb.Append("// ");
+                        }
                     }
 
-                    string reverseFKName = reverseFK.ForeignKey.PrincipalEntityType.ClrType.Name;
-
-                    // We don't have the same Relationship.OneToOne status as from the reverse poco type.  EntityFramework just gives us the type of ICollection'1 or the field name
-                    //if (reverseFK.ClrType == Library.Enums.Relationship.OneToOne)
                     if (!reverseFK.ClrType.Name.Equals("ICollection`1"))
                     {
-                        sb.Append($"public virtual {reverseFKName} {Inflector.Pascalize(reverseFKName)} {{ get; set; }} // One to One mapping"); // Foreign Key
+                        sb.Append($"public virtual {reverseFK.ForeignKey.PrincipalEntityType.ClrType.Name} {Inflector.Pascalize(reverseFK.Name)} {{ get; set; }} // One to One mapping"); // Foreign Key
                     }
                     else
                     {

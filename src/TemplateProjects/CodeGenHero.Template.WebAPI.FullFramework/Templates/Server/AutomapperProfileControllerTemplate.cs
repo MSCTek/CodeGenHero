@@ -36,6 +36,9 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                 string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
                     fileName: Consts.OUT_automapperProfile);
                 string filepath = outputfile;
+
+                var excludedEntityNavigations = ProcessModel.GetAllExcludedEntityNavigations(
+                    excludeRegExPattern: RegexExclude, includeRegExPattern: RegexInclude);
                 var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
                 var generator = new AutomapperProfileControllerGenerator(inflector: Inflector);
@@ -45,7 +48,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                                             dtoNamespace: DtoNamespace,
                                             repositoryEntitiesNamespace: RepositoryEntitiesNamespace,
                                             entityTypes: filteredEntityTypes,
-                                            excludedNavigationProperties: ProcessModel.ExcludedNavigationProperties);
+                                            excludedEntityNavigations: excludedEntityNavigations);
 
                 retVal.Files.Add(new OutputFile()
                 {

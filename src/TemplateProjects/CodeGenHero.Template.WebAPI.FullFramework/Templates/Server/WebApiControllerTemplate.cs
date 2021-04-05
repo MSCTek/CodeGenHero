@@ -85,6 +85,8 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                         baseControllerName = $"{NamespacePostfix}BaseApiControllerAuthorized";
                     }
 
+                    var excludedEntityNavigations = ProcessModel.GetAllExcludedEntityNavigations(
+                        excludeRegExPattern: RegexExclude, includeRegExPattern: RegexInclude);
                     WebApiControllerGenerator webApiControllerGenerator = new WebApiControllerGenerator(inflector: Inflector);
                     string generatedCode = webApiControllerGenerator.GenerateWebApiController(
                         baseNamespace: BaseNamespace,
@@ -105,7 +107,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                         maxRequestPerPageOverrides: maxRequestPerPageOverrides,
                         prependSchemaNameIndicator: PrependSchemaNameIndicator,
                         entity: entity,
-                        excludedNavigationProperties: ProcessModel.ExcludedNavigationProperties
+                        excludedEntityNavigations: excludedEntityNavigations
                     );
 
                     retVal.Files.Add(new OutputFile()

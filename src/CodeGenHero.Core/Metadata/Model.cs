@@ -86,5 +86,55 @@ namespace CodeGenHero.Core.Metadata
 
             return retVal;
         }
+
+        public IList<IEntityNavigation> GetExcludedEntityNavigationsByRegEx(string excludeRegExPattern, string includeRegExPattern)
+        {
+            IList<IEntityNavigation> retVal = new List<IEntityNavigation>();
+            IList<IEntityType> filteredEntityTypes = GetEntityTypesByRegEx(excludeRegExPattern: excludeRegExPattern, includeRegExPattern: includeRegExPattern);
+
+            if (EntityTypes == null || string.IsNullOrWhiteSpace(excludeRegExPattern))
+            {
+                return retVal;
+            }
+
+            foreach (var entityType in EntityTypes)
+            {
+                if (filteredEntityTypes.Contains(entityType))
+                {   // This entity is not specifically excluded, scan its Navigations property for links to entities that are excluded.
+                    foreach (var entityTypeNavigation in entityType.Navigations)
+                    {
+                        string principalEntityTypeClrTypeName = entityTypeNavigation.ForeignKey.PrincipalEntityType.ClrType.Name;
+                        var excludeMatch = Regex.Match(principalEntityTypeClrTypeName, excludeRegExPattern, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+                        var includeMatchSuccess = false;
+                        if (!string.IsNullOrWhiteSpace(includeRegExPattern))
+                        {
+                            includeMatchSuccess = Regex.Match(principalEntityTypeClrTypeName, includeRegExPattern, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant).Success;
+                        }
+
+                        if (excludeMatch.Success && !includeMatchSuccess)
+                        {   // clrTypeName matches our exclude pattern and is not overridden by the include pattern.
+                            retVal.Add(new EntityNavigation()
+                            {
+                                EntityType = entityType,
+                                Navigation = entityTypeNavigation
+                            });
+                        }
+                    }
+                }
+                else
+                {   // This is one of our excluded entities, exclude all associated navigations it contains.
+                    foreach (var entityTypeNavigation in entityType.Navigations)
+                    {
+                        retVal.Add(new EntityNavigation()
+                        {
+                            EntityType = entityType,
+                            Navigation = entityTypeNavigation
+                        });
+                    }
+                }
+            }
+
+            return retVal;
+        }
     }
 }

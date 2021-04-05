@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using CodeGenHero.Core.Metadata.Interfaces;
 using CodeGenHero.Inflector;
-using System.Linq;
-using System;
-using CodeGenHero.Core.Metadata.Interfaces;
 using CodeGenHero.Template.Helpers;
 using CodeGenHero.Template.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
 {
@@ -424,7 +424,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
             List<NameValue> maxRequestPerPageOverrides,
             bool prependSchemaNameIndicator,
             IEntityType entity,
-             IList<IEntityNavigation> excludedNavigationProperties)
+            IList<IEntityNavigation> excludedEntityNavigations)
         {
             var className = $"{Inflector.Pluralize(entity.ClrType.Name)}{namespacePostfix}Controller";
             string tableName = Inflector.Humanize(entity.ClrType.Name);
@@ -509,7 +509,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
                 entityTypeName: entityTypeName));
 
             sb.Append(GenerateFooter(dbContextName: dbContextName, entity: entity,
-                excludedNavigationProperties: excludedNavigationProperties,
+                excludedNavigationProperties: excludedEntityNavigations,
                 entityTypeName: entityTypeName));
 
             sb.Append("\t}\r\n}"); // Close the class, close the namespace

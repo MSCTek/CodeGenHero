@@ -1,7 +1,9 @@
 ﻿using CodeGenHero.Core;
+using CodeGenHero.Core.Metadata.Interfaces;
 using CodeGenHero.Template.Models;
 using CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO;
 using System;
+using System.Collections.Generic;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.DTO
 {
@@ -80,6 +82,11 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.DTO
 
             try
             {
+                IList<IEntityNavigation> excludedNavigationProperties = ProcessModel.ExcludedNavigationProperties;
+                var navigationsExcludedByRegEx = ProcessModel.MetadataSourceModel.GetExcludedEntityNavigationsByRegEx(
+                    excludeRegExPattern: RegexExclude, includeRegExPattern: RegexInclude);
+                excludedNavigationProperties.AddRange(navigationsExcludedByRegEx);
+
                 var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
                 foreach (var entity in filteredEntityTypes)
                 {
@@ -99,7 +106,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.DTO
                         modelsBackedByDtoInterfaceNamespace: ModelsBackedByDtoInterfaceNamespace,
                         webApiDataServiceInterfaceNamespace: WebApiDataServiceInterfaceNamespace,
                         webApiDataServiceInterfaceClassName: WebApiDataServiceInterfaceClassName,
-                        excludedNavigationProperties: ProcessModel.ExcludedNavigationProperties,
+                        excludedNavigationProperties: excludedNavigationProperties,
                         entity: entity
                         );
 

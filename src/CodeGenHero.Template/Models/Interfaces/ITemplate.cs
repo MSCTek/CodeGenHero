@@ -1,7 +1,6 @@
-﻿using CodeGenHero.Core.Metadata.Interfaces;
+﻿using CodeGenHero.Core;
 using System;
 using System.Collections.Generic;
-using CodeGenHero.Core;
 
 namespace CodeGenHero.Template.Models.Interfaces
 {
@@ -31,18 +30,18 @@ namespace CodeGenHero.Template.Models.Interfaces
 
         TemplateOutput Generate();
 
-        /// <summary>
-        /// Appends navigations to the exclusion list when the navigation ClrType is not available as an allowedEntity.
-        /// This may happen when excludeRegEx and includeRegEx patterns are used to filter out some entities that exist in metadata, but will not be generated.
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="allowedEntities"></param>
-        /// <param name="excludedNavigationProperties"></param>
-        /// <returns>A superset of excluded navigation properties</returns>
-        IList<IEntityNavigation> GetExcludedNavigationProperties(
-            IEntityType entity,
-            IList<IEntityType> allowedEntities,
-            IList<IEntityNavigation> excludedNavigationProperties);
+        ///// <summary>
+        ///// Appends navigations to the exclusion list when the navigation ClrType is not available as an allowedEntity.
+        ///// This may happen when excludeRegEx and includeRegEx patterns are used to filter out some entities that exist in metadata, but will not be generated.
+        ///// </summary>
+        ///// <param name="entity"></param>
+        ///// <param name="allowedEntities"></param>
+        ///// <param name="excludedNavigationProperties"></param>
+        ///// <returns>A superset of excluded navigation properties</returns>
+        //IList<IEntityNavigation> GetExcludedNavigationProperties(
+        //    IEntityType entity,
+        //    IList<IEntityType> allowedEntities,
+        //    IList<IEntityNavigation> excludedNavigationProperties);
 
         List<TemplateError> Initialize(IProcessModel processModel);
 

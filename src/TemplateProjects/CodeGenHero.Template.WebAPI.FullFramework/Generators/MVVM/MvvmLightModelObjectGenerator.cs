@@ -96,7 +96,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.MVVM
             string classNamespace,
             string baseAuditEditNamespace,
             bool prependSchemaNameIndicator,
-            IList<IEntityNavigation> excludedNavigationProperties,
+            IList<IEntityNavigation> excludedEntityNavigations,
             IEntityType entity)
         {
             string entityName = Inflector.Pascalize(entity.ClrType.Name);
@@ -116,7 +116,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.MVVM
             }
             sb.AppendLine("\t{");
             sb.AppendLine(GenerateConstructor(prependSchemaNameIndicator: prependSchemaNameIndicator,
-                excludedNavigationProperties: excludedNavigationProperties, entity: entity));
+                excludedNavigationProperties: excludedEntityNavigations, entity: entity));
 
             // Add the properties
             foreach (var property in entityProperties)
@@ -157,7 +157,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.MVVM
 
             sb.AppendLine(string.Empty);
             sb.AppendLine(GenerateNavigationProperties(prependSchemaNameIndicator: prependSchemaNameIndicator,
-                excludedNavigationProperties: excludedNavigationProperties, entity: entity));
+                excludedNavigationProperties: excludedEntityNavigations, entity: entity));
             sb.AppendLine(string.Empty);
             sb.AppendLine("\t\tpartial void InitializePartial();");
             sb.AppendLine(string.Empty);

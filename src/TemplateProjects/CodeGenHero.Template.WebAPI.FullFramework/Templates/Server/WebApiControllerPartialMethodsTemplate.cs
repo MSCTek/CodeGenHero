@@ -60,6 +60,8 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                         baseControllerName = $"{NamespacePostfix}BaseApiControllerAuthorized";
                     }
 
+                    var excludedEntityNavigations = ProcessModel.GetAllExcludedEntityNavigations(
+                        excludeRegExPattern: RegexExclude, includeRegExPattern: RegexInclude);
                     var generator = new WebApiControllerPartialMethodsGenerator(inflector: Inflector);
                     string generatedCode = generator.GenerateWebApiControllerPartialMethods(
                         namespacePostfix: NamespacePostfix,
@@ -69,7 +71,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                         efEntityNamespace: RepositoryEntitiesNamespace,
                         dbContextName: DbContextName,
                         entity: entity,
-                        excludedNavigationProperties: ProcessModel.ExcludedNavigationProperties,
+                        excludedEntityNavigations: excludedEntityNavigations,
                         allowUpsertDuringPut: AllowUpsertDuringPut
                     );
 

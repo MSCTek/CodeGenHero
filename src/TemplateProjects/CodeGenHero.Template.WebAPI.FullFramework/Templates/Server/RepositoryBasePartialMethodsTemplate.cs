@@ -39,6 +39,9 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                 string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
                     fileName: Consts.OUT_repositoryBasePartialMethods);
                 string filepath = outputfile;
+
+                var excludedEntityNavigations = ProcessModel.GetAllExcludedEntityNavigations(
+                    excludeRegExPattern: RegexExclude, includeRegExPattern: RegexInclude);
                 var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
                 var generator = new RepositoryBasePartialMethodsGenerator(inflector: Inflector);
@@ -50,7 +53,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Server
                     efEntityNamespacePrefix: $"ent{NamespacePostfix}",
                     dbContextName: DbContextName,
                     EntityTypes: filteredEntityTypes,
-                    excludedNavigationProperties: ProcessModel.ExcludedNavigationProperties
+                    excludedEntityNavigations: excludedEntityNavigations
                 );
 
                 retVal.Files.Add(new OutputFile()

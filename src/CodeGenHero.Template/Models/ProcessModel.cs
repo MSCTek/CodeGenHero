@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using CodeGenHero.Core;
+﻿using CodeGenHero.Core;
 using CodeGenHero.Core.Metadata.Interfaces;
 using CodeGenHero.Template.Models.Interfaces;
-using cghm = CodeGenHero.Core.Metadata;
+using System.Collections.Generic;
 
 namespace MSC.CodeGenHero.Library
 {
@@ -59,5 +58,23 @@ namespace MSC.CodeGenHero.Library
         public ITemplateIdentity TemplateIdentity { get; set; }
 
         public IDictionary<string, string> TemplateVariables { get; set; }
+
+        public IList<IEntityNavigation> GetAllExcludedEntityNavigations(string excludeRegExPattern, string includeRegExPattern)
+        {
+            IList<IEntityNavigation> retVal = new List<IEntityNavigation>();
+            if (ExcludedNavigationProperties != null)
+            {
+                retVal.AddRange(ExcludedNavigationProperties);
+            }
+
+            if (MetadataSourceModel != null && !string.IsNullOrWhiteSpace(excludeRegExPattern))
+            {
+                var navigationsExcludedByRegEx = MetadataSourceModel.GetExcludedEntityNavigationsByRegEx(
+                excludeRegExPattern: excludeRegExPattern, includeRegExPattern: includeRegExPattern);
+                retVal.AddRange(navigationsExcludedByRegEx);
+            }
+
+            return retVal;
+        }
     }
 }

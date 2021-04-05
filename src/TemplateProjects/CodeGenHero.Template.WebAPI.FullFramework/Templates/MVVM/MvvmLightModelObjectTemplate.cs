@@ -1,14 +1,7 @@
-﻿using CodeGenHero.Template.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodeGenHero.Inflector;
-using CodeGenHero.Core;
+﻿using CodeGenHero.Core;
+using CodeGenHero.Template.Models;
 using CodeGenHero.Template.WebAPI.FullFramework.Generators.MVVM;
-using CodeGenHero.Core.Metadata;
-using MSC.CodeGenHero.Library;
+using System;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.MVVM
 {
@@ -60,15 +53,15 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.MVVM
                     return retVal;
                 }
 
-                var entityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(excludeRegExPattern: RegexExclude, includeRegExPattern: RegexInclude);
-                foreach (var entity in entityTypes)
+                // Determine the navigation properties that should be excluded due to the RegEx patterns.
+                var excludedEntityNavigations = ProcessModel.GetAllExcludedEntityNavigations(
+                    excludeRegExPattern: RegexExclude, includeRegExPattern: RegexInclude);
+                var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(excludeRegExPattern: RegexExclude, includeRegExPattern: RegexInclude);
+                foreach (var entityType in filteredEntityTypes)
                 {
-                    // Determine the navigation properties that should be excluded due to the RegEx patterns.
-                    var excludedNavigationProperties = GetExcludedNavigationProperties(entity, entityTypes, ProcessModel.ExcludedNavigationProperties);
-
                     string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
                         fileName: Consts.OUT_mvvmLightModelObject);
-                    string entityName = Inflector.Humanize(entity.ClrType.Name);
+                    string entityName = Inflector.Humanize(entityType.ClrType.Name);
                     outputfile = outputfile.Replace("[tablename]", entityName);
                     string filepath = outputfile;
 
@@ -77,8 +70,8 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.MVVM
                         classNamespace: SqliteModelObjectNamespace,
                         baseAuditEditNamespace: SqliteModelObjectBaseAuditEditNamespace,
                         prependSchemaNameIndicator: PrependSchemaNameIndicator,
-                         entity: entity,
-                        excludedNavigationProperties: excludedNavigationProperties);
+                         entity: entityType,
+                        excludedEntityNavigations: excludedEntityNavigations);
                     retVal.Files.Add(new OutputFile()
                     {
                         Content = generatedCode,

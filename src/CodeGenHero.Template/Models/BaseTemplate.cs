@@ -1,17 +1,15 @@
 ﻿using CodeGenHero.Core;
+using CodeGenHero.Inflector;
+using CodeGenHero.Template.Helpers;
+using CodeGenHero.Template.Interfaces;
 using CodeGenHero.Template.Models.Interfaces;
-using tConsts = CodeGenHero.Template.Constants.Consts;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CodeGenHero.Inflector;
-using CodeGenHero.Core.Metadata.Interfaces;
-using CodeGenHero.Core.Metadata;
 using static CodeGenHero.Core.Enums;
-using CodeGenHero.Template.Interfaces;
-using Newtonsoft.Json;
-using CodeGenHero.Template.Helpers;
+using tConsts = CodeGenHero.Template.Constants.Consts;
 
 namespace CodeGenHero.Template.Models
 {
@@ -198,44 +196,44 @@ namespace CodeGenHero.Template.Models
             return new TemplateOutput();
         }
 
-        /// <summary>
-        /// Appends navigations to the exclusion list when the navigation ClrType is not available as an allowedEntity.
-        /// This may happen when excludeRegEx and includeRegEx patterns are used to filter out some entities that exist in metadata, but will not be generated.
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="allowedEntities"></param>
-        /// <param name="excludedNavigationProperties"></param>
-        /// <returns>A superset of excluded navigation properties</returns>
-        public virtual IList<IEntityNavigation> GetExcludedNavigationProperties(
-            IEntityType entity,
-            IList<IEntityType> allowedEntities,
-            IList<IEntityNavigation> excludedNavigationProperties)
-        {
-            IList<IEntityNavigation> retVal = new List<IEntityNavigation>();
+        ///// <summary>
+        ///// Appends navigations to the exclusion list when the navigation ClrType is not available as an allowedEntity.
+        ///// This may happen when excludeRegEx and includeRegEx patterns are used to filter out some entities that exist in metadata, but will not be generated.
+        ///// </summary>
+        ///// <param name="entity"></param>
+        ///// <param name="allowedEntities"></param>
+        ///// <param name="excludedNavigationProperties"></param>
+        ///// <returns>A superset of excluded navigation properties</returns>
+        //public virtual IList<IEntityNavigation> GetExcludedNavigationProperties(
+        //    IEntityType entity,
+        //    IList<IEntityType> allowedEntities,
+        //    IList<IEntityNavigation> excludedNavigationProperties)
+        //{
+        //    IList<IEntityNavigation> retVal = new List<IEntityNavigation>();
 
-            if (excludedNavigationProperties != null)
-            {
-                retVal.AddRange(excludedNavigationProperties);
-            }
+        //    if (excludedNavigationProperties != null)
+        //    {
+        //        retVal.AddRange(excludedNavigationProperties);
+        //    }
 
-            var allowedClrTypes = allowedEntities.Select(x => x.ClrType).ToList();
-            foreach (var navigationItem in entity.Navigations)
-            {
-                var navigationClrType = navigationItem.ClrType;
+        //    var allowedClrTypes = allowedEntities.Select(x => x.ClrType).ToList();
+        //    foreach (var navigationItem in entity.Navigations)
+        //    {
+        //        var navigationClrType = navigationItem.ClrType;
 
-                if (!allowedClrTypes.Any(x => navigationClrType.FullName.Equals(x.FullName, StringComparison.InvariantCultureIgnoreCase)
-                    || navigationClrType.FullName.IndexOf(x.FullName) > 0))
-                {
-                    retVal.Add(new EntityNavigation()
-                    {
-                        EntityType = entity,
-                        Navigation = navigationItem
-                    });
-                }
-            }
+        //        if (!allowedClrTypes.Any(x => navigationClrType.FullName.Equals(x.FullName, StringComparison.InvariantCultureIgnoreCase)
+        //            || navigationClrType.FullName.IndexOf(x.FullName) > 0))
+        //        {
+        //            retVal.Add(new EntityNavigation()
+        //            {
+        //                EntityType = entity,
+        //                Navigation = navigationItem
+        //            });
+        //        }
+        //    }
 
-            return retVal;
-        }
+        //    return retVal;
+        //}
 
         public virtual List<TemplateError> Initialize(IProcessModel processModel)
         {

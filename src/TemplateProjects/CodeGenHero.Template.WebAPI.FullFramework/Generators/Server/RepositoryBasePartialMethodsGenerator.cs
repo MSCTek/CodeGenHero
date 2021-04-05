@@ -1,10 +1,10 @@
-﻿using System.Text;
-using System.Linq;
-using System.Collections.Generic;
-using System;
+﻿using CodeGenHero.Core.Metadata.Interfaces;
 using CodeGenHero.Inflector;
-using CodeGenHero.Core.Metadata.Interfaces;
 using CodeGenHero.Template.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
 {
@@ -23,7 +23,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
             string repositoryEntitiesNamespace,
             string dbContextName,
             IList<IEntityType> EntityTypes,
-            IList<IEntityNavigation> excludedNavigationProperties)
+            IList<IEntityNavigation> excludedEntityNavigations)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -57,7 +57,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
 
                 sb.Append(GenerateRunCustomLogicAfterInsert(dbContextName: dbContextName,
                     efEntityNamespacePrefix: efEntityNamespacePrefix,
-                    excludedNavigationProperties: excludedNavigationProperties,
+                    excludedNavigationProperties: excludedEntityNavigations,
                     entity: entity,
                     entityName: entityName,
                     tableNamePlural: tableNamePlural,
@@ -67,7 +67,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
 
                 sb.Append(GenerateRunCustomLogicAfterUpdate(dbContextName: dbContextName,
                     efEntityNamespacePrefix: efEntityNamespacePrefix,
-                    excludedNavigationProperties: excludedNavigationProperties,
+                    excludedNavigationProperties: excludedEntityNavigations,
                     entity: entity,
                     entityName: entityName,
                     tableNamePlural: tableNamePlural,
@@ -77,7 +77,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
 
                 sb.Append(GenerateRunCustomLogicOnGetQueryableByPK(dbContextName: dbContextName,
                     efEntityNamespacePrefix: efEntityNamespacePrefix,
-                    excludedNavigationProperties: excludedNavigationProperties,
+                    excludedEntityNavigations: excludedEntityNavigations,
                     entity: entity,
                     entityName: entityName,
                     tableNamePlural: tableNamePlural,
@@ -87,7 +87,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
 
                 sb.Append(GeneratRunCustomLogicOnGetEntityByPK(dbContextName: dbContextName,
                     efEntityNamespacePrefix: efEntityNamespacePrefix,
-                    excludedNavigationProperties: excludedNavigationProperties,
+                    excludedNavigationProperties: excludedEntityNavigations,
                     entity: entity,
                     entityName: entityName,
                     tableNamePlural: tableNamePlural,
@@ -144,7 +144,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
         /// </summary>
         /// <param name="dbContextName"></param>
         /// <param name="efEntityNamespacePrefix"></param>
-        /// <param name="excludedNavigationProperties"></param>
+        /// <param name="excludedEntityNavigations"></param>
         /// <param name="entity"></param>
         /// <param name="entityName"></param>
         /// <param name="tableNamePlural"></param>
@@ -153,13 +153,14 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
         /// <param name="methodParameterSignature"></param>
         /// <returns></returns>
         private string GenerateRunCustomLogicOnGetQueryableByPK(string dbContextName,
-            string efEntityNamespacePrefix, IList<IEntityNavigation> excludedNavigationProperties,
+            string efEntityNamespacePrefix, IList<IEntityNavigation> excludedEntityNavigations,
              IEntityType entity, string entityName, string tableNamePlural,
             string whereClause, string whereClauseWithObjectInstancePrefix, string methodParameterSignature)
         {
             StringBuilder sb = new StringBuilder();
 
-            bool isAllForeignKeysExcluded = entity.Navigations.All(x => IsEntityInExcludedReferenceNavigionationProperties(excludedNavigationProperties, entityName));
+            bool isAllForeignKeysExcluded = entity.Navigations.All(x =>
+                EntityNavigationsContainsNavigationName(excludedEntityNavigations, entity, entityName));
 
             sb.AppendLine($"{Environment.NewLine}\t\t/// <summary>");
             sb.AppendLine("\t\t/// Custom logic that is generally used to include related entities to return with the parent entity that was requested.");
@@ -177,13 +178,14 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
             {
                 var item = entity.Navigations[i];
                 bool isLastItemInList = i == entity.Navigations.Count - 1;
-                bool excludeCircularReferenceNavigationIndicator = IsEntityInExcludedReferenceNavigionationProperties(excludedNavigationProperties, entityName);
+                bool excludeNavigation = EntityNavigationsContainsNavigationName(excludedEntityNavigations, entity, entityName);
                 var remainingFkItemsInList = new List<INavigation>();
                 for (int j = i + 1; j < entity.Navigations.Count; j++)
                 {
                     remainingFkItemsInList.Add(entity.Navigations[j]);
                 }
-                bool isAllRemainingForeignKeysExcluded = remainingFkItemsInList.All(x => IsEntityInExcludedReferenceNavigionationProperties(excludedNavigationProperties, entityName));
+                bool isAllRemainingForeignKeysExcluded = remainingFkItemsInList.All(x =>
+                    EntityNavigationsContainsNavigationName(excludedEntityNavigations, entity, entityName));
 
                 sb.Append($"\t\t\t\t ");
 
@@ -193,7 +195,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
 
                     // If all foreign keys are excluded or - it is the first AND ONLY item in the list and that first item is excluded, then we need to append a semi-colon.
                     if (isAllForeignKeysExcluded
-                        || (entity.Navigations.Count == 1 && excludeCircularReferenceNavigationIndicator))
+                        || (entity.Navigations.Count == 1 && excludeNavigation))
                     {
                         sb.AppendLine($";");
                     }
@@ -206,7 +208,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
                     firstItemInList = false;
                 }
 
-                if (excludeCircularReferenceNavigationIndicator)
+                if (excludeNavigation)
                 {   // Include the line, but add extra comment marker
                     sb.Append($"// ");
                 }
@@ -228,7 +230,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
                 if (isLastItemInList || isAllRemainingForeignKeysExcluded)
                 {
                     sb.Append(";");
-                    if (excludeCircularReferenceNavigationIndicator)
+                    if (excludeNavigation)
                     {
                         sb.Append(EXCLUDEPERNAVIGATIONPROPERTYCONFIGURATION);
                     }
@@ -237,7 +239,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
                 }
                 else
                 {   // More items to come.
-                    if (excludeCircularReferenceNavigationIndicator)
+                    if (excludeNavigation)
                     {
                         sb.Append(EXCLUDEPERNAVIGATIONPROPERTYCONFIGURATION);
                     }

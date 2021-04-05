@@ -1,5 +1,8 @@
 ﻿## Changelog
 
+### 1.3.2
+* Added GetExcludedEntityNavigationsByRegEx() to IModel / Model class
+
 ### 1.3.1
 * Added String extension for Replace() that uses StringComparison
 

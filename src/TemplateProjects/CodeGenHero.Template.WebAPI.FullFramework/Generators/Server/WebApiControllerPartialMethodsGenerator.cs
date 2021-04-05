@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using CodeGenHero.Core.Metadata.Interfaces;
+﻿using CodeGenHero.Core.Metadata.Interfaces;
 using CodeGenHero.Inflector;
 using CodeGenHero.Template.Helpers;
 using CodeGenHero.Template.Models;
+using System.Collections.Generic;
+using System.Text;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
 {
@@ -23,7 +23,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
             string efEntityNamespace,
             string dbContextName,
             IEntityType entity,
-             IList<IEntityNavigation> excludedNavigationProperties,
+            IList<IEntityNavigation> excludedEntityNavigations,
             bool allowUpsertDuringPut)
         {
             var className = $"{Inflector.Pluralize(entity.ClrType.Name)}{namespacePostfix}Controller";
@@ -44,7 +44,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
             sb.AppendLine("\t{");
 
             sb.Append(GeneratePartialMethods(dbContextName: dbContextName, entity: entity,
-                efEntityNamespacePrefix: efEntityNamespacePrefix, excludedNavigationProperties: excludedNavigationProperties,
+                efEntityNamespacePrefix: efEntityNamespacePrefix, excludedNavigationProperties: excludedEntityNavigations,
                 allowUpsertDuringPut: allowUpsertDuringPut));
 
             return sb.ToString();

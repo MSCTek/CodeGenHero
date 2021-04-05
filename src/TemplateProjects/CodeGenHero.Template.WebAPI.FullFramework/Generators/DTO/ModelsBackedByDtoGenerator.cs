@@ -1,9 +1,8 @@
-﻿using CodeGenHero.Core.Metadata;
+﻿using CodeGenHero.Core.Metadata.Interfaces;
+using CodeGenHero.Inflector;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CodeGenHero.Inflector;
-using CodeGenHero.Core.Metadata.Interfaces;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
 {
@@ -152,7 +151,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
             foreach (var fk in orderedFKs)
             {
                 BuildForwardNavigation(
-                    excludedNavigationProperties: excludedNavigationProperties,
+                    excludedEntityNavigations: excludedNavigationProperties,
                     entity: entity,
                     foreignKey: fk,
                     sbPrivateProperties: ref sbPrivateProperties,
@@ -164,7 +163,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
             foreach (var reverseFK in entity.Navigations)
             {
                 BuildReverseNavigation(
-                    excludedNavigationProperties: excludedNavigationProperties,
+                    excludedEntityNavigations: excludedNavigationProperties,
                     entity: entity,
                     foreignKey: reverseFK,
                     sbPrivateProperties: ref sbPrivateProperties,
@@ -185,7 +184,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
             // Only used by this method
         }
 
-        private void BuildForwardNavigation(IList<IEntityNavigation> excludedNavigationProperties,
+        private void BuildForwardNavigation(IList<IEntityNavigation> excludedEntityNavigations,
             IEntityType entity, IForeignKey foreignKey,
             ref StringBuilder sbPrivateProperties, ref StringBuilder sbPublicProperties)
         {
@@ -197,8 +196,8 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
                 nameHumanized = Inflector.Humanize(nameHumanized);
             }
 
-            bool excludeCircularReferenceNavigationIndicator = IsEntityInExcludedReferenceNavigionationProperties(excludedNavigationProperties, name);
-            if (excludeCircularReferenceNavigationIndicator)
+            bool excludeNavigation = EntityNavigationsContainsNavigationName(excludedEntityNavigations, entity, name);
+            if (excludeNavigation)
             {
                 sbPrivateProperties.AppendLine($"\t\t// Excluding '{name}' per configuration setting.");
                 return;
@@ -214,7 +213,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
             string modelTypeName = name; // foreignKey.RefTable;
             string objectType;
 
-            if (excludeCircularReferenceNavigationIndicator)
+            if (excludeNavigation)
             {   // This item is configured to be excluded from navigation properties.
                 sbPrivateProperties.Append($"\t\t// ");
             }
@@ -248,7 +247,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
             sbPublicProperties.AppendLine($"\t\t\tget");
             sbPublicProperties.AppendLine($"\t\t\t{{");
 
-            if (excludeCircularReferenceNavigationIndicator)
+            if (excludeNavigation)
             {
                 sbPublicProperties.AppendLine($"\t\t\t\tif ({privateVariableName} == null)");
                 sbPublicProperties.AppendLine($"\t\t\t\t{{");
@@ -281,7 +280,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
             sbPublicProperties.AppendLine(string.Empty);
         }
 
-        private void BuildReverseNavigation(IList<IEntityNavigation> excludedNavigationProperties,
+        private void BuildReverseNavigation(IList<IEntityNavigation> excludedEntityNavigations,
             IEntityType entity, INavigation foreignKey,
             ref StringBuilder sbPrivateProperties, ref StringBuilder sbPublicProperties)
         {
@@ -301,10 +300,8 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
                 name = Inflector.Humanize(foreignKey.Name); // foreignKey.RefTableHumanCase;
             }
 
-            //bool excludeCircularReferenceNavigationIndicator = foreignKey.ExcludeCircularReferenceNavigationIndicator(excludedNavigationProperties);
-            bool excludeCircularReferenceNavigationIndicator = IsEntityInExcludedReferenceNavigionationProperties(excludedNavigationProperties, name);
-
-            if (excludeCircularReferenceNavigationIndicator)
+            bool excludeNavigation = EntityNavigationsContainsNavigationName(excludedEntityNavigations, entity, name);
+            if (excludeNavigation)
             {
                 sbPrivateProperties.AppendLine($"\t\t// Excluding '{name}' per configuration setting.");
                 return;
@@ -319,7 +316,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
             string modelTypeName = foreignKey.ForeignKey.PrincipalEntityType.ClrType.Name;
             string objectType;
 
-            if (excludeCircularReferenceNavigationIndicator)
+            if (excludeNavigation)
             {   // This item is configured to be excluded from navigation properties.
                 sbPrivateProperties.Append($"\t\t// ");
             }
@@ -353,7 +350,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.DTO
             sbPublicProperties.AppendLine($"\t\t\tget");
             sbPublicProperties.AppendLine($"\t\t\t{{");
 
-            if (excludeCircularReferenceNavigationIndicator)
+            if (excludeNavigation)
             {
                 sbPublicProperties.AppendLine($"\t\t\t\tif ({privateVariableName} == null)");
                 sbPublicProperties.AppendLine($"\t\t\t\t{{");

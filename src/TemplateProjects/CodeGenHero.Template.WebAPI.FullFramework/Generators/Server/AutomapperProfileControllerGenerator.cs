@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using CodeGenHero.Core.Metadata.Interfaces;
 using CodeGenHero.Inflector;
-using System.Linq;
 using CodeGenHero.Template.Models;
-using CodeGenHero.Core.Metadata.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
 {
@@ -23,7 +23,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
                                                 string dtoNamespace,
                                                 string repositoryEntitiesNamespace,
                                                 IList<IEntityType> entityTypes,
-                                                IList<IEntityNavigation> excludedNavigationProperties
+                                                IList<IEntityNavigation> excludedEntityNavigations
                                                 )
         {
             var sb = new StringBuilder();
@@ -68,15 +68,15 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
                         sb.Append($"\t\t\t\t");
 
                         string name = navigation.Name;
-                        bool excludeCircularReferenceNavigationIndicator = IsEntityInExcludedReferenceNavigionationProperties(excludedNavigationProperties, name);
-                        if (excludeCircularReferenceNavigationIndicator) // We want to negate the value check because we are saying AutoMapper should ignore the property below.
+                        bool excludeNavigation = EntityNavigationsContainsNavigationName(excludedEntityNavigations, entity, name);
+                        if (excludeNavigation) // We want to negate the value check because we are saying AutoMapper should ignore the property below.
                         {   // Include the line, but comment it out.
                             sb.Append("// ");
                         }
 
                         sb.Append($".ForMember(d => d.{name}, opt => opt.Ignore()) // Reverse nav");
 
-                        if (excludeCircularReferenceNavigationIndicator)
+                        if (excludeNavigation)
                         {
                             sb.Append(EXCLUDEPERNAVIGATIONPROPERTYCONFIGURATION);
                         }
@@ -89,8 +89,8 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
                         sb.Append($"\t\t\t\t");
 
                         string name = Inflector.Pascalize(foreignKey.DependentToPrincipal.ClrType.Name);//foreignKey.RefTableHumanCase;
-                        bool excludeCircularReferenceNavigationIndicator = IsEntityInExcludedReferenceNavigionationProperties(excludedNavigationProperties, name);
-                        if (excludeCircularReferenceNavigationIndicator) // We want to negate the value check because we are saying AutoMapper should ignore the property below.
+                        bool excludeNavigation = EntityNavigationsContainsNavigationName(excludedEntityNavigations, entity, name);
+                        if (excludeNavigation) // We want to negate the value check because we are saying AutoMapper should ignore the property below.
                         {   // Include the line, but comment it out.
                             sb.Append("// ");
                         }
@@ -100,7 +100,7 @@ namespace CodeGenHero.Template.WebAPI.FullFramework.Generators.Server
                             sb.Append($".ForMember(d => d.{name}, opt => opt.Ignore())");
                         }
 
-                        if (excludeCircularReferenceNavigationIndicator)
+                        if (excludeNavigation)
                         {
                             sb.Append($" // {EXCLUDEPERNAVIGATIONPROPERTYCONFIGURATION}");
                         }

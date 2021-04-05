@@ -105,8 +105,6 @@ packages
 /src/CodeGenHero.Core/obj
 /src/CodeGenHero.Inflector/bin
 /src/CodeGenHero.Inflector/obj
-/src/CodeGenHero.Inflector.Tests/bin
-/src/CodeGenHero.Inflector.Tests/obj
 /src/CodeGenHero.Serialization/bin
 /src/CodeGenHero.Serialization/obj
 /src/TemplateProjects/CodeGenHero.Template.Blazor/bin
@@ -115,4 +113,10 @@ packages
 /src/TemplateProjects/CodeGenHero.Template.CSLA/obj
 /src/TemplateProjects/CodeGenHero.Template.WebAPI.FullFramework/bin
 /src/TemplateProjects/CodeGenHero.Template.WebAPI.FullFramework/obj
+/src/Tests/CodeGenHero.Core.Tests/bin
+/src/Tests/CodeGenHero.Core.Tests/obj
+/src/Tests/CodeGenHero.Inflector.Tests/bin
+/src/Tests/CodeGenHero.Inflector.Tests/obj
+/src/Tests/CodeGenHero.Template.Tests/bin
+/src/Tests/CodeGenHero.Template.Tests/obj
 *.cghpkg

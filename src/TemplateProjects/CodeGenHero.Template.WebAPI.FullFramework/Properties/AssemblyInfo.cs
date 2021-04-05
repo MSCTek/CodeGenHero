@@ -32,8 +32,8 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2021.3.21.0")]
-[assembly: AssemblyFileVersion("2021.3.21.0")]
+[assembly: AssemblyVersion("2021.4.4.0")]
+[assembly: AssemblyFileVersion("2021.4.4.0")]
 [assembly: TemplateAssembly(name: "CodeGenHero.Template.WebAPI.FullFramework",
     uniqueAssemblyIdGuid: "{DD563FFA-4AB0-454F-B7F9-961029A81BF6}",
     description: "Templates for full .NET framework web APIs and optionally MVVM/SQLite persistant storage data sync",
