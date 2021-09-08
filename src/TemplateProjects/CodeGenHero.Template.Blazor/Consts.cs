@@ -20,5 +20,9 @@ namespace CodeGenHero.Template.Blazor
         public const string ToDataMapperClassNamespace_DEFAULTVALUE = "{baseNamespace}.Service";
         public const string ToModelMapper_OutFileVariableName = "ToModelMapperOutputFilePath";
         public const string ToModelMapperClassNamespace_DEFAULTVALUE = "{baseNamespace}.Service";
+
+        public const string BlazorAPIControllerClassNamespace_DEFAULTVALUE = "{baseNamespace}.Api.Controllers";
+        public const string BlazorAPIController_OutFileVariableName = "BlazorAPIControllerOutputFilePath";
+        public const string OUT_BlazorAPIControllerFilePath_DEFAULTVALUE = "Controllers\\{NamespacePostfix}\\[tablename]Controller.cs";
     }
 }

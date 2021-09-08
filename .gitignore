@@ -120,3 +120,5 @@ packages
 /src/Tests/CodeGenHero.Template.Tests/bin
 /src/Tests/CodeGenHero.Template.Tests/obj
 *.cghpkg
+/src/CodeGenHero.Inflector.Tests/obj/Release/netcoreapp3.1
+/src/CodeGenHero.Inflector.Tests/obj/Debug/netcoreapp3.1
