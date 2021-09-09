@@ -6,7 +6,8 @@ using CodeGenHero.Core;
 
 namespace CodeGenHero.Template.Blazor.Templates
 {
-    [Template(name: "BlazorAPIController", version: "1.0", uniqueTemplateIdGuid: "70A21A48-7EE1-42F5-B1EB-4891E290A17D", )]
+    [Template(name: "BlazorAPIController", version: "1.0", uniqueTemplateIdGuid: "70A21A48-7EE1-42F5-B1EB-4891E290A17D", 
+        description: "Creates standard API Controllers to perform CRUD operations on Metadata-provided Entities.")]
     public class BlazorAPIController : BaseBlazorTemplate
     {
         public BlazorAPIController()
@@ -47,12 +48,13 @@ namespace CodeGenHero.Template.Blazor.Templates
                 foreach(var entity in filteredEntityTypes)
                 {
                     string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
-                    fileName: Consts.ToDataMapper_OutFileVariableName);
+                    fileName: Consts.BlazorAPIController_OutFileVariableName);
                     outputfile = outputfile.Replace("[tablename]", Inflector.Humanize(entity.ClrType.Name)).Replace("[tablepluralname]", Inflector.Pluralize(entity.ClrType.Name));
                     string filepath = outputfile;
 
                     var usings = new List<NamespaceItem>
                     {
+                        new NamespaceItem("System"),
                         new NamespaceItem("Microsoft.AspNetCore.Authorization"),
                         new NamespaceItem($"Microsoft.AspNetCore.Mvc"),
                         new NamespaceItem($"{BaseNamespace}.Api.Database")
