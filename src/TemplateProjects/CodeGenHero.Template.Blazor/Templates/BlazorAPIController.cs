@@ -23,6 +23,9 @@ namespace CodeGenHero.Template.Blazor.Templates
         [TemplateVariable(Consts.OUT_BlazorAPIControllerFilePath_DEFAULTVALUE, hiddenIndicator: true, description:"Path of outputted file.")]
         public string BlazorAPIControllerOutputFilePath { get; set; }
 
+        [TemplateVariable(Consts.BlazorRepositoryClassNamespace_DEFAULTVALUE, description: Consts.BlazorRepositoryClassNamespace_DEFAULTDESCRIPTION)]
+        public string BlazorRepositoryClassNamespace { get; set; }
+
         [TemplateVariable(defaultValue: null,
             description: "A list of MSC.CodeGenHero.DTO.NameValue items serialized as JSON that correspond to table names and integer values for the maximum number of rows to return for a single request for a page of data.")]
         public string MaxRequestPerPageOverrideByTableName { get; set; }
@@ -57,11 +60,11 @@ namespace CodeGenHero.Template.Blazor.Templates
                         new NamespaceItem("System"),
                         new NamespaceItem("Microsoft.AspNetCore.Authorization"),
                         new NamespaceItem($"Microsoft.AspNetCore.Mvc"),
-                        new NamespaceItem($"{BaseNamespace}.Api.Database")
+                        new NamespaceItem(BlazorRepositoryClassNamespace)
                     };
 
                     var generator = new BlazorAPIControllerGenerator(inflector: Inflector);
-                    string generatedCode = generator.Generate(usings, BlazorAPIControllerClassNamespace, NamespacePostfix, maxRequestPerPageOverrides: maxRequestPerPageOverrides, PrependSchemaNameIndicator, entityType: entity);
+                    string generatedCode = generator.Generate(usings, BlazorAPIControllerClassNamespace, NamespacePostfix, maxRequestPerPageOverrides, PrependSchemaNameIndicator, entityType: entity);
 
                     retVal.Files.Add(new OutputFile()
                     {
