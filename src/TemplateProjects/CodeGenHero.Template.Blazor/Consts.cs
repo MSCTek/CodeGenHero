@@ -89,17 +89,17 @@ namespace CodeGenHero.Template.Blazor
         public const string PTG_AutoMapperName_DEFAULT = "{namespacePostfix}AutoMapperProfile";
         public const string PTG_AutoMapperName_DESC = "The name of the AutoMapper Profile class. Should be promoted to Global.";
 
-        public const string PTG_GenericFactoryInterfaceName_DEFAULT = "";
-        public const string PTG_GenericFactoryInterfaceName_DESC = "The name of the Repository CRUD Interface class. Should be promoted to Global.";
+        public const string PTG_GenericFactoryInterfaceName_DEFAULT = "I{namespacePostfix}GenericFactory";
+        public const string PTG_GenericFactoryInterfaceName_DESC = "The name of the Generic Factory Interface class. Should be promoted to Global.";
 
-        public const string PTG_GenericFactoryName_DEFAULT = "";
-        public const string PTG_GenericFactoryName_DESC = "The name of the Repository CRUD Interface class. Should be promoted to Global.";
+        public const string PTG_GenericFactoryName_DEFAULT = "{namespacePostfix}GenericFactory";
+        public const string PTG_GenericFactoryName_DESC = "The name of the Generic Factory class. Should be promoted to Global.";
 
-        public const string PTG_BaseAPIControllerName_DEFAULT = "";
-        public const string PTG_BaseAPIControllerName_DESC = "The name of the Repository CRUD Interface class. Should be promoted to Global.";
+        public const string PTG_BaseAPIControllerName_DEFAULT = "{namespacePostfix}BaseApiController";
+        public const string PTG_BaseAPIControllerName_DESC = "The name of the Base API Controller class. Should be promoted to Global.";
 
-        public const string PTG_APIControllerName_DEFAULT = "";
-        public const string PTG_APIControllerName_DESC = "The name of the Repository CRUD Interface class. Should be promoted to Global.";
+        public const string PTG_APIControllerName_DEFAULT = "[tablename]Controller";
+        public const string PTG_APIControllerName_DESC = "The name of the API Controller classes. Use '[tablename]' token to substitute-in the name of the associated Entity Table. Should be promoted to Global.";
 
         #endregion
 
@@ -112,12 +112,12 @@ namespace CodeGenHero.Template.Blazor
         public const string OUT_RepositoryInterfaceOutputFilepath_DEFAULT = "RepositoryInterfaceOutputFilepath";
 
         // Repository
-        public const string RepositoryOutputFilepath_DEFAULT = "Blazor\\Repository\\Base{NamespacePostfix}Repository.cs";
+        public const string RepositoryOutputFilepath_DEFAULT = "Blazor\\Repository\\{NamespacePostfix}Repository.cs";
         public const string OUT_RepositoryOutputFilepath_DEFAULT = "RepositoryOutputFilepath";
 
         // AutoMapper
-        public const string AutoMapperOutputFilepath_DEFAULT = "Blazor\\Repository\\{NamespacePostfix}AutoMapperProfile.cs";
-        public const string OUT_AutoMapperOutputFilepath_DEFAULT = "AutoMapperOutputFilepath";
+        public const string AutoMapperProfileOutputFilepath_DEFAULT = "Blazor\\Repository\\{NamespacePostfix}AutoMapperProfile.cs";
+        public const string OUT_AutoMapperProfileOutputFilepath_DEFAULT = "AutoMapperProfileOutputFilepath";
 
         // Generic Factory Interface
         public const string GenericFactoryInterfaceOutputFilepath_DEFAULT = "Blazor\\Repository\\I{NamespacePostfix}GenericFactory.cs";

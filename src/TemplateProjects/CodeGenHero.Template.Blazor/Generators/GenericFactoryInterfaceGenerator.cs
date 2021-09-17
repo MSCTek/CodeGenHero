@@ -18,10 +18,9 @@ namespace CodeGenHero.Template.Blazor.Generators
         public string Generate(
             List<NamespaceItem> usings,
             string classNamespace,
-            string namespacePostfix)
+            string namespacePostfix,
+            string className)
         {
-            var className = $"I{namespacePostfix}GenericFactory";
-
             StringBuilder sb = new StringBuilder();
             sb.Append(GenerateHeader(usings, classNamespace));
 

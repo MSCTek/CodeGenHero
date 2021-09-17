@@ -25,21 +25,19 @@ namespace CodeGenHero.Template.Blazor.Generators
             StringBuilder sb = new StringBuilder();
             sb.Append(GenerateHeader(usings, classNamespace));
 
-            sb.AppendLine($"\tpublic interface {className}");
-            if (entities.Any())
-            {
-                var i = entities.Count();
-                string comma = string.Empty;
+            sb.AppendLine($"\tpublic interface {className} : ");
+            
+            var i = entities.Count();
+            string comma;
 
-                sb.Append(" : ");
-                foreach (var entity in entities)
-                {
-                    var entityName = entity.ClrType.Name;
-                    comma = (--i == 0) ? "" : ",";
-                    string text = $"\t\tICRUDOperation<{entityName}>{comma}";
-                    sb.AppendLine(text);
-                }
+            foreach (var entity in entities)
+            {
+                var entityName = entity.ClrType.Name;
+                comma = (--i == 0) ? "" : ",";
+                string text = $"\t\tICRUDOperation<{entityName}>{comma}";
+                sb.AppendLine(text);
             }
+
             sb.AppendLine("\t{");
 
             foreach(var entity in entities)

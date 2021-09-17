@@ -8,10 +8,10 @@ namespace CodeGenHero.Template.Blazor
 {
     public abstract class BaseBlazorTemplate : BaseTemplate
     {
-        protected string FilepathTokenReplacements(string filepath, IEntityType entity)
+        protected string TokenReplacements(string tokenString, IEntityType entity)
         {
 
-            string retVal = filepath
+            string retVal = tokenString
                 .Replace("[tablename]", Inflector.Humanize(entity.ClrType.Name))
                 .Replace("[tablepluralname]", Inflector.Pluralize(entity.ClrType.Name));
 

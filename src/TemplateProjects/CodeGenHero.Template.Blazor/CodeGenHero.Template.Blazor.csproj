@@ -44,10 +44,9 @@
     <Compile Include="BaseBlazorGenerator.cs" />
     <Compile Include="BaseBlazorTemplate.cs" />
     <Compile Include="Consts.cs" />
-    <Compile Include="Generators\AutoMapperGenerator.cs" />
+    <Compile Include="Generators\AutoMapperProfileGenerator.cs" />
     <Compile Include="Generators\BaseAPIControllerGenerator.cs" />
     <Compile Include="Generators\APIControllerGenerator.cs" />
-    <Compile Include="Generators\BlazorRepositoryGenerator.cs" />
     <Compile Include="Generators\RepositoryCrudInterfaceGenerator.cs" />
     <Compile Include="Generators\GenericFactoryGenerator.cs" />
     <Compile Include="Generators\GenericFactoryInterfaceGenerator.cs" />
@@ -56,10 +55,9 @@
     <Compile Include="Generators\ToDataMapperGenerator.cs" />
     <Compile Include="Generators\ToModelMapperGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Templates\AutoMapperTemplate.cs" />
+    <Compile Include="Templates\AutoMapperProfileTemplate.cs" />
     <Compile Include="Templates\BaseAPIControllerTemplate.cs" />
     <Compile Include="Templates\APIControllerTemplate.cs" />
-    <Compile Include="Templates\BlazorRepository.cs" />
     <Compile Include="Templates\RepositoryCrudInterfaceTemplate.cs" />
     <Compile Include="Templates\GenericFactoryInterfaceTemplate.cs" />
     <Compile Include="Templates\GenericFactoryTemplate.cs" />

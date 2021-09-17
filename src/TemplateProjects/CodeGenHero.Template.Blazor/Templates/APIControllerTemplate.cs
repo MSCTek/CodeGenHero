@@ -24,6 +24,15 @@ namespace CodeGenHero.Template.Blazor.Templates
             description: "A list of MSC.CodeGenHero.DTO.NameValue items serialized as JSON that correspond to table names and integer values for the maximum number of rows to return for a single request for a page of data.")]
         public string MaxRequestPerPageOverrideByTableName { get; set; }
 
+        [TemplateVariable(defaultValue: Consts.PTG_APIControllerName_DEFAULT, description: Consts.PTG_APIControllerName_DESC)]
+        public string APIControllerClassName { get; set; }
+
+        [TemplateVariable(defaultValue: Consts.PTG_BaseAPIControllerName_DEFAULT, description: Consts.PTG_BaseAPIControllerName_DESC)]
+        public string BaseAPIControllerClassName { get; set; }
+
+        [TemplateVariable(defaultValue: Consts.PTG_GenericFactoryInterfaceName_DEFAULT, description: Consts.PTG_GenericFactoryInterfaceName_DESC)]
+        public string GenericFactoryInterfaceClassName { get; set; }
+
         [TemplateVariable(defaultValue: Consts.PTG_APIControllerNamespace_DEFAULT, description: Consts.PTG_APIControllerNamespace_DESC)]
         public string APIControllerNamespace { get; set; }
 
@@ -58,7 +67,7 @@ namespace CodeGenHero.Template.Blazor.Templates
                 {
                     string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
                     fileName: Consts.OUT_APIControllerFilePath_DEFAULTVALUE);
-                    outputfile = outputfile.Replace("[tablename]", Inflector.Humanize(entity.ClrType.Name)).Replace("[tablepluralname]", Inflector.Pluralize(entity.ClrType.Name));
+                    outputfile = TokenReplacements(outputfile, entity);
                     string filepath = outputfile;
 
                     var usings = new List<NamespaceItem>
@@ -84,8 +93,11 @@ namespace CodeGenHero.Template.Blazor.Templates
                         new NamespaceItem("waEnums = MSC.WhittierArtists.Shared.Constants.Enums")
                     };
 
+                    // Individualize the Class Name
+                    string className = TokenReplacements(APIControllerClassName, entity);
+
                     var generator = new APIControllerGenerator(inflector: Inflector);
-                    string generatedCode = generator.Generate(usings, APIControllerNamespace, NamespacePostfix, entity, maxRequestPerPageOverrides);
+                    string generatedCode = generator.Generate(usings, APIControllerNamespace, NamespacePostfix, entity, maxRequestPerPageOverrides, className, BaseAPIControllerClassName, GenericFactoryInterfaceClassName);
 
                     retVal.Files.Add(new OutputFile()
                     {

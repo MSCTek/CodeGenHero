@@ -18,14 +18,14 @@ namespace CodeGenHero.Template.Blazor.Generators
         public string Generate(
             List<NamespaceItem> usings,
             string classNamespace,
-            string namespacePostfix)
+            string namespacePostfix,
+            string className,
+            string genericFactoryInterfaceClassName)
         {
-            var className = $"{namespacePostfix}GenericFactory";
-
             StringBuilder sb = new StringBuilder();
             sb.Append(GenerateHeader(usings, classNamespace));
 
-            sb.AppendLine($"public class {className}<TEntity, TDto> : I{className}<TEntity, TDto>");
+            sb.AppendLine($"public class {className}<TEntity, TDto> : {genericFactoryInterfaceClassName}<TEntity, TDto>");
             sb.AppendLine("{");
             sb.AppendLine("private IMapper _mapper;");
             sb.AppendLine(string.Empty);

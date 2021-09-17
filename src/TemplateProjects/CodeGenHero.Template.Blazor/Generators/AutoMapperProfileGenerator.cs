@@ -8,11 +8,11 @@ using System.Linq;
 
 namespace CodeGenHero.Template.Blazor.Generators
 {
-    class AutoMapperGenerator : BaseBlazorGenerator
+    class AutoMapperProfileGenerator : BaseBlazorGenerator
     {
         private const string EXCLUDEPERNAVIGATIONPROPERTYCONFIGURATION = " -- Excluded navigation property per configuration.";
 
-        public AutoMapperGenerator(ICodeGenHeroInflector inflector) : base(inflector)
+        public AutoMapperProfileGenerator(ICodeGenHeroInflector inflector) : base(inflector)
         {
 
         }
@@ -25,7 +25,6 @@ namespace CodeGenHero.Template.Blazor.Generators
             IList<IEntityNavigation> excludedEntityNavigations,
             string className)
         {
-
             StringBuilder sb = new StringBuilder();
             sb.Append(GenerateHeader(usings, classNamespace));
 

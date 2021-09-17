@@ -8,17 +8,17 @@ namespace CodeGenHero.Template.Blazor.Templates
 {
     [Template(name: "AutoMapperProfile", version: "2021.9.14", uniqueTemplateIdGuid: "7B0AA8DE-D2FB-4EFA-98E1-75FEB116A153",
         description: "Generates an Automapper Profile based off provided Metadata. Requires AutoMapper.Extensions.Microsoft.DependencyInjection NuGet package.")]
-    class AutoMapperTemplate : BaseBlazorTemplate
+    class AutoMapperProfileTemplate : BaseBlazorTemplate
     {
-        public AutoMapperTemplate()
+        public AutoMapperProfileTemplate()
         {
 
         }
 
         #region TemplateVariables
 
-        [TemplateVariable(defaultValue: Consts.AutoMapperOutputFilepath_DEFAULT, hiddenIndicator: true)]
-        public string AutoMapperOutputFilepath { get; set; }
+        [TemplateVariable(defaultValue: Consts.AutoMapperProfileOutputFilepath_DEFAULT, hiddenIndicator: true)]
+        public string AutoMapperProfileOutputFilepath { get; set; }
 
         [TemplateVariable(defaultValue: Consts.PTG_AutoMapperName_DEFAULT, description: Consts.PTG_AutoMapperName_DESC)]
         public string AutoMapperProfileClassName { get; set; }
@@ -41,7 +41,7 @@ namespace CodeGenHero.Template.Blazor.Templates
             try
             {
                 string outputFile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
-                    fileName: Consts.OUT_AutoMapperOutputFilepath_DEFAULT);
+                    fileName: Consts.OUT_AutoMapperProfileOutputFilepath_DEFAULT);
                 string filepath = outputFile;
 
                 var usings = new List<NamespaceItem>
@@ -54,8 +54,8 @@ namespace CodeGenHero.Template.Blazor.Templates
                 var entities = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
                 var excludedEntityNavigations = ProcessModel.GetAllExcludedEntityNavigations(RegexExclude, RegexInclude);
 
-                var generator = new AutoMapperGenerator(inflector: Inflector);
-                var generatedCode = generator.Generate(usings, MappersNamespace, NamespacePostfix, entities, excludedEntityNavigations);
+                var generator = new AutoMapperProfileGenerator(inflector: Inflector);
+                var generatedCode = generator.Generate(usings, MappersNamespace, NamespacePostfix, entities, excludedEntityNavigations, AutoMapperProfileClassName);
 
                 retVal.Files.Add(new OutputFile()
                 {

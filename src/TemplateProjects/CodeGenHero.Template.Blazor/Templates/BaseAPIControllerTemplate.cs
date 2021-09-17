@@ -20,6 +20,12 @@ namespace CodeGenHero.Template.Blazor.Templates
         [TemplateVariable(defaultValue: Consts.BaseAPIControllerOutputFilepath_DEFAULT, hiddenIndicator: true)]
         public string BaseAPIControllerOutputFilepath { get; set; }
 
+        [TemplateVariable(defaultValue: "false", description: "If true, will include the flag [AutoInvalidateCacheOutput] in the generated code.")]
+        public bool AutoInvalidateCacheOutput { get; set; }
+
+        [TemplateVariable(defaultValue: Consts.PTG_BaseAPIControllerName_DEFAULT, description: Consts.PTG_BaseAPIControllerName_DESC)]
+        public string BaseAPIControllerClassName { get; set; }
+
         [TemplateVariable(defaultValue: Consts.PTG_APIControllerNamespace_DEFAULT, description: Consts.PTG_APIControllerNamespace_DESC)]
         public string APIControllerNamespace { get; set; }
 
@@ -57,13 +63,13 @@ namespace CodeGenHero.Template.Blazor.Templates
                     new NamespaceItem("Microsoft.Extensions.Logging.Abstractions"),
                     new NamespaceItem(RepositoryNamespace),
                     new NamespaceItem(DtoNamespace),
-                    new NamespaceItem("cghcEnums = CodeGenHero.Core.Enums;")
+                    new NamespaceItem("cghcEnums = CodeGenHero.Core.Enums")
                 };
 
                 var entities = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
                 var generator = new BaseAPIControllerGenerator(inflector: Inflector);
-                var generatedCode = generator.Generate(usings, APIControllerNamespace, NamespacePostfix);
+                var generatedCode = generator.Generate(usings, APIControllerNamespace, NamespacePostfix, AutoInvalidateCacheOutput, BaseAPIControllerClassName);
 
                 retVal.Files.Add(new OutputFile()
                 {

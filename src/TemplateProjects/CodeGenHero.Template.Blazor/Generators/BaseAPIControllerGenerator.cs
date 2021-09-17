@@ -18,17 +18,19 @@ namespace CodeGenHero.Template.Blazor.Generators
         public string Generate(
             List<NamespaceItem> usings,
             string classNamespace,
-            string namespacePostfix)
+            string namespacePostfix,
+            bool autoInvalidateCacheOutput,
+            string className)
         {
-            var className = $"{namespacePostfix}BaseApiController";
-
             StringBuilder sb = new StringBuilder();
             sb.Append(GenerateHeader(usings, classNamespace));
 
+            sb.AppendLine($"\t{(autoInvalidateCacheOutput ? "" : "// ")}[AutoInvalidateCacheOutput]");
             sb.AppendLine("\t[AllowAnonymous]");
             sb.AppendLine("\t[ApiController]");
             sb.AppendLine($"\t{GenerateRouteParameter(namespacePostfix)}");
             sb.AppendLine($"\tpublic abstract partial class {className} : Controller");
+            sb.AppendLine("{");
 
             sb.Append(GenerateVariablesAndProperties(namespacePostfix));
             sb.Append(GenerateConstructor(className, namespacePostfix));
@@ -106,12 +108,12 @@ namespace CodeGenHero.Template.Blazor.Generators
                     var prevLink = page > 1 ? LinkGenerator.GetUriByName(
                         httpContext: HttpContextAccessor.HttpContext,
                         endpointName: routeName,
-                        values: new { page = page - 1, pageSize = pageSize, sort = sort }) : "";
+                        values: new { page = page - 1, pageSize = pageSize, sort = sort }) : """";
 
                     var nextLink = page < totalPages ? LinkGenerator.GetUriByName(
                         httpContext: HttpContextAccessor.HttpContext,
                         endpointName: routeName,
-                        values: new { page = page + 1, pageSize = pageSize, sort = sort }) : "";
+                        values: new { page = page + 1, pageSize = pageSize, sort = sort }) : """";
 
                     return new PageData(currentPage: page, nextPageLink: nextLink, pageSize: pageSize, previousPageLink: prevLink, totalCount: totalCount, totalPages: totalPages);
                 }";
@@ -151,7 +153,7 @@ namespace CodeGenHero.Template.Blazor.Generators
 
                     Log.LogWarning(eventId: (int)cghcEnums.EventId.Warn_WebApi,
                         exception: ex,
-                        message: ""Web API action failed. { httpResponseStatusCode}:{ url}"",
+                        message: ""Web API action failed. {httpResponseStatusCode}:{url}"",
                         args: args);
 
                     var retVal = StatusCode(StatusCodes.Status417ExpectationFailed, ex);
@@ -165,7 +167,7 @@ namespace CodeGenHero.Template.Blazor.Generators
                         HttpContext.Request.GetEncodedUrl() };
                     Log.LogError(eventId: (int)cghcEnums.EventId.Exception_WebApi,
                         exception: ex,
-                        message: $""{ex.Message} {{ httpResponseStatusCode }}:{ { url} }"",
+                        message: $""{ex.Message} {{httpResponseStatusCode}}:{{url}}"",
                         args: args);
 
                     var retVal = StatusCode(StatusCodes.Status500InternalServerError,
@@ -178,7 +180,7 @@ namespace CodeGenHero.Template.Blazor.Generators
                     var args = new object[] {
                         ""httpResponseStatusCode"", (int)StatusCodes.Status404NotFound ,
                         ""url"", HttpContext.Request.GetEncodedUrl() };
-                Log.LogWarning(eventId: (int) cghcEnums.EventId.Warn_WebApi,
+                Log.LogWarning(eventId: (int)cghcEnums.EventId.Warn_WebApi,
                     exception: null,
                     message: ""Unable to find requested object via Web API. {httpResponseStatusCode}:{url}"",
                     args: args);
@@ -195,12 +197,19 @@ namespace CodeGenHero.Template.Blazor.Generators
                 }";
 
             sb.Append(buildPaginationHeader);
+            sb.AppendLine(string.Empty);
             sb.Append(getClientIPAddress);
+            sb.AppendLine(string.Empty);
             sb.Append(getListByDelimiter);
+            sb.AppendLine(string.Empty);
             sb.Append(getURL);
+            sb.AppendLine(string.Empty);
             sb.Append(prepareExpectationFailedResponse);
+            sb.AppendLine(string.Empty);
             sb.Append(prepareInternalServerErrorResponse);
+            sb.AppendLine(string.Empty);
             sb.Append(prepareNotFoundResponse);
+            sb.AppendLine(string.Empty);
             sb.Append(OnActionExecuting);
             sb.AppendLine(string.Empty);
 

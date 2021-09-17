@@ -20,6 +20,12 @@ namespace CodeGenHero.Template.Blazor.Templates
         [TemplateVariable(defaultValue: Consts.GenericFactoryOutputFilepath_DEFAULT, hiddenIndicator: true)]
         public string GenericFactoryOutputFilepath { get; set; }
 
+        [TemplateVariable(defaultValue: Consts.PTG_GenericFactoryName_DEFAULT, description: Consts.PTG_GenericFactoryName_DESC)]
+        public string GenericFactoryClassName { get; set; }
+
+        [TemplateVariable(defaultValue: Consts.PTG_GenericFactoryInterfaceName_DEFAULT, description: Consts.PTG_GenericFactoryInterfaceName_DESC)]
+        public string GenericFactoryInterfaceClassName { get; set; }
+
         [TemplateVariable(defaultValue: Consts.PTG_MappersNamespace_DEFAULT, description: Consts.PTG_MappersNamespace_DESC)]
         public string MappersNamespace { get; set; }
 
@@ -48,7 +54,7 @@ namespace CodeGenHero.Template.Blazor.Templates
                 var entities = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
                 var generator = new GenericFactoryGenerator(inflector: Inflector);
-                var generatedCode = generator.Generate(usings, MappersNamespace, NamespacePostfix);
+                var generatedCode = generator.Generate(usings, MappersNamespace, NamespacePostfix, GenericFactoryClassName, GenericFactoryInterfaceClassName);
 
                 retVal.Files.Add(new OutputFile()
                 {

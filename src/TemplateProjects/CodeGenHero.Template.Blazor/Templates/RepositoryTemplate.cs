@@ -6,8 +6,8 @@ using CodeGenHero.Core;
 
 namespace CodeGenHero.Template.Blazor.Templates
 {
-    [Template(name: "RepositoryBase", version: "2021.9.14", uniqueTemplateIdGuid: "F51D4B1E-D1F8-45C4-BC9C-9E50B9090FBE",
-        description: "Generates the Base Class for Repository classes.")]
+    [Template(name: "Repository", version: "2021.9.14", uniqueTemplateIdGuid: "F51D4B1E-D1F8-45C4-BC9C-9E50B9090FBE",
+        description: "Generates the Repository class. Can be used as a Base for custom Repository classes.")]
     class RepositoryTemplate : BaseBlazorTemplate
     {
         public RepositoryTemplate()
@@ -56,7 +56,7 @@ namespace CodeGenHero.Template.Blazor.Templates
                     new NamespaceItem("CodeGenHero.Repository"),
                     new NamespaceItem("cghEnums = CodeGenHero.Repository.Enums"),
                     new NamespaceItem(EntitiesNamespace),
-                    new NamespaceItem(RepositoryNamespace)
+                    new NamespaceItem($"waEnums = {BaseNamespace}.Shared.Constants.Enums")
                 };
 
                 var entities = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);

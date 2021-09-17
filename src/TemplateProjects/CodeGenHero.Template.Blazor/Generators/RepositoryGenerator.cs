@@ -71,7 +71,7 @@ namespace CodeGenHero.Template.Blazor.Generators
             sb.AppendLine("{");
 
             sb.AppendLine("\t_ctx = ctx;");
-            sb.AppendLine("\tctx.Configuration.LazyLoadingEnabled = false;");
+            sb.AppendLine("\tctx.ChangeTracker.LazyLoadingEnabled = false;");
 
             sb.AppendLine("}");
             sb.AppendLine(string.Empty);
@@ -83,10 +83,10 @@ namespace CodeGenHero.Template.Blazor.Generators
             IndentingStringBuilder sb = new IndentingStringBuilder(2);
             sb.AppendLine("#region Generic Operations");
 
-            sb.Append(GenerateGenericInsert());
-            sb.Append(GenerateGenericGet());
-            sb.Append(GenerateGenericUpdate());
             sb.Append(GenerateGenericDelete());
+            sb.Append(GenerateGenericGet());
+            sb.Append(GenerateGenericInsert());
+            sb.Append(GenerateGenericUpdate());
             sb.Append(GenerateGenericPartialMethods());
 
             sb.AppendLine("#endregion");
@@ -96,41 +96,41 @@ namespace CodeGenHero.Template.Blazor.Generators
 
         #region Generic Operations Generators
 
-        private string GenerateGenericInsert()
+        private string GenerateGenericDelete()
         {
             IndentingStringBuilder sb = new IndentingStringBuilder(2);
 
-            sb.AppendLine("public async Task<IRepositoryActionResult<TEntity>> InsertAsync<TEntity>(TEntity item) where TEntity : class");
-            sb.AppendLine("{");
+            // Using a Verbatim String as this is a large block of static code.
+            string verbatim = @"
+                private async Task<IRepositoryActionResult<TEntity>> DeleteAsync<TEntity>(TEntity item) where TEntity : class
+		        {
+			        IRepositoryActionResult<TEntity> retVal = null;
 
-            sb.AppendLine("\ttry");
-            sb.AppendLine("\t{");
+			        try
+			        {
+				        if (item == null)
+				        {
+					        retVal = new RepositoryActionResult<TEntity>(null, cghEnums.RepositoryActionStatus.NotFound);
+				        }
+				        else
+				        {
+					        DbSet<TEntity> itemSet = _ctx.Set<TEntity>();
+					        itemSet.Remove(item);
+					        await _ctx.SaveChangesAsync();
+					        retVal = new RepositoryActionResult<TEntity>(null, cghEnums.RepositoryActionStatus.Deleted);
+				        }
+			        }
+			        catch (Exception ex)
+			        {
+				        retVal = new RepositoryActionResult<TEntity>(null, cghEnums.RepositoryActionStatus.Error, ex);
+			        }
 
-            sb.AppendLine("\t\tDbSet<TEntity> itemSet = _ctx.Set<TEntity>();");
-            sb.AppendLine("\t\titemSet.Add(item);");
-            sb.AppendLine("\t\tvar result = await _ctx.SaveChangesAsync();");
-            sb.AppendLine("\t\tRunCustomLogicAfterEveryInsert<TEntity>(item, result);");
+			        return retVal;
+		        }";
+
+            sb.Append(verbatim);
             sb.AppendLine(string.Empty);
 
-            sb.AppendLine("\t\tif (result > 0)");
-            sb.AppendLine("\t\t{");
-            sb.AppendLine("\t\t\treturn new RepositoryActionResult<TEntity>(item, cghEnums.RepositoryActionStatus.Created);");
-            sb.AppendLine("\t\t}");
-            sb.AppendLine("\t\telse");
-            sb.AppendLine("\t\t{");
-            sb.AppendLine("\t\t\treturn new RepositoryActionResult<TEntity>(item, cghEnums.RepositoryActionStatus.NothingModified, null);");
-            sb.AppendLine("\t\t}");
-
-            sb.AppendLine("\t}");
-            sb.AppendLine("\tcatch (Exception ex)");
-            sb.AppendLine("\t{");
-
-            sb.AppendLine("\t\treturn new RepositoryActionResult<TEntity>(null, cghEnums.RepositoryActionStatus.Error, ex);");
-
-            sb.AppendLine("\t}");
-
-            sb.AppendLine("}");
-            sb.AppendLine(string.Empty);
             return sb.ToString();
         }
 
@@ -148,86 +148,92 @@ namespace CodeGenHero.Template.Blazor.Generators
             return sb.ToString();
         }
 
+        private string GenerateGenericInsert()
+        {
+            IndentingStringBuilder sb = new IndentingStringBuilder(2);
+
+            string verbatim = @"
+                public async Task<IRepositoryActionResult<TEntity>> InsertAsync<TEntity>(TEntity item) 
+			        where TEntity : class
+		        {
+			        IRepositoryActionResult<TEntity> retVal = null;
+
+			        try
+			        {
+				        DbSet<TEntity> itemSet = _ctx.Set<TEntity>();
+				        itemSet.Add(item);
+				        var result = await _ctx.SaveChangesAsync();
+				        RunCustomLogicAfterEveryInsert<TEntity>(item, result);
+
+				        if (result > 0)
+				        {
+					        retVal = new RepositoryActionResult<TEntity>(item, cghEnums.RepositoryActionStatus.Created);
+				        }
+				        else
+				        {
+					        retVal = new RepositoryActionResult<TEntity>(item, cghEnums.RepositoryActionStatus.NothingModified, null);
+				        }
+			        }
+			        catch (Exception ex)
+			        {
+				        retVal = new RepositoryActionResult<TEntity>(null, cghEnums.RepositoryActionStatus.Error, ex);
+			        }
+
+			        return retVal;
+		        }";
+
+            sb.Append(verbatim);
+            sb.AppendLine(string.Empty);
+
+            return sb.ToString();
+        }
+
         private string GenerateGenericUpdate()
         {
             IndentingStringBuilder sb = new IndentingStringBuilder(2);
 
-            sb.AppendLine("private async Task<IRepositoryActionResult<TEntity>> UpdateAsync<TEntity>(TEntity item, TEntity existingItem) where TEntity : class");
-            sb.AppendLine("{");
+            string verbatim = @"
+                private async Task<IRepositoryActionResult<TEntity>> UpdateAsync<TEntity>(TEntity item, TEntity existingItem) where TEntity : class
+		        {
+			        IRepositoryActionResult<TEntity> retVal = null;
 
-            sb.AppendLine("\ttry");
-            sb.AppendLine("\t{");
+			        try
+			        { // only update when a record already exists for this id
+				        if (existingItem == null)
+				        {
+					        retVal = new RepositoryActionResult<TEntity>(item, cghEnums.RepositoryActionStatus.NotFound);
+				        }
 
-            sb.AppendLine("\t\tif (existingItem == null)");
-            sb.AppendLine("\t\t{");
+				        // change the original entity status to detached; otherwise, we get an error on attach as the entity is already in the dbSet
+				        // set original entity state to detached
+				        _ctx.Entry(existingItem).State = EntityState.Detached;
+				        DbSet<TEntity> itemSet = _ctx.Set<TEntity>();
+				        itemSet.Attach(item); // attach & save
+				        _ctx.Entry(item).State = EntityState.Modified; // set the updated entity state to modified, so it gets updated.
 
-            sb.AppendLine("\t\t\treturn new RepositoryActionResult<TEntity>(item, cghEnums.RepositoryActionStatus.NotFound);");
+				        var result = await _ctx.SaveChangesAsync();
+				        RunCustomLogicAfterEveryUpdate<TEntity>(newItem: item, oldItem: existingItem, numObjectsWritten: result);
 
-            sb.AppendLine("\t\t}");
+				        if (result > 0)
+				        {
+					        retVal = new RepositoryActionResult<TEntity>(item, cghEnums.RepositoryActionStatus.Updated);
+				        }
+				        else
+				        {
+					        retVal = new RepositoryActionResult<TEntity>(item, cghEnums.RepositoryActionStatus.NothingModified, null);
+				        }
+			        }
+			        catch (Exception ex)
+			        {
+				        retVal = new RepositoryActionResult<TEntity>(null, cghEnums.RepositoryActionStatus.Error, ex);
+			        }
+
+			        return retVal;
+		        }";
+
+            sb.Append(verbatim);
             sb.AppendLine(string.Empty);
 
-            sb.AppendLine("\t\t// Alters the EntityState of the Incoming and Existing item to facilitate updating the latter with the former.");
-            sb.AppendLine("\t\t_ctx.Entry(existingItem).State = EntityState.Detached;");
-            sb.AppendLine("\t\tDbSet<TEntity> itemSet = _ctx.Set<TEntity>();");
-            sb.AppendLine("\t\titemSet.Attach(item);");
-            sb.AppendLine("\t\t_ctx.Entry(item).State = EntityState.Modified;");
-            sb.AppendLine(string.Empty);
-
-            sb.AppendLine("\t\tvar result = await _ctx.SaveChangesAsync();");
-            sb.AppendLine("\t\tRunCustomLogicAfterEveryUpdate<TEntity>(newItem: item, oldItem: existingItem, numObjectsWritten: result);");
-            sb.AppendLine(string.Empty);
-
-            sb.AppendLine("\t\tif (result > 0)");
-            sb.AppendLine("\t\t{");
-            sb.AppendLine("\t\t\treturn new RepositoryActionResult<TEntity>(item, cghEnums.RepositoryActionStatus.Updated);");
-            sb.AppendLine("\t\t}");
-            sb.AppendLine("\t\telse");
-            sb.AppendLine("\t\t{");
-            sb.AppendLine("\t\t\treturn new RepositoryActionResult<TEntity>(item, cghEnums.RepositoryActionStatus.NothingModified, null);");
-            sb.AppendLine("\t\t}");
-
-            sb.AppendLine("\t}");
-            sb.AppendLine("\tcatch (Exception ex)");
-            sb.AppendLine("\t{");
-
-            sb.AppendLine("\t\treturn new RepositoryActionResult<TEntity>(null, cghEnums.RepositoryActionStatus.Error, ex);");
-
-            sb.AppendLine("\t}");
-
-            sb.AppendLine("}");
-            sb.AppendLine(string.Empty);
-            return sb.ToString();
-        }
-
-        private string GenerateGenericDelete()
-        {
-            IndentingStringBuilder sb = new IndentingStringBuilder(2);
-
-            sb.AppendLine("private async Task<IRepositoryActionResult<TEntity>> DeleteAsync<TEntity>(TEntity item) where TEntity : class");
-            sb.AppendLine("{");
-
-            sb.AppendLine("\ttry");
-            sb.AppendLine("\t{");
-
-            sb.AppendLine("\t\tif (item == null)");
-            sb.AppendLine("\t\t{");
-            sb.AppendLine("\t\t\treturn new RepositoryActionResult<TEntity>(null, cghEnums.RepositoryActionStatus.NotFound);");
-            sb.AppendLine("\t\t}");
-            sb.AppendLine(string.Empty);
-
-            sb.AppendLine("\t\tDbSet<TEntity> itemSet = _ctx.Set<TEntity>();");
-            sb.AppendLine("\t\titemSet.Remove(item);");
-            sb.AppendLine("\t\tawait _ctx.SaveChangesAsync();");
-            sb.AppendLine("\t\treturn new RepositoryActionResult<TEntity>(null, cghEnums.RepositoryActionStatus.Deleted);");
-
-            sb.AppendLine("\t}");
-            sb.AppendLine("\tcatch (Exception ex)");
-            sb.AppendLine("\t{");
-            sb.AppendLine("\t\treturn new RepositoryActionResult<TEntity>(null, cghEnums.RepositoryActionStatus.Error, ex);");
-            sb.AppendLine("\t}");
-
-            sb.AppendLine("}");
-            sb.AppendLine(string.Empty);
             return sb.ToString();
         }
 
@@ -294,17 +300,18 @@ namespace CodeGenHero.Template.Blazor.Generators
         {
             IndentingStringBuilder sb = new IndentingStringBuilder(2);
 
-            sb.AppendLine($"public async Task<{tableName}> Get_{tableName}Async({methodParameterSignature}, int numChildLevels)");
+            sb.AppendLine($"public async Task<{tableName}> Get_{tableName}Async({methodParameterSignature}, waEnums.RelatedEntitiesType relatedEntitiesType)");
             sb.AppendLine("{");
 
-            sb.AppendLine($"\tvar qryItem = GetQueryable_{tableName}().AsNoTracking();");
-            sb.AppendLine("\tRunCustomLogicOnGetQueryableByPK_{tableName}(ref qryItem, {methodParameterSignatureWithoutFieldTypes}, numChildLevels);");
+            sb.AppendLine($"\tvar qryItem = GetQueryable_{tableName}();");
+            sb.AppendLine($"\tRunCustomLogicOnGetQueryableByPK_{tableName}(ref qryItem, {methodParameterSignatureWithoutFieldTypes}, relatedEntitiesType);");
+            sb.AppendLine("\tqryItem = qryItem.AsNoTracking();");
             sb.AppendLine(string.Empty);
 
-            sb.AppendLine("\tvar dbItem = await qryItem.Where({whereClause}).FirstOrDefaultAsync();");
+            sb.AppendLine($"\tvar dbItem = await qryItem.Where({whereClause}).FirstOrDefaultAsync();");
             sb.AppendLine("\tif (!(dbItem is null))");
             sb.AppendLine("\t{");
-            sb.AppendLine("\t\tRunCustomLogicOnGetEntityByPK_{tableName}(ref dbItem, {methodParameterSignatureWithoutFieldTypes}, numChildLevels);");
+            sb.AppendLine($"\t\tRunCustomLogicOnGetEntityByPK_{tableName}(ref dbItem, {methodParameterSignatureWithoutFieldTypes}, relatedEntitiesType);");
             sb.AppendLine("\t}");
             sb.AppendLine(string.Empty);
 
@@ -403,10 +410,10 @@ namespace CodeGenHero.Template.Blazor.Generators
             sb.AppendLine($"partial void RunCustomLogicAfterUpdate_{tableName}({tableName} newItem, {tableName} oldItem, IRepositoryActionResult<{tableName}> result);");
             sb.AppendLine(string.Empty);
 
-            sb.AppendLine($"partial void RunCustomLogicOnGetQueryableByPK_{tableName}(ref IQueryable<{tableName}> qryItem, {methodParameterSignature}, int numChildLevels);");
+            sb.AppendLine($"partial void RunCustomLogicOnGetQueryableByPK_{tableName}(ref IQueryable<{tableName}> qryItem, {methodParameterSignature}, waEnums.RelatedEntitiesType relatedEntitiesType);");
             sb.AppendLine(string.Empty);
 
-            sb.AppendLine($"partial void RunCustomLogicOnGetEntityByPK_{tableName}(ref {tableName} dbItem, {methodParameterSignature}, int numChildLevels);");
+            sb.AppendLine($"partial void RunCustomLogicOnGetEntityByPK_{tableName}(ref {tableName} dbItem, {methodParameterSignature}, waEnums.RelatedEntitiesType relatedEntitiesType);");
             sb.AppendLine(string.Empty);
 
             return sb.ToString();

@@ -38,8 +38,8 @@ namespace CodeGenHero.Template.Blazor.Generators
                 string entityName = entity.ClrType.Name;
                 string methodParameterSignature = GetSignatureWithFieldTypes(string.Empty, entity.FindPrimaryKey());
 
-                sb.AppendLine($"Task<IRepositoryActionResult<ent{namespacePostfix}.{entityName}>> Delete_{entityName}Async({methodParameterSignature});");
-                sb.AppendLine($"Task<ent{namespacePostfix}.{entityName}> Get_{entityName}Async({methodParameterSignature}, waEnums.RelatedEntitiesType relatedEntitiesType = waEnums.RelatedEntitiesType.None);");
+                sb.AppendLine($"\t\tTask<IRepositoryActionResult<ent{namespacePostfix}.{entityName}>> Delete_{entityName}Async({methodParameterSignature});");
+                sb.AppendLine($"\t\tTask<ent{namespacePostfix}.{entityName}> Get_{entityName}Async({methodParameterSignature}, waEnums.RelatedEntitiesType relatedEntitiesType = waEnums.RelatedEntitiesType.None);");
                 sb.AppendLine(string.Empty);
             }
 

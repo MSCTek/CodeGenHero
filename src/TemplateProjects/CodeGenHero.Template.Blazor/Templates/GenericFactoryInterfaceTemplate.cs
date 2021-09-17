@@ -20,6 +20,9 @@ namespace CodeGenHero.Template.Blazor.Templates
         [TemplateVariable(defaultValue: Consts.GenericFactoryInterfaceOutputFilepath_DEFAULT, hiddenIndicator: true)]
         public string GenericFactoryInterfaceOutputFilepath { get; set; }
 
+        [TemplateVariable(defaultValue: Consts.PTG_GenericFactoryInterfaceName_DEFAULT, description: Consts.PTG_GenericFactoryInterfaceName_DESC)]
+        public string GenericFactoryInterfaceClassName { get; set; }
+
         [TemplateVariable(defaultValue: Consts.PTG_MappersNamespace_DEFAULT, description: Consts.PTG_MappersNamespace_DESC)]
         public string MappersNamespace { get; set; }
 
@@ -37,13 +40,13 @@ namespace CodeGenHero.Template.Blazor.Templates
 
                 var usings = new List<NamespaceItem>
                 {
-                    new NamespaceItem("System.Collections.Generic;")
+                    new NamespaceItem("System.Collections.Generic")
                 };
 
                 var entities = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
                 var generator = new GenericFactoryInterfaceGenerator(inflector: Inflector);
-                var generatedCode = generator.Generate(usings, MappersNamespace, NamespacePostfix);
+                var generatedCode = generator.Generate(usings, MappersNamespace, NamespacePostfix, GenericFactoryInterfaceClassName);
 
                 retVal.Files.Add(new OutputFile()
                 {

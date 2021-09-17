@@ -20,11 +20,13 @@ namespace CodeGenHero.Template.Blazor.Generators
             string classNamespace,
             string namespacePostfix,
             IEntityType entity,
-            List<NameValue> maxRequestPerPageOverrides)
+            List<NameValue> maxRequestPerPageOverrides,
+            string className,
+            string baseAPIControllerClassName,
+            string genericFactoryInterfaceClassName)
         {
             var entityName = $"{entity.ClrType.Name}";
-            var humanizedEntityName = $"{Inflector.Humanize(entity.ClrType.Name)}";
-            var className = $"{humanizedEntityName}Controller";
+            var humanizedEntityName = $"{Inflector.Humanize(entityName)}";
 
             // Set max page size.
             var maxPageSize = GetMaxPageSize(entity, maxRequestPerPageOverrides);
@@ -34,16 +36,16 @@ namespace CodeGenHero.Template.Blazor.Generators
 
             sb.Append(GenerateHeader(usings, classNamespace));
 
-            sb.AppendLine($"\tpublic partial class {className} : {namespacePostfix}BaseApiController");
+            sb.AppendLine($"\tpublic partial class {className} : {baseAPIControllerClassName}");
             sb.AppendLine("\t{");
 
             sb.AppendLine($"\t\tprivate const string GET_LIST_ROUTE_NAME = \"{humanizedEntityName}{namespacePostfix}List\";");
             sb.AppendLine($"\t\tprivate const int maxPageSize = {maxPageSize};");
             sb.AppendLine(string.Empty);
-            sb.AppendLine($"\t\tprivate I{namespacePostfix}GenericFactory<ent{namespacePostfix}.{humanizedEntityName}, dto{namespacePostfix}.{humanizedEntityName}> _factory;");
+            sb.AppendLine($"\t\tprivate {genericFactoryInterfaceClassName}<ent{namespacePostfix}.{humanizedEntityName}, dto{namespacePostfix}.{humanizedEntityName}> _factory;");
             sb.AppendLine(string.Empty);
 
-            sb.Append(GenerateConstructor(className, namespacePostfix, entityName));
+            sb.Append(GenerateConstructor(className, namespacePostfix, entityName, genericFactoryInterfaceClassName));
 
             sb.Append(GenerateDelete(entity));
             sb.Append(GenerateGet(entity, namespacePostfix, entityName));
@@ -58,7 +60,7 @@ namespace CodeGenHero.Template.Blazor.Generators
             return sb.ToString();
         }
 
-        private string GenerateConstructor(string className, string namespacePostfix, string entityName)
+        private string GenerateConstructor(string className, string namespacePostfix, string entityName, string genericFactoryInterfaceClassName)
         {
             IndentingStringBuilder sb = new IndentingStringBuilder(2);
 
@@ -67,7 +69,7 @@ namespace CodeGenHero.Template.Blazor.Generators
             sb.AppendLine("\tIHttpContextAccessor httpContextAccessor,");
             sb.AppendLine("\tLinkGenerator linkGenerator,");
             sb.AppendLine($"\tI{namespacePostfix}Repository repository,");
-            sb.AppendLine($"\tIGenericFactory<ent{namespacePostfix}.{entityName}, dto{namespacePostfix}.{entityName}> factory)");
+            sb.AppendLine($"\t{genericFactoryInterfaceClassName}<ent{namespacePostfix}.{entityName}, dto{namespacePostfix}.{entityName}> factory)");
             sb.AppendLine($"\t: base(logger, serviceProvider, httpContextAccessor, linkGenerator, repository)");
             sb.AppendLine("{");
             sb.AppendLine("\t_factory = factory;");
