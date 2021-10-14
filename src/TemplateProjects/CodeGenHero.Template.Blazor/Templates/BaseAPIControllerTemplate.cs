@@ -20,6 +20,9 @@ namespace CodeGenHero.Template.Blazor.Templates
         [TemplateVariable(defaultValue: Consts.BaseAPIControllerOutputFilepath_DEFAULT, hiddenIndicator: true)]
         public string BaseAPIControllerOutputFilepath { get; set; }
 
+        [TemplateVariable(defaultValue: "false", description: "If true, will generate an Authorized version of the API Controller instead.")]
+        public bool AuthorizedController { get; set; }
+
         [TemplateVariable(defaultValue: "false", description: "If true, will include the flag [AutoInvalidateCacheOutput] in the generated code.")]
         public bool AutoInvalidateCacheOutput { get; set; }
 
@@ -54,16 +57,16 @@ namespace CodeGenHero.Template.Blazor.Templates
                     new NamespaceItem("System.Linq"),
                     new NamespaceItem("System.Net"),
                     new NamespaceItem("System.Runtime.CompilerServices"),
-                    new NamespaceItem("Microsoft.AspNetCore.Authorization"),
-                    new NamespaceItem("Microsoft.AspNetCore.Http"),
-                    new NamespaceItem("Microsoft.AspNetCore.Http.Extensions;"),
                     new NamespaceItem("Microsoft.AspNetCore.Mvc"),
-                    new NamespaceItem("Microsoft.AspNetCore.Routing"),
+                    new NamespaceItem("Microsoft.AspNetCore.Authorization"),
                     new NamespaceItem("Microsoft.Extensions.Logging"),
-                    new NamespaceItem("Microsoft.Extensions.Logging.Abstractions"),
                     new NamespaceItem(RepositoryNamespace),
-                    new NamespaceItem(DtoNamespace),
-                    new NamespaceItem("cghcEnums = CodeGenHero.Core.Enums")
+                    new NamespaceItem("Microsoft.AspNetCore.Http"),
+                    new NamespaceItem("Microsoft.AspNetCore.Routing"),
+                    new NamespaceItem("Microsoft.Extensions.Logging.Abstractions"),
+                    new NamespaceItem("Microsoft.AspNetCore.Http.Extensions;"),
+                    new NamespaceItem("{BaseNamespace}.Shared.DataService;"),
+                    new NamespaceItem("{NamespacePostfix}Enums = {BaseNamespace}.Shared.Constants.Enums")
                 };
 
                 var entities = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);

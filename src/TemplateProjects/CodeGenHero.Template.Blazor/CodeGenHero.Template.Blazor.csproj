@@ -52,8 +52,8 @@
     <Compile Include="Generators\GenericFactoryInterfaceGenerator.cs" />
     <Compile Include="Generators\RepositoryGenerator.cs" />
     <Compile Include="Generators\RepositoryInterfaceGenerator.cs" />
-    <Compile Include="Generators\ToDataMapperGenerator.cs" />
-    <Compile Include="Generators\ToModelMapperGenerator.cs" />
+    <Compile Include="Generators\Legacy\ToDataMapperGenerator.cs" />
+    <Compile Include="Generators\Legacy\ToModelMapperGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\AutoMapperProfileTemplate.cs" />
     <Compile Include="Templates\BaseAPIControllerTemplate.cs" />
@@ -63,8 +63,8 @@
     <Compile Include="Templates\GenericFactoryTemplate.cs" />
     <Compile Include="Templates\RepositoryTemplate.cs" />
     <Compile Include="Templates\RepositoryInterfaceTemplate.cs" />
-    <Compile Include="Templates\ToDataMapper.cs" />
-    <Compile Include="Templates\ToModelMapperTemplate.cs" />
+    <Compile Include="Templates\Legacy\ToDataMapper.cs" />
+    <Compile Include="Templates\Legacy\ToModelMapperTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

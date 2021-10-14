@@ -34,7 +34,7 @@ namespace CodeGenHero.Template.Blazor.Generators
 
             sb.Append(GenerateVariablesAndProperties(namespacePostfix));
             sb.Append(GenerateConstructor(className, namespacePostfix));
-            sb.Append(GenerateImplementations());
+            sb.Append(GenerateImplementations(namespacePostfix));
             sb.Append(GenerateVirtualMethodSignatures());
 
             sb.Append(GenerateFooter());
@@ -81,8 +81,11 @@ namespace CodeGenHero.Template.Blazor.Generators
             sb.AppendLine("}");
             sb.AppendLine(string.Empty);
 
-            sb.AppendLine("public WABaseApiController(ILogger logger, IServiceProvider serviceProvider,");
-            sb.AppendLine($"\tIHttpContextAccessor httpContextAccessor, LinkGenerator linkGenerator, I{namespacePostfix}Repository repository)");
+            sb.AppendLine($"public {className}(ILogger logger,");
+            sb.AppendLine("\tIServiceProvider serviceProvider,");
+            sb.AppendLine("\tIHttpContextAccessor httpContextAccessor,");
+            sb.AppendLine("\tLinkGenerator linkGenerator,");
+            sb.AppendLine($"\tI{namespacePostfix}Repository repository)");
             sb.AppendLine("{");
 
             sb.AppendLine("\t_logger = logger ?? NullLogger.Instance;");
@@ -96,24 +99,24 @@ namespace CodeGenHero.Template.Blazor.Generators
             return sb.ToString();
         }
 
-        private string GenerateImplementations()
+        private string GenerateImplementations(string namespacePostfix)
         {
             IndentingStringBuilder sb = new IndentingStringBuilder(2);
 
             string buildPaginationHeader = @"
-                protected PageData BuildPaginationHeader(string routeName, int page, int totalCount, int pageSize, string sort)
+                protected PageData BuildPaginationHeader(string action, int page, int totalCount, int pageSize, string sort)
                 {   // calculate data for metadata
                     var totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
 
-                    var prevLink = page > 1 ? LinkGenerator.GetUriByName(
+                    var prevLink = page > 1 ? LinkGenerator.GetUriByAction(
                         httpContext: HttpContextAccessor.HttpContext,
-                        endpointName: routeName,
-                        values: new { page = page - 1, pageSize = pageSize, sort = sort }) : """";
+                        action: action,
+                        values: new { page = page - 1, pageSize = pageSize, sort = sort }) : "";
 
-                    var nextLink = page < totalPages ? LinkGenerator.GetUriByName(
+                    var nextLink = page < totalPages ? LinkGenerator.GetUriByAction(
                         httpContext: HttpContextAccessor.HttpContext,
-                        endpointName: routeName,
-                        values: new { page = page + 1, pageSize = pageSize, sort = sort }) : """";
+                        action: action,
+                        values: new { page = page + 1, pageSize = pageSize, sort = sort }) : "";
 
                     return new PageData(currentPage: page, nextPageLink: nextLink, pageSize: pageSize, previousPageLink: prevLink, totalCount: totalCount, totalPages: totalPages);
                 }";
@@ -144,49 +147,49 @@ namespace CodeGenHero.Template.Blazor.Generators
 
                     return pathAndQuery;
                 }";
-            string prepareExpectationFailedResponse = @"
+            string prepareExpectationFailedResponse = $@"
                 protected IActionResult PrepareExpectationFailedResponse(Exception ex)
-                {
-                    var args = new object[] { 
+                {{
+                    var args = new object[] {{ 
                         (int)StatusCodes.Status417ExpectationFailed,
-                        HttpContext.Request.GetEncodedUrl() };
+                        HttpContext.Request.GetEncodedUrl() }};
 
-                    Log.LogWarning(eventId: (int)cghcEnums.EventId.Warn_WebApi,
+                    Log.LogWarning(eventId: (int){namespacePostfix}Enums.EventId.Warn_WebApi,
                         exception: ex,
-                        message: ""Web API action failed. {httpResponseStatusCode}:{url}"",
+                        message: ""Web API action failed. {{httpResponseStatusCode}}:{{url}}"",
                         args: args);
 
                     var retVal = StatusCode(StatusCodes.Status417ExpectationFailed, ex);
                     return retVal;
-                }";
-            string prepareInternalServerErrorResponse = @"
+                }}";
+            string prepareInternalServerErrorResponse = $@"
                 protected IActionResult PrepareInternalServerErrorResponse(Exception ex)
-                {
-                    var args = new object[] {
+                {{
+                    var args = new object[] {{
                         (int)StatusCodes.Status500InternalServerError,
-                        HttpContext.Request.GetEncodedUrl() };
-                    Log.LogError(eventId: (int)cghcEnums.EventId.Exception_WebApi,
+                        HttpContext.Request.GetEncodedUrl() }};
+                    Log.LogError(eventId: (int){namespacePostfix}Enums.EventId.Exception_WebApi,
                         exception: ex,
-                        message: $""{ex.Message} {{httpResponseStatusCode}}:{{url}}"",
+                        message: $""{{ex.Message}} {{httpResponseStatusCode}}:{{url}}"",
                         args: args);
 
                     var retVal = StatusCode(StatusCodes.Status500InternalServerError,
                         value: System.Diagnostics.Debugger.IsAttached ? ex : null);
                     return retVal;
-                }";
-            string prepareNotFoundResponse = @"
+                }}";
+            string prepareNotFoundResponse = $@"
                 protected IActionResult PrepareNotFoundResponse()
-                {
-                    var args = new object[] {
+                {{
+                    var args = new object[] {{
                         ""httpResponseStatusCode"", (int)StatusCodes.Status404NotFound ,
-                        ""url"", HttpContext.Request.GetEncodedUrl() };
-                Log.LogWarning(eventId: (int)cghcEnums.EventId.Warn_WebApi,
+                        ""url"", HttpContext.Request.GetEncodedUrl() }};
+                Log.LogWarning(eventId: (int){namespacePostfix}Enums.EventId.Warn_WebApi,
                     exception: null,
-                    message: ""Unable to find requested object via Web API. {httpResponseStatusCode}:{url}"",
+                    message: ""Unable to find requested object via Web API. {{httpResponseStatusCode}}:{{url}}"",
                     args: args);
 
                     return NotFound();
-                }";
+                }}";
             string OnActionExecuting = @"
                 protected bool OnActionExecuting(out int httpStatusCode, out string message, [CallerMemberName] string methodName = null)
                 {
