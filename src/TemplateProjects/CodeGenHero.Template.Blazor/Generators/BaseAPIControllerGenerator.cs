@@ -19,6 +19,7 @@ namespace CodeGenHero.Template.Blazor.Generators
             List<NamespaceItem> usings,
             string classNamespace,
             string namespacePostfix,
+            bool authorizedController,
             bool autoInvalidateCacheOutput,
             string className)
         {
@@ -26,7 +27,7 @@ namespace CodeGenHero.Template.Blazor.Generators
             sb.Append(GenerateHeader(usings, classNamespace));
 
             sb.AppendLine($"\t{(autoInvalidateCacheOutput ? "" : "// ")}[AutoInvalidateCacheOutput]");
-            sb.AppendLine("\t[AllowAnonymous]");
+            sb.AppendLine($"\t{GenerateAuthorizeParameter(authorizedController)}");
             sb.AppendLine("\t[ApiController]");
             sb.AppendLine($"\t{GenerateRouteParameter(namespacePostfix)}");
             sb.AppendLine($"\tpublic abstract partial class {className} : Controller");
@@ -39,6 +40,18 @@ namespace CodeGenHero.Template.Blazor.Generators
 
             sb.Append(GenerateFooter());
             return sb.ToString();
+        }
+
+        private string GenerateAuthorizeParameter(bool authorized)
+        {
+            if (authorized)
+            {
+                return "[Authorize]";
+            }
+            else
+            {
+                return "[AllowAnonymous]";
+            }
         }
 
         private string GenerateRouteParameter(string namespacePostfix)
