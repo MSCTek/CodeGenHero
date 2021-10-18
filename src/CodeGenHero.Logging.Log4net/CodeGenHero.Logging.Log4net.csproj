@@ -49,6 +49,6 @@ This package should be added to projects that are the target of CodeGenHero temp
 
   <ItemGroup>
     <PackageReference Include="CodeGenHero.Logging" Version="1.1.2" />
-    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="log4net" Version="2.0.10" />
   </ItemGroup>
 </Project>
