@@ -47,6 +47,7 @@
     <Compile Include="Generators\AutoMapperProfileGenerator.cs" />
     <Compile Include="Generators\BaseAPIControllerGenerator.cs" />
     <Compile Include="Generators\APIControllerGenerator.cs" />
+    <Compile Include="Generators\DTOGenerator.cs" />
     <Compile Include="Generators\RepositoryCrudInterfaceGenerator.cs" />
     <Compile Include="Generators\GenericFactoryGenerator.cs" />
     <Compile Include="Generators\GenericFactoryInterfaceGenerator.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Templates\AutoMapperProfileTemplate.cs" />
     <Compile Include="Templates\BaseAPIControllerTemplate.cs" />
     <Compile Include="Templates\APIControllerTemplate.cs" />
+    <Compile Include="Templates\DTOTemplate.cs" />
     <Compile Include="Templates\RepositoryCrudInterfaceTemplate.cs" />
     <Compile Include="Templates\GenericFactoryInterfaceTemplate.cs" />
     <Compile Include="Templates\GenericFactoryTemplate.cs" />

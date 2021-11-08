@@ -134,5 +134,9 @@ namespace CodeGenHero.Template.Blazor
         // API Controller
         public const string APIControllerFilePath_DEFAULTVALUE = "Blazor\\Controllers\\[tablename]Controller.cs";
         public const string OUT_APIControllerFilePath_DEFAULTVALUE = "APIControllerOutputFilepath";
+
+        // DTO
+        public const string DTOFilePath_DEFAULTVALUE = "Blazor\\DTO\\{NamespacePostfix}\\[tablename].cs";
+        public const string OUT_DTOFilePath_DEFAULTVALUE = "DTOOutputFilepath";
     }
 }

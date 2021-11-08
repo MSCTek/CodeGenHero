@@ -63,14 +63,7 @@ namespace CodeGenHero.Template.Blazor.Templates
             {
                 var filteredEntityTypes = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
-                foreach(var entity in filteredEntityTypes)
-                {
-                    string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
-                    fileName: Consts.OUT_APIControllerFilePath_DEFAULTVALUE);
-                    outputfile = TokenReplacements(outputfile, entity);
-                    string filepath = outputfile;
-
-                    var usings = new List<NamespaceItem>
+                var usings = new List<NamespaceItem>
                     {
                         new NamespaceItem("CodeGenHero.Repository"),
                         new NamespaceItem("Marvin.JsonPatch"),
@@ -92,6 +85,12 @@ namespace CodeGenHero.Template.Blazor.Templates
                         new NamespaceItem($"ent{NamespacePostfix} = {EntitiesNamespace}"),
                         new NamespaceItem("waEnums = MSC.WhittierArtists.Shared.Constants.Enums")
                     };
+
+                foreach (var entity in filteredEntityTypes)
+                {
+                    string outputfile = TemplateVariablesManager.GetOutputFile(templateIdentity: ProcessModel.TemplateIdentity,
+                    fileName: Consts.OUT_APIControllerFilePath_DEFAULTVALUE);
+                    string filepath = TokenReplacements(outputfile, entity);
 
                     // Individualize the Class Name
                     string className = TokenReplacements(APIControllerClassName, entity);

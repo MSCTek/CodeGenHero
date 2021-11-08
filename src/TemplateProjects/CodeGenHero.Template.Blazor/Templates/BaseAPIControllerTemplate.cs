@@ -35,9 +35,6 @@ namespace CodeGenHero.Template.Blazor.Templates
         [TemplateVariable(defaultValue: Consts.PTG_RepositoryNamespace_DEFAULT, description: Consts.PTG_RepositoryNamespace_DESC)]
         public string RepositoryNamespace { get; set; }
 
-        [TemplateVariable(defaultValue: Consts.PTG_DtoNamespace_DEFAULT, description: Consts.PTG_DtoNamespace_DESC)]
-        public string DtoNamespace { get; set; }
-
         #endregion
 
         public override TemplateOutput Generate()
@@ -72,7 +69,7 @@ namespace CodeGenHero.Template.Blazor.Templates
                 var entities = ProcessModel.MetadataSourceModel.GetEntityTypesByRegEx(RegexExclude, RegexInclude);
 
                 var generator = new BaseAPIControllerGenerator(inflector: Inflector);
-                var generatedCode = generator.Generate(usings, APIControllerNamespace, NamespacePostfix, AutoInvalidateCacheOutput, BaseAPIControllerClassName);
+                var generatedCode = generator.Generate(usings, APIControllerNamespace, NamespacePostfix, AuthorizedController, AutoInvalidateCacheOutput, BaseAPIControllerClassName);
 
                 retVal.Files.Add(new OutputFile()
                 {
