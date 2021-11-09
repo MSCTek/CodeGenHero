@@ -1,5 +1,8 @@
 ﻿## Changelog
 
+### 1.4.0
+* ProcessModel.cs - Namespace change to CodeGenHero.Template.Models
+
 ### 1.3.9
 * BaseGenerator.cs - Added GetForeignKeyName(), removed IsEntityInExcludedReferenceNavigionationProperties(), added EntityNavigationsContainsNavigationName() to replace IsEntityInExcludedReferenceNavigionationProperties() in CodeGenHero.Template
 

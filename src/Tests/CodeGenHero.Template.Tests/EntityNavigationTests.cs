@@ -1,9 +1,9 @@
 using CodeGenHero.Core.Metadata;
 using CodeGenHero.Core.Metadata.Interfaces;
+using CodeGenHero.Template.Models;
 using CodeGenHero.Template.Models.Interfaces;
 using Ionic.Zip;
 using Moq;
-using MSC.CodeGenHero.Library;
 using MSC.CodeGenHero.Serialization;
 using NUnit.Framework;
 using System;

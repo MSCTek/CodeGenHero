@@ -3,7 +3,7 @@ using CodeGenHero.Core.Metadata.Interfaces;
 using CodeGenHero.Template.Models.Interfaces;
 using System.Collections.Generic;
 
-namespace MSC.CodeGenHero.Library
+namespace CodeGenHero.Template.Models
 {
     public class ProcessModel : BaseMarshalByRefObject, IProcessModel
     {
