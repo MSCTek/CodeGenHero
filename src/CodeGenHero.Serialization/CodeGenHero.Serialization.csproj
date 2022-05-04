@@ -19,7 +19,7 @@ This package should be added to projects that are used to serialize and deserial
     <PackageTags>CodeGenerator CodeGen MSCTek Serialization</PackageTags>
     <PackageReleaseNotes>Classes to support serializing and deserializing files.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>CGH_Logo2.png</PackageIcon>
@@ -38,7 +38,7 @@ This package should be added to projects that are used to serialize and deserial
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.*" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="YamlDotNet" Version="8.*" />
   </ItemGroup>
 

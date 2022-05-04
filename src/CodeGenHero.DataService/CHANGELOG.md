@@ -1,10 +1,13 @@
 ﻿## Changelog
 
+### 1.1.5
+* Updated Newtonsoft.Json package to version 13.0.1 to match the version used in the CGH Extension for VS2022
+
 ### 1.1.4
-Removed FieldType from FilterCriterion.
+* Removed FieldType from FilterCriterion.
 
 ### 1.1.3
-Swap out CGH custom logging implementation for Microsoft.Extensions.Logging implementation.
+* Swap out CGH custom logging implementation for Microsoft.Extensions.Logging implementation.
 
 ### 1.1.1
 Bug Fixes & Enhancements:
