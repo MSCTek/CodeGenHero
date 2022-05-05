@@ -1,5 +1,8 @@
 ﻿## Changelog
 
+### 1.4.1
+* Updated Newtonsoft.Json package to version 13.0.1 to match the version used in the CGH Extension for VS2022
+
 ### 1.4.0
 * ProcessModel.cs - Namespace change to CodeGenHero.Template.Models
 

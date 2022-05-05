@@ -19,7 +19,7 @@ This package should be added to projects that are the target of CodeGenHero temp
     <PackageTags>CodeGenerator CodeGen MSCTek webapi dataservice</PackageTags>
     <PackageReleaseNotes>Classes to support invoking Web API services via HttpClient.</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>1.1.4</Version>
+    <Version>1.1.5</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>CodeGenHeroKey.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>CGH_Logo2.png</PackageIcon>
@@ -47,7 +47,7 @@ This package should be added to projects that are the target of CodeGenHero temp
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.9" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
   </ItemGroup>
 
