@@ -83,6 +83,7 @@ namespace CGH.Inflector.Tests
             TestData.Add("equipment", "equipment");
             TestData.Add("bus", "buses");
             TestData.Add("status", "statuses");
+            TestData.Add("AbcTestStatus", "AbcTestStatuses");            
             TestData.Add("status_code", "status_codes");
             TestData.Add("mouse", "mice");
 
