@@ -83,7 +83,8 @@ namespace CGH.Inflector.Tests
             TestData.Add("equipment", "equipment");
             TestData.Add("bus", "buses");
             TestData.Add("status", "statuses");
-            TestData.Add("AbcTestStatus", "AbcTestStatuses");            
+            TestData.Add("AbcTestStatu", "AbcTestStatuses");
+            TestData.Add("AbcTestStatus", "AbcTestStatuses");
             TestData.Add("status_code", "status_codes");
             TestData.Add("mouse", "mice");
 
@@ -134,7 +135,8 @@ namespace CGH.Inflector.Tests
         {
             foreach (var pair in TestData)
             {
-                Assert.AreEqual(Inflector.Singularize(pair.Value), pair.Key);
+                var result = Inflector.Singularize(pair.Value);
+                Assert.AreEqual(result, pair.Key);
             }
         }
 

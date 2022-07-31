@@ -10,7 +10,9 @@ namespace CodeGenHero.Inflector.Cultures
 			AddPlural("s$", "s");
 			AddPlural("(ax|test)is$", "$1es");
 			AddPlural("(octop|vir|alumn|fung)us$", "$1i");
+			AddPlural("(statu)$", "$1ses"); // EF has a habit of calling tables named "AbcStatus" "AbcStatu" in the singular form.
 			AddPlural("(alias|status)$", "$1es");
+
 			AddPlural("(bu)s$", "$1ses");
 			AddPlural("(buffal|tomat|volcan)o$", "$1oes");
 			AddPlural("([ti])um$", "$1a");
